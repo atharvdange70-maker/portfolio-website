@@ -29,7 +29,10 @@ const skills = [
 
 export default function Skills() {
   return (
-    <section className="py-20 px-10 text-white">
+    <section
+  id="skills"
+  className="py-20 px-10 text-white"
+>
       <h2 className="text-4xl font-bold mb-10 text-center">
         Skills
       </h2>
