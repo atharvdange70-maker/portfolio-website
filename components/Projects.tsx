@@ -31,7 +31,7 @@ const projects = [
     ],
 
     // ✅ IMAGE ADDED HERE
-    image: "/projects/ebs-backup.png",
+    image: "/Projects/ebs-backup.png",
   },
 
   {
