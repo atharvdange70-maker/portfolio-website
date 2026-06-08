@@ -29,9 +29,6 @@ const projects = [
       "Serverless Architecture",
       "Disaster Recovery",
     ],
-
-    // ✅ IMAGE ADDED HERE
-    image: "/Projects/ebs-backup.png",
   },
 
   {
@@ -98,16 +95,6 @@ export default function Projects() {
         </div>
 
         <div className="mt-12 bg-slate-900 border border-slate-800 rounded-3xl p-8">
-
-          {/* ✅ IMAGE DISPLAY ONLY FOR SELECTED PROJECT (EBS) */}
-          {"image" in selected && selected.image && (
-            <img
-              src={selected.image}
-              alt={selected.title}
-              className="w-full h-72 object-cover rounded-2xl mb-8"
-            />
-          )}
-
           <h3 className="text-3xl font-bold mb-4">
             {selected.title}
           </h3>
