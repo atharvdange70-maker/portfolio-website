@@ -17,19 +17,20 @@ const projects = [
     ],
   },
 
-  {
-    title: "EBS Backup Automation (Serverless AWS)",
-    short: "Automated EBS snapshot creation using AWS serverless services.",
-    description:
-      "Built a fully automated backup solution using AWS Lambda, EventBridge, IAM, and EBS Snapshots. The solution performs scheduled backups, reduces manual effort, and improves disaster recovery readiness.",
-    tools: ["Lambda", "EventBridge", "IAM", "EBS"],
-    features: [
-      "Automatic Snapshots",
-      "Scheduled Backups",
-      "Serverless Architecture",
-      "Disaster Recovery",
-    ],
-  },
+ {
+  title: "EBS Backup Automation (Serverless AWS)",
+  short: "Automated EBS snapshot creation using AWS serverless services.",
+  image: "/images/ebs-backup.png.png",
+  description:
+    "Built a fully automated backup solution using AWS Lambda, API Gateway, CloudFront, S3, IAM, and EBS Snapshots. The solution performs scheduled backups and provides a simple web interface for snapshot creation.",
+  tools: ["Lambda", "API Gateway", "CloudFront", "S3", "IAM", "EBS"],
+  features: [
+    "Automatic Snapshots",
+    "Scheduled Backups",
+    "Serverless Architecture",
+    "Disaster Recovery",
+  ],
+},
 
   {
     title: "3-Tier Architecture Deployment",
@@ -95,7 +96,17 @@ export default function Projects() {
         </div>
 
         <div className="mt-12 bg-slate-900 border border-slate-800 rounded-3xl p-8">
-          <h3 className="text-3xl font-bold mb-4">
+         {selected.image && (
+        <div className="mb-8">
+        <img
+        src={selected.image}
+       alt={selected.title}
+       className="w-full rounded-2xl border border-slate-700 object-contain"
+       />
+       </div>
+       )}
+
+       <h3 className="text-3xl font-bold mb-4">
             {selected.title}
           </h3>
 
