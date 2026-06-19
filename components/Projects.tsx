@@ -20,7 +20,7 @@ const projects = [
  {
   title: "EBS Backup Automation (Serverless AWS)",
   short: "Automated EBS snapshot creation using AWS serverless services.",
-  image: "public/images/ebs-backup.png",
+  image: "public/images/ebs-backup.png.png",
   description:
     "Built a fully automated backup solution using AWS Lambda, API Gateway, CloudFront, S3, IAM, and EBS Snapshots. The solution performs scheduled backups and provides a simple web interface for snapshot creation.",
   tools: ["Lambda", "API Gateway", "CloudFront", "S3", "IAM", "EBS"],
