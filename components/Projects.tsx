@@ -21,6 +21,8 @@ const projects = [
   title: "EBS Backup Automation (Serverless AWS)",
   short: "Automated EBS snapshot creation using AWS serverless services.",
   image: "/images/ebs-backup.png.png",
+  github: "https://github.com/atharvdange70-maker/EduBlitz-EBS-Backup-Automation",
+
   description:
     "Built a fully automated backup solution using AWS Lambda, API Gateway, CloudFront, S3, IAM, and EBS Snapshots. The solution performs scheduled backups and provides a simple web interface for snapshot creation.",
   tools: ["Lambda", "API Gateway", "CloudFront", "S3", "IAM", "EBS"],
@@ -140,6 +142,18 @@ export default function Projects() {
               </li>
             ))}
           </ul>
+          {selected.github && (
+  <div className="mt-8">
+    <a
+      href={selected.github}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl transition"
+    >
+      View Source Code on GitHub
+    </a>
+  </div>
+)}
 
         </div>
       </div>
