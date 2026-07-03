@@ -22,6 +22,8 @@ const projects = [
   short: "Automated EBS snapshot creation using AWS serverless services.",
   image: [ "/images/projects/ebs-backup.png.png",
          "/images/projects/ebs-backup.png-2.png",
+          "/images/projects/ebs-backup.png-3.png",
+         
   ],
   github: "https://github.com/atharvdange70-maker/EduBlitz-EBS-Backup-Automation",
 
