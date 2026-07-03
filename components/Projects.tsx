@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const projects = [
   {
@@ -20,7 +20,9 @@ const projects = [
  {
   title: "EBS Backup Automation (Serverless AWS)",
   short: "Automated EBS snapshot creation using AWS serverless services.",
-  image: "/images/ebs-backup.png.png",
+  image: [ "/images/ebs-backup.png",
+         "/images/projects/ebs-backup.png-2.png",
+  ],
   github: "https://github.com/atharvdange70-maker/EduBlitz-EBS-Backup-Automation",
 
   description:
@@ -60,6 +62,11 @@ const projects = [
 
 export default function Projects() {
   const [selected, setSelected] = useState(projects[0]);
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    setCurrentImage(0);
+  }, [selected]);
 
   return (
     <section id="projects" className="py-24 px-6 bg-slate-950 text-white">
@@ -99,14 +106,46 @@ export default function Projects() {
 
         <div className="mt-12 bg-slate-900 border border-slate-800 rounded-3xl p-8">
          {selected.image && (
-        <div className="mb-8">
-        <img
-        src={selected.image}
-       alt={selected.title}
-       className="w-full rounded-2xl border border-slate-700 object-contain"
-       />
-       </div>
-       )}
+  <div className="mb-8">
+
+    <img
+      src={selected.image[currentImage]}
+      alt={selected.title}
+      className="w-full rounded-2xl border border-slate-700 object-contain"
+    />
+
+    <div className="flex justify-between mt-4">
+
+      <button
+        onClick={() =>
+          setCurrentImage(
+            currentImage === 0
+              ? selected.image.length - 1
+              : currentImage - 1
+          )
+        }
+        className="px-5 py-2 bg-slate-800 rounded-lg hover:bg-blue-600"
+      >
+        ◀ Previous
+      </button>
+
+      <button
+        onClick={() =>
+          setCurrentImage(
+            currentImage === selected.image.length - 1
+              ? 0
+              : currentImage + 1
+          )
+        }
+        className="px-5 py-2 bg-slate-800 rounded-lg hover:bg-blue-600"
+      >
+        Next ▶
+      </button>
+
+    </div>
+
+  </div>
+)}
 
        <h3 className="text-3xl font-bold mb-4">
             {selected.title}
