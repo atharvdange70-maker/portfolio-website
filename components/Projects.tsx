@@ -111,59 +111,69 @@ export default function Projects() {
         </div>
 
         <div className="mt-12 bg-slate-900 border border-slate-800 rounded-3xl p-8">
-         {selected.image && (
-  <div className="mb-8">
+          {selected.image && (
+            <div className="mb-8">
+              <img
+                src={selected.image[currentImage]}
+                alt={selected.title}
+                className="w-full rounded-2xl border border-slate-700 object-contain"
+              />
 
-    <img
-      src={selected.image[currentImage]}
-      alt={selected.title}
-      className="w-full rounded-2xl border border-slate-700 object-contain"
-    />
+              {/* Image Indicators */}
+              <div className="flex justify-center gap-3 mt-5 mb-5">
+                {selected.image.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentImage(index)}
+                    className={`text-2xl transition-all duration-300 ${
+                      currentImage === index
+                        ? "text-blue-500 scale-125"
+                        : "text-gray-500 hover:text-white"
+                    }`}
+                    aria-label={`Go to image ${index + 1}`}
+                  >
+                    {currentImage === index ? "●" : "○"}
+                  </button>
+                ))}
+              </div>
 
-    <div className="flex justify-between mt-4">
+              <div className="flex justify-between">
+                <button
+                  onClick={() =>
+                    setCurrentImage(
+                      currentImage === 0
+                        ? selected.image.length - 1
+                        : currentImage - 1
+                    )
+                  }
+                  className="px-5 py-2 bg-slate-800 rounded-lg hover:bg-blue-600"
+                >
+                  ◀ Previous
+                </button>
 
-      <button
-        onClick={() =>
-          setCurrentImage(
-            currentImage === 0
-              ? selected.image.length - 1
-              : currentImage - 1
-          )
-        }
-        className="px-5 py-2 bg-slate-800 rounded-lg hover:bg-blue-600"
-      >
-        ◀ Previous
-      </button>
+                <button
+                  onClick={() =>
+                    setCurrentImage(
+                      currentImage === selected.image.length - 1
+                        ? 0
+                        : currentImage + 1
+                    )
+                  }
+                  className="px-5 py-2 bg-slate-800 rounded-lg hover:bg-blue-600"
+                >
+                  Next ▶
+                </button>
+              </div>
+            </div>
+          )}
 
-      <button
-        onClick={() =>
-          setCurrentImage(
-            currentImage === selected.image.length - 1
-              ? 0
-              : currentImage + 1
-          )
-        }
-        className="px-5 py-2 bg-slate-800 rounded-lg hover:bg-blue-600"
-      >
-        Next ▶
-      </button>
-
-    </div>
-
-  </div>
-)}
-
-       <h3 className="text-3xl font-bold mb-4">
-            {selected.title}
-          </h3>
+          <h3 className="text-3xl font-bold mb-4">{selected.title}</h3>
 
           <p className="text-gray-300 leading-8 mb-8">
             {selected.description}
           </p>
 
-          <h4 className="text-xl font-semibold mb-4">
-            Technologies Used
-          </h4>
+          <h4 className="text-xl font-semibold mb-4">Technologies Used</h4>
 
           <div className="flex flex-wrap gap-3 mb-8">
             {selected.tools.map((tool) => (
@@ -176,9 +186,7 @@ export default function Projects() {
             ))}
           </div>
 
-          <h4 className="text-xl font-semibold mb-4">
-            Key Features
-          </h4>
+          <h4 className="text-xl font-semibold mb-4">Key Features</h4>
 
           <ul className="grid md:grid-cols-2 gap-4">
             {selected.features.map((feature) => (
@@ -187,19 +195,19 @@ export default function Projects() {
               </li>
             ))}
           </ul>
-          {selected.github && (
-  <div className="mt-8">
-    <a
-      href={selected.github}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl transition"
-    >
-      View Source Code on GitHub
-    </a>
-  </div>
-)}
 
+          {selected.github && (
+            <div className="mt-8">
+              <a
+                href={selected.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl transition"
+              >
+                View Source Code on GitHub
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </section>
