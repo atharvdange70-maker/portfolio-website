@@ -20,11 +20,13 @@ const projects = [
  {
   title: "EBS Backup Automation (Serverless AWS)",
   short: "Automated EBS snapshot creation using AWS serverless services.",
-  image: [ "/images/projects/ebs-backup.png.png",
+  image: [ "/images/projects/ebs-backup.png-1.png",
          "/images/projects/ebs-backup.png-2.png",
          "/images/projects/ebs-backup.png-3.png",
          "/images/projects/ebs-backup.png-4.png",
          "/images/projects/ebs-backup.png-5.png",
+         "/images/projects/ebs-backup.png-6.png",
+         "/images/projects/ebs-backup.png-7.png",
         
           
          
