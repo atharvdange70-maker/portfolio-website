@@ -33,7 +33,7 @@ const Certificates = () => (
       {/* Kubernetes Certificate */}
       <div className="bg-zinc-900 border border-zinc-700 rounded-xl p-6">
         <h3 className="text-2xl font-semibold">
-          Kubernetes for Beginners
+         Introduction to Kubernetes
         </h3>
 
         <p className="text-gray-400 mt-2">
