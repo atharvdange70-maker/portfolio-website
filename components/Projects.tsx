@@ -26,9 +26,7 @@ const projects = [
          "/images/projects/ebs-backup.png-4.png",
          "/images/projects/ebs-backup.png-5.png",
          "/images/projects/ebs-backup.png-6.png",
-         "/images/projects/ebs-backup.png-7.png",
-        
-          
+         "/images/projects/ebs-backup.png-7.png",      
          
   ],
   github: "https://github.com/atharvdange70-maker/EduBlitz-EBS-Backup-Automation",
@@ -47,7 +45,17 @@ const projects = [
   {
     title: "3-Tier Architecture Deployment",
     short: "Designed and deployed a scalable AWS 3-tier architecture.",
-    description:
+    image: [ "/images/projects/3-tier-project-image-1.png",
+         "/images/projects/3-tier-project-image-2.png",
+         "/images/projects/3-tier-project-image-3.png",
+         "/images/projects/3-tier-project-image-4.png",
+         "/images/projects/3-tier-project-image-5.png",
+         "/images/projects/3-tier-project-image-6.png",    
+          
+         ],
+   
+  
+      description:
       "Implemented a production-style 3-tier architecture consisting of Presentation Layer, Application Layer, and Database Layer using EC2, VPC, Load Balancer, Security Groups, and RDS.",
     tools: ["EC2", "RDS", "VPC", "ALB"],
     features: [
