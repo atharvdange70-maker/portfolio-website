@@ -60,14 +60,15 @@ const projects = [
          github: "https://github.com/atharvdange70-maker/edublitz-3tier-web-application",
    
   
-      description:
-      "Implemented a production-style 3-tier architecture consisting of Presentation Layer, Application Layer, and Database Layer using EC2, VPC, Load Balancer, Security Groups, and RDS.",
-    tools: ["EC2", "RDS", "VPC", "ALB"],
+      description:"EduBlitz is a beginner-friendly AWS project where students submit an enquiry form through a website. The frontend is hosted on Amazon S3 and delivered using CloudFront. The Java backend runs on an EC2 instance, processes the form submission, and stores the data securely in an Amazon RDS MySQL database. The project demonstrates a complete 3-tier architecture using AWS services.",
+    
+    tools: ["EC2", "Security Groups", "RDS", "VPC", "S3" , "CloudFront" ],
     features: [
       "Private & Public Subnets",
-      "Load Balancer",
+      "CloudFront",
       "Secure Architecture",
       "Database Layer",
+      "Amazon S3",
     ],
   },
 
