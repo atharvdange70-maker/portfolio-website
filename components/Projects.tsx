@@ -51,8 +51,13 @@ const projects = [
          "/images/projects/3-tier-project-image-4.png",
          "/images/projects/3-tier-project-image-5.png",
          "/images/projects/3-tier-project-image-6.png",    
-          
+         "/images/projects/3-tier-project-image-7.png",  
+         "/images/projects/3-tier-project-image-8.png", 
+         "/images/projects/3-tier-project-image-9.png", 
+
          ],
+
+         github: "https://github.com/atharvdange70-maker/edublitz-3tier-web-application",
    
   
       description:
