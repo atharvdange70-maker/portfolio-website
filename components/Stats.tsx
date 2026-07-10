@@ -46,22 +46,24 @@ export default function Stats() {
 
               {/* Card */}
 
-              <div
+                <div
                 className="
-                relative
-                rounded-3xl
-                bg-[#1a1d20]
-                border
-                border-blue-500/30
-                shadow-[0_15px_35px_rgba(0,0,0,.45)]
-                backdrop-blur-lg
-                p-10
-                text-center
-                transition-all
-                duration-500
-                group-hover:border-blue-400
-                group-hover:shadow-[0_20px_45px_rgba(0,120,255,.35)]
-                "
+      relative
+      rounded-3xl
+bg-linear-to-br
+from-[#202428]
+to-[#16181b]
+border
+border-blue-500/25
+shadow-[0_20px_60px_rgba(0,0,0,.55)]
+hover:rotate-x-3
+hover:rotate-y-3
+transition-all
+duration-500
+overflow-hidden
+p-10
+text-center
+"
               >
 
                 <h2 className="text-5xl font-bold text-sky-400 mb-5">
