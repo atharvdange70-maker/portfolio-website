@@ -50,20 +50,20 @@ export default function Stats() {
                 className="
       relative
       rounded-3xl
-bg-linear-to-br
-from-[#202428]
-to-[#16181b]
-border
-border-blue-500/25
-shadow-[0_20px_60px_rgba(0,0,0,.55)]
-hover:rotate-x-3
-hover:rotate-y-3
-transition-all
-duration-500
-overflow-hidden
-p-10
-text-center
-"
+      bg-linear-to-br
+    from-[#202428]
+    to-[#16181b]
+      border
+    border-blue-500/25
+      shadow-[0_20px_60px_rgba(0,0,0,.55)]
+      hover:rotate-x-3
+      hover:rotate-y-3
+      transition-all
+      duration-500
+      overflow-hidden
+      p-10
+      text-center
+      "
               >
 
                 <h2 className="text-5xl font-bold text-sky-400 mb-5">
