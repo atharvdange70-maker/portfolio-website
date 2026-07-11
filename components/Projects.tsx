@@ -74,13 +74,18 @@ const projects = [
   },
 
   {
-    title: "Docker cloudblitz-student-app",
-    short: "Containerized and deployed a student management application.",
-    description:
-      "Created Docker images, configured containers, and deployed the application on AWS EC2. Improved portability, scalability, and deployment consistency.",
-    tools: ["Docker", "EC2", "Linux", "Node.js"],
-    features: ["Containerization", "Docker Images", "AWS Deployment", "CI/CD Ready"],
-  },
+  title: "AWS EKS Cluster Setup and Management",
+  short: "Deployed and managed a Kubernetes cluster on AWS EKS.",
+  description:
+    "Provisioned and configured an Amazon EKS cluster to deploy and manage containerized applications. Configured worker nodes, Kubernetes resources, and networking to ensure scalable, reliable, and highly available deployments.",
+  tools: ["AWS EKS", "Kubernetes", "Docker", "EC2", "kubectl", "Linux"],
+  features: [
+    "Amazon EKS",
+    "Kubernetes Deployment",
+    "Worker Nodes",
+    "kubectl Management"
+  ],
+},
 ];
 
 export default function Projects() {
