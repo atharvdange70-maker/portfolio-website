@@ -23,69 +23,60 @@ const stats = [
 
 export default function Stats() {
   return (
-    <section className="py-24 bg-[#111315]">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="bg-[#111315] py-14 md:py-20">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-8">
 
           {stats.map((item, index) => (
-
             <motion.div
               key={index}
               whileHover={{
-                scale: 1.05,
                 y: -8,
+                scale: 1.03,
               }}
               transition={{ duration: 0.3 }}
-              className="relative group"
+              className="group relative"
             >
-
               {/* Glow */}
-
-              <div className="absolute inset-0 rounded-3xl bg-blue-500/20 blur-2xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
+              <div className="absolute inset-0 rounded-3xl bg-sky-500/10 blur-2xl opacity-0 group-hover:opacity-100 transition duration-500" />
 
               {/* Card */}
-
-                <div
+              <div
                 className="
-      relative
-      rounded-3xl
-      bg-linear-to-br
-    from-[#202428]
-    to-[#16181b]
-      border
-    border-blue-500/25
-      shadow-[0_20px_60px_rgba(0,0,0,.55)]
-      hover:rotate-x-3
-      hover:rotate-y-3
-      transition-all
-      duration-500
-      overflow-hidden
-      p-10
-      text-center
-      "
+                  relative
+                  h-42.5
+                  md:h-50
+                  rounded-[30px]
+                  border
+                  border-sky-500/20
+                  bg-linear-to-br
+                  from-[#22262b]
+                  to-[#17191d]
+                  flex
+                  flex-col
+                  items-center
+                  justify-center
+                  text-center
+                  shadow-xl
+                  transition-all
+                  duration-300
+                  group-hover:border-sky-400/40
+                  group-hover:-translate-y-1
+                "
               >
-
-                <h2 className="text-5xl font-bold text-sky-400 mb-5">
-
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-sky-400">
                   {item.number}
-
                 </h2>
 
-                <p className="text-gray-300 text-xl">
-
+                <p className="mt-4 text-sm sm:text-base md:text-xl text-gray-200">
                   {item.title}
-
                 </p>
-
               </div>
-
             </motion.div>
-
           ))}
 
         </div>
-
       </div>
     </section>
   );
