@@ -1,13 +1,11 @@
+import SpaceBackground from "./SpaceBackground";
+
 export default function Hero() {
   return (
-    <section
-      className="min-h-screen flex items-center justify-center bg-cover bg-center relative"
-      style={{
-        backgroundImage:
-          "url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920')",
-      }}
-    >
-      <div className="absolute inset-0 bg-black/60"></div>
+    <section className="relative min-h-screen overflow-hidden bg-black flex items-center">
+      <SpaceBackground />
+
+      <div className="absolute inset-0 bg-black/50"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-12 items-center">
         
