@@ -20,12 +20,12 @@ export default function Experience() {
 
    <h3 className="text-2xl font-bold text-blue-400">
 
-    Cloud Computing Intern
+    Devops Intern
    </h3>
 
               <p className="text-slate-300">
 
-                Greamio Technologies · Nagpur, Maharashtra, India
+                Hisan Labs - Hisan Labs Pvt Ltd · Pune, Maharashtra, India
 
               </p>
 
