@@ -17,14 +17,14 @@ const Certificates = () => (
         </p>
 
         <p className="text-gray-400 mt-2">
-          Certificate of completion for AWS optimization concepts and best practices.
+          Certificate of completion for AWS optimization concepts and AWS best practices.
         </p>
 
         <a
-          href="/certificates/aws-optimizing-certificate.pdf.pdf"
+          href="/certificates/aws-optimizing-certificate.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block mt-4 px-5 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg"
+          className="inline-block mt-4 px-5 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition"
         >
           View Certificate
         </a>
@@ -33,22 +33,46 @@ const Certificates = () => (
       {/* Kubernetes Certificate */}
       <div className="bg-zinc-900 border border-zinc-700 rounded-xl p-6">
         <h3 className="text-2xl font-semibold">
-         Introduction to Kubernetes
+          Introduction to Kubernetes
         </h3>
 
         <p className="text-gray-400 mt-2">
-          Completed: 2026
+          Completed: July2026
         </p>
 
         <p className="text-gray-400 mt-2">
-          Simplilearn certification covering Kubernetes fundamentals, pods, deployments, services, namespaces, and container orchestration.
+          Simplilearn certification covering Kubernetes fundamentals, Pods, Deployments, Services, Namespaces, and container orchestration.
         </p>
 
         <a
           href="/certificates/simplilearn-kubernetes-certificate.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block mt-4 px-5 py-2 bg-green-600 hover:bg-green-700 rounded-lg"
+          className="inline-block mt-4 px-5 py-2 bg-green-600 hover:bg-green-700 rounded-lg transition"
+        >
+          View Certificate
+        </a>
+      </div>
+
+      {/* Cyber Security Audits Certificate */}
+      <div className="bg-zinc-900 border border-zinc-700 rounded-xl p-6">
+        <h3 className="text-2xl font-semibold">
+          Cyber Security Audits
+        </h3>
+
+        <p className="text-gray-400 mt-2">
+          Completed: August 2024
+        </p>
+
+        <p className="text-gray-400 mt-2">
+          Successfully completed the Cyber Security Audits course covering security auditing concepts, risk assessment, compliance, vulnerability identification, and cybersecurity best practices.
+        </p>
+
+        <a
+          href="/certificates/cyber-security-audit.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block mt-4 px-5 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg transition"
         >
           View Certificate
         </a>
@@ -58,4 +82,12 @@ const Certificates = () => (
   </section>
 );
 
-export default Certificates;
+
+
+
+
+
+
+
+
+
