@@ -1,14 +1,14 @@
+
 "use client";
 
 import { Float } from "@react-three/drei";
 
 const positions = [
-  [-4, 2, -2],
-  [4, 2, -1],
-  [-3, -2, 0],
-  [3, -2, -2],
-  [0, 3, -3],
-  [0, -3, -1],
+  [-3, 2, 0],
+  [3, 1, -1],
+  [-2, -2, 1],
+  [2, -2, 0],
+  [0, 3, -2],
 ];
 
 export default function FloatingIcons() {
@@ -22,11 +22,10 @@ export default function FloatingIcons() {
           floatIntensity={2}
         >
           <mesh position={position as [number, number, number]}>
-            <boxGeometry args={[0.5, 0.5, 0.5]} />
-
+            <boxGeometry args={[0.4, 0.4, 0.4]} />
             <meshStandardMaterial
-              color="#22d3ee"
-              emissive="#06b6d4"
+              color="#06b6d4"
+              emissive="#0891b2"
               emissiveIntensity={2}
             />
           </mesh>
