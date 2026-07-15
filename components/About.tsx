@@ -72,31 +72,6 @@ export default function About() {
           engineering skills.
         </p>
 
-        {/* Quick Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
-
-          <div className="rounded-2xl border border-cyan-500/20 bg-white/5 backdrop-blur-md p-6 text-center hover:-translate-y-2 hover:border-cyan-400 transition-all duration-300">
-            <h3 className="text-4xl font-bold text-cyan-400">15+</h3>
-            <p className="mt-2 text-slate-300">AWS Services</p>
-          </div>
-
-          <div className="rounded-2xl border border-cyan-500/20 bg-white/5 backdrop-blur-md p-6 text-center hover:-translate-y-2 hover:border-cyan-400 transition-all duration-300">
-            <h3 className="text-4xl font-bold text-cyan-400">8+</h3>
-            <p className="mt-2 text-slate-300">DevOps Tools</p>
-          </div>
-
-          <div className="rounded-2xl border border-cyan-500/20 bg-white/5 backdrop-blur-md p-6 text-center hover:-translate-y-2 hover:border-cyan-400 transition-all duration-300">
-            <h3 className="text-4xl font-bold text-cyan-400">5+</h3>
-            <p className="mt-2 text-slate-300">Cloud Projects</p>
-          </div>
-
-          <div className="rounded-2xl border border-cyan-500/20 bg-white/5 backdrop-blur-md p-6 text-center hover:-translate-y-2 hover:border-cyan-400 transition-all duration-300">
-            <h3 className="text-4xl font-bold text-cyan-400">100%</h3>
-            <p className="mt-2 text-slate-300">Hands-on Learning</p>
-          </div>
-
-        </div>
-
         {/* Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-20">
 
