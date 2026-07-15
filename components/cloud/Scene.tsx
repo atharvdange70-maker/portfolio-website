@@ -19,15 +19,55 @@ export default function Scene() {
         intensity={3}
       />
 
-      {/* Main Cloud */}
-      <mesh position={[2.5, 0, -2]}>
-        <sphereGeometry args={[2, 64, 64]} />
-        <meshStandardMaterial
-          color="#3b82f6"
-          transparent
-          opacity={0.25}
-        />
-      </mesh>
+      {/* Cloud Part 1 */}
+<mesh position={[2.2, 0, -2]}>
+  <sphereGeometry args={[1.3, 64, 64]} />
+  <meshStandardMaterial
+    color="#38bdf8"
+    transparent
+    opacity={0.18}
+  />
+</mesh>
+
+{/* Cloud Part 2 */}
+<mesh position={[3.2, 0.4, -2]}>
+  <sphereGeometry args={[1.1, 64, 64]} />
+  <meshStandardMaterial
+    color="#38bdf8"
+    transparent
+    opacity={0.18}
+  />
+</mesh>
+
+{/* Cloud Part 3 */}
+<mesh position={[3.8, -0.3, -2]}>
+  <sphereGeometry args={[1.2, 64, 64]} />
+  <meshStandardMaterial
+    color="#38bdf8"
+    transparent
+    opacity={0.18}
+  />
+</mesh>
+
+{/* Cloud Part 4 */}
+<mesh position={[2.9, -0.7, -2]}>
+  <sphereGeometry args={[1.1, 64, 64]} />
+  <meshStandardMaterial
+    color="#38bdf8"
+    transparent
+    opacity={0.18}
+  />
+</mesh>
+
+{/* Cloud Part 5 */}
+<mesh position={[2.8, 0.9, -2]}>
+  <sphereGeometry args={[0.9, 64, 64]} />
+  <meshStandardMaterial
+    color="#38bdf8"
+    transparent
+    opacity={0.18}
+  />
+</mesh>
     </Canvas>
   );
 }
