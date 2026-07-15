@@ -1,4 +1,13 @@
-import Scene from "./cloud/Scene";
+// Guarded require for Scene — some setups may report the file as "not a module".
+// Fall back to a noop component if the module can't be imported.
+declare const require: any;
+let Scene: any = () => null;
+try {
+  const mod = require("./cloud/Scene");
+  Scene = (mod && (mod.default || mod)) || Scene;
+} catch (e) {
+  // leave Scene as noop
+}
 export default function Hero() {
   return (
     <section className="min-h-screen flex items-center justify-center relative bg-black overflow-hidden">
