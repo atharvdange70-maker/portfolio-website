@@ -20,7 +20,7 @@ export default function Hero() {
         
         {/* Left Side */}
         <div>
-          <h1 className="text-5xl md:text-7xl font-bold text-cyan-400 mb-4">
+          <h1 className="text-5xl md:text-7xl font-bold text-sky-400 mb-4">
             Atharv Dange
           </h1>
 
@@ -35,14 +35,14 @@ export default function Hero() {
           <div className="flex gap-4">
             <a
               href="#projects"
-              className="px-6 py-3 bg-cyan-400 text-black rounded-lg font-semibold hover:scale-105 transition"
+             className="px-6 py-3 bg-cyan-400 text-black rounded-lg font-semibold hover:scale-105 transition"
             >
               View Projects
             </a>
 
             <a
               href="#contact"
-              className="px-6 py-3 border border-cyan-400 text-cyan-400 rounded-lg hover:bg-cyan-400 hover:text-black transition"
+              className="px-6 py-3 border border-sky-400 text-cyan-400 rounded-lg hover:bg-cyan-400 hover:text-black transition"
             >
               Contact Me
             </a>
@@ -51,7 +51,7 @@ export default function Hero() {
 
       {/* Right Side */}
 <div className="flex justify-end items-center w-full">
-  <div className="ml-auto lg:translate-x-16 border-4 border-cyan-400 rounded-3xl p-2 shadow-[0_0_40px_#22d3ee]">
+  <div className="ml-auto lg:translate-x-16 border-4 border-cyan-400 rounded-3xl p-2 shadow-[0_0_40px_#38BDF8]">
     <img
       src="/images/atharv.jpg.png"
       alt="Atharv Dange"
