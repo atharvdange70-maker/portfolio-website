@@ -1,133 +1,126 @@
 export default function Experience() {
+  const technologies = [
+    "AWS",
+    "Docker",
+    "Kubernetes",
+    "Terraform",
+    "Jenkins",
+    "GitHub Actions",
+    "Linux",
+    "Git",
+    "CI/CD",
+  ];
+
+  const responsibilities = [
+    "Designed and deployed scalable AWS infrastructure using EC2, VPC, IAM, S3, Route 53, CloudFront, and Load Balancers.",
+    "Built and maintained CI/CD pipelines using Jenkins, GitHub Actions, and Docker for automated deployments.",
+    "Containerized web applications with Docker and deployed them in cloud environments.",
+    "Provisioned cloud infrastructure using Terraform following Infrastructure as Code (IaC) best practices.",
+    "Implemented Auto Scaling, Load Balancers, and monitoring to improve application availability and performance.",
+    "Configured IAM roles, policies, and security controls to protect AWS resources.",
+    "Troubleshot cloud infrastructure, networking, DNS, and deployment-related issues.",
+    "Monitored AWS resources using CloudWatch and optimized performance, reliability, and cost.",
+    "Deployed React applications using Amazon S3, CloudFront, Route 53, and AWS Certificate Manager.",
+  ];
+
   return (
     <section
-
       id="experience"
-      className="py-20 px-6 md:px-12 bg-slate-900 text-white"
+      className="py-24 px-6 md:px-12 bg-linear-to-b from-slate-900 to-slate-950 text-white"
     >
       <div className="max-w-6xl mx-auto">
-      <h2 className="text-4xl font-bold mb-10 text-center">
+        {/* Section Title */}
+        <div className="text-center mb-14">
+          <h2 className="text-4xl md:text-5xl font-bold">
+            Professional{" "}
+            <span className="text-cyan-400">Experience</span>
+          </h2>
 
-        Experience
+          <div className="w-24 h-1 bg-cyan-400 mx-auto mt-4 rounded-full"></div>
 
-        </h2>
+          <p className="text-slate-400 mt-5 max-w-2xl mx-auto">
+            Building scalable cloud infrastructure, automating deployments,
+            and delivering secure cloud-native solutions using modern DevOps
+            practices.
+          </p>
+        </div>
 
-        <div className="bg-slate-800 rounded-xl p-8 shadow-lg border border-slate-700">
+        {/* Experience Card */}
+        <div className="rounded-3xl border border-slate-700 bg-slate-800/70 backdrop-blur-md p-8 md:p-10 shadow-xl hover:shadow-cyan-500/20 hover:-translate-y-2 transition-all duration-500">
 
-          <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+          {/* Header */}
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
 
             <div>
+              <h3 className="text-3xl font-bold text-cyan-400">
+                DevOps Intern
+              </h3>
 
-   <h3 className="text-2xl font-bold text-blue-400">
-
-    Devops Intern
-   </h3>
-
-              <p className="text-slate-300">
-
-                Hisan Labs - Hisan Labs Pvt Ltd · Pune, Maharashtra, India
-
+              <p className="text-lg text-white mt-2 font-medium">
+                Hisan Labs Pvt Ltd
               </p>
 
-
+              <p className="text-slate-400">
+                Pune, Maharashtra, India
+              </p>
             </div>
- <span className="text-slate-400 mt-2 md:mt-0">
- Oct 2025 — Present
- </span>
 
-  </div>
- <p className="text-slate-300 mb-6">
- Working on AWS cloud infrastructure, DevOps automation,
- CI/CD pipelines, containerization, and cloud-native
+            <div className="self-start">
+              <span className="inline-block rounded-full border border-cyan-500/40 bg-cyan-500/10 px-5 py-2 text-cyan-300 font-medium">
+                Oct 2025 – Present
+              </span>
+            </div>
+          </div>
 
+          {/* Summary */}
+          <div className="mt-8">
+            <p className="text-slate-300 leading-8 text-lg">
+              Working as a DevOps Intern with hands-on experience in AWS cloud,
+              CI/CD automation, Infrastructure as Code, containerization, and
+              cloud-native deployments. Contributing to scalable, secure, and
+              highly available infrastructure while improving deployment speed,
+              automation, and operational efficiency.
+            </p>
+          </div>
 
+          {/* Responsibilities */}
+          <div className="mt-10">
+            <h4 className="text-2xl font-semibold mb-6 text-white">
+              Key Responsibilities
+            </h4>
 
-            application deployments. Contributing to scalable,
-            secure, and highly available cloud solutions.
+            <ul className="space-y-4">
+              {responsibilities.map((item, index) => (
+                <li
+                  key={index}
+                  className="flex items-start gap-4 text-slate-300"
+                >
+                  <span className="text-cyan-400 text-lg mt-1">✓</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
 
+          {/* Technologies */}
+          <div className="mt-10">
+            <h4 className="text-2xl font-semibold mb-6">
+              Technologies Used
+            </h4>
 
-          </p>
-
-
-          <h4 className="text-xl font-semibold mb-4 text-white">
-
-            Key Responsibilities & Achievements
-
-
-          </h4>
-
-          <ul className="space-y-3 text-slate-300 list-disc pl-6">
-
-
-
-            <li>
-
-
-
-              Designed and deployed cloud infrastructure on AWS using
-              EC2, VPC, IAM, S3, Route 53, and CloudFront.
-
-            </li>
-
-            <li>
-
-              Built and managed CI/CD pipelines using Jenkins,
-              GitHub Actions, and Docker.
-            </li>
-
-
-            <li>
-
-              Containerized applications with Docker and deployed
-              them on cloud environments.
-
-            </li>
-
-            <li>
-
-              Configured IAM roles, policies, and security best
-              practices to secure AWS resources.
-
-            </li>
-
-            <li>
-
-              Implemented Auto Scaling and Load Balancers to improve
-              application availability and performance.
-
-            </li>
-
-            <li>
-
-             Assisted in troubleshooting EC2, networking, DNS,
-             and deployment-related issues.
-
-            </li>
-
-            <li>
-
-              Worked with Infrastructure as Code (Terraform) for
-              automated cloud provisioning.
-
-            </li>
-
-            <li>
-
-              Monitored cloud resources and optimized application
-              performance, security, and cost efficiency.
-
-            </li>
-            <li>
-
-              Deployed React and web applications using S3,
-              CloudFront, Route 53, and AWS Certificate Manager.
-
-
-            </li>
-          </ul>
+            <div className="flex flex-wrap gap-3">
+              {technologies.map((tech) => (
+                <span
+                  key={tech}
+                  className="rounded-full border border-cyan-500/30 bg-slate-700 px-4 py-2 text-sm font-medium text-cyan-300 transition-all duration-300 hover:bg-cyan-500 hover:text-white hover:scale-105"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
-
 }
