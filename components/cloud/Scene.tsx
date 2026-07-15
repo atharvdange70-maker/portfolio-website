@@ -1,5 +1,5 @@
 "use client";
-
+import Network from "./Network";
 import { Canvas } from "@react-three/fiber";
 import { Stars } from "@react-three/drei";
 import CloudNode from "./CloudNode";
@@ -19,6 +19,7 @@ export default function Scene() {
         position={[5, 5, 5]}
         intensity={3}
       />
+        <Network />
 <Stars
   radius={80}
   depth={50}
