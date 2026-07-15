@@ -5,34 +5,46 @@ import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
 
-export default function CloudNode() {
+type Props = {
+  position: [number, number, number];
+  color: string;
+  label: string;
+};
+
+export default function CloudNode({
+  position,
+  color,
+  label,
+}: Props) {
   const ref = useRef<THREE.Mesh>(null!);
 
   useFrame((state) => {
+    if (!ref.current) return;
+
     ref.current.position.y =
-      Math.sin(state.clock.elapsedTime) * 0.2;
+      position[1] + Math.sin(state.clock.elapsedTime + position[0]) * 0.15;
 
     ref.current.rotation.y += 0.01;
   });
 
   return (
     <>
-      <mesh ref={ref} position={[2.5, 0, -2]}>
-        <boxGeometry args={[0.8, 0.8, 0.8]} />
-
+      <mesh ref={ref} position={position}>
+        <boxGeometry args={[0.6, 0.6, 0.6]} />
         <meshStandardMaterial
-          color="#00d4ff"
-          emissive="#00d4ff"
+          color={color}
+          emissive={color}
           emissiveIntensity={1}
         />
       </mesh>
 
       <Text
-        position={[2.5, -0.8, -2]}
-        fontSize={0.25}
+        position={[position[0], position[1] - 0.55, position[2]]}
+        fontSize={0.18}
         color="white"
+        anchorX="center"
       >
-        EC2
+        {label}
       </Text>
     </>
   );
