@@ -1,23 +1,36 @@
 "use client";
 
+import {
+  FaEnvelope,
+  FaGithub,
+  FaLinkedin,
+  FaPaperPlane,
+} from "react-icons/fa";
+
 export default function Contact() {
   return (
     <section
       id="contact"
       className="py-24 px-6 bg-slate-950 text-white"
     >
-      
+      <div className="max-w-7xl mx-auto">
+
+        {/* Heading */}
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold mb-4">
+          <h2 className="text-5xl font-bold">
             Contact Me
           </h2>
 
+          <p className="mt-4 text-slate-400 max-w-2xl mx-auto">
+            I'm currently looking for DevOps, Cloud and AWS opportunities.
+            Feel free to contact me for internships, collaborations or projects.
+          </p>
+        </div>
 
-        <div className="grid md:grid-cols-2 gap-10">
+        <div className="grid lg:grid-cols-2 gap-10">
 
-          {/* Contact Info */}
-
-          <div className="bg-slate-900 p-8 rounded-3xl border border-slate-800">
+          {/* Contact Card */}
+          <div className="bg-slate-900/70 backdrop-blur-md border border-cyan-500/20 rounded-3xl p-8 hover:border-cyan-400 transition duration-300 hover:shadow-[0_0_30px_rgba(34,211,238,0.25)]">
 
             <h3 className="text-3xl font-bold mb-8">
               Get In Touch
@@ -25,59 +38,62 @@ export default function Contact() {
 
             <div className="space-y-6">
 
-              <div>
-                <h4 className="font-semibold text-blue-400">
-                  Email
-                </h4>
+              <a
+                href="mailto:atharvdange70@gmail.com"
+                className="flex items-center gap-4 p-4 rounded-xl bg-slate-800 hover:bg-slate-700 transition"
+              >
+                <FaEnvelope className="text-cyan-400 text-2xl" />
 
-                <a
-                  href="mailto:atharvdange70@gmail.com"
-                  className="text-gray-300 hover:text-blue-400"
-                >
-                  atharvdange70@gmail.com
-                </a>
-              </div>
+                <div>
+                  <p className="text-sm text-slate-400">Email</p>
+                  <p className="font-medium">
+                    atharvdange70@gmail.com
+                  </p>
+                </div>
+              </a>
 
-              <div>
-                <h4 className="font-semibold text-blue-400">
-                  LinkedIn
-                </h4>
+              <a
+                href="https://www.linkedin.com/in/atharv-dange-03960a3b8/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-4 rounded-xl bg-slate-800 hover:bg-slate-700 transition"
+              >
+                <FaLinkedin className="text-cyan-400 text-2xl" />
 
-                <a
-                  href="https://www.linkedin.com/in/atharv-dange-03960a3b8/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-blue-400"
-                >
-                  linkedin.com/in/atharv-dange-03960a3b8
-                </a>
-              </div>
+                <div>
+                  <p className="text-sm text-slate-400">LinkedIn</p>
+                  <p className="font-medium">
+                    linkedin.com/in/atharv-dange-03960a3b8
+                  </p>
+                </div>
+              </a>
 
-              <div>
-                <h4 className="font-semibold text-blue-400">
-                  GitHub
-                </h4>
+              <a
+                href="https://github.com/atharvdange70-maker"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-4 rounded-xl bg-slate-800 hover:bg-slate-700 transition"
+              >
+                <FaGithub className="text-cyan-400 text-2xl" />
 
-                <a
-                  href="https://github.com/atharvdange70-maker"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-blue-400"
-                >
-                  github.com/atharvdange70-maker
-                </a>
-              </div>
+                <div>
+                  <p className="text-sm text-slate-400">GitHub</p>
+                  <p className="font-medium">
+                    github.com/atharvdange70-maker
+                  </p>
+                </div>
+              </a>
 
             </div>
           </div>
 
           {/* Contact Form */}
-
           <form
             action="https://formsubmit.co/atharvdange70@gmail.com"
             method="POST"
-            className="bg-slate-900 p-8 rounded-3xl border border-slate-800"
+            className="bg-slate-900/70 backdrop-blur-md border border-cyan-500/20 rounded-3xl p-8 hover:border-cyan-400 transition duration-300 hover:shadow-[0_0_30px_rgba(34,211,238,0.25)]"
           >
+
             <h3 className="text-3xl font-bold mb-8">
               Send Message
             </h3>
@@ -89,7 +105,7 @@ export default function Contact() {
                 name="name"
                 placeholder="Your Name"
                 required
-                className="w-full p-4 rounded-xl bg-slate-800 border border-slate-700 focus:outline-none"
+                className="w-full p-4 rounded-xl bg-slate-800 border border-slate-700 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400 outline-none transition"
               />
 
               <input
@@ -97,7 +113,7 @@ export default function Contact() {
                 name="email"
                 placeholder="Your Email"
                 required
-                className="w-full p-4 rounded-xl bg-slate-800 border border-slate-700 focus:outline-none"
+                className="w-full p-4 rounded-xl bg-slate-800 border border-slate-700 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400 outline-none transition"
               />
 
               <textarea
@@ -105,17 +121,19 @@ export default function Contact() {
                 rows={6}
                 placeholder="Write your message..."
                 required
-                className="w-full p-4 rounded-xl bg-slate-800 border border-slate-700 focus:outline-none"
+                className="w-full p-4 rounded-xl bg-slate-800 border border-slate-700 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400 outline-none transition"
               />
 
               <button
                 type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 transition p-4 rounded-xl font-semibold"
+                className="w-full flex items-center justify-center gap-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold p-4 rounded-xl transition duration-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.6)]"
               >
+                <FaPaperPlane />
                 Send Message
               </button>
 
             </div>
+
           </form>
 
         </div>
