@@ -49,16 +49,16 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right Side */}
-        <div className="flex justify-center">
-          <div className="border-4 border-cyan-400 rounded-3xl p-2 shadow-[0_0_30px_#22d3ee]">
-            <img
-             src="/images/atharv.jpg.png"
-              alt="Atharv Dange"
-               className="w-70 h-86 object-cover rounded-2xl"
-            />
-          </div>
-        </div>
+       {/* Right Side */}
+<div className="flex justify-end lg:justify-end items-center">
+  <div className="border-4 border-cyan-400 rounded-3xl p-2 shadow-[0_0_40px_#22d3ee]">
+    <img
+      src="/images/atharv.jpg.png"
+      alt="Atharv Dange"
+      className="w-85 h-105 object-cover rounded-2xl"
+    />
+  </div>
+</div>
       </div>
     </section>
   );
