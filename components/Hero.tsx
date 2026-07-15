@@ -1,3 +1,4 @@
+
 // Guarded require for Scene — some setups may report the file as "not a module".
 // Fall back to a noop component if the module can't be imported.
 declare const require: any;
@@ -13,7 +14,7 @@ export default function Hero() {
     <section className="min-h-screen flex items-center justify-center relative bg-black overflow-hidden">
     <Scene />
 
-    <div className="absolute inset-0 bg-linear-to-b from-black/40 via-slate-950/70 to-black"></div>
+      <div className="absolute inset-0 bg-black/60"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-12 items-center">
         
@@ -50,7 +51,7 @@ export default function Hero() {
 
         {/* Right Side */}
         <div className="flex justify-center">
-          <div className="animate-float border-4 border-cyan-400 rounded-3xl p-2 shadow-[0_0_30px_#22d3ee]">
+          <div className="border-4 border-cyan-400 rounded-3xl p-2 shadow-[0_0_30px_#22d3ee]">
             <img
              src="/images/atharv.jpg.png"
               alt="Atharv Dange"
