@@ -49,13 +49,13 @@ export default function Hero() {
           </div>
         </div>
 
-       {/* Right Side */}
-<div className="flex justify-end lg:justify-end items-center">
-  <div className="border-4 border-cyan-400 rounded-3xl p-2 shadow-[0_0_40px_#22d3ee]">
+      {/* Right Side */}
+<div className="flex justify-end items-center w-full">
+  <div className="ml-auto lg:translate-x-16 border-4 border-cyan-400 rounded-3xl p-2 shadow-[0_0_40px_#22d3ee]">
     <img
       src="/images/atharv.jpg.png"
       alt="Atharv Dange"
-      className="w-70 h-86 object-cover rounded-2xl"
+      className="w-72 h-96 object-cover rounded-2xl"
     />
   </div>
 </div>
