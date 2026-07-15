@@ -1,4 +1,5 @@
 "use client";
+import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import Network from "./Network";
 import DataPackets from "./DataPackets";
 import { Canvas } from "@react-three/fiber";
@@ -69,6 +70,14 @@ export default function Scene() {
     label="Terraform"
   />
 </> 
+<EffectComposer>
+  <Bloom
+    intensity={2}
+    luminanceThreshold={0}
+    luminanceSmoothing={0.9}
+    mipmapBlur
+  />
+</EffectComposer>
 
     </Canvas>
   );
