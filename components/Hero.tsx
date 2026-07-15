@@ -55,7 +55,7 @@ export default function Hero() {
     <img
       src="/images/atharv.jpg.png"
       alt="Atharv Dange"
-      className="w-70 h-96 object-cover rounded-2xl"
+      className="w-70 h-86 object-cover rounded-2xl"
     />
   </div>
 </div>
