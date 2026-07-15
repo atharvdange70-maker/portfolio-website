@@ -3,7 +3,7 @@ import ThemeToggle from "./ThemeToggle";
 export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 w-full bg-slate-950/90 backdrop-blur z-50">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between">
+      <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
         <h1 className="text-xl font-bold text-blue-400">
           Atharv Dange
         </h1>
