@@ -1,6 +1,7 @@
 "use client";
 
 import { Canvas } from "@react-three/fiber";
+import { Stars } from "@react-three/drei";
 import CloudNode from "./CloudNode";
 
 export default function Scene() {
@@ -18,44 +19,54 @@ export default function Scene() {
         position={[5, 5, 5]}
         intensity={3}
       />
-
-    <>
+<Stars
+  radius={80}
+  depth={50}
+  count={4000}
+  factor={4}
+  saturation={0}
+  fade
+  speed={1}
+/>
+<fog attach="fog" args={["#020617", 8, 20]} />
+<>
   <CloudNode
-    position={[1.5, 1.2, -2]}
+    position={[0.5, 2.2, -2]}
     color="#00d4ff"
     label="EC2"
   />
 
   <CloudNode
-    position={[3.2, 1.0, -2]}
+    position={[3.6, 2.0, -2]}
     color="#22c55e"
     label="S3"
   />
 
   <CloudNode
-    position={[1.2, -0.5, -2]}
+    position={[-0.2, 0.5, -2]}
     color="#f59e0b"
     label="Docker"
   />
 
   <CloudNode
-    position={[3.4, -0.4, -2]}
+    position={[4.2, 0.4, -2]}
     color="#8b5cf6"
     label="Kubernetes"
   />
 
   <CloudNode
-    position={[2.2, 0.2, -2]}
+    position={[0.8, -1.2, -2]}
     color="#ef4444"
     label="Jenkins"
   />
 
   <CloudNode
-    position={[4.5, 0.3, -2]}
+    position={[3.8, -1.3, -2]}
     color="#06b6d4"
     label="Terraform"
   />
-</>
+</> 
+
     </Canvas>
   );
 }
