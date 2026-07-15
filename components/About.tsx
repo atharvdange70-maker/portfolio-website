@@ -1,79 +1,125 @@
 export default function About() {
+  const highlights = [
+    {
+      title: "Cloud Infrastructure",
+      description:
+        "Building scalable, secure, and highly available AWS cloud architectures.",
+      icon: "☁️",
+    },
+    {
+      title: "DevOps Automation",
+      description:
+        "Automating application delivery with CI/CD pipelines using Jenkins and GitHub.",
+      icon: "⚙️",
+    },
+    {
+      title: "Containers",
+      description:
+        "Deploying containerized applications using Docker and Kubernetes.",
+      icon: "📦",
+    },
+    {
+      title: "Security",
+      description:
+        "Implementing IAM, VPC, Security Groups, and cloud security best practices.",
+      icon: "🔒",
+    },
+    {
+      title: "Performance",
+      description:
+        "Designing reliable systems focused on scalability, monitoring, and availability.",
+      icon: "🚀",
+    },
+    {
+      title: "Continuous Learning",
+      description:
+        "Continuously improving my cloud and DevOps skills through real-world projects.",
+      icon: "📚",
+    },
+  ];
+
   return (
     <section
       id="about"
-      className="py-24 px-6 bg-slate-950 text-white"
+      className="py-24 px-6 bg-linear-to-b from-slate-950 via-slate-900 to-slate-950 text-white"
     >
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold mb-8 text-cyan-400">
+      <div className="max-w-7xl mx-auto">
+
+        {/* Badge */}
+        <div className="inline-block px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-400 font-semibold text-sm tracking-widest uppercase">
           About Me
+        </div>
+
+        {/* Heading */}
+        <h2 className="mt-6 text-4xl md:text-5xl font-extrabold leading-tight">
+          Building Reliable
+          <span className="text-cyan-400"> Cloud Infrastructure</span>
         </h2>
 
-        <p className="text-lg text-slate-300 leading-8 mb-8">
-          I am a passionate DevOps and Cloud Engineer focused on building
-          scalable, secure, and highly available cloud infrastructure on AWS.
-          As a BCA graduate and cloud enthusiast, I enjoy designing
-          production-ready systems, automating deployments, and implementing
-          modern DevOps practices that improve reliability and efficiency.
+        {/* Description */}
+        <p className="mt-8 max-w-4xl text-lg text-slate-300 leading-8">
+          I'm a passionate <span className="text-cyan-400 font-semibold">DevOps & Cloud Engineer</span>
+          focused on designing scalable, secure, and production-ready cloud
+          infrastructure on AWS. I enjoy automating deployments, building
+          CI/CD pipelines, and creating reliable systems using modern DevOps
+          practices.
         </p>
 
-        <p className="text-lg text-slate-300 leading-8 mb-12">
-          I have hands-on experience with AWS, Docker, Kubernetes, Terraform,
-          Jenkins, Linux, Git, and CI/CD pipelines. My goal is to design
-          cloud-native solutions that follow industry best practices while
-          ensuring performance, security, and operational excellence.
+        <p className="mt-6 max-w-4xl text-lg text-slate-300 leading-8">
+          My hands-on experience includes AWS, Docker, Kubernetes, Terraform,
+          Jenkins, Linux, Git, GitHub, and Infrastructure as Code. I'm
+          continuously building real-world projects to strengthen my cloud
+          engineering skills.
         </p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="p-6 rounded-xl border border-cyan-500/30">
-            <h3 className="text-xl font-semibold text-cyan-400">
-              High Availability
-            </h3>
-            <p className="mt-2 text-slate-300">
-              Designing resilient systems that remain available even during
-              failures.
-            </p>
+        {/* Quick Stats */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
+
+          <div className="rounded-2xl border border-cyan-500/20 bg-white/5 backdrop-blur-md p-6 text-center hover:-translate-y-2 hover:border-cyan-400 transition-all duration-300">
+            <h3 className="text-4xl font-bold text-cyan-400">15+</h3>
+            <p className="mt-2 text-slate-300">AWS Services</p>
           </div>
 
-          <div className="p-6 rounded-xl border border-cyan-500/30">
-            <h3 className="text-xl font-semibold text-cyan-400">
-              Performance Optimization
-            </h3>
-            <p className="mt-2 text-slate-300">
-              Improving system efficiency, scalability, and responsiveness.
-            </p>
+          <div className="rounded-2xl border border-cyan-500/20 bg-white/5 backdrop-blur-md p-6 text-center hover:-translate-y-2 hover:border-cyan-400 transition-all duration-300">
+            <h3 className="text-4xl font-bold text-cyan-400">8+</h3>
+            <p className="mt-2 text-slate-300">DevOps Tools</p>
           </div>
 
-          <div className="p-6 rounded-xl border border-cyan-500/30">
-            <h3 className="text-xl font-semibold text-cyan-400">
-              Cost Efficiency
-            </h3>
-            <p className="mt-2 text-slate-300">
-              Optimizing cloud resources while maintaining reliability.
-            </p>
+          <div className="rounded-2xl border border-cyan-500/20 bg-white/5 backdrop-blur-md p-6 text-center hover:-translate-y-2 hover:border-cyan-400 transition-all duration-300">
+            <h3 className="text-4xl font-bold text-cyan-400">5+</h3>
+            <p className="mt-2 text-slate-300">Cloud Projects</p>
           </div>
 
-          <div className="p-6 rounded-xl border border-cyan-500/30">
-            <h3 className="text-xl font-semibold text-cyan-400">
-              Secure IAM & Networking
-            </h3>
-            <p className="mt-2 text-slate-300">
-              Implementing least-privilege access and secure network designs.
-            </p>
+          <div className="rounded-2xl border border-cyan-500/20 bg-white/5 backdrop-blur-md p-6 text-center hover:-translate-y-2 hover:border-cyan-400 transition-all duration-300">
+            <h3 className="text-4xl font-bold text-cyan-400">100%</h3>
+            <p className="mt-2 text-slate-300">Hands-on Learning</p>
           </div>
 
-          <div className="p-6 rounded-xl border border-cyan-500/30">
-            <h3 className="text-xl font-semibold text-cyan-400">
-              Continuous Learning
-            </h3>
-            <p className="mt-2 text-slate-300">
-              Continuously building hands-on AWS projects and improving my
-              understanding of cloud architecture patterns.
-            </p>
-          </div>
         </div>
+
+        {/* Cards */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-20">
+
+          {highlights.map((item) => (
+            <div
+              key={item.title}
+              className="rounded-2xl border border-cyan-500/20 bg-white/5 backdrop-blur-md p-8 hover:-translate-y-2 hover:border-cyan-400 hover:shadow-[0_0_35px_rgba(34,211,238,0.25)] transition-all duration-300"
+            >
+              <div className="text-5xl">{item.icon}</div>
+
+              <h3 className="mt-6 text-2xl font-bold text-cyan-400">
+                {item.title}
+              </h3>
+
+              <p className="mt-4 text-slate-300 leading-7">
+                {item.description}
+              </p>
+            </div>
+          ))}
+
+        </div>
+
       </div>
     </section>
   );
 }
-
