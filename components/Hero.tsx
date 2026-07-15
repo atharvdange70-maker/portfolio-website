@@ -28,8 +28,7 @@ export default function Hero() {
           </h2>
 
           <p className="text-gray-300 text-lg max-w-xl mb-8">
-            Building scalable cloud infrastructure and automating software 
-            delivery through modern DevOps practices
+           Building scalable cloud infrastructure with automated DevOps workflows.
           </p>
 
           <div className="flex gap-4">
