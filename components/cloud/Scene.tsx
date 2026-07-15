@@ -1,34 +1,17 @@
 "use client";
 
-import { Canvas, useFrame } from "@react-three/fiber";
-import { useRef } from "react";
-import * as THREE from "three";
-
-function Cube() {
-  const cubeRef = useRef<THREE.Mesh>(null!);
-
-  useFrame(() => {
-    cubeRef.current.rotation.x += 0.01;
-    cubeRef.current.rotation.y += 0.01;
-  });
-
-  return (
-    <mesh ref={cubeRef}>
-      <boxGeometry args={[2, 2, 2]} />
-      <meshStandardMaterial color="#00e5ff" />
-    </mesh>
-  );
-}
+import { Canvas } from "@react-three/fiber";
 
 export default function Scene() {
   return (
     <Canvas
-      camera={{ position: [0, 0, 6], fov: 60 }}
+      camera={{ position: [0, 0, 8], fov: 60 }}
       style={{
         position: "absolute",
         inset: 0,
       }}
     >
+      {/* Lights */}
       <ambientLight intensity={1.5} />
 
       <directionalLight
@@ -36,7 +19,15 @@ export default function Scene() {
         intensity={3}
       />
 
-      <Cube />
+      {/* Main Cloud */}
+      <mesh position={[2.5, 0, -2]}>
+        <sphereGeometry args={[2, 64, 64]} />
+        <meshStandardMaterial
+          color="#3b82f6"
+          transparent
+          opacity={0.25}
+        />
+      </mesh>
     </Canvas>
   );
 }
