@@ -77,7 +77,7 @@ export default function Stats() {
 
 
         {/* Compact Cards */}
-<div className="grid grid-cols-2 md:grid-cols-4 justify-between gap-x-16 gap-y-8">
+<div className="grid grid-cols-2 md:grid-cols-4 justify-between gap-x-20 gap-y-10">
 
           {stats.map((item, index) => {
 
