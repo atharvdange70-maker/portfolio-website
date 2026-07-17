@@ -137,40 +137,31 @@ export default function About() {
   viewport={{ once: true }}
   className="flex justify-center lg:justify-end"
 >
-  <div className="relative">
-<div
+  <div
   className="
+    relative
     ml-auto
     lg:translate-x-16
-    rounded-4xl
+    rounded-full
     p-2
-    border-2 border-cyan-400
-    shadow-[0_0_20px_#22D3EE,0_0_45px_rgba(34,211,238,0.45)]
-    bg-slate-950
+    shadow-[0_0_25px_#22D3EE,0_0_60px_rgba(34,211,238,.45)]
   "
-></div>
-   
-    {/* Gradient Border */}
-    <div className="rounded-full bg-linear-to-r from-cyan-400 via-sky-500 to-blue-500 p-2">
-
-      <div className="rounded-full bg-slate-950 p-2">
-
-       <Image
-  src="/images/atharv.jpg.png"
-  alt="Atharv Dange"
-  width={684}
-  height={684}
-  quality={100}
-  priority
-  className="rounded-full object-cover w-105 h-105"
-/>
-
-      </div>
-
+>
+  {/* Gradient Border */}
+  <div className="rounded-full bg-linear-to-r from-cyan-400 via-sky-500 to-blue-500 p-2">
+    <div className="rounded-full bg-slate-950 p-2">
+      <Image
+        src="/images/atharv.jpg.png"
+        alt="Atharv Dange"
+        width={684}
+        height={684}
+        quality={100}
+        priority
+        className="rounded-full object-cover w-105 h-105"
+      />
     </div>
-
   </div>
-
+</div>
 </motion.div>
 
 </div>
