@@ -140,13 +140,13 @@ export default function About() {
   <div className="relative">
 <div
   className="
-    rounded-full
-    bg-linear-to-r
-    from-cyan-400
-    via-sky-500
-    to-blue-500
+    ml-auto
+    lg:translate-x-16
+    rounded-4xl
     p-2
-    shadow-[0_0_30px_#22D3EE,0_0_60px_#22D3EE,0_0_90px_rgba(34,211,238,0.6)]
+    border-2 border-cyan-400
+    shadow-[0_0_20px_#22D3EE,0_0_45px_rgba(34,211,238,0.45)]
+    bg-slate-950
   "
 ></div>
    
