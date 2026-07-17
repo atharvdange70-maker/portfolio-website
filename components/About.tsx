@@ -139,8 +139,7 @@ export default function About() {
 >
   <div className="relative">
 
-    {/* Glow */}
-    <div className="absolute inset-0 rounded-full bg-cyan-500/20 blur-3xl scale-110"></div>
+   
 
     {/* Gradient Border */}
     <div className="rounded-full bg-linear-to-r from-cyan-400 via-sky-500 to-blue-500 p-2">
@@ -162,6 +161,7 @@ export default function About() {
     </div>
 
   </div>
+
 </motion.div>
 
 </div>
