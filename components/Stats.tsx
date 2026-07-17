@@ -77,8 +77,7 @@ export default function Stats() {
 
 
         {/* Compact Cards */}
-
-        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+<div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-6">
 
           {stats.map((item, index) => {
 
