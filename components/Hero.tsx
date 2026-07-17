@@ -22,35 +22,7 @@ export default function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-12 items-center">
         {/* Left Side */}
         <div>
-         <h1
-  className="
-    text-6xl
-    md:text-8xl
-    lg:text-9xl
-    font-black
-    uppercase
-    tracking-wide
-    bg-linear-to-b
-    from-cyan-200
-    via-cyan-400
-    to-sky-700
-    bg-clip-text
-    text-transparent
-    drop-shadow-[0_0_30px_rgba(34,211,238,0.9)]
-    animate-pulse
-    mb-4
-    select-none
-    transition-all
-    duration-500
-    hover:scale-105
-  "
-  style={{
-    textShadow:
-      "0 2px 0 #155e75, 0 4px 0 #0e7490, 0 6px 0 #164e63, 0 10px 30px rgba(34,211,238,.8)",
-  }}
->
-  Atharv Dange
-</h1>
+        <h1 className="text-5xl md:text-7xl font-bold text-sky-400 mb-4"> Atharv Dange </h1>
 
           <h2 className="text-2xl md:text-3xl text-white mb-6">
             AWS DevOps & Cloud Engineer
