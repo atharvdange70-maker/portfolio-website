@@ -138,8 +138,18 @@ export default function About() {
   className="flex justify-center lg:justify-end"
 >
   <div className="relative">
-
-   <div className="ml-auto lg:translate-x-16 rounded-3xl border-4 border-cyan-400 p-2 shadow-[0_0_60px_rgba(34,211,238,0.35)]"></div>
+<div
+  className="
+    rounded-full
+    bg-linear-to-r
+    from-cyan-400
+    via-sky-500
+    to-blue-500
+    p-2
+    shadow-[0_0_30px_#22D3EE,0_0_60px_#22D3EE,0_0_90px_rgba(34,211,238,0.6)]
+  "
+></div>
+   
     {/* Gradient Border */}
     <div className="rounded-full bg-linear-to-r from-cyan-400 via-sky-500 to-blue-500 p-2">
 
