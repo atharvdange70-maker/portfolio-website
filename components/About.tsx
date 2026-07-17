@@ -139,7 +139,7 @@ export default function About() {
 >
   <div className="relative">
 
-   
+    <div className="ml-auto lg:translate-x-16 border-4 border-cyan-400 rounded-3xl p-2 shadow-[0_0_40px_#38BDF8]"></div>
 
     {/* Gradient Border */}
     <div className="rounded-full bg-linear-to-r from-cyan-400 via-sky-500 to-blue-500 p-2">
