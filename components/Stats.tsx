@@ -41,36 +41,39 @@ const stats = [
 
 export default function Stats() {
   return (
-    <section className="relative overflow-hidden bg-[#0b0f14] py-14">
+    <section className="relative overflow-hidden bg-[#0b0f14] py-10">
 
       {/* Background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(14,165,233,0.12),transparent_55%)]" />
 
       <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-size-[45px_45px]" />
 
-      <div className="absolute -top-32 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-cyan-500/10 blur-[100px]" />
+      <div className="absolute -top-32 left-1/2 h-56 w-56 -translate-x-1/2 rounded-full bg-cyan-500/10 blur-[90px]" />
+
 
       <div className="relative mx-auto max-w-6xl px-5">
 
-        {/* Heading */}
 
+        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-10 text-center"
+          className="mb-8 text-center"
         >
 
           <span className="inline-flex rounded-full border border-cyan-400/20 bg-cyan-500/10 px-3 py-1 text-xs text-cyan-300">
             Portfolio Highlights
           </span>
 
-          <h2 className="mt-4 text-3xl font-bold text-white md:text-4xl">
+
+          <h2 className="mt-3 text-3xl font-bold text-white md:text-4xl">
             Numbers That Tell My Story
           </h2>
 
-          <p className="mx-auto mt-3 max-w-xl text-sm text-gray-400">
+
+          <p className="mx-auto mt-2 max-w-xl text-sm text-gray-400">
             Practical experience in AWS, DevOps, Infrastructure Automation,
             CI/CD, and Cloud Engineering.
           </p>
@@ -78,11 +81,12 @@ export default function Stats() {
         </motion.div>
 
 
+
         {/* Cards */}
 
-        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
 
-          {stats.map((item, index) => {
+          {stats.map((item,index)=>{
 
             const Icon = item.icon;
 
@@ -90,37 +94,47 @@ export default function Stats() {
 
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                initial={{
+                  opacity:0,
+                  y:25
+                }}
+                whileInView={{
+                  opacity:1,
+                  y:0
+                }}
+                viewport={{
+                  once:true
+                }}
                 transition={{
-                  duration: 0.5,
-                  delay: index * 0.1,
+                  duration:0.5,
+                  delay:index * 0.1
                 }}
                 whileHover={{
-                  y: -6,
-                  scale: 1.02,
+                  y:-4,
+                  scale:1.01
                 }}
                 className="group relative"
               >
 
-                {/* Glow */}
 
-                <div className="absolute -inset-px rounded-2xl bg-linear-to-r from-cyan-500/20 via-blue-500/20 to-purple-500/20 opacity-0 blur-lg transition duration-500 group-hover:opacity-100" />
+                {/* Glow */}
+                <div className="absolute -inset-px rounded-xl bg-linear-to-r from-cyan-500/20 via-blue-500/20 to-purple-500/20 opacity-0 blur-lg transition duration-500 group-hover:opacity-100" />
+
 
 
                 {/* Card */}
 
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition duration-500 group-hover:border-cyan-400/30">
+                <div className="relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-xl transition duration-500 group-hover:border-cyan-400/30">
 
 
                   {/* Icon */}
 
-                  <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5">
+                  <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5">
 
-                    <Icon className={`h-5 w-5 ${item.color}`} />
+                    <Icon className={`h-4 w-4 ${item.color}`} />
 
                   </div>
+
 
 
                   {/* Number */}
@@ -141,17 +155,19 @@ export default function Stats() {
                       duration:0.4,
                       delay:index * 0.1
                     }}
-                    className="bg-linear-to-r from-cyan-300 to-blue-500 bg-clip-text text-4xl font-extrabold text-transparent"
+                    className="bg-linear-to-r from-cyan-300 to-blue-500 bg-clip-text text-3xl font-extrabold text-transparent"
                   >
                     {item.number}
                   </motion.h3>
 
 
+
                   {/* Title */}
 
-                  <h4 className="mt-3 text-lg font-semibold text-white">
+                  <h4 className="mt-2 text-base font-semibold text-white">
                     {item.title}
                   </h4>
+
 
 
                   {/* Subtitle */}
@@ -161,11 +177,13 @@ export default function Stats() {
                   </p>
 
 
+
                   {/* Accent */}
 
-                  <div className="mt-5 h-0.5 w-0 rounded-full bg-linear-to-r from-cyan-400 to-blue-500 transition-all duration-500 group-hover:w-full" />
+                  <div className="mt-4 h-0.5 w-0 rounded-full bg-linear-to-r from-cyan-400 to-blue-500 transition-all duration-500 group-hover:w-full" />
 
                 </div>
+
 
               </motion.div>
 
@@ -174,6 +192,7 @@ export default function Stats() {
           })}
 
         </div>
+
 
       </div>
 
