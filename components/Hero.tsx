@@ -1,64 +1,56 @@
-
 // Guarded require for Scene — some setups may report the file as "not a module".
 // Fall back to a noop component if the module can't be imported.
 declare const require: any;
+
 let Scene: any = () => null;
+
 try {
   const mod = require("./cloud/Scene");
   Scene = (mod && (mod.default || mod)) || Scene;
 } catch (e) {
   // leave Scene as noop
 }
+
 export default function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center relative bg-black overflow-hidden">
-    <Scene />
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-black">
+      {/* 3D Background */}
+      <Scene />
 
+      {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/60"></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-12 items-center">
-        
-        {/* Left Side */}
-        <div>
-          <h1 className="text-5xl md:text-7xl font-bold text-sky-400 mb-4">
-            Atharv Dange
-          </h1>
+      {/* Hero Content */}
+      <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-8 text-center">
+        <h1 className="mb-4 text-5xl font-bold text-sky-400 md:text-7xl">
+          Atharv Dange
+        </h1>
 
-          <h2 className="text-2xl md:text-3xl text-white mb-6">
-            AWS DevOps & Cloud Engineer
-          </h2>
+        <h2 className="mb-6 text-2xl text-white md:text-3xl">
+          AWS DevOps & Cloud Engineer
+        </h2>
 
-          <p className="text-gray-300 text-lg max-w-xl mb-8">
-           Building scalable cloud infrastructure with automated DevOps workflows.
-          </p>
+        <p className="mb-10 max-w-3xl text-lg leading-8 text-gray-300">
+          Building scalable cloud infrastructure with automated DevOps
+          workflows. Passionate about AWS, Docker, Kubernetes, Terraform,
+          Linux, CI/CD, and designing secure, production-ready cloud solutions.
+        </p>
 
-          <div className="flex gap-4">
-            <a
-              href="#projects"
-             className="px-6 py-3 bg-cyan-400 text-black rounded-lg font-semibold hover:scale-105 transition"
-            >
-              View Projects
-            </a>
+        <div className="flex flex-wrap justify-center gap-5">
+          <a
+            href="#projects"
+            className="rounded-xl bg-cyan-400 px-8 py-3 font-semibold text-black transition duration-300 hover:scale-105 hover:shadow-[0_0_30px_#22D3EE]"
+          >
+            View Projects
+          </a>
 
-            <a
-              href="#contact"
-              className="px-6 py-3 border border-sky-400 text-cyan-400 rounded-lg hover:bg-cyan-400 hover:text-black transition"
-            >
-              Contact Me
-            </a>
-          </div>
+          <a
+            href="#contact"
+            className="rounded-xl border border-cyan-400 px-8 py-3 font-semibold text-cyan-400 transition duration-300 hover:bg-cyan-400 hover:text-black hover:shadow-[0_0_25px_#22D3EE]"
+          >
+            Contact Me
+          </a>
         </div>
-
-      {/* Right Side */}
-<div className="flex justify-end items-center w-full">
-  <div className="ml-auto lg:translate-x-16 border-4 border-cyan-400 rounded-3xl p-2 shadow-[0_0_40px_#38BDF8]">
-    <img
-      src="/images/atharv.jpg.png"
-      alt="Atharv Dange"
-      className="w-70 h-86 object-cover rounded-2xl"
-    />
-  </div>
-</div>
       </div>
     </section>
   );
