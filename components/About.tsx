@@ -14,24 +14,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-const stats = [
-  {
-    number: "10+",
-    label: "Projects",
-  },
-  {
-    number: "15+",
-    label: "AWS Services",
-  },
-  {
-    number: "12+",
-    label: "DevOps Tools",
-  },
-  {
-    number: "24/7",
-    label: "Learning",
-  },
-];
+
 
 const technologies = [
   "AWS",
@@ -144,30 +127,7 @@ export default function About() {
           </p>
         </motion.div>
 
-        {/* Statistics */}
-        <motion.div
-          initial={{ opacity: 0, y: 35 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          viewport={{ once: true }}
-          className="mt-16 grid grid-cols-2 gap-5 md:grid-cols-4"
-        >
-          {stats.map((item) => (
-            <div
-              key={item.label}
-              className="group rounded-2xl border border-cyan-500/20 bg-slate-900/60 p-6 text-center backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400 hover:shadow-[0_0_35px_rgba(34,211,238,0.25)]"
-            >
-              <h3 className="text-4xl font-extrabold text-cyan-400">
-                {item.number}
-              </h3>
-
-              <p className="mt-2 text-sm font-medium tracking-wide text-slate-300">
-                {item.label}
-              </p>
-            </div>
-          ))}
-        </motion.div>
-
+        
         {/* Core Technologies */}
         <motion.div
           initial={{ opacity: 0 }}
