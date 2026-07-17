@@ -14,19 +14,6 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-const technologies = [
-  "AWS",
-  "Docker",
-  "Kubernetes",
-  "Terraform",
-  "Jenkins",
-  "Linux",
-  "Git",
-  "CI/CD",
-  "Cloud",
-  "DevOps",
-];
-
 const highlights = [
   {
     icon: Server,
@@ -165,33 +152,7 @@ export default function About() {
 </motion.div>
 
 </div>
-
-        {/* Core Technologies */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.25 }}
-          viewport={{ once: true }}
-          className="mt-16"
-        >
-          <h3 className="mb-6 text-xl font-bold text-white">
-            Core Technologies
-          </h3>
-
-          <div className="flex flex-wrap gap-4">
-            {technologies.map((tech) => (
-              <div
-                key={tech}
-                className="group flex items-center gap-2 rounded-full border border-cyan-500/20 bg-slate-900/60 px-5 py-3 text-sm font-medium text-slate-300 backdrop-blur-lg transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400 hover:bg-cyan-500/10 hover:text-cyan-300 hover:shadow-[0_0_25px_rgba(34,211,238,0.25)]"
-              >
-                <ChevronRight className="h-4 w-4 text-cyan-400 transition-transform duration-300 group-hover:translate-x-1" />
-                {tech}
-              </div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* DevOps Workflow */}
+  {/* DevOps Workflow */}
         <motion.div
           initial={{ opacity: 0, y: 35 }}
           whileInView={{ opacity: 1, y: 0 }}
