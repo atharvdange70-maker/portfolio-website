@@ -14,28 +14,28 @@ const stats = [
     title: "AWS Services",
     subtitle: "EC2 • IAM • VPC • S3",
     icon: Cloud,
-    color: "text-cyan-400",
+    color: "text-cyan-200",
   },
   {
     number: "4+",
     title: "DevOps Projects",
     subtitle: "Production Ready",
     icon: FolderGit2,
-    color: "text-blue-400",
+    color: "text-blue-200",
   },
   {
     number: "100%",
     title: "Hands-On Learning",
     subtitle: "Build • Break • Improve",
     icon: BrainCircuit,
-    color: "text-violet-400",
+    color: "text-violet-200",
   },
   {
     number: "24/7",
     title: "Always Building",
     subtitle: "Learning Never Stops",
     icon: Rocket,
-    color: "text-emerald-400",
+    color: "text-emerald-200",
   },
 ];
 
