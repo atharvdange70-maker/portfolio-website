@@ -147,14 +147,15 @@ export default function About() {
 
       <div className="rounded-full bg-slate-950 p-2">
 
-        <Image
-          src="/images/atharv.jpg.png"
-          alt="Atharv Dange"
-          width={420}
-          height={420}
-          priority
-          className="rounded-full object-cover w-95 h-95 lg:w-105 lg:h-105"
-        />
+       <Image
+  src="/images/atharv.jpg.png"
+  alt="Atharv Dange"
+  width={684}
+  height={684}
+  quality={100}
+  priority
+  className="rounded-full object-cover w-105 h-105"
+/>
 
       </div>
 
