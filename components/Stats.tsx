@@ -41,7 +41,7 @@ const stats = [
 
 export default function Stats() {
   return (
-    <section className="relative overflow-hidden bg-[#0b0f14] py-6">
+   <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent">
 
       {/* Background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(14,165,233,0.12),transparent_55%)]" />
