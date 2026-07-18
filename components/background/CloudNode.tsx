@@ -1,51 +1,49 @@
 "use client";
 
-import { Text } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
 
-type Props = {
+type CloudNodeProps = {
   position: [number, number, number];
-  color: string;
-  label: string;
+  color?: string;
+  scale?: number;
 };
 
 export default function CloudNode({
   position,
-  color,
-  label,
-}: Props) {
-  const ref = useRef<THREE.Mesh>(null!);
+  color = "#22d3ee",
+  scale = 1,
+}: CloudNodeProps) {
+  const mesh = useRef<THREE.Mesh>(null);
 
-  useFrame((state) => {
-    if (!ref.current) return;
+  useFrame(({ clock }) => {
+    if (!mesh.current) return;
 
-    ref.current.position.y =
-      position[1] + Math.sin(state.clock.elapsedTime + position[0]) * 0.15;
+    const t = clock.getElapsedTime();
 
-    ref.current.rotation.y += 0.01;
+    mesh.current.position.y =
+      position[1] + Math.sin(t + position[0]) * 0.15;
+
+    mesh.current.rotation.y += 0.002;
+    mesh.current.rotation.x += 0.001;
   });
 
   return (
-    <>
-      <mesh ref={ref} position={position}>
-        <boxGeometry args={[0.6, 0.6, 0.6]} />
-        <meshStandardMaterial
-          color={color}
-          emissive={color}
-          emissiveIntensity={1}
-        />
-      </mesh>
+    <mesh
+      ref={mesh}
+      position={position}
+      scale={scale}
+    >
+      <icosahedronGeometry args={[0.35, 3]} />
 
-      <Text
-        position={[position[0], position[1] - 0.55, position[2]]}
-        fontSize={0.18}
-        color="white"
-        anchorX="center"
-      >
-        {label}
-      </Text>
-    </>
+      <meshStandardMaterial
+        color={color}
+        emissive={color}
+        emissiveIntensity={2}
+        roughness={0.2}
+        metalness={0.7}
+      />
+    </mesh>
   );
 }

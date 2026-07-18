@@ -4,6 +4,7 @@ import Lights from "./Lights";
 import Camera from "./Camera";
 import Stars from "./Stars";
 import Particles from "./Particles";
+import CloudNode from "./CloudNode";
 
 export default function Scene() {
   return (
@@ -13,16 +14,33 @@ export default function Scene() {
       <Lights />
       <Stars />
       <Particles />
+      <CloudNode position={[0, 0, 0]} /> 
 
-      {/* Temporary object */}
-      <mesh rotation={[0.4, 0.5, 0]}>
-        <icosahedronGeometry args={[1.3, 1]} />
-        <meshStandardMaterial
-          color="#22d3ee"
-          metalness={0.8}
-          roughness={0.2}
-        />
-      </mesh>
+      <CloudNode
+        position={[0, 0, 0]}
+        scale={1.6}
+      />
+
+      <CloudNode
+        position={[2.5, 1.2, -1]}
+        scale={0.8}
+      />
+
+      <CloudNode
+        position={[-2.5, -0.5, -1]}
+        scale={0.7}
+      />
+
+      <CloudNode
+        position={[1.5, -2, -2]}
+        scale={0.5}
+      />
+
+      <CloudNode
+        position={[-1.8, 2, -1]}
+        scale={0.6}
+      />
     </>
   );
 }
+     
