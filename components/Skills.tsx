@@ -146,7 +146,7 @@ export default function Skills() {
       className="relative overflow-hidden py-28 px-6"
     >
       {/* Background Glow */}
-      <div className="absolute inset-0 -z-20 bg-linear-to-b from-slate-950 via-slate-900 to-black" />
+      <div className="absolute inset-0 -z-20 bg-linear-to-b from-slate-950 via-slate-900 to-blue" />
 
       {/* Floating Orbs */}
       <div className="absolute left-20 top-20 h-72 w-72 rounded-full bg-cyan-500/10 blur-[120px]" />
