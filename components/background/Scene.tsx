@@ -5,6 +5,8 @@ import Lights from "./Lights";
 import Stars from "./Stars";
 import Particles from "./Particles";
 import CloudNode from "./CloudNode";
+import Network from "./Network";
+import InfiniteGrid from "./Grid";
 
 export default function Scene() {
   return (
@@ -72,6 +74,9 @@ export default function Scene() {
         scale={0.5}
         color="#67e8f9"
       />
+        <Network />
+
+  <InfiniteGrid />
     </>
   );
 }
