@@ -55,10 +55,10 @@ const highlights = [
 
 export default function About() {
   return (
-    <section
-      id="about"
-      className="relative overflow-hidden bg-linear-to-b from-slate-950 via-slate-900 to-slate-950 py-28 px-6"
-    >
+   <section
+  id="about"
+  className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent"
+>
       {/* Background Glow */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute top-24 left-10 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl" />

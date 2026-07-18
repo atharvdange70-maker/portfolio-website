@@ -97,7 +97,10 @@ export default function Projects() {
   }, [selected]);
 
   return (
-    <section id="projects" className="py-24 px-6 bg-slate-950 text-white">
+   <section
+  id="projects"
+  className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent text-white px-6 py-24"
+>
       <div className="max-w-7xl mx-auto">
 
         <h2 className="text-5xl font-bold text-center mb-4">

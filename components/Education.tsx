@@ -2,10 +2,10 @@ import { GraduationCap, CalendarDays, School } from "lucide-react";
 
 export default function Education() {
   return (
-    <section
-      id="education"
-      className="py-24 px-6 bg-slate-950 text-white"
-    >
+   <section
+  id="education"
+  className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent py-24 px-6 text-white"
+>
       <div className="max-w-5xl mx-auto">
 
         {/* Heading */}

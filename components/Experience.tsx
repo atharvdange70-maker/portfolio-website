@@ -24,10 +24,10 @@ export default function Experience() {
   ];
 
   return (
-    <section
-      id="experience"
-      className="py-24 px-6 md:px-12 bg-linear-to-b from-slate-900 to-slate-950 text-white"
-    >
+   <section
+  id="Experience"
+  className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent"
+>
       <div className="max-w-6xl mx-auto">
         {/* Section Title */}
         <div className="text-center mb-14">

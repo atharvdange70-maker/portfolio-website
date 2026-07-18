@@ -9,10 +9,10 @@ import {
 
 export default function Contact() {
   return (
-    <section
-      id="contact"
-      className="py-24 px-6 bg-slate-950 text-white"
-    >
+   <section
+  id="contact"
+  className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent text-white px-6"
+>
       <div className="max-w-7xl mx-auto">
 
         {/* Heading */}
