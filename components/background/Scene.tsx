@@ -21,7 +21,7 @@ export default function Scene() {
         <Particles />
 
         <CloudNode
-          position={[0, 0, 0]}
+          position={[3,0, 0]}
           scale={1.8}
           color="#22d3ee"
         />
