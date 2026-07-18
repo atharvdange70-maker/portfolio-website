@@ -7,7 +7,7 @@ declare const require: any;
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center relative bg-black overflow-hidden">
+   <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-950/20 backdrop-blur-sm">
 
       <div className="absolute inset-0 bg-black/60"></div>
 
