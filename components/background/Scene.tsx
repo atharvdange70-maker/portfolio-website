@@ -11,6 +11,8 @@ export default function Scene() {
       <Camera />
 
       <Lights />
+      <Stars />
+      <Particles />
 
       {/* Temporary object */}
       <mesh rotation={[0.4, 0.5, 0]}>
