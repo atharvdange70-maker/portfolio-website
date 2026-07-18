@@ -11,7 +11,7 @@ export default function Hero() {
   id="about"
   className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent"
 >
-      <div className="absolute inset-0 bg-blue/60"></div>
+      <div className="absolute inset-0 bg-blue/60 translate-x-64"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-12 items-center">
         {/* Left Side */}
