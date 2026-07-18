@@ -3,19 +3,11 @@
 
 declare const require: any;
 
-let Scene: any = () => null;
 
-try {
-  const mod = require("./cloud/Scene");
-  Scene = (mod && (mod.default || mod)) || Scene;
-} catch (e) {
-  // leave Scene as noop
-}
 
 export default function Hero() {
   return (
     <section className="min-h-screen flex items-center justify-center relative bg-black overflow-hidden">
-      <Scene />
 
       <div className="absolute inset-0 bg-black/60"></div>
 
