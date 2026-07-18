@@ -2,6 +2,8 @@
 
 import Lights from "./Lights";
 import Camera from "./Camera";
+import Stars from "./Stars";
+import Particles from "./Particles";
 
 export default function Scene() {
   return (
