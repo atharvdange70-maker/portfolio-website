@@ -90,7 +90,7 @@ export default function CloudNode({
       </mesh>
 
       {/* Floating Satellites */}
-      {[...Array(8)].map((_, i) => {
+      {[...Array(4)].map((_, i) => {
         const angle = (i / 8) * Math.PI * 2;
         const radius = 0.95;
 
