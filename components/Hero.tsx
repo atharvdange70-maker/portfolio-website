@@ -41,17 +41,6 @@ export default function Hero() {
             </a>
           </div>
         </div>
-
-        {/* Right Side */}
-        <div className="flex justify-center">
-          <div className="border-4 border-cyan-400 rounded-3xl p-2 shadow-[0_0_30px_#22d3ee]">
-            <img
-              src="/images/atharv.jpg.png"
-              alt="Atharv Dange"
-              className="w-80 h-96 object-cover rounded-2xl"
-            />
-          </div>
-        </div>
       </div>
     </section>
   );
