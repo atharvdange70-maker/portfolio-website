@@ -162,10 +162,6 @@ export default function Skills() {
           viewport={{ once: true }}
           className="mb-20 text-center"
         >
-          <span className="inline-block rounded-full border border-cyan-500/20 bg-cyan-500/10 px-5 py-2 text-sm font-medium tracking-wider text-cyan-400">
-            MY EXPERTISE
-          </span>
-
           <h2 className="mt-6 text-5xl font-extrabold md:text-6xl">
             Technical{" "}
             <span className="bg-linear-to-r from-cyan-400 via-sky-400 to-blue-500 bg-clip-text text-transparent">

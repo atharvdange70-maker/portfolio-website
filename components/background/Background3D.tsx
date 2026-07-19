@@ -7,14 +7,18 @@ import Scene from "./Scene";
 export default function Background3D() {
   return (
     <div className="fixed inset-0 -z-10 h-screen w-screen">
-      <Canvas
-        camera={{
-          position: [0, 0, 8],
-          fov: 60,
-        }}
-        dpr={[1, 2]}
-      >
-        <Suspense fallback={null}>
+     <Canvas
+  camera={{
+    position: [0, 0, 8],
+    fov: 60,
+  }}
+  dpr={1}
+  gl={{
+    antialias: false,
+    powerPreference: "high-performance",
+  }}
+>
+      <Suspense fallback={null}>
           <Scene />
         </Suspense>
       </Canvas>

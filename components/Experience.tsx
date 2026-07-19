@@ -25,7 +25,7 @@ export default function Experience() {
 
   return (
    <section
-  id="Experience"
+  id="experience"
   className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent"
 >
       <div className="max-w-6xl mx-auto">
