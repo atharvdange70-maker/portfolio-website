@@ -4,20 +4,6 @@ import { useState, useEffect } from "react";
 
 
 const projects = [
-  {
-    title: "React Static Website Deployment (AWS)",
-    short: "Hosted a React application on AWS using S3 and CloudFront.",
-    description:
-      "Designed and deployed a highly available static website using AWS S3 Static Website Hosting and CloudFront CDN. Configured bucket policies, optimized content delivery, and improved performance through caching and global edge locations.",
-    tools: ["React", "AWS S3", "CloudFront", "Route53"],
-    features: [
-      "Static Website Hosting",
-      "CloudFront CDN",
-      "Route53 DNS",
-      "High Availability",
-    ],
-  },
-
  {
   title: "EBS Backup Automation (Serverless AWS)",
   short: "Automated EBS snapshot creation using AWS serverless services.",
@@ -73,19 +59,7 @@ const projects = [
     ],
   },
 
-  {
-  title: "AWS EKS Cluster Setup and Management",
-  short: "Deployed and managed a Kubernetes cluster on AWS EKS.",
-  description:
-    "Provisioned and configured an Amazon EKS cluster to deploy and manage containerized applications. Configured worker nodes, Kubernetes resources, and networking to ensure scalable, reliable, and highly available deployments.",
-  tools: ["AWS EKS", "Kubernetes", "Docker", "EC2", "kubectl", "Linux"],
-  features: [
-    "Amazon EKS",
-    "Kubernetes Deployment",
-    "Worker Nodes",
-    "kubectl Management"
-  ],
-},
+ 
 ];
 
 export default function Projects() {
