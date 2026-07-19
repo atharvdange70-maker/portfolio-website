@@ -56,7 +56,7 @@ const highlights = [
 export default function About() {
   return (
    <section
-  id="about"
+  id="about me"
   className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent"
 >
       {/* Background Glow */}
