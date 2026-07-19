@@ -9,7 +9,7 @@ declare const require: any;
 export default function Hero() {
   return (
    <section
-  id="about"
+  id="home"
   className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent"
 >
       <div className="absolute inset-0  translate-x-64"></div>
