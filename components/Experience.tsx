@@ -67,7 +67,7 @@ export default function Experience() {
 
             <div className="self-start">
               <span className="inline-block rounded-full border border-cyan-500/40 bg-cyan-500/10 px-5 py-2 text-cyan-300 font-medium">
-                Oct 2025 – Present
+                Jan 2026 – Present
               </span>
             </div>
           </div>
