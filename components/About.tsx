@@ -138,7 +138,7 @@ export default function About() {
   <div className="rounded-full bg-linear-to-r from-cyan-400 via-sky-500 to-blue-500 p-2">
     <div className="rounded-full bg-slate-950 p-2">
       <Image
-        src="/images/atharv.jpg.png"
+        src="/images/atharv.jpgs.png"
         alt="Atharv Dange"
         width={684}
         height={684}
