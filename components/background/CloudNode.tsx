@@ -53,7 +53,7 @@ export default function CloudNode({
     <group ref={group} position={position} scale={scale}>
       {/* Energy Core */}
       <mesh ref={core}>
-        <icosahedronGeometry args={[0.32, 5]} />
+        <icosahedronGeometry args={[0.32, 2]} />
         <meshPhysicalMaterial
           color={color}
           emissive={color}

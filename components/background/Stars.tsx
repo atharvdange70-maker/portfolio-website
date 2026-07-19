@@ -5,13 +5,13 @@ import { Stars } from "@react-three/drei";
 export default function BackgroundStars() {
   return (
     <Stars
-      radius={150}
-      depth={60}
-      count={6000}
-      factor={6}
-      saturation={0}
-      fade
-      speed={1}
-    />
+  radius={100}
+  depth={40}
+  count={1500}
+  factor={4}
+  saturation={0}
+  fade
+  speed={0.4}
+/>
   );
 }
