@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Download, ArrowUpRight } from "lucide-react";
 
 const links = [
+  { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
   { name: "Experience", href: "#experience" },
