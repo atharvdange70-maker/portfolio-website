@@ -17,7 +17,7 @@ const stats = [
     color: "text-cyan-200",
   },
   {
-    number: "4+",
+    number: "2+",
     title: "DevOps Projects",
     subtitle: "Production Ready",
     icon: FolderGit2,
