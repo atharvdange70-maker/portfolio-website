@@ -1,22 +1,14 @@
-import {
-  Briefcase,
-  MapPin,
-  Calendar,
-  CheckCircle2,
-  Cloud,
-} from "lucide-react";
-
 export default function Experience() {
   const technologies = [
-    "AWS",
-    "Docker",
-    "Kubernetes",
-    "Terraform",
-    "Jenkins",
-    "GitHub Actions",
-    "Linux",
-    "Git",
-    "CI/CD",
+    { name: "AWS", color: "text-orange-400 border-orange-400/40 bg-orange-400/10" },
+    { name: "Docker", color: "text-blue-400 border-blue-400/40 bg-blue-400/10" },
+    { name: "Kubernetes", color: "text-purple-400 border-purple-400/40 bg-purple-400/10" },
+    { name: "Terraform", color: "text-indigo-400 border-indigo-400/40 bg-indigo-400/10" },
+    { name: "Jenkins", color: "text-red-400 border-red-400/40 bg-red-400/10" },
+    { name: "GitHub Actions", color: "text-white border-white/30 bg-white/10" },
+    { name: "Linux", color: "text-yellow-400 border-yellow-400/40 bg-yellow-400/10" },
+    { name: "Git", color: "text-orange-500 border-orange-500/40 bg-orange-500/10" },
+    { name: "CI/CD", color: "text-green-400 border-green-400/40 bg-green-400/10" },
   ];
 
   const responsibilities = [
@@ -36,29 +28,21 @@ export default function Experience() {
       id="experience"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent py-20"
     >
+      <div className="max-w-6xl mx-auto px-5">
 
-      {/* Background Glow */}
-      <div className="absolute top-20 left-20 w-72 h-72 bg-cyan-500/20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 right-20 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl"></div>
-
-
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
-
-        {/* Title */}
+        {/* Section Title */}
         <div className="text-center mb-14">
 
-          <h2 className="text-4xl md:text-5xl font-bold text-white">
+          <h2 className="text-4xl md:text-5xl font-bold">
             Professional{" "}
-            <span className="bg-linear-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
               Experience
             </span>
           </h2>
 
-
           <div className="w-28 h-1 bg-linear-to-r from-cyan-400 to-purple-500 mx-auto mt-5 rounded-full"></div>
 
-
-          <p className="text-slate-400 mt-6 max-w-2xl mx-auto leading-7">
+          <p className="text-slate-400 mt-6 max-w-2xl mx-auto">
             Building scalable cloud infrastructure, automating deployments,
             and delivering secure cloud-native solutions using modern DevOps
             practices.
@@ -67,61 +51,65 @@ export default function Experience() {
         </div>
 
 
-
         {/* Experience Card */}
+
         <div
           className="
-          rounded-3xl 
-          border border-white/10
-          bg-linear-to-br from-slate-900/80 via-slate-800/80 to-slate-900/80
+          relative rounded-3xl 
+          border border-cyan-400/20
+          bg-slate-900/70 
           backdrop-blur-xl
           p-8 md:p-10
           shadow-2xl
-          hover:shadow-cyan-500/20
-          transition-all duration-500
+          shadow-cyan-500/10
+          hover:shadow-purple-500/20
           hover:-translate-y-3
+          transition-all duration-500
           "
         >
+
+          {/* Glow Effect */}
+          <div className="
+          absolute -top-20 -right-20
+          w-52 h-52
+          bg-cyan-500/20
+          blur-3xl
+          rounded-full
+          ">
+          </div>
 
 
           {/* Header */}
 
-          <div className="flex flex-col md:flex-row md:justify-between gap-6">
+          <div className="flex flex-col md:flex-row md:justify-between gap-6 relative">
 
 
             <div>
 
-              <div className="flex items-center gap-3">
-
-                <div className="
-                p-3 rounded-xl 
-                bg-linear-to-br from-cyan-500 to-blue-600
-                shadow-lg shadow-cyan-500/30
-                ">
-                  <Briefcase className="text-white" size={24}/>
-                </div>
-
-
-                <h3 className="
-                text-3xl font-bold
-                bg-linear-to-r from-cyan-400 to-blue-400
-                bg-clip-text text-transparent
-                ">
-                  DevOps Intern
-                </h3>
-
-              </div>
+              <h3
+              className="
+              text-4xl font-extrabold
+              bg-linear-to-r 
+              from-cyan-400 
+              via-blue-500 
+              to-purple-500
+              bg-clip-text
+              text-transparent
+              "
+              >
+                DevOps Intern
+              </h3>
 
 
-              <p className="text-xl text-white mt-5 font-semibold">
+              <p className="text-xl text-white mt-3 font-semibold">
                 Hisan Labs Pvt Ltd
               </p>
 
 
-              <div className="flex items-center gap-2 text-slate-400 mt-2">
-                <MapPin size={16}/>
+              <p className="text-slate-400 mt-1">
                 Pune, Maharashtra, India
-              </div>
+              </p>
+
 
             </div>
 
@@ -131,20 +119,17 @@ export default function Experience() {
 
               <span
               className="
-              flex items-center gap-2
+              inline-flex items-center
               rounded-full
+              border border-cyan-400/40
+              bg-cyan-400/10
               px-5 py-2
-              bg-linear-to-r 
-              from-cyan-500/20 
-              to-blue-500/20
-              border border-cyan-400/30
               text-cyan-300
+              font-medium
+              shadow-lg shadow-cyan-500/20
               "
               >
-
-                <Calendar size={16}/>
-                Jan 2026 – Present
-
+                🚀 Jan 2026 – Present
               </span>
 
             </div>
@@ -154,24 +139,18 @@ export default function Experience() {
 
 
 
-
-
           {/* Summary */}
 
-          <div className="
-          mt-8
-          p-5
-          rounded-2xl
-          bg-white/5
-          border border-white/10
-          ">
+          <div className="mt-8 border-l-4 border-cyan-400 pl-5">
 
             <p className="text-slate-300 leading-8 text-lg">
+
               Working as a DevOps Intern with hands-on experience in AWS cloud,
               CI/CD automation, Infrastructure as Code, containerization, and
               cloud-native deployments. Contributing to scalable, secure, and
               highly available infrastructure while improving deployment speed,
               automation, and operational efficiency.
+
             </p>
 
           </div>
@@ -179,65 +158,62 @@ export default function Experience() {
 
 
 
-
-
           {/* Responsibilities */}
 
-          <div className="mt-10">
+          <div className="mt-12">
 
-            <h4 className="
-            text-2xl 
-            font-semibold 
-            text-white
-            mb-7
-            flex items-center gap-3
-            ">
-              <Cloud className="text-cyan-400"/>
+            <h4 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+
+              <span className="text-cyan-400">⚡</span>
               Key Responsibilities
+
             </h4>
 
 
-
-            <div className="space-y-5">
+            <ul className="space-y-5">
 
             {responsibilities.map((item,index)=>(
 
-              <div
+              <li
               key={index}
               className="
               flex gap-4
-              group
+              text-slate-300
+              hover:text-white
+              transition
               "
               >
 
-                <CheckCircle2
+                <span
                 className="
-                text-cyan-400 
                 mt-1
-                group-hover:text-purple-400
-                transition
+                flex items-center justify-center
+                w-6 h-6
+                rounded-full
+                bg-linear-to-r from-cyan-400 to-purple-500
+                text-black
+                text-sm
+                font-bold
                 "
-                size={20}
-                />
+                >
+                  ✓
+                </span>
 
-                <p className="
-                text-slate-300
-                group-hover:text-white
-                transition
-                ">
+
+                <span>
                   {item}
-                </p>
+                </span>
 
 
-              </div>
+              </li>
+
 
             ))}
 
-            </div>
+            </ul>
 
 
           </div>
-
 
 
 
@@ -247,41 +223,39 @@ export default function Experience() {
 
           <div className="mt-12">
 
-            <h4 className="text-2xl font-semibold text-white mb-6">
+            <h4 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+
+              <span className="text-purple-400">🛠</span>
               Technologies Used
+
             </h4>
 
 
-            <div className="flex flex-wrap gap-3">
 
+            <div className="flex flex-wrap gap-4">
 
-            {technologies.map((tech,index)=>(
+            {technologies.map((tech)=>(
 
               <span
-              key={tech}
+              key={tech.name}
               className={`
-              px-4 py-2
               rounded-full
               border
+              px-5 py-2
               text-sm
-              font-medium
+              font-semibold
+              backdrop-blur-md
               transition-all
               duration-300
               hover:scale-110
-              hover:text-white
-              ${
-                index % 3 === 0
-                ? "border-cyan-400/40 bg-cyan-400/10 text-cyan-300 hover:bg-cyan-500"
-                : index % 3 === 1
-                ? "border-purple-400/40 bg-purple-400/10 text-purple-300 hover:bg-purple-500"
-                : "border-blue-400/40 bg-blue-400/10 text-blue-300 hover:bg-blue-500"
-              }
+              ${tech.color}
               `}
               >
 
-                {tech}
+                {tech.name}
 
               </span>
+
 
             ))}
 
@@ -292,12 +266,10 @@ export default function Experience() {
           </div>
 
 
-
         </div>
 
 
       </div>
-
 
     </section>
   );
