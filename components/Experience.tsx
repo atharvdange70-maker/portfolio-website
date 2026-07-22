@@ -97,7 +97,7 @@ export default function Experience() {
               text-transparent
               "
               >
-                DevOps Intern
+                DevOps Engineer Intern
               </h3>
 
 
