@@ -21,7 +21,7 @@ export default function Hero() {
         <h1 className="text-5xl md:text-7xl font-bold text-sky-400 mb-4"> Atharv Dange </h1>
 
           <h2 className="text-2xl md:text-3xl text-white mb-6">
-            AWS DevOps & Cloud Engineer
+            DevOps Engineer | AWS Cloud Engineer
           </h2>
 
           <p className="text-gray-300 text-lg max-w-xl mb-8">
