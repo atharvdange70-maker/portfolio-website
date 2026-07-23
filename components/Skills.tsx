@@ -24,94 +24,109 @@ import {
 import { MdSecurity } from "react-icons/md";
 
 const skills = [
-  {
-    name: "AWS",
-    icon: <FaAws />,
-    color: "text-orange-400",
-    tags: ["EC2", "S3", "IAM", "VPC", "CloudFront", "RDS"],
-  },
-  {
-    name: "Docker",
-    icon: <FaDocker />,
-    color: "text-blue-400",
-    tags: ["Images", "Containers", "Compose", "Docker Hub"],
-  },
-  {
-    name: "Kubernetes",
-    icon: <SiKubernetes />,
-    color: "text-cyan-400",
-    tags: ["Pods", "Deployments", "Services", "Ingress"],
-  },
-  {
-    name: "Terraform",
-    icon: <SiTerraform />,
-    color: "text-purple-400",
-    tags: ["IaC", "Modules", "Provisioning", "State"],
-  },
-  {
-    name: "Jenkins",
-    icon: <FaJenkins />,
-    color: "text-red-400",
-    tags: ["CI/CD", "Pipeline", "Build", "Deploy"],
-  },
-  {
-    name: "Git & GitHub",
-    icon: <FaGitAlt />,
-    color: "text-orange-500",
-    tags: ["Git", "Branching", "Merge", "Version Control"],
-  },
-  {
-    name: "GitHub Actions",
-    icon: <SiGithubactions />,
-    color: "text-blue-400",
-    tags: ["Workflow", "Automation", "CI/CD", "Deployment"],
-  },
-  {
-    name: "Linux",
-    icon: <FaLinux />,
-    color: "text-yellow-400",
-    tags: ["Ubuntu", "Shell", "Permissions", "System Admin"],
-  },
-  {
-    name: "Python",
-    icon: <FaPython />,
-    color: "text-yellow-300",
-    tags: ["Automation", "Boto3", "Scripts", "REST APIs"],
-  },
-  {
-    name: "Shell Scripting",
-    icon: <SiShell />,
-    color: "text-green-400",
-    tags: ["Bash", "Cron", "Automation", "Linux"],
-  },
-  {
-    name: "Networking",
-    icon: <FaNetworkWired />,
-    color: "text-sky-400",
-    tags: ["TCP/IP", "DNS", "HTTP", "Load Balancer"],
-  },
-  {
-    name: "IAM & Security",
-    icon: <MdSecurity />,
-    color: "text-emerald-400",
-    tags: ["Users", "Roles", "Policies", "MFA"],
-  },
-  {
-    name: "Nginx",
-    icon: <SiNginx />,
-    color: "text-green-500",
-    tags: ["Reverse Proxy", "SSL", "Web Server", "Load Balancer"],
-  },
-  {
-    name: "Monitoring",
-    icon: <SiPrometheus />,
-    color: "text-orange-400",
-    tags: ["Prometheus", "Grafana", "Metrics", "Alerting"],
-  },
+  { name: "AWS",
+  icon: <FaAws />,
+  color: "text-orange-400",
+  accent: "from-orange-500/30 to-yellow-500/10",
+  tags: ["EC2","S3","IAM","VPC","CloudFront","RDS"],
+},
+{
+  name: "Docker",
+  icon: <FaDocker />,
+  color: "text-blue-400",
+  accent: "from-blue-500/30 to-cyan-500/10",
+  tags: ["Images","Containers","Compose","Docker Hub"],
+},
+{
+  name: "Kubernetes",
+  icon: <SiKubernetes />,
+  color: "text-cyan-400",
+  accent: "from-cyan-500/30 to-sky-500/10",
+  tags: ["Pods","Deployments","Services","Ingress"],
+},
+{
+  name: "Terraform",
+  icon: <SiTerraform />,
+  color: "text-purple-400",
+  accent: "from-violet-500/30 to-purple-500/10",
+  tags: ["IaC","Modules","Provisioning","State"],
+},
+{
+  name: "Jenkins",
+  icon: <FaJenkins />,
+  color: "text-red-400",
+  accent: "from-red-500/30 to-orange-500/10",
+  tags: ["CI/CD","Pipeline","Build","Deploy"],
+},
+{
+  name: "Git & GitHub",
+  icon: <FaGitAlt />,
+  color: "text-orange-500",
+  accent: "from-orange-500/30 to-red-500/10",
+  tags: ["Git","Branching","Merge","Version Control"],
+},
+{
+  name: "GitHub Actions",
+  icon: <SiGithubactions />,
+  color: "text-blue-400",
+  accent: "from-blue-500/30 to-indigo-500/10",
+  tags: ["Workflow","Automation","CI/CD","Deployment"],
+},
+{
+  name: "Linux",
+  icon: <FaLinux />,
+  color: "text-yellow-400",
+  accent: "from-yellow-500/30 to-lime-500/10",
+  tags: ["Ubuntu","Shell","Permissions","System Admin"],
+},
+{
+  name: "Python",
+  icon: <FaPython />,
+  color: "text-yellow-300",
+  accent: "from-yellow-500/30 to-blue-500/10",
+  tags: ["Automation","Boto3","Scripts","REST APIs"],
+},
+{
+  name: "Shell Scripting",
+  icon: <SiShell />,
+  color: "text-green-400",
+  accent: "from-green-500/30 to-emerald-500/10",
+  tags: ["Bash","Cron","Automation","Linux"],
+},
+{
+  name: "Networking",
+  icon: <FaNetworkWired />,
+  color: "text-sky-400",
+  accent: "from-sky-500/30 to-cyan-500/10",
+  tags: ["TCP/IP","DNS","HTTP","Load Balancer"],
+},
+{
+  name: "IAM & Security",
+  icon: <MdSecurity />,
+  color: "text-emerald-400",
+  accent: "from-emerald-500/30 to-green-500/10",
+  tags: ["Users","Roles","Policies","MFA"],
+},
+{
+  name: "Nginx",
+  icon: <SiNginx />,
+  color: "text-green-500",
+  accent: "from-green-500/30 to-lime-500/10",
+  tags: ["Reverse Proxy","SSL","Web Server","Load Balancer"],
+},
+{
+  name: "Monitoring",
+  icon: <SiPrometheus />,
+  color: "text-orange-400",
+  accent: "from-orange-500/30 to-red-500/10",
+  tags: ["Prometheus","Grafana","Metrics","Alerting"],
+},
+  
 ];
 
 export default function Skills() {
-  return (
+  return ( 
+    
     <section
       id="skills"
       className="relative overflow-hidden bg-transparent py-16 px-6"
@@ -141,50 +156,57 @@ export default function Skills() {
         </motion.div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-2 justify-items-center gap-6 md:grid-cols-3 lg:grid-cols-5">
+        <div className="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-5">
           {skills.map((skill, index) => (
-            <motion.div
-              key={skill.name}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.4,
-                delay: index * 0.05,
-              }}
-              whileHover={{
-                y: -8,
-                scale: 1.02,
-              }}
-              className="group relative w-full max-w-62.5 min-h-47.5 overflow-hidden rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-xl transition-all duration-300 hover:border-cyan-400/40"
-            >
-              {/* Glow */}
-              <div className="absolute inset-0 bg-linear-to-br from-cyan-500/0 via-cyan-500/0 to-cyan-500/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+           <motion.div
+  key={skill.name}
+  initial={{ opacity: 0, y: 25 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{
+    duration: 0.4,
+    delay: index * 0.05,
+  }}
+  whileHover={{
+    y: -8,
+    scale: 1.02,
+  }}
+  className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-3.5 backdrop-blur-xl transition-all duration-300 hover:border-cyan-400/40"
+>
+  {/* Top Gradient Border */}
+  <div
+    className={`absolute left-0 top-0 h-1 w-full bg-linear-to-r ${skill.accent}`}
+  />
 
-              {/* Icon */}
-              <div
-                className={`flex h-11 w-11 items-center justify-center rounded-lg bg-white/5 text-[28px] ${skill.color} transition-transform duration-300 group-hover:scale-110`}
-              >
-                {skill.icon}
-              </div>
+  {/* Glow */}
+  <div
+    className={`absolute inset-0 bg-linear-to-br ${skill.accent} opacity-0 transition-all duration-500 group-hover:opacity-100`}
+  />
 
-              {/* Title */}
-               <h3 className="mt-4 text-base font-semibold text-white" >
-                {skill.name}
-              </h3>
+  {/* Icon */}
+  <div
+    className={`relative flex h-11 w-11 items-center justify-center rounded-lg bg-linear-to-br ${skill.accent} text-2xl ${skill.color} shadow-lg transition-all duration-300 group-hover:rotate-6 group-hover:scale-110`}
+  >
+    {skill.icon}
+  </div>
 
-              {/* Tags */}
-              <div className="mt-3 flex flex-wrap gap-1.5">
-                {skill.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[10px] text-slate-300"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
+  {/* Title */}
+  <h3 className="relative mt-3 text-base font-semibold text-white">
+    {skill.name}
+  </h3>
+
+  {/* Tags */}
+  <div className="relative mt-3 flex flex-wrap gap-1.5">
+    {skill.tags.map((tag) => (
+      <span
+        key={tag}
+        className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[10px] text-slate-300"
+      >
+        {tag}
+      </span>
+    ))}
+  </div>
+</motion.div>
           ))}
         </div>
       </div>
