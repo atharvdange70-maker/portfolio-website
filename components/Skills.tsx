@@ -141,7 +141,7 @@ export default function Skills() {
         </motion.div>
 
         {/* Skills Grid */}
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-5">
           {skills.map((skill, index) => (
             <motion.div
               key={skill.name}
@@ -156,20 +156,20 @@ export default function Skills() {
                 y: -8,
                 scale: 1.02,
               }}
-              className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-xl transition-all duration-300 hover:border-cyan-400/40"
+              className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-3.5 backdrop-blur-xl transition-all duration-300 hover:border-cyan-400/40"
             >
               {/* Glow */}
               <div className="absolute inset-0 bg-linear-to-br from-cyan-500/0 via-cyan-500/0 to-cyan-500/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
               {/* Icon */}
               <div
-                className={`flex h-12 w-12 items-center justify-center rounded-lg bg-white/5 text-3xl ${skill.color} transition-transform duration-300 group-hover:scale-110`}
+                className={`flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-2xl ${skill.color} transition-transform duration-300 group-hover:scale-110`}
               >
                 {skill.icon}
               </div>
 
               {/* Title */}
-              <h3 className="mt-4 text-lg font-semibold text-white">
+               <h3 className="mt-3 text-base font-semibold text-white" >
                 {skill.name}
               </h3>
 
@@ -178,7 +178,7 @@ export default function Skills() {
                 {skill.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[11px] text-slate-300 transition-colors duration-300 group-hover:border-cyan-400/20"
+                    className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[10px] text-slate-300"
                   >
                     {tag}
                   </span>

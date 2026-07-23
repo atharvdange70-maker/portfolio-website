@@ -9,322 +9,185 @@ import {
   FaLinux,
   FaJenkins,
   FaPython,
+  FaNetworkWired,
 } from "react-icons/fa";
 
 import {
   SiKubernetes,
   SiTerraform,
   SiGithubactions,
-  SiPrometheus,
-  SiGrafana,
   SiShell,
+  SiNginx,
+  SiPrometheus,
 } from "react-icons/si";
 
-import {
-  MdSecurity,
-} from "react-icons/md";
-
+import { MdSecurity } from "react-icons/md";
 
 const skills = [
   {
     name: "AWS",
     icon: <FaAws />,
     color: "text-orange-400",
-    tags: ["EC2", "S3", "IAM", "VPC", "CloudFront"],
+    tags: ["EC2", "S3", "IAM", "VPC", "CloudFront", "RDS"],
   },
-
   {
     name: "Docker",
     icon: <FaDocker />,
     color: "text-blue-400",
-    tags: ["Images", "Containers", "Compose", "Registry"],
+    tags: ["Images", "Containers", "Compose", "Docker Hub"],
   },
-
   {
     name: "Kubernetes",
     icon: <SiKubernetes />,
     color: "text-cyan-400",
-    tags: ["Pods", "Deployments", "Services", "Scaling"],
+    tags: ["Pods", "Deployments", "Services", "Ingress"],
   },
-
   {
     name: "Terraform",
     icon: <SiTerraform />,
     color: "text-purple-400",
-    tags: ["IaC", "Modules", "State", "Variables"],
+    tags: ["IaC", "Modules", "Provisioning", "State"],
   },
-
   {
     name: "Jenkins",
     icon: <FaJenkins />,
     color: "text-red-400",
-    tags: ["Build", "Deploy", "Pipeline", "Automation"],
+    tags: ["CI/CD", "Pipeline", "Build", "Deploy"],
   },
-
   {
     name: "Git & GitHub",
     icon: <FaGitAlt />,
     color: "text-orange-500",
-    tags: ["Repository", "Branching", "Merge", "Version Control"],
+    tags: ["Git", "Branching", "Merge", "Version Control"],
   },
-
   {
     name: "GitHub Actions",
     icon: <SiGithubactions />,
     color: "text-blue-400",
-    tags: ["CI/CD", "Workflow", "Automation", "Deployment"],
+    tags: ["Workflow", "Automation", "CI/CD", "Deployment"],
   },
-
   {
     name: "Linux",
     icon: <FaLinux />,
     color: "text-yellow-400",
-    tags: ["Ubuntu", "Commands", "Permissions", "System Admin"],
+    tags: ["Ubuntu", "Shell", "Permissions", "System Admin"],
   },
-
   {
     name: "Python",
     icon: <FaPython />,
     color: "text-yellow-300",
-    tags: ["Automation", "Scripts", "Boto3", "APIs"],
+    tags: ["Automation", "Boto3", "Scripts", "REST APIs"],
   },
-
   {
     name: "Shell Scripting",
     icon: <SiShell />,
     color: "text-green-400",
-    tags: ["Bash", "Automation", "Tasks", "Linux"],
+    tags: ["Bash", "Cron", "Automation", "Linux"],
   },
-
   {
-    name: "IAM Security",
+    name: "Networking",
+    icon: <FaNetworkWired />,
+    color: "text-sky-400",
+    tags: ["TCP/IP", "DNS", "HTTP", "Load Balancer"],
+  },
+  {
+    name: "IAM & Security",
     icon: <MdSecurity />,
     color: "text-emerald-400",
-    tags: ["Users", "Roles", "Policies", "Access Control"],
+    tags: ["Users", "Roles", "Policies", "MFA"],
   },
-
   {
-    name: "Prometheus",
+    name: "Nginx",
+    icon: <SiNginx />,
+    color: "text-green-500",
+    tags: ["Reverse Proxy", "SSL", "Web Server", "Load Balancer"],
+  },
+  {
+    name: "Monitoring",
     icon: <SiPrometheus />,
     color: "text-orange-400",
-    tags: ["Metrics", "Monitoring", "Alerts", "Exporters"],
-  },
-
-  {
-    name: "Grafana",
-    icon: <SiGrafana />,
-    color: "text-yellow-400",
-    tags: ["Dashboard", "Visualization", "Charts", "Logs"],
+    tags: ["Prometheus", "Grafana", "Metrics", "Alerting"],
   },
 ];
 
-
 export default function Skills() {
-
   return (
-
     <section
       id="skills"
-      className="relative py-24 px-6"
+      className="relative overflow-hidden bg-transparent py-16 px-6"
     >
-
       <div className="mx-auto max-w-7xl">
-
-
         {/* Heading */}
-
         <motion.div
-          initial={{
-            opacity:0,
-            y:30
-          }}
-
-          whileInView={{
-            opacity:1,
-            y:0
-          }}
-
-          viewport={{
-            once:true
-          }}
-
-          className="mb-14 text-center"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mb-12 text-center"
         >
+          <span className="inline-flex rounded-full border border-cyan-400/20 bg-cyan-500/10 px-4 py-1.5 text-xs text-cyan-300">
+            Technical Expertise
+          </span>
 
-          <h2 className="text-5xl font-bold text-white">
-
-            Technical{" "}
-
-            <span className="text-cyan-400">
-              Skills
-            </span>
-
+          <h2 className="mt-4 text-4xl font-bold text-white md:text-5xl">
+            Technical <span className="text-cyan-400">Skills</span>
           </h2>
 
-
-          <p className="mx-auto mt-5 max-w-2xl text-slate-400">
-
-            Cloud, DevOps and automation technologies
-            used for building scalable infrastructure
-            and modern deployment workflows.
-
+          <p className="mx-auto mt-4 max-w-2xl text-slate-400">
+            Hands-on experience with cloud infrastructure, DevOps tools,
+            automation, containerization, Infrastructure as Code, monitoring,
+            and modern CI/CD workflows.
           </p>
-
         </motion.div>
 
-
-
-        {/* Skills Cards */}
-
-
-        <div
-          className="
-          grid
-          gap-6
-          sm:grid-cols-2
-          lg:grid-cols-4
-          "
-        >
-
-
-          {skills.map((skill,index)=>(
-
-
+        {/* Skills Grid */}
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {skills.map((skill, index) => (
             <motion.div
-
               key={skill.name}
-
-              initial={{
-                opacity:0,
-                y:30
-              }}
-
-              whileInView={{
-                opacity:1,
-                y:0
-              }}
-
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{
-                delay:index * 0.06
+                duration: 0.4,
+                delay: index * 0.05,
               }}
-
-              viewport={{
-                once:true
-              }}
-
               whileHover={{
-                y:-8
+                y: -8,
+                scale: 1.02,
               }}
-
-              className="
-              group
-              rounded-2xl
-              border
-              border-white/10
-              bg-white/5
-              p-6
-              backdrop-blur-xl
-              transition
-              hover:border-cyan-400/40
-              "
-
+              className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-xl transition-all duration-300 hover:border-cyan-400/40"
             >
-
+              {/* Glow */}
+              <div className="absolute inset-0 bg-linear-to-br from-cyan-500/0 via-cyan-500/0 to-cyan-500/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
               {/* Icon */}
-
               <div
-                className={`
-                flex
-                h-14
-                w-14
-                items-center
-                justify-center
-                rounded-xl
-                bg-white/5
-                text-4xl
-                ${skill.color}
-                transition
-                group-hover:scale-110
-                `}
+                className={`flex h-12 w-12 items-center justify-center rounded-lg bg-white/5 text-3xl ${skill.color} transition-transform duration-300 group-hover:scale-110`}
               >
-
                 {skill.icon}
-
               </div>
 
-
-
-              {/* Name */}
-
-              <h3
-                className="
-                mt-5
-                text-xl
-                font-bold
-                text-white
-                "
-              >
-
+              {/* Title */}
+              <h3 className="mt-4 text-lg font-semibold text-white">
                 {skill.name}
-
               </h3>
 
-
-
               {/* Tags */}
-
-              <div
-                className="
-                mt-4
-                flex
-                flex-wrap
-                gap-2
-                "
-              >
-
-                {skill.tags.map((tag)=>(
-
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {skill.tags.map((tag) => (
                   <span
-
                     key={tag}
-
-                    className="
-                    rounded-full
-                    border
-                    border-white/10
-                    bg-white/5
-                    px-3
-                    py-1
-                    text-xs
-                    text-slate-300
-                    "
-
+                    className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[11px] text-slate-300 transition-colors duration-300 group-hover:border-cyan-400/20"
                   >
-
                     {tag}
-
                   </span>
-
                 ))}
-
               </div>
-
-
             </motion.div>
-
-
           ))}
-
-
         </div>
-
-
       </div>
-
-
     </section>
-
   );
-
 }
