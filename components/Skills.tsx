@@ -141,7 +141,7 @@ export default function Skills() {
         </motion.div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-5">
+        <div className="grid grid-cols-2 justify-items-center gap-6 md:grid-cols-3 lg:grid-cols-5">
           {skills.map((skill, index) => (
             <motion.div
               key={skill.name}
@@ -156,20 +156,20 @@ export default function Skills() {
                 y: -8,
                 scale: 1.02,
               }}
-              className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-3.5 backdrop-blur-xl transition-all duration-300 hover:border-cyan-400/40"
+              className="group relative w-full max-w-62.5 min-h-47.5 overflow-hidden rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-xl transition-all duration-300 hover:border-cyan-400/40"
             >
               {/* Glow */}
               <div className="absolute inset-0 bg-linear-to-br from-cyan-500/0 via-cyan-500/0 to-cyan-500/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
               {/* Icon */}
               <div
-                className={`flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-2xl ${skill.color} transition-transform duration-300 group-hover:scale-110`}
+                className={`flex h-11 w-11 items-center justify-center rounded-lg bg-white/5 text-[28px] ${skill.color} transition-transform duration-300 group-hover:scale-110`}
               >
                 {skill.icon}
               </div>
 
               {/* Title */}
-               <h3 className="mt-3 text-base font-semibold text-white" >
+               <h3 className="mt-4 text-base font-semibold text-white" >
                 {skill.name}
               </h3>
 
