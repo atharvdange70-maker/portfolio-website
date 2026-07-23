@@ -41,7 +41,7 @@ const stats = [
 
 export default function Stats() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent">
+      <section className="relative overflow-hidden bg-transparent py-16 md:py-20">
       {/* Background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(14,165,233,0.12),transparent_55%)]" />
 
@@ -56,7 +56,7 @@ export default function Stats() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-8 text-center"
+          className="mb-6 text-center"
         >
           <span className="inline-flex rounded-full border border-cyan-400/20 bg-cyan-500/10 px-4 py-1.5 text-xs text-cyan-300">
             Portfolio Highlights
@@ -69,7 +69,7 @@ export default function Stats() {
         </motion.div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 place-items-center gap-x-12 gap-y-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 place-items-center gap-x-10 gap-y-8">
           {stats.map((item, index) => {
             const Icon = item.icon;
 
