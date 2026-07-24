@@ -14,7 +14,7 @@ const certificates = [
   {
     title: "Cyber Security Audits",
     issuer: "Training Certification",
-    date: "August 2024",
+    date: " 11 August 2024",
     description:
       "Security auditing, risk assessment, compliance, vulnerability analysis, and security best practices.",
     link: "/certificates/cyber-security-audit.pdf",
@@ -26,7 +26,7 @@ const certificates = [
  {
   title: "AWS Cloud Practitioner Essentials",
   issuer: "AWS Training & Certification",
-  date: "July 2026",
+  date: "24 July 2026",
   description:
     "Completed AWS Cloud Practitioner Essentials training covering core AWS services, cloud concepts, security, pricing, architecture, and best practices.",
   link: "/certificates/AWS-Cloud-Practitioner.pdf",
@@ -45,7 +45,7 @@ const certificates = [
 {
   title: "Introduction to Kubernetes",
   issuer: "Simplilearn",
-  date: "July 2026",
+  date: "7 July 2026",
   description:
     "Completed Introduction to Kubernetes training covering Kubernetes architecture, Pods, Deployments, Services, Namespaces, container orchestration, and cluster management fundamentals.",
   link: "/certificates/simplilearn-kubernetes-certificate.pdf",
