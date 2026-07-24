@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { FaAws } from "react-icons/fa";
 import { SiKubernetes } from "react-icons/si";
+import { MdSecurity } from "react-icons/md";
 
 const certificates = [
   {
@@ -17,7 +18,7 @@ const certificates = [
     description:
       "Security auditing, risk assessment, compliance, vulnerability analysis, and security best practices.",
     link: "/certificates/cyber-security-audit.pdf",
-    icon: ShieldCheck,
+    icon: MdSecurity,
     accent: "green",
     tag: "Cyber Security",
     skills: ["Auditing", "Risk", "Compliance", "Security"],
@@ -59,6 +60,7 @@ const certificates = [
     "Namespaces",
     "Container Orchestration"
   ]
+  }
 ];
 
 const accentStyles: Record<string, { border: string; glow: string; iconBg: string; iconColor: string; tag: string; top: string; button: string }> = {
