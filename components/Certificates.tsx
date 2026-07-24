@@ -39,18 +39,6 @@ const certificates = [
     "Cloud Concepts",
     "Security"
   ],
-},
-  {
-    title: "Introduction to Kubernetes",
-    issuer: "Simplilearn",
-    date: "July 2026",
-    description:
-      "Covered Kubernetes architecture, Pods, Deployments, Services, and orchestration basics.",
-    link: "/certificates/simplilearn-kubernetes-certificate.pdf",
-    icon: Boxes,
-    accent: "blue",
-    tag: "Kubernetes",
-    skills: ["Pods", "Services", "Deployments", "Namespaces"],
   },
 ];
 
