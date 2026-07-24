@@ -20,18 +20,25 @@ const certificates = [
     tag: "Cyber Security",
     skills: ["Auditing", "Risk", "Compliance", "Security"],
   },
-  {
-    title: "AWS Developer Associate: Optimizing AWS",
-    issuer: "AWS Training",
-    date: "June 2026",
-    description:
-      "Covered AWS optimization, scalability, monitoring, and cloud architecture practices.",
-    link: "/certificates/aws-optimizing-certificate.pdf.pdf",
-    icon: Cloud,
-    accent: "orange",
-    tag: "AWS Cloud",
-    skills: ["EC2", "IAM", "CloudWatch", "Optimization"],
-  },
+ {
+  title: "AWS Cloud Practitioner Essentials",
+  issuer: "AWS Training & Certification",
+  date: "July 2026",
+  description:
+    "Completed AWS Cloud Practitioner Essentials training covering core AWS services, cloud concepts, security, pricing, architecture, and best practices.",
+  link: "/certificates/AWS-cloud-practitioner.pdf",
+  icon: Cloud,
+  accent: "orange",
+  tag: "AWS Cloud",
+  skills: [
+    "AWS Fundamentals",
+    "EC2",
+    "S3",
+    "IAM",
+    "Cloud Concepts",
+    "Security"
+  ],
+},
   {
     title: "Introduction to Kubernetes",
     issuer: "Simplilearn",
