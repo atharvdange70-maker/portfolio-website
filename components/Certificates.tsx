@@ -6,6 +6,7 @@ import {
   BadgeCheck,
   ExternalLink,
 } from "lucide-react";
+import { FaAws } from "react-icons/fa";
 
 const certificates = [
   {
@@ -26,8 +27,8 @@ const certificates = [
   date: "July 2026",
   description:
     "Completed AWS Cloud Practitioner Essentials training covering core AWS services, cloud concepts, security, pricing, architecture, and best practices.",
-  link: "/certificates/AWS-cloud-practitioner.pdf",
-  icon: Cloud,
+  link: "/certificates/AWS-Cloud-practitioner.pdf",
+  icon: FaAws,
   accent: "orange",
   tag: "AWS Cloud",
   skills: [
