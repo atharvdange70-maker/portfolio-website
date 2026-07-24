@@ -7,6 +7,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { FaAws } from "react-icons/fa";
+import { SiKubernetes } from "react-icons/si";
 
 const certificates = [
   {
@@ -27,7 +28,7 @@ const certificates = [
   date: "July 2026",
   description:
     "Completed AWS Cloud Practitioner Essentials training covering core AWS services, cloud concepts, security, pricing, architecture, and best practices.",
-  link: "/certificates/AWS-Cloud-practitioner.pdf",
+  link: "/certificates/AWS-Cloud-Practitioner.pdf",
   icon: FaAws,
   accent: "orange",
   tag: "AWS Cloud",
@@ -40,6 +41,24 @@ const certificates = [
     "Security"
   ],
   },
+{
+  title: "Introduction to Kubernetes",
+  issuer: "Simplilearn",
+  date: "July 2026",
+  description:
+    "Completed Introduction to Kubernetes training covering Kubernetes architecture, Pods, Deployments, Services, Namespaces, container orchestration, and cluster management fundamentals.",
+  link: "/certificates/simplilearn-kubernetes-certificate.pdf",
+  icon: SiKubernetes,
+  accent: "blue",
+  tag: "Kubernetes",
+  skills: [
+    "Kubernetes",
+    "Pods",
+    "Deployments",
+    "Services",
+    "Namespaces",
+    "Container Orchestration"
+  ]
 ];
 
 const accentStyles: Record<string, { border: string; glow: string; iconBg: string; iconColor: string; tag: string; top: string; button: string }> = {
