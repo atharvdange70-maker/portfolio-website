@@ -58,9 +58,49 @@ const projects = [
       "Amazon S3",
     ],
   },
+{
+  title: "Highly Available Web Application (ALB + Auto Scaling)",
+  short: "Highly available AWS web application with Auto Scaling and Load Balancer.",
+  image: [
+    "/images/projects/highly-available-web-app-1.png",
+    "/images/projects/highly-available-web-app-2.png",
+    "/images/projects/highly-available-web-app-3.png",
+    "/images/projects/highly-available-web-app-4.png",
+    "/images/projects/highly-available-web-app-5.png",
+    "/images/projects/highly-available-web-app-6.png",
+    "/images/projects/highly-available-web-app-7.png",
+  ],
+  github: "https://github.com/atharvdange70-maker/edublitz-Highly-Available-Web-Application-using-Auto-Scaling",
 
+  description:
+    "Designed and deployed a highly available web application on AWS using an Application Load Balancer (ALB) and EC2 Auto Scaling across multiple Availability Zones. The architecture automatically distributes incoming traffic, scales instances based on demand, and improves application availability, fault tolerance, and reliability.",
+
+  tools: [
+    "EC2",
+    "Auto Scaling",
+    "Application Load Balancer",
+    "Launch Template",
+    "VPC",
+    "Security Groups",
+    "CloudWatch",
+    "IAM",
+  ],
+
+  features: [
+    "Application Load Balancer",
+    "EC2 Auto Scaling",
+    "Multi-AZ Deployment",
+    "Launch Template",
+    "Automatic Scaling",
+    "Health Checks",
+    "High Availability",
+    "Fault Tolerance",
+  ],
+},
  
 ];
+
+
 
 export default function Projects() {
   const [selected, setSelected] = useState(projects[0]);
