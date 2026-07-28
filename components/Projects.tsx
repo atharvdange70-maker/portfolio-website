@@ -115,7 +115,7 @@ export default function Projects() {
   id="projects"
   className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent text-white px-6 py-24"
 >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
 
         <h2 className="text-5xl font-bold text-center mb-4">
           Projects
@@ -131,14 +131,14 @@ export default function Projects() {
             <button
               key={project.title}
               onClick={() => setSelected(project)}
-              className={`text-left p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-2
+              className={`text-left p-4 rounded-2xl border transition-all duration-300 hover:-translate-y-2
               ${
                 selected.title === project.title
                   ? "border-blue-500 bg-slate-900"
                   : "border-slate-800 hover:border-blue-500"
               }`}
             >
-              <h3 className="font-bold text-xl mb-3">
+              <h3 className="font-bold text-xl mb-2">
                 {project.title}
               </h3>
 
@@ -149,7 +149,7 @@ export default function Projects() {
           ))}
         </div>
 
-        <div className="mt-12 bg-slate-900 border border-slate-800 rounded-3xl p-8">
+    <div className="mt-10 max-w-5xl mx-auto bg-slate-900 border border-slate-800 rounded-3xl p-6">
          {selected.image && (
   <div className="mb-8">
 
@@ -158,7 +158,7 @@ export default function Projects() {
       <img
         src={selected.image[currentImage]}
         alt={selected.title}
-        className="w-full rounded-2xl border border-slate-700 object-contain"
+         className="w-full h-95 rounded-2xl border border-slate-700 object-contain"
       />
 
       {/* Previous Button */}
@@ -223,9 +223,11 @@ export default function Projects() {
   </div>
 )}
 
-          <h3 className="text-3xl font-bold mb-4">{selected.title}</h3>
+          <h3 className="text-2xl font-bold mb-3">
+          {selected.title}
+          </h3>
 
-          <p className="text-gray-300 leading-8 mb-8">
+          <p className="text-gray-300 leading-7 mb-6">
             {selected.description}
           </p>
 
