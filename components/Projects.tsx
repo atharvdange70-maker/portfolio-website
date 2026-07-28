@@ -87,15 +87,12 @@ const projects = [
   ],
 
   features: [
-    "Application Load Balancer",
-    "EC2 Auto Scaling",
-    "Multi-AZ Deployment",
-    "Launch Template",
-    "Automatic Scaling",
-    "Health Checks",
+    "Auto Scaling",
     "High Availability",
-    "Fault Tolerance",
+    "Load Balancer",
   ],
+
+  
 },
  
 ];
@@ -149,7 +146,8 @@ export default function Projects() {
           ))}
         </div>
 
-  <div className="mt-10 max-w-4xl mx-auto bg-slate-900 border border-slate-800 rounded-3xl p-6">
+  <div className="mt-10 max-w-7xl mx-auto bg-slate-900 border border-slate-800 rounded-3xl p-8">
+    <div className="grid lg:grid-cols-2 gap-10 items-center"></div>
   {selected.image && (
     <div className="mb-8">
       <div className="relative">
