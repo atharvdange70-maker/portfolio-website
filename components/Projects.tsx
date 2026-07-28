@@ -149,127 +149,121 @@ export default function Projects() {
           ))}
         </div>
 
-   <div className="mt-10 w-full max-w-7xl mx-auto bg-slate-900 border border-slate-800 rounded-3xl p-8">
-         {selected.image && (
-  <div className="mb-8">
+  <div className="mt-10 max-w-4xl mx-auto bg-slate-900 border border-slate-800 rounded-3xl p-6">
+  {selected.image && (
+    <div className="mb-8">
+      <div className="relative">
+        <div className="w-full aspect-video rounded-2xl border border-slate-700 bg-slate-950 overflow-hidden flex items-center justify-center">
+          <img
+            src={selected.image[currentImage]}
+            alt={selected.title}
+            className="max-w-full max-h-full object-contain transition-all duration-300 shadow-2xl"
+          />
+        </div>
 
-    <div className="relative">
-
-      <div className="w-full h-75 md:h-112.5 lg:h-162.5 rounded-2xl border border-slate-700 bg-slate-950 overflow-hidden flex items-center justify-center">
-  <img
-    src={selected.image[currentImage]}
-    alt={selected.title}
-    className="max-w-full max-h-full object-contain transition-all duration-300 shadow-2xl"
-  />
-</div>
-
-      {/* Previous Button */}
-      <button
-        onClick={() =>
-          setCurrentImage(
-            currentImage === 0
-              ? selected.image.length - 1
-              : currentImage - 1
-          )
-        }
-        className="absolute left-4 top-1/2 -translate-y-1/2
-        w-12 h-12 rounded-full bg-black/60 hover:bg-blue-600
-        flex items-center justify-center
-        text-white text-2xl transition duration-300 shadow-lg"
-      >
-        &#10094;
-      </button>
-
-      {/* Next Button */}
-      <button
-        onClick={() =>
-          setCurrentImage(
-            currentImage === selected.image.length - 1
-              ? 0
-              : currentImage + 1
-          )
-        }
-        className="absolute right-4 top-1/2 -translate-y-1/2
-        w-12 h-12 rounded-full bg-black/60 hover:bg-blue-600
-        flex items-center justify-center
-        text-white text-2xl transition duration-300 shadow-lg"
-      >
-        &#10095;
-      </button>
-
-      {/* Image Counter */}
-      <div
-        className="absolute bottom-4 left-1/2 -translate-x-1/2
-        bg-black/70 px-3 py-1 rounded-full text-sm text-white"
-      >
-        {currentImage + 1} / {selected.image.length}
-      </div>
-
-    </div>
-
-    {/* Dots */}
-    <div className="flex justify-center gap-2 mt-5">
-      {selected.image.map((_, index) => (
+        {/* Previous Button */}
         <button
-          key={index}
-          onClick={() => setCurrentImage(index)}
-          className={`w-3 h-3 rounded-full transition-all duration-300 ${
-            currentImage === index
-              ? "bg-blue-500 scale-125"
-              : "bg-gray-500 hover:bg-white"
-          }`}
-        />
-      ))}
-    </div>
+          onClick={() =>
+            setCurrentImage(
+              currentImage === 0
+                ? selected.image.length - 1
+                : currentImage - 1
+            )
+          }
+          className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/60 hover:bg-blue-600 flex items-center justify-center text-white text-2xl transition duration-300 shadow-lg"
+        >
+          &#10094;
+        </button>
 
-  </div>
-)}
+        {/* Next Button */}
+        <button
+          onClick={() =>
+            setCurrentImage(
+              currentImage === selected.image.length - 1
+                ? 0
+                : currentImage + 1
+            )
+          }
+          className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/60 hover:bg-blue-600 flex items-center justify-center text-white text-2xl transition duration-300 shadow-lg"
+        >
+          &#10095;
+        </button>
 
-          <h3 className="text-2xl font-bold mb-3">
-          {selected.title}
-          </h3>
-
-          <p className="text-gray-300 leading-7 mb-6">
-            {selected.description}
-          </p>
-
-          <h4 className="text-xl font-semibold mb-4">Technologies Used</h4>
-
-          <div className="flex flex-wrap gap-3 mb-8">
-            {selected.tools.map((tool) => (
-              <span
-                key={tool}
-                className="px-4 py-2 bg-blue-600/20 text-blue-300 rounded-full"
-              >
-                {tool}
-              </span>
-            ))}
-          </div>
-
-          <h4 className="text-xl font-semibold mb-4">Key Features</h4>
-
-          <ul className="grid md:grid-cols-2 gap-4">
-            {selected.features.map((feature) => (
-              <li key={feature} className="bg-slate-800 p-4 rounded-xl">
-                ✓ {feature}
-              </li>
-            ))}
-          </ul>
-
-          {selected.github && (
-            <div className="mt-8">
-              <a
-                href={selected.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl transition"
-              >
-                View Source Code on GitHub
-              </a>
-            </div>
-          )}
+        {/* Image Counter */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 px-3 py-1 rounded-full text-sm text-white">
+          {currentImage + 1} / {selected.image.length}
         </div>
       </div>
-    </section>
+
+      {/* Dots */}
+      <div className="flex justify-center gap-2 mt-5">
+        {selected.image.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentImage(index)}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              currentImage === index
+                ? "bg-blue-500 scale-125"
+                : "bg-gray-500 hover:bg-white"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  )}
+
+  <h3 className="text-2xl font-bold mb-3">
+    {selected.title}
+  </h3>
+
+  <p className="text-gray-300 leading-7 mb-6">
+    {selected.description}
+  </p>
+
+  <h4 className="text-xl font-semibold mb-4">
+    Technologies Used
+  </h4>
+
+  <div className="flex flex-wrap gap-3 mb-8">
+    {selected.tools.map((tool) => (
+      <span
+        key={tool}
+        className="px-4 py-2 bg-blue-600/20 text-blue-300 rounded-full"
+      >
+        {tool}
+      </span>
+    ))}
+  </div>
+
+  <h4 className="text-xl font-semibold mb-4">
+    Key Features
+  </h4>
+
+  <ul className="grid md:grid-cols-2 gap-4">
+    {selected.features.map((feature) => (
+      <li
+        key={feature}
+        className="bg-slate-800 p-4 rounded-xl"
+      >
+        ✓ {feature}
+      </li>
+    ))}
+  </ul>
+
+  {selected.github && (
+    <div className="mt-8">
+      <a
+        href={selected.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl transition"
+      >
+        View Source Code on GitHub
+      </a>
+    </div>
+  )}
+        </div>
+        </div>
+      </section>
   );
 }
