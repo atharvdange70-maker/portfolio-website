@@ -115,7 +115,7 @@ export default function Projects() {
   id="projects"
   className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent text-white px-6 py-24"
 >
-      <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto"> 
 
         <h2 className="text-5xl font-bold text-center mb-4">
           Projects
@@ -149,13 +149,13 @@ export default function Projects() {
           ))}
         </div>
 
-    <div className="mt-10 max-w-4xl mx-auto bg-slate-900 border border-slate-800 rounded-3xl p-6">
+   <div className="mt-10 w-full max-w-7xl mx-auto bg-slate-900 border border-slate-800 rounded-3xl p-8">
          {selected.image && (
   <div className="mb-8">
 
     <div className="relative">
 
-      <div className="w-full aspect-video rounded-2xl border border-slate-700 bg-slate-950 overflow-hidden flex items-center justify-center">
+      <div className="w-full h-75 md:h-112.5 lg:h-162.5 rounded-2xl border border-slate-700 bg-slate-950 overflow-hidden flex items-center justify-center">
   <img
     src={selected.image[currentImage]}
     alt={selected.title}
