@@ -149,17 +149,19 @@ export default function Projects() {
           ))}
         </div>
 
-    <div className="mt-10 max-w-5xl mx-auto bg-slate-900 border border-slate-800 rounded-3xl p-6">
+    <div className="mt-10 max-w-4xl mx-auto bg-slate-900 border border-slate-800 rounded-3xl p-6">
          {selected.image && (
   <div className="mb-8">
 
     <div className="relative">
 
-      <img
-        src={selected.image[currentImage]}
-        alt={selected.title}
-         className="w-full h-95 rounded-2xl border border-slate-700 object-contain"
-      />
+      <div className="w-full aspect-video rounded-2xl border border-slate-700 bg-slate-950 overflow-hidden flex items-center justify-center">
+  <img
+    src={selected.image[currentImage]}
+    alt={selected.title}
+    className="max-w-full max-h-full object-contain transition-all duration-300 shadow-2xl"
+  />
+</div>
 
       {/* Previous Button */}
       <button
