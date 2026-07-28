@@ -19,7 +19,7 @@ const projects = [
   github: "https://github.com/atharvdange70-maker/EduBlitz-EBS-Backup-Automation",
 
   description:
-    "Built a fully automated backup solution using AWS Lambda, API Gateway, CloudFront, S3, IAM, and EBS Snapshots. The solution performs scheduled backups and provides a simple web interface for snapshot creation.",
+    "Built an automated AWS backup solution using Lambda, API Gateway, S3, CloudFront, IAM, and EBS Snapshots for scheduled backups and easy snapshot management.",
   tools: ["Lambda", "API Gateway", "CloudFront", "S3", "IAM", "EBS"],
   features: [
     "Automatic Snapshots",
@@ -47,7 +47,7 @@ const projects = [
          github: "https://github.com/atharvdange70-maker/edublitz-3tier-web-application",
    
   
-      description:"EduBlitz is a beginner-friendly AWS project where students submit an enquiry form through a website. The frontend is hosted on Amazon S3 and delivered using CloudFront. The Java backend runs on an EC2 instance, processes the form submission, and stores the data securely in an Amazon RDS MySQL database. The project demonstrates a complete 3-tier architecture using AWS services.",
+      description:"Built a 3-tier AWS web application where users submit enquiry forms. The frontend is hosted on Amazon S3 and CloudFront, while the Java backend on EC2 stores data in Amazon RDS MySQL.",
     
     tools: ["EC2", "Security Groups", "RDS", "VPC", "S3" , "CloudFront" ],
     features: [
@@ -73,7 +73,7 @@ const projects = [
   github: "https://github.com/atharvdange70-maker/edublitz-Highly-Available-Web-Application-using-Auto-Scaling",
 
   description:
-    "Designed and deployed a highly available web application on AWS using an Application Load Balancer (ALB) and EC2 Auto Scaling across multiple Availability Zones. The architecture automatically distributes incoming traffic, scales instances based on demand, and improves application availability, fault tolerance, and reliability.",
+    "Built a highly available AWS web application using an Application Load Balancer and EC2 Auto Scaling across multiple Availability Zones for automatic scaling and reliable performance.",
 
   tools: [
     "EC2",
