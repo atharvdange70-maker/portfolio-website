@@ -1,8 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 
-
-
 const projects = [
  {
   title: "EBS Backup Automation (Serverless AWS)",
@@ -70,7 +68,7 @@ const projects = [
     "/images/projects/highly-available-web-app-6.png",
     "/images/projects/highly-available-web-app-7.png",
   ],
-  github: "https://github.com/atharvdange70-maker/edublitz-Highly-Available-Web-Application-using-Auto-Scaling",
+  github: "https://github.com/atharvdange70-maker/Highly-Available-Web-Application-using-Auto-Scaling",
 
   description:
     "Built a highly available AWS web application using an Application Load Balancer and EC2 Auto Scaling across multiple Availability Zones for automatic scaling and reliable performance.",
