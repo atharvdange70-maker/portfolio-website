@@ -100,7 +100,7 @@ export default function Certificates() {
 
         {/* Heading */}
         <div className="text-center mb-12">
-          <h2 className="text-5xl font-bold">
+          <h2 className="text-[21px] font-bold">
             Professional{" "}
             <span className="text-cyan-400">
               Certifications
@@ -123,7 +123,7 @@ export default function Certificates() {
             return (
               <div
                 key={index}
-                className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-5 transition-all duration-500 hover:-translate-y-2 ${style.border} ${style.glow}`}
+                className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-4 transition-all duration-500 hover:-translate-y-2 ${style.border} ${style.glow}`}
               >
 
                 {/* Top Glow */}
@@ -134,7 +134,7 @@ export default function Certificates() {
 
                 {/* Tag */}
                 <span
-                  className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold mb-4 ${style.tag}`}
+                  className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold mb-3 ${style.tag}`}
                 >
                   {cert.tag}
                 </span>
@@ -142,17 +142,17 @@ export default function Certificates() {
 
                 {/* Icon */}
                 <div
-                  className={`w-12 h-12 rounded-xl bg-linear-to-br ${style.iconBg} flex items-center justify-center border border-white/10 mb-4 transition-transform duration-500 group-hover:rotate-6 group-hover:scale-110`}
+                  className={`w-10 h-10 rounded-xl bg-linear-to-br ${style.iconBg} flex items-center justify-center border border-white/10 mb-3 transition-transform duration-500 group-hover:rotate-6 group-hover:scale-110`}
                 >
                   <Icon
-                    size={24}
+                    size={20}
                     className={style.iconColor}
                   />
                 </div>
 
 
                 {/* Title */}
-                <h3 className="text-xl font-bold leading-tight mb-2">
+                <h3 className="text-xl font-bold leading-tight mb-1">
                   {cert.title}
                 </h3>
 
@@ -164,14 +164,14 @@ export default function Certificates() {
 
 
                 {/* Date */}
-                <div className="flex items-center gap-2 text-gray-400 text-sm mt-2 mb-3">
+                <div className="flex items-center gap-2 text-gray-400 text-sm mt-1 mb-2">
                   <CalendarDays size={15} />
                   {cert.date}
                 </div>
 
 
                 {/* Description */}
-                <p className="text-gray-400 text-sm leading-6 mb-4">
+                <p className="text-gray-400 text-sm leading-6 mb-3">
                   {cert.description}
                 </p>
 
@@ -196,7 +196,7 @@ export default function Certificates() {
 
 
                 {/* Verified */}
-                <div className="inline-flex items-center gap-2 rounded-full bg-green-500/10 border border-green-500/20 px-3 py-1.5 text-green-400 text-xs font-medium mb-4">
+                <div className="inline-flex items-center gap-2 rounded-full bg-green-500/10 border border-green-500/20 px-3 py-1.5 text-green-400 text-xs font-medium mb-3">
                   <BadgeCheck size={15} />
                   Verified Certificate
                 </div>
