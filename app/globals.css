@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-/* Removed unsupported @custom-variant rule (handled via .dark class in CSS and Tailwind config) */
-
 /* Light Theme */
 :root {
   --background: #ffffff;
@@ -14,21 +12,36 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/* Dark Theme (used by next-themes) */
+/* Dark Theme */
 .dark {
   --background: #050816;
   --foreground: #ffffff;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
-}
 
-html {
-  scroll-behavior: smooth;
+  background:
+    radial-gradient(circle at top left,
+      rgba(34,211,238,0.10) 0%,
+      transparent 30%),
+    radial-gradient(circle at bottom right,
+      rgba(59,130,246,0.10) 0%,
+      transparent 35%),
+    linear-gradient(
+      180deg,
+      #050816 0%,
+      #08111f 40%,
+      #050816 100%
+    );
+
+  min-height: 100vh;
 }
