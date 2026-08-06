@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
-/* Light Theme */
+/* ==========================================
+   Light Theme
+========================================== */
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -12,10 +15,29 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/* Dark Theme */
+/* ==========================================
+   Dark Theme
+========================================== */
+
 .dark {
   --background: #050816;
   --foreground: #ffffff;
+
+  --card: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.08);
+
+  --primary: #22d3ee;
+  --secondary: #3b82f6;
+}
+
+/* ==========================================
+   Base
+========================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -23,25 +45,61 @@ html {
 }
 
 body {
+  position: relative;
+  overflow-x: hidden;
+
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
 
   background:
-    radial-gradient(circle at top left,
-      rgba(34,211,238,0.10) 0%,
-      transparent 30%),
-    radial-gradient(circle at bottom right,
-      rgba(59,130,246,0.10) 0%,
-      transparent 35%),
+    radial-gradient(
+      circle at top left,
+      rgba(34, 211, 238, 0.08),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(59, 130, 246, 0.08),
+      transparent 32%
+    ),
     linear-gradient(
       180deg,
       #050816 0%,
-      #08111f 40%,
+      #07101d 45%,
       #050816 100%
     );
+}
 
-  min-height: 100vh;
+/* ==========================================
+   Selection
+========================================== */
+
+::selection {
+  background: #22d3ee;
+  color: #050816;
+}
+
+/* ==========================================
+   Scrollbar
+========================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050816;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e3a5f;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #22d3ee;
 }

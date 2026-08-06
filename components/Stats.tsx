@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import {
   Cloud,
   FolderGit2,
@@ -14,122 +13,100 @@ const stats = [
     title: "AWS Services",
     subtitle: "EC2 • IAM • VPC • S3",
     icon: Cloud,
-    color: "text-cyan-200",
+    color: "text-cyan-400",
   },
   {
     number: "2+",
     title: "DevOps Projects",
     subtitle: "Production Ready",
     icon: FolderGit2,
-    color: "text-blue-200",
+    color: "text-blue-400",
   },
   {
     number: "100%",
     title: "Hands-On Learning",
     subtitle: "Build • Break • Improve",
     icon: BrainCircuit,
-    color: "text-violet-200",
+    color: "text-violet-400",
   },
   {
     number: "24/7",
     title: "Always Building",
     subtitle: "Learning Never Stops",
     icon: Rocket,
-    color: "text-emerald-200",
+    color: "text-green-400",
   },
 ];
 
 export default function Stats() {
   return (
-      <section className="relative overflow-hidden bg-transparent py-16 md:py-20">
-      {/* Background */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(14,165,233,0.12),transparent_55%)]" />
+    <section id="stats" className="relative py-20">
 
-      <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-size-[45px_45px]" />
+      <div className="mx-auto max-w-7xl px-6">
 
-      <div className="absolute -top-24 left-1/2 h-40 w-40 -translate-x-1/2 rounded-full bg-cyan-500/10 blur-[80px]" />
-
-      <div className="relative mx-auto max-w-7xl px-6">
         {/* Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mb-6 text-center"
-        >
-          <span className="inline-flex rounded-full border border-cyan-400/20 bg-cyan-500/10 px-4 py-1.5 text-xs text-cyan-300">
+
+        <div className="mb-14 text-center">
+
+          <span className="rounded-full border border-cyan-500/20 bg-cyan-500/10 px-5 py-2 text-sm font-medium text-cyan-300">
             Portfolio Highlights
           </span>
 
-          <p className="mx-auto mt-3 max-w-2xl text-sm text-gray-400">
-            Practical experience in AWS, DevOps, Infrastructure Automation,
-            CI/CD, and Cloud Engineering.
-          </p>
-        </motion.div>
+          <h2 className="mt-5 text-4xl font-bold text-white">
+            At a Glance
+          </h2>
 
-        {/* Stats Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 place-items-center gap-x-10 gap-y-8">
-          {stats.map((item, index) => {
+          <p className="mx-auto mt-4 max-w-2xl text-gray-400">
+            Practical experience in AWS Cloud, DevOps, Infrastructure
+            Automation, CI/CD Pipelines and Cloud Engineering.
+          </p>
+
+        </div>
+
+        {/* Cards */}
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+
+          {stats.map((item) => {
+
             const Icon = item.icon;
 
             return (
-              <motion.div
+
+              <div
                 key={item.title}
-                initial={{
-                  opacity: 0,
-                  y: 20,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                viewport={{
-                  once: true,
-                }}
-                transition={{
-                  duration: 0.45,
-                  delay: index * 0.08,
-                }}
-                whileHover={{
-                  y: -5,
-                  scale: 1.03,
-                }}
-                className="group relative w-full max-w-53.75"
+                className="rounded-2xl border border-white/10 bg-[#0B1120] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:shadow-lg hover:shadow-cyan-500/10"
               >
-                {/* Glow */}
-                <div className="absolute -inset-px rounded-xl bg-linear-to-r from-cyan-500/20 via-blue-500/20 to-purple-500/20 opacity-0 blur-md transition duration-500 group-hover:opacity-100" />
 
-                {/* Card */}
-                <div className="relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition duration-500 group-hover:border-cyan-400/30">
-                  {/* Icon */}
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5">
-                    <Icon className={`h-5 w-5 ${item.color}`} />
-                  </div>
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/10">
 
-                  {/* Number */}
-                 <h3 className="bg-linear-to-r from-cyan-300 to-blue-500 bg-clip-text text-3xl font-extrabold text-transparent">
-  {item.number}
-</h3>
+                  <Icon className={`h-6 w-6 ${item.color}`} />
 
-                  {/* Title */}
-                  <h4 className="mt-2 text-base font-semibold text-white">
-                    {item.title}
-                  </h4>
-
-                  {/* Subtitle */}
-                  <p className="mt-2 text-xs text-gray-400">
-                    {item.subtitle}
-                  </p>
-
-                  {/* Accent */}
-                  <div className="mt-4 h-0.5 w-0 rounded-full bg-linear-to-r from-cyan-400 to-blue-500 transition-all duration-500 group-hover:w-full" />
                 </div>
-              </motion.div>
+
+                <h3 className="bg-linear-to-r from-cyan-300 to-blue-500 bg-clip-text text-4xl font-extrabold text-transparent">
+                  {item.number}
+                </h3>
+
+                <h4 className="mt-3 text-lg font-semibold text-white">
+                  {item.title}
+                </h4>
+
+                <p className="mt-2 text-sm text-gray-400">
+                  {item.subtitle}
+                </p>
+
+                <div className="mt-5 h-0.5 rounded-full bg-linear-to-r from-cyan-500 to-blue-500" />
+
+              </div>
+
             );
           })}
+
         </div>
+
       </div>
+
     </section>
   );
 }
