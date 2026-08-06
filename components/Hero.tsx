@@ -1,50 +1,47 @@
-
-// Guarded require for Scene — some setups may report the file as "not a module".
-// Fall back to a noop component if the module can't be imported.
-
-declare const require: any;
-
-
-
 export default function Hero() {
   return (
-   <section
-  id="home"
-  className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent"
->
-      <div className="absolute inset-0  translate-x-64"></div>
-       
+    <section
+      id="home"
+      className="min-h-screen flex items-center bg-linear-to-br from-slate-950 via-slate-900 to-black"
+    >
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
-      <div className="relative z-10 max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-12 items-center">
-        {/* Left Side */}
-        <div>
-        <h1 className="text-5xl md:text-7xl font-bold text-sky-400 mb-4"> Atharv Dange </h1>
+        <p className="text-sky-400 font-medium tracking-widest uppercase mb-4">
+          Hello, I'm
+        </p>
 
-          <h2 className="text-2xl md:text-3xl text-white mb-6">
-            DevOps Engineer | AWS Cloud Engineer
-          </h2>
+        <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-tight">
+          Atharv Dange
+        </h1>
 
-          <p className="text-gray-300 text-lg max-w-xl mb-8">
-            Building scalable cloud infrastructure with automated DevOps
-            workflows.
-          </p>
+        <h2 className="mt-4 text-2xl md:text-3xl font-semibold text-slate-300">
+          AWS DevOps Engineer
+        </h2>
 
-          <div className="flex gap-4">
-            <a
-              href="#projects"
-              className="px-6 py-3 bg-cyan-400 text-black rounded-lg font-semibold hover:scale-105 transition"
-            >
-              View Projects
-            </a>
+        <p className="mt-6 max-w-2xl text-lg text-slate-400 leading-8">
+          Passionate about building secure, scalable cloud infrastructure
+          using AWS, Docker, Kubernetes, Terraform, Jenkins, Linux,
+          and CI/CD automation.
+        </p>
 
-            <a
-              href="#contact"
-              className="px-6 py-3 border border-sky-400 text-cyan-400 rounded-lg hover:bg-cyan-400 hover:text-black transition"
-            >
-              Contact Me
-            </a>
-          </div>
+        <div className="mt-10 flex flex-wrap gap-4">
+
+          <a
+            href="#projects"
+            className="rounded-lg bg-sky-500 px-7 py-3 font-semibold text-white transition hover:bg-sky-600"
+          >
+            View Projects
+          </a>
+
+          <a
+            href="#contact"
+            className="rounded-lg border border-slate-600 px-7 py-3 text-slate-300 transition hover:border-sky-500 hover:text-sky-400"
+          >
+            Contact Me
+          </a>
+
         </div>
+
       </div>
     </section>
   );
