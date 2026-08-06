@@ -4,8 +4,9 @@ declare const require: any;
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center bg-transparent">
-      <div className="relative z-10 max-w-7xl mx-auto px-8">
+    <section>
+      <div>
+
         <h2 className="text-2xl md:text-3xl text-white mb-6">
           DevOps Engineer | AWS Cloud Engineer
         </h2>
@@ -30,6 +31,7 @@ export default function Hero() {
             Contact Me
           </a>
         </div>
+
       </div>
     </section>
   );
