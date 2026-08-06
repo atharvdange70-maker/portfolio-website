@@ -1,11 +1,14 @@
-// Guarded require for Scene — some setups may report the file as "not a module".
-// Fall back to a noop component if the module can't be imported.
-declare const require: any;
-
 export default function Hero() {
   return (
-    <section>
-      <div>
+    <section
+      id="home"
+      className="min-h-screen flex items-center justify-center bg-transparent"
+    >
+      <div className="relative z-10 max-w-7xl mx-auto px-8">
+
+        <h1 className="text-5xl md:text-7xl font-bold text-cyan-400 mb-4">
+          Atharv Dange
+        </h1>
 
         <h2 className="text-2xl md:text-3xl text-white mb-6">
           DevOps Engineer | AWS Cloud Engineer
