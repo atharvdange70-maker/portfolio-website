@@ -6,13 +6,13 @@ html {
 
 body {
   margin: 0;
-  background: #020617;
+  background: #02030a;
   color: white;
   overflow-x: hidden;
 }
 
 /* =========================================================
-   GLOBAL DEVOPS PORTFOLIO BACKGROUND
+   UNIQUE CLOUD INFRASTRUCTURE BACKGROUND
    ========================================================= */
 
 .portfolio-bg {
@@ -21,163 +21,224 @@ body {
   overflow: hidden;
 
   background:
-    /* Top-left cyan glow */
+    /* Main cyan atmosphere */
     radial-gradient(
-      circle at 12% 10%,
-      rgba(6, 182, 212, 0.14),
-      transparent 25%
+      ellipse 55% 45% at 15% 20%,
+      rgba(0, 210, 255, 0.10),
+      transparent 70%
     ),
 
-    /* Top-right blue glow */
+    /* Blue cloud */
     radial-gradient(
-      circle at 88% 18%,
-      rgba(37, 99, 235, 0.13),
-      transparent 28%
+      ellipse 50% 40% at 85% 25%,
+      rgba(45, 90, 255, 0.10),
+      transparent 70%
     ),
 
-    /* Center subtle glow */
+    /* Violet depth */
     radial-gradient(
-      circle at 50% 45%,
-      rgba(6, 182, 212, 0.045),
-      transparent 38%
+      ellipse 45% 35% at 70% 90%,
+      rgba(100, 70, 255, 0.07),
+      transparent 70%
     ),
 
-    /* Bottom glow */
+    /* Center darkness */
     radial-gradient(
-      circle at 70% 90%,
-      rgba(37, 99, 235, 0.08),
-      transparent 30%
-    ),
-
-    #020617;
+      ellipse 80% 70% at 50% 45%,
+      #07101f 0%,
+      #02030a 75%
+    );
 }
 
 
 /* =========================================================
-   TECHNICAL GRID + CIRCUIT LINES
+   INFRASTRUCTURE MAP
    ========================================================= */
 
 .portfolio-bg::before {
   content: "";
   position: fixed;
-  inset: 0;
+  inset: -20%;
 
   pointer-events: none;
   z-index: 0;
 
-  background-image:
+  opacity: 0.7;
 
-    /* Main grid */
+  background:
+
+    /* ───────── Network path 1 ───────── */
+
     linear-gradient(
-      rgba(56, 189, 248, 0.045) 1px,
+      135deg,
+      transparent 0%,
+      transparent 29%,
+      rgba(0, 220, 255, 0.10) 29.1%,
+      transparent 29.3%,
+      transparent 100%
+    ),
+
+    /* ───────── Network path 2 ───────── */
+
+    linear-gradient(
+      25deg,
+      transparent 0%,
+      transparent 42%,
+      rgba(60, 120, 255, 0.08) 42.1%,
+      transparent 42.3%,
+      transparent 100%
+    ),
+
+    /* ───────── Network path 3 ───────── */
+
+    linear-gradient(
+      155deg,
+      transparent 0%,
+      transparent 63%,
+      rgba(0, 220, 255, 0.07) 63.1%,
+      transparent 63.3%,
+      transparent 100%
+    ),
+
+    /* ───────── Tiny infrastructure grid ───────── */
+
+    linear-gradient(
+      rgba(100, 180, 255, 0.025) 1px,
       transparent 1px
     ),
 
     linear-gradient(
       90deg,
-      rgba(56, 189, 248, 0.045) 1px,
+      rgba(100, 180, 255, 0.025) 1px,
       transparent 1px
-    ),
-
-    /* Larger horizontal infrastructure lines */
-    linear-gradient(
-      90deg,
-      transparent 49.8%,
-      rgba(6, 182, 212, 0.035) 50%,
-      transparent 50.2%
     );
 
   background-size:
-    50px 50px,
-    50px 50px,
-    250px 250px;
+    900px 900px,
+    1100px 1100px,
+    1200px 1200px,
+    55px 55px,
+    55px 55px;
+
+  animation: infrastructureMove 25s linear infinite;
 
   mask-image: linear-gradient(
     to bottom,
-    black 0%,
-    black 60%,
-    transparent 100%
+    transparent,
+    black 10%,
+    black 85%,
+    transparent
   );
 }
 
 
 /* =========================================================
-   DEVOPS NETWORK NODES
+   GLOWING INFRASTRUCTURE NODES
    ========================================================= */
 
 .portfolio-bg::after {
   content: "";
+
   position: fixed;
   inset: 0;
 
   pointer-events: none;
   z-index: 0;
 
-  background-image:
+  background:
 
-    /* Network nodes */
+    /* Node 1 */
     radial-gradient(
-      circle at 12% 25%,
-      rgba(34, 211, 238, 0.55) 0,
-      rgba(34, 211, 238, 0.15) 2px,
-      transparent 5px
+      circle at 12% 23%,
+      rgba(0, 230, 255, 0.9) 0,
+      rgba(0, 230, 255, 0.25) 2px,
+      transparent 7px
     ),
 
+    /* Node 2 */
     radial-gradient(
-      circle at 82% 22%,
-      rgba(59, 130, 246, 0.5) 0,
-      rgba(59, 130, 246, 0.12) 2px,
-      transparent 5px
+      circle at 30% 68%,
+      rgba(70, 130, 255, 0.8) 0,
+      rgba(70, 130, 255, 0.2) 2px,
+      transparent 7px
     ),
 
+    /* Node 3 */
     radial-gradient(
-      circle at 91% 58%,
-      rgba(34, 211, 238, 0.45) 0,
-      rgba(34, 211, 238, 0.1) 2px,
-      transparent 5px
+      circle at 67% 24%,
+      rgba(0, 220, 255, 0.8) 0,
+      rgba(0, 220, 255, 0.18) 2px,
+      transparent 7px
     ),
 
+    /* Node 4 */
     radial-gradient(
-      circle at 18% 76%,
-      rgba(59, 130, 246, 0.45) 0,
-      rgba(59, 130, 246, 0.1) 2px,
-      transparent 5px
+      circle at 86% 51%,
+      rgba(100, 110, 255, 0.8) 0,
+      rgba(100, 110, 255, 0.18) 2px,
+      transparent 7px
     ),
 
+    /* Node 5 */
     radial-gradient(
-      circle at 72% 82%,
-      rgba(34, 211, 238, 0.4) 0,
-      rgba(34, 211, 238, 0.1) 2px,
-      transparent 5px
+      circle at 73% 82%,
+      rgba(0, 220, 255, 0.7) 0,
+      rgba(0, 220, 255, 0.16) 2px,
+      transparent 7px
+    ),
+
+    /* Node 6 */
+    radial-gradient(
+      circle at 18% 88%,
+      rgba(80, 120, 255, 0.7) 0,
+      rgba(80, 120, 255, 0.15) 2px,
+      transparent 7px
     );
 
-  background-repeat: no-repeat;
-
-  opacity: 0.75;
-
-  /* Very slow movement */
-  animation: backgroundFloat 12s ease-in-out infinite alternate;
+  animation: nodesPulse 5s ease-in-out infinite alternate;
 }
 
 
 /* =========================================================
-   SUBTLE BACKGROUND ANIMATION
+   MOVEMENT
    ========================================================= */
 
-@keyframes backgroundFloat {
-  0% {
+@keyframes infrastructureMove {
+  from {
     transform: translate3d(0, 0, 0);
   }
 
+  to {
+    transform: translate3d(70px, 40px, 0);
+  }
+}
+
+
+@keyframes nodesPulse {
+  0% {
+    opacity: 0.45;
+    filter: blur(0px);
+  }
+
+  50% {
+    opacity: 0.9;
+    filter: blur(0.3px);
+  }
+
   100% {
-    transform: translate3d(0, -8px, 0);
+    opacity: 0.55;
+    filter: blur(0px);
   }
 }
 
 
 /* =========================================================
-   KEEP ALL CONTENT ABOVE BACKGROUND
+   VERY SUBTLE DATA SCAN
    ========================================================= */
+
+.portfolio-bg {
+  isolation: isolate;
+}
 
 .portfolio-bg > * {
   position: relative;
@@ -190,6 +251,18 @@ body {
    ========================================================= */
 
 ::selection {
-  background: rgba(6, 182, 212, 0.3);
+  background: rgba(0, 220, 255, 0.25);
   color: white;
+}
+
+
+/* =========================================================
+   REDUCE MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-bg::before,
+  .portfolio-bg::after {
+    animation: none;
+  }
 }
