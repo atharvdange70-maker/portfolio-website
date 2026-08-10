@@ -87,9 +87,6 @@ export default function Hero() {
             className="text-5xl font-bold tracking-tight text-white sm:text-6xl md:text-7xl"
 
           >
-
-            Hi, I'm{" "}
-
             <span className="bg-linear-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
 
               Atharv Dange
@@ -122,32 +119,6 @@ export default function Hero() {
 
           </motion.h2>
 
-
-
-          {/* Description */}
-
-          <motion.p
-
-            initial={{ opacity: 0, y: 20 }}
-
-            animate={{ opacity: 1, y: 0 }}
-
-            transition={{ duration: 0.6, delay: 0.2 }}
-
-            className="mt-6 max-w-2xl text-base leading-7 text-slate-400 sm:text-lg"
-
-          >
-
-            DevOps Engineer focused on AWS, Terraform, Docker, Kubernetes and
-
-            CI/CD. I build scalable infrastructure, automate deployments and
-
-            improve application reliability.
-
-          </motion.p>
-
-
-
           {/* Buttons */}
 
           <motion.div
@@ -170,7 +141,7 @@ export default function Hero() {
 
             >
 
-              View My Projects
+              View Projects
 
               <ArrowRight
 
@@ -192,7 +163,7 @@ export default function Hero() {
 
             >
 
-              Let's Connect
+             Connect Me
 
             </a>
 
