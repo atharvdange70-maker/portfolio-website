@@ -1,3 +1,52 @@
+@import "tailwindcss";
+
+/* =========================================================
+   BASE
+   ========================================================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #02040b;
+  color: white;
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   MAIN PORTFOLIO BACKGROUND
+   ========================================================= */
+
+.portfolio-bg {
+  position: relative;
+  min-height: 100vh;
+  isolation: isolate;
+  overflow-x: hidden;
+
+  background:
+    radial-gradient(
+      ellipse 55% 45% at 10% 15%,
+      rgba(0, 220, 255, 0.10),
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 50% 45% at 90% 20%,
+      rgba(37, 99, 235, 0.09),
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 45% 40% at 75% 90%,
+      rgba(99, 70, 255, 0.07),
+      transparent 70%
+    ),
+    #02040b;
+}
+
+
 /* =========================================================
    DEVOPS BACKGROUND
    ========================================================= */
@@ -5,12 +54,15 @@
 .devops-background {
   position: fixed;
   inset: 0;
-  z-index: 0;
+
+  z-index: -1;
+
   pointer-events: none;
   overflow: hidden;
 
-  opacity: 0.8;
+  opacity: 1;
 }
+
 
 /* =========================================================
    TECHNOLOGY LOGOS
@@ -24,13 +76,15 @@
   align-items: center;
   gap: 8px;
 
-  color: rgba(56, 189, 248, 0.22);
-
   font-family: var(--font-geist-mono), monospace;
+
   font-size: 10px;
   font-weight: 600;
+
   letter-spacing: 0.15em;
   text-transform: uppercase;
+
+  opacity: 0.75;
 
   filter: drop-shadow(
     0 0 12px rgba(34, 211, 238, 0.15)
@@ -44,9 +98,10 @@
   height: 34px;
 
   transition:
-    color 0.3s ease,
-    transform 0.3s ease;
+    transform 0.3s ease,
+    filter 0.3s ease;
 }
+
 
 /* =========================================================
    LOGO POSITIONS
@@ -56,7 +111,7 @@
   top: 18%;
   left: 9%;
 
-  color: rgba(255, 153, 0, 0.3);
+  color: rgba(255, 153, 0, 0.32);
 
   animation-delay: -1s;
 }
@@ -65,7 +120,7 @@
   top: 28%;
   right: 10%;
 
-  color: rgba(36, 150, 237, 0.27);
+  color: rgba(36, 150, 237, 0.30);
 
   animation-delay: -3s;
 }
@@ -74,7 +129,7 @@
   top: 62%;
   left: 8%;
 
-  color: rgba(50, 108, 229, 0.25);
+  color: rgba(50, 108, 229, 0.28);
 
   animation-delay: -5s;
 }
@@ -83,7 +138,7 @@
   bottom: 18%;
   right: 12%;
 
-  color: rgba(123, 97, 255, 0.28);
+  color: rgba(123, 97, 255, 0.30);
 
   animation-delay: -2s;
 }
@@ -92,7 +147,7 @@
   bottom: 30%;
   left: 23%;
 
-  color: rgba(239, 68, 68, 0.2);
+  color: rgba(239, 68, 68, 0.24);
 
   animation-delay: -4s;
 }
@@ -101,7 +156,7 @@
   top: 72%;
   right: 28%;
 
-  color: rgba(245, 80, 49, 0.22);
+  color: rgba(245, 80, 49, 0.25);
 
   animation-delay: -6s;
 }
@@ -110,7 +165,7 @@
   top: 42%;
   left: 17%;
 
-  color: rgba(255, 220, 80, 0.2);
+  color: rgba(255, 220, 80, 0.23);
 
   animation-delay: -2s;
 }
@@ -119,7 +174,7 @@
   top: 45%;
   right: 15%;
 
-  color: rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.20);
 
   animation-delay: -4s;
 }
@@ -132,6 +187,8 @@
 .infra-lines {
   position: absolute;
   inset: 0;
+
+  opacity: 0.8;
 }
 
 .line {
@@ -144,8 +201,8 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(34, 211, 238, 0.18),
-    rgba(59, 130, 246, 0.08),
+    rgba(34, 211, 238, 0.20),
+    rgba(59, 130, 246, 0.10),
     transparent
   );
 
@@ -157,6 +214,7 @@
   width: 34%;
   top: 25%;
   left: 12%;
+
   transform: rotate(14deg);
 }
 
@@ -164,6 +222,7 @@
   width: 38%;
   top: 32%;
   right: 8%;
+
   transform: rotate(-18deg);
 }
 
@@ -171,6 +230,7 @@
   width: 28%;
   top: 64%;
   left: 10%;
+
   transform: rotate(-12deg);
 }
 
@@ -178,6 +238,7 @@
   width: 35%;
   top: 70%;
   right: 10%;
+
   transform: rotate(16deg);
 }
 
@@ -185,12 +246,13 @@
   width: 45%;
   top: 48%;
   left: 28%;
+
   transform: rotate(2deg);
 
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(34, 211, 238, 0.08),
+    rgba(34, 211, 238, 0.10),
     transparent
   );
 }
@@ -214,6 +276,7 @@
 
 .infra-core span {
   position: absolute;
+
   inset: -20px;
 
   border: 1px solid rgba(34, 211, 238, 0.08);
@@ -225,11 +288,13 @@
 
 .infra-core span:nth-child(2) {
   inset: -50px;
+
   animation-delay: 1.3s;
 }
 
 .infra-core span:nth-child(3) {
   inset: -90px;
+
   animation-delay: 2.6s;
 }
 
@@ -237,6 +302,7 @@
   content: "";
 
   position: absolute;
+
   inset: 2px;
 
   border-radius: 50%;
@@ -272,36 +338,42 @@
 .data-particles i:nth-child(1) {
   top: 25%;
   left: 12%;
+
   animation-delay: 0s;
 }
 
 .data-particles i:nth-child(2) {
   top: 32%;
   left: 65%;
+
   animation-delay: 1.5s;
 }
 
 .data-particles i:nth-child(3) {
   top: 64%;
   left: 15%;
+
   animation-delay: 3s;
 }
 
 .data-particles i:nth-child(4) {
   top: 70%;
   left: 72%;
+
   animation-delay: 4.5s;
 }
 
 .data-particles i:nth-child(5) {
   top: 48%;
   left: 40%;
+
   animation-delay: 6s;
 }
 
 .data-particles i:nth-child(6) {
   top: 20%;
   left: 80%;
+
   animation-delay: 2s;
 }
 
@@ -360,6 +432,26 @@
 
 
 /* =========================================================
+   CONTENT ABOVE BACKGROUND
+   ========================================================= */
+
+.portfolio-bg > :not(.devops-background) {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* =========================================================
+   SELECTION
+   ========================================================= */
+
+::selection {
+  background: rgba(0, 220, 255, 0.25);
+  color: white;
+}
+
+
+/* =========================================================
    MOBILE
    ========================================================= */
 
@@ -376,6 +468,10 @@
   }
 
   .infra-lines {
+    opacity: 0.5;
+  }
+
+  .infra-core {
     opacity: 0.5;
   }
 }
