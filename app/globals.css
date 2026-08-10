@@ -1,316 +1,310 @@
-@import "tailwindcss";
-
 /* =========================================================
-   BASE
+   DEVOPS TECHNOLOGY BACKGROUND
    ========================================================= */
 
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  background: #02040b;
-  color: white;
-  overflow-x: hidden;
-}
-
-
-/* =========================================================
-   CLOUD COMMAND CENTER
-   ========================================================= */
-
-.portfolio-bg {
-  position: relative;
-  min-height: 100vh;
-  isolation: isolate;
+.devops-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
   overflow: hidden;
+}
 
-  background:
-    /* Main cyan atmosphere */
-    radial-gradient(
-      ellipse 55% 45% at 12% 18%,
-      rgba(0, 229, 255, 0.14),
-      transparent 65%
-    ),
+/* -----------------------------------------
+   Technology Logos
+----------------------------------------- */
 
-    /* Blue atmosphere */
-    radial-gradient(
-      ellipse 50% 45% at 90% 20%,
-      rgba(37, 99, 235, 0.13),
-      transparent 65%
-    ),
+.devops-logo {
+  position: absolute;
 
-    /* Violet cloud */
-    radial-gradient(
-      ellipse 55% 40% at 75% 95%,
-      rgba(99, 72, 255, 0.08),
-      transparent 70%
-    ),
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 
-    /* Center light */
-    radial-gradient(
-      ellipse 70% 55% at 50% 45%,
-      rgba(15, 50, 90, 0.18),
-      transparent 70%
-    ),
+  color: rgba(148, 163, 184, 0.10);
 
-    /* Deep base */
-    #02040b;
+  filter: blur(0.2px);
+
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+
+  animation: logoFloat 8s ease-in-out infinite;
+}
+
+.devops-logo svg {
+  width: 58px;
+  height: 58px;
+
+  fill: currentColor;
+
+  filter:
+    drop-shadow(
+      0 0 18px
+      rgba(34, 211, 238, 0.12)
+    );
+}
+
+.devops-logo span {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+
+/* -----------------------------------------
+   Individual positions
+----------------------------------------- */
+
+.aws {
+  top: 16%;
+  left: 9%;
+
+  color: rgba(255, 153, 0, 0.13);
+
+  animation-delay: -2s;
+}
+
+.docker {
+  top: 43%;
+  left: 6%;
+
+  color: rgba(36, 150, 237, 0.11);
+
+  animation-delay: -5s;
+}
+
+.kubernetes {
+  top: 14%;
+  right: 10%;
+
+  color: rgba(50, 108, 229, 0.12);
+
+  animation-delay: -1s;
+}
+
+.terraform {
+  top: 45%;
+  right: 7%;
+
+  color: rgba(123, 97, 255, 0.12);
+
+  animation-delay: -4s;
+}
+
+.jenkins {
+  bottom: 18%;
+  left: 14%;
+
+  color: rgba(239, 68, 68, 0.09);
+
+  animation-delay: -6s;
+}
+
+.git {
+  bottom: 14%;
+  right: 14%;
+
+  color: rgba(245, 80, 49, 0.10);
+
+  animation-delay: -3s;
+}
+
+.linux {
+  top: 70%;
+  left: 43%;
+
+  color: rgba(234, 179, 8, 0.08);
+
+  animation-delay: -7s;
+}
+
+.github {
+  top: 72%;
+  right: 42%;
+
+  color: rgba(255, 255, 255, 0.08);
+
+  animation-delay: -4s;
+}
+
+
+/* -----------------------------------------
+   Floating animation
+----------------------------------------- */
+
+@keyframes logoFloat {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -12px, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 
 /* =========================================================
-   INFRASTRUCTURE NETWORK
+   INFRASTRUCTURE CONNECTIONS
    ========================================================= */
 
-.portfolio-bg::before {
-  content: "";
-  position: fixed;
-  inset: 0;
+.infra-line {
+  position: absolute;
 
-  pointer-events: none;
-  z-index: -1;
+  height: 1px;
 
-  opacity: 0.9;
-
-  background-image:
-
-    /* Fine technical grid */
-    linear-gradient(
-      rgba(80, 180, 255, 0.035) 1px,
-      transparent 1px
-    ),
-
-    linear-gradient(
-      90deg,
-      rgba(80, 180, 255, 0.035) 1px,
-      transparent 1px
-    ),
-
-    /* Infrastructure route — diagonal */
-    linear-gradient(
-      135deg,
-      transparent 0%,
-      transparent 24%,
-      rgba(0, 220, 255, 0.075) 24.1%,
-      transparent 24.25%,
-      transparent 100%
-    ),
-
-    /* Infrastructure route */
-    linear-gradient(
-      35deg,
-      transparent 0%,
-      transparent 46%,
-      rgba(70, 120, 255, 0.065) 46.1%,
-      transparent 46.25%,
-      transparent 100%
-    ),
-
-    /* Infrastructure route */
-    linear-gradient(
-      155deg,
-      transparent 0%,
-      transparent 68%,
-      rgba(0, 220, 255, 0.055) 68.1%,
-      transparent 68.25%,
-      transparent 100%
-    );
-
-  background-size:
-    55px 55px,
-    55px 55px,
-    900px 900px,
-    1100px 1100px,
-    1200px 1200px;
-
-  animation: infrastructureDrift 30s linear infinite;
-
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    black 12%,
-    black 82%,
-    transparent 100%
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(34, 211, 238, 0.14),
+    transparent
   );
+
+  transform-origin: left center;
+}
+
+.line-1 {
+  width: 330px;
+  top: 28%;
+  left: 14%;
+  transform: rotate(12deg);
+}
+
+.line-2 {
+  width: 300px;
+  top: 30%;
+  right: 14%;
+  transform: rotate(-12deg);
+}
+
+.line-3 {
+  width: 360px;
+  bottom: 27%;
+  left: 15%;
+  transform: rotate(-14deg);
+}
+
+.line-4 {
+  width: 340px;
+  bottom: 27%;
+  right: 15%;
+  transform: rotate(14deg);
 }
 
 
 /* =========================================================
-   GLOWING CLOUD NODES
+   CENTRAL INFRASTRUCTURE CORE
    ========================================================= */
 
-.portfolio-bg::after {
-  content: "";
-  position: fixed;
-  inset: 0;
+.infra-core {
+  position: absolute;
 
-  pointer-events: none;
-  z-index: -1;
+  left: 50%;
+  top: 50%;
 
-  background:
+  width: 6px;
+  height: 6px;
 
-    /* Node 01 */
-    radial-gradient(
-      circle at 8% 20%,
-      rgba(34, 211, 238, 0.9) 0,
-      rgba(34, 211, 238, 0.35) 2px,
-      rgba(34, 211, 238, 0.08) 7px,
-      transparent 16px
-    ),
+  transform: translate(-50%, -50%);
 
-    /* Node 02 */
-    radial-gradient(
-      circle at 23% 62%,
-      rgba(59, 130, 246, 0.85) 0,
-      rgba(59, 130, 246, 0.3) 2px,
-      rgba(59, 130, 246, 0.07) 8px,
-      transparent 17px
-    ),
+  border-radius: 999px;
 
-    /* Node 03 */
-    radial-gradient(
-      circle at 70% 19%,
-      rgba(34, 211, 238, 0.9) 0,
-      rgba(34, 211, 238, 0.3) 2px,
-      rgba(34, 211, 238, 0.07) 8px,
-      transparent 17px
-    ),
+  background: rgb(34, 211, 238);
 
-    /* Node 04 */
-    radial-gradient(
-      circle at 92% 47%,
-      rgba(99, 102, 241, 0.85) 0,
-      rgba(99, 102, 241, 0.3) 2px,
-      rgba(99, 102, 241, 0.07) 8px,
-      transparent 17px
-    ),
+  box-shadow:
+    0 0 15px rgba(34, 211, 238, 0.8),
+    0 0 45px rgba(34, 211, 238, 0.25);
 
-    /* Node 05 */
-    radial-gradient(
-      circle at 78% 79%,
-      rgba(34, 211, 238, 0.75) 0,
-      rgba(34, 211, 238, 0.25) 2px,
-      rgba(34, 211, 238, 0.06) 8px,
-      transparent 17px
-    ),
-
-    /* Node 06 */
-    radial-gradient(
-      circle at 14% 86%,
-      rgba(59, 130, 246, 0.75) 0,
-      rgba(59, 130, 246, 0.25) 2px,
-      rgba(59, 130, 246, 0.06) 8px,
-      transparent 17px
-    );
-
-  animation: nodePulse 5s ease-in-out infinite alternate;
+  opacity: 0.45;
 }
 
+.infra-core span {
+  position: absolute;
 
-/* =========================================================
-   MOVING AURORA
-   ========================================================= */
+  inset: -20px;
 
-.portfolio-bg {
-  background-size:
-    auto,
-    auto,
-    auto,
-    auto,
-    auto;
+  border: 1px solid rgba(34, 211, 238, 0.08);
 
-  animation: atmosphereMove 16s ease-in-out infinite alternate;
+  border-radius: 999px;
+
+  animation: corePulse 4s ease-out infinite;
 }
 
+.infra-core span:nth-child(2) {
+  inset: -45px;
+  animation-delay: 1.3s;
+}
 
-/* =========================================================
-   ANIMATIONS
-   ========================================================= */
+.infra-core span:nth-child(3) {
+  inset: -75px;
+  animation-delay: 2.6s;
+}
 
-@keyframes atmosphereMove {
+@keyframes corePulse {
   0% {
-    background-position:
-      0% 0%,
-      100% 0%,
-      100% 100%,
-      50% 50%,
-      0% 0%;
+    opacity: 0;
+    transform: scale(0.7);
+  }
+
+  30% {
+    opacity: 0.5;
   }
 
   100% {
-    background-position:
-      5% 8%,
-      94% 12%,
-      85% 92%,
-      52% 48%,
-      0% 0%;
-  }
-}
-
-
-@keyframes infrastructureDrift {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-
-  50% {
-    transform: translate3d(-25px, 15px, 0);
-  }
-
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-
-@keyframes nodePulse {
-  0% {
-    opacity: 0.45;
-    filter: brightness(0.8);
-  }
-
-  50% {
-    opacity: 0.85;
-    filter: brightness(1.25);
-  }
-
-  100% {
-    opacity: 0.55;
-    filter: brightness(0.9);
+    opacity: 0;
+    transform: scale(1);
   }
 }
 
 
 /* =========================================================
-   CONTENT ABOVE BACKGROUND
+   MOBILE
    ========================================================= */
 
-.portfolio-bg > * {
-  position: relative;
-  z-index: 1;
-}
+@media (max-width: 768px) {
+  .devops-logo svg {
+    width: 38px;
+    height: 38px;
+  }
 
+  .devops-logo span {
+    display: none;
+  }
 
-/* =========================================================
-   TEXT SELECTION
-   ========================================================= */
+  .devops-logo {
+    opacity: 0.6;
+  }
 
-::selection {
-  background: rgba(0, 220, 255, 0.25);
-  color: white;
-}
+  .aws {
+    left: 4%;
+  }
 
+  .docker {
+    left: 3%;
+  }
 
-/* =========================================================
-   ACCESSIBILITY
-   ========================================================= */
+  .kubernetes {
+    right: 4%;
+  }
 
-@media (prefers-reduced-motion: reduce) {
-  .portfolio-bg,
-  .portfolio-bg::before,
-  .portfolio-bg::after {
-    animation: none;
+  .terraform {
+    right: 3%;
+  }
+
+  .jenkins,
+  .git,
+  .linux,
+  .github {
+    display: none;
+  }
+
+  .infra-line {
+    opacity: 0.4;
   }
 }
