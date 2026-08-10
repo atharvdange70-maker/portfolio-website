@@ -84,7 +84,7 @@ body {
   letter-spacing: 0.15em;
   text-transform: uppercase;
 
-  opacity: 0.75;
+  opacity: 0.55;
 
   filter: drop-shadow(
     0 0 12px rgba(34, 211, 238, 0.15)
@@ -108,8 +108,8 @@ body {
    ========================================================= */
 
 .aws-logo {
-  top: 18%;
-  left: 9%;
+  top: 22%;
+  left: 7%;
 
   color: rgba(255, 153, 0, 0.32);
 
@@ -118,34 +118,33 @@ body {
 
 .docker {
   top: 28%;
-  right: 10%;
+  right: 7%;
 
-  color: rgba(36, 150, 237, 0.30);
+  color: rgba(36, 150, 237, 0.24);
 
   animation-delay: -3s;
 }
 
 .kubernetes {
-  top: 62%;
-  left: 8%;
+  top: 72%;
+  left: 10%;
 
-  color: rgba(50, 108, 229, 0.28);
-
+  color: rgba(50, 108, 229, 0.22);
   animation-delay: -5s;
 }
 
 .terraform {
-  bottom: 18%;
-  right: 12%;
+  bottom: 15%;
+  right: 7%;
 
-  color: rgba(123, 97, 255, 0.30);
+   color: rgba(123, 97, 255, 0.24);
 
   animation-delay: -2s;
 }
 
 .jenkins {
-  bottom: 30%;
-  left: 23%;
+  bottom: 12%;
+  left: 34%;
 
   color: rgba(239, 68, 68, 0.24);
 
@@ -153,8 +152,8 @@ body {
 }
 
 .git {
-  top: 72%;
-  right: 28%;
+  top: 70%;
+  right: 30%;
 
   color: rgba(245, 80, 49, 0.25);
 
@@ -162,8 +161,8 @@ body {
 }
 
 .linux {
-  top: 42%;
-  left: 17%;
+  top: 58%;
+  left: 4%;
 
   color: rgba(255, 220, 80, 0.23);
 
@@ -171,8 +170,8 @@ body {
 }
 
 .github {
-  top: 45%;
-  right: 15%;
+  top: 48%;
+  right: 8%;
 
   color: rgba(255, 255, 255, 0.20);
 
@@ -302,16 +301,16 @@ body {
   content: "";
 
   position: absolute;
-
   inset: 2px;
 
   border-radius: 50%;
 
-  background: rgba(34, 211, 238, 0.7);
+  background: rgba(34, 211, 238, 0.9);
 
   box-shadow:
-    0 0 10px rgba(34, 211, 238, 0.6),
-    0 0 30px rgba(34, 211, 238, 0.25);
+    0 0 12px rgba(34, 211, 238, 0.8),
+    0 0 35px rgba(34, 211, 238, 0.35),
+    0 0 80px rgba(37, 99, 235, 0.15);
 }
 
 
