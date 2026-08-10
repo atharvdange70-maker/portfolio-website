@@ -77,41 +77,72 @@ body {
   gap: 8px;
 
   font-family: var(--font-geist-mono), monospace;
-
   font-size: 10px;
-  font-weight: 600;
+  font-weight: 700;
 
   letter-spacing: 0.15em;
   text-transform: uppercase;
 
-  opacity: 0.55;
+  opacity: 0.85;
 
-  filter: drop-shadow(
-    0 0 12px rgba(34, 211, 238, 0.15)
-  );
+  filter:
+    drop-shadow(0 0 8px currentColor)
+    drop-shadow(0 0 18px currentColor);
+
+  text-shadow:
+    0 0 8px currentColor,
+    0 0 16px currentColor;
 
   animation: logoFloat 7s ease-in-out infinite;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .devops-logo svg {
-  width: 34px;
-  height: 34px;
+  width: 38px;
+  height: 38px;
+
+  filter:
+    drop-shadow(0 0 6px currentColor)
+    drop-shadow(0 0 14px currentColor);
 
   transition:
     transform 0.3s ease,
     filter 0.3s ease;
 }
+.devops-logo::before {
+  content: "";
 
+  position: absolute;
+
+  width: 90px;
+  height: 90px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    currentColor 0%,
+    transparent 70%
+  );
+
+  opacity: 0.08;
+
+  filter: blur(8px);
+
+  z-index: -1;
+}
 
 /* =========================================================
    LOGO POSITIONS
    ========================================================= */
-
 .aws-logo {
   top: 22%;
   left: 7%;
 
-  color: rgba(255, 153, 0, 0.32);
+  color: rgba(255, 153, 0, 0.48);
 
   animation-delay: -1s;
 }
@@ -120,7 +151,7 @@ body {
   top: 28%;
   right: 7%;
 
-  color: rgba(36, 150, 237, 0.24);
+  color: rgba(36, 150, 237, 0.42);
 
   animation-delay: -3s;
 }
@@ -129,7 +160,8 @@ body {
   top: 72%;
   left: 10%;
 
-  color: rgba(50, 108, 229, 0.22);
+  color: rgba(50, 108, 229, 0.40);
+
   animation-delay: -5s;
 }
 
@@ -137,7 +169,7 @@ body {
   bottom: 15%;
   right: 7%;
 
-   color: rgba(123, 97, 255, 0.24);
+  color: rgba(123, 97, 255, 0.45);
 
   animation-delay: -2s;
 }
@@ -146,16 +178,16 @@ body {
   bottom: 12%;
   left: 34%;
 
-  color: rgba(239, 68, 68, 0.24);
+  color: rgba(239, 68, 68, 0.38);
 
   animation-delay: -4s;
 }
 
 .git {
-  top: 70%;
+  top: 73%;
   right: 30%;
 
-  color: rgba(245, 80, 49, 0.25);
+  color: rgba(245, 80, 49, 0.42);
 
   animation-delay: -6s;
 }
@@ -164,7 +196,7 @@ body {
   top: 58%;
   left: 4%;
 
-  color: rgba(255, 220, 80, 0.23);
+  color: rgba(255, 220, 80, 0.42);
 
   animation-delay: -2s;
 }
@@ -173,7 +205,7 @@ body {
   top: 48%;
   right: 8%;
 
-  color: rgba(255, 255, 255, 0.20);
+  color: rgba(255, 255, 255, 0.34);
 
   animation-delay: -4s;
 }
