@@ -1,6 +1,8 @@
+#import Background3D from "@/components/background/Background3D";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
 import Providers from "@/components/ThemeProvider";
 
 const geistSans = Geist({
@@ -15,8 +17,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Atharv Dange | AWS DevOps Engineer",
-  description:
-    "AWS DevOps Engineer portfolio showcasing cloud infrastructure, automation, CI/CD, Docker, Kubernetes and Terraform projects.",
+  description: "AWS DevOps Portfolio",
 };
 
 export default function RootLayout({
@@ -30,13 +31,16 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-screen bg-slate-950 text-white">
+      <body className="min-h-full flex flex-col">
         <Providers>
-          <div className="portfolio-bg min-h-screen">
-            {children}
-          </div>
+          {children}
+          <Background3D />
         </Providers>
       </body>
     </html>
   );
 }
+
+#
+
+layout file
