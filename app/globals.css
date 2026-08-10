@@ -1,244 +1,291 @@
 @import "tailwindcss";
 
+/* =========================================================
+   BASE
+   ========================================================= */
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  background: #02030a;
+  background: #02040b;
   color: white;
   overflow-x: hidden;
 }
 
+
 /* =========================================================
-   UNIQUE CLOUD INFRASTRUCTURE BACKGROUND
+   CLOUD COMMAND CENTER
    ========================================================= */
 
 .portfolio-bg {
   position: relative;
   min-height: 100vh;
+  isolation: isolate;
   overflow: hidden;
 
   background:
     /* Main cyan atmosphere */
     radial-gradient(
-      ellipse 55% 45% at 15% 20%,
-      rgba(0, 210, 255, 0.10),
+      ellipse 55% 45% at 12% 18%,
+      rgba(0, 229, 255, 0.14),
+      transparent 65%
+    ),
+
+    /* Blue atmosphere */
+    radial-gradient(
+      ellipse 50% 45% at 90% 20%,
+      rgba(37, 99, 235, 0.13),
+      transparent 65%
+    ),
+
+    /* Violet cloud */
+    radial-gradient(
+      ellipse 55% 40% at 75% 95%,
+      rgba(99, 72, 255, 0.08),
       transparent 70%
     ),
 
-    /* Blue cloud */
+    /* Center light */
     radial-gradient(
-      ellipse 50% 40% at 85% 25%,
-      rgba(45, 90, 255, 0.10),
+      ellipse 70% 55% at 50% 45%,
+      rgba(15, 50, 90, 0.18),
       transparent 70%
     ),
 
-    /* Violet depth */
-    radial-gradient(
-      ellipse 45% 35% at 70% 90%,
-      rgba(100, 70, 255, 0.07),
-      transparent 70%
-    ),
-
-    /* Center darkness */
-    radial-gradient(
-      ellipse 80% 70% at 50% 45%,
-      #07101f 0%,
-      #02030a 75%
-    );
+    /* Deep base */
+    #02040b;
 }
 
 
 /* =========================================================
-   INFRASTRUCTURE MAP
+   INFRASTRUCTURE NETWORK
    ========================================================= */
 
 .portfolio-bg::before {
   content: "";
   position: fixed;
-  inset: -20%;
+  inset: 0;
 
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
 
-  opacity: 0.7;
+  opacity: 0.9;
 
-  background:
+  background-image:
 
-    /* ───────── Network path 1 ───────── */
-
+    /* Fine technical grid */
     linear-gradient(
-      135deg,
-      transparent 0%,
-      transparent 29%,
-      rgba(0, 220, 255, 0.10) 29.1%,
-      transparent 29.3%,
-      transparent 100%
-    ),
-
-    /* ───────── Network path 2 ───────── */
-
-    linear-gradient(
-      25deg,
-      transparent 0%,
-      transparent 42%,
-      rgba(60, 120, 255, 0.08) 42.1%,
-      transparent 42.3%,
-      transparent 100%
-    ),
-
-    /* ───────── Network path 3 ───────── */
-
-    linear-gradient(
-      155deg,
-      transparent 0%,
-      transparent 63%,
-      rgba(0, 220, 255, 0.07) 63.1%,
-      transparent 63.3%,
-      transparent 100%
-    ),
-
-    /* ───────── Tiny infrastructure grid ───────── */
-
-    linear-gradient(
-      rgba(100, 180, 255, 0.025) 1px,
+      rgba(80, 180, 255, 0.035) 1px,
       transparent 1px
     ),
 
     linear-gradient(
       90deg,
-      rgba(100, 180, 255, 0.025) 1px,
+      rgba(80, 180, 255, 0.035) 1px,
       transparent 1px
+    ),
+
+    /* Infrastructure route — diagonal */
+    linear-gradient(
+      135deg,
+      transparent 0%,
+      transparent 24%,
+      rgba(0, 220, 255, 0.075) 24.1%,
+      transparent 24.25%,
+      transparent 100%
+    ),
+
+    /* Infrastructure route */
+    linear-gradient(
+      35deg,
+      transparent 0%,
+      transparent 46%,
+      rgba(70, 120, 255, 0.065) 46.1%,
+      transparent 46.25%,
+      transparent 100%
+    ),
+
+    /* Infrastructure route */
+    linear-gradient(
+      155deg,
+      transparent 0%,
+      transparent 68%,
+      rgba(0, 220, 255, 0.055) 68.1%,
+      transparent 68.25%,
+      transparent 100%
     );
 
   background-size:
+    55px 55px,
+    55px 55px,
     900px 900px,
     1100px 1100px,
-    1200px 1200px,
-    55px 55px,
-    55px 55px;
+    1200px 1200px;
 
-  animation: infrastructureMove 25s linear infinite;
+  animation: infrastructureDrift 30s linear infinite;
 
   mask-image: linear-gradient(
     to bottom,
-    transparent,
-    black 10%,
-    black 85%,
-    transparent
+    transparent 0%,
+    black 12%,
+    black 82%,
+    transparent 100%
   );
 }
 
 
 /* =========================================================
-   GLOWING INFRASTRUCTURE NODES
+   GLOWING CLOUD NODES
    ========================================================= */
 
 .portfolio-bg::after {
   content: "";
-
   position: fixed;
   inset: 0;
 
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
 
   background:
 
-    /* Node 1 */
+    /* Node 01 */
     radial-gradient(
-      circle at 12% 23%,
-      rgba(0, 230, 255, 0.9) 0,
-      rgba(0, 230, 255, 0.25) 2px,
-      transparent 7px
+      circle at 8% 20%,
+      rgba(34, 211, 238, 0.9) 0,
+      rgba(34, 211, 238, 0.35) 2px,
+      rgba(34, 211, 238, 0.08) 7px,
+      transparent 16px
     ),
 
-    /* Node 2 */
+    /* Node 02 */
     radial-gradient(
-      circle at 30% 68%,
-      rgba(70, 130, 255, 0.8) 0,
-      rgba(70, 130, 255, 0.2) 2px,
-      transparent 7px
+      circle at 23% 62%,
+      rgba(59, 130, 246, 0.85) 0,
+      rgba(59, 130, 246, 0.3) 2px,
+      rgba(59, 130, 246, 0.07) 8px,
+      transparent 17px
     ),
 
-    /* Node 3 */
+    /* Node 03 */
     radial-gradient(
-      circle at 67% 24%,
-      rgba(0, 220, 255, 0.8) 0,
-      rgba(0, 220, 255, 0.18) 2px,
-      transparent 7px
+      circle at 70% 19%,
+      rgba(34, 211, 238, 0.9) 0,
+      rgba(34, 211, 238, 0.3) 2px,
+      rgba(34, 211, 238, 0.07) 8px,
+      transparent 17px
     ),
 
-    /* Node 4 */
+    /* Node 04 */
     radial-gradient(
-      circle at 86% 51%,
-      rgba(100, 110, 255, 0.8) 0,
-      rgba(100, 110, 255, 0.18) 2px,
-      transparent 7px
+      circle at 92% 47%,
+      rgba(99, 102, 241, 0.85) 0,
+      rgba(99, 102, 241, 0.3) 2px,
+      rgba(99, 102, 241, 0.07) 8px,
+      transparent 17px
     ),
 
-    /* Node 5 */
+    /* Node 05 */
     radial-gradient(
-      circle at 73% 82%,
-      rgba(0, 220, 255, 0.7) 0,
-      rgba(0, 220, 255, 0.16) 2px,
-      transparent 7px
+      circle at 78% 79%,
+      rgba(34, 211, 238, 0.75) 0,
+      rgba(34, 211, 238, 0.25) 2px,
+      rgba(34, 211, 238, 0.06) 8px,
+      transparent 17px
     ),
 
-    /* Node 6 */
+    /* Node 06 */
     radial-gradient(
-      circle at 18% 88%,
-      rgba(80, 120, 255, 0.7) 0,
-      rgba(80, 120, 255, 0.15) 2px,
-      transparent 7px
+      circle at 14% 86%,
+      rgba(59, 130, 246, 0.75) 0,
+      rgba(59, 130, 246, 0.25) 2px,
+      rgba(59, 130, 246, 0.06) 8px,
+      transparent 17px
     );
 
-  animation: nodesPulse 5s ease-in-out infinite alternate;
+  animation: nodePulse 5s ease-in-out infinite alternate;
 }
 
 
 /* =========================================================
-   MOVEMENT
+   MOVING AURORA
    ========================================================= */
 
-@keyframes infrastructureMove {
-  from {
-    transform: translate3d(0, 0, 0);
+.portfolio-bg {
+  background-size:
+    auto,
+    auto,
+    auto,
+    auto,
+    auto;
+
+  animation: atmosphereMove 16s ease-in-out infinite alternate;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes atmosphereMove {
+  0% {
+    background-position:
+      0% 0%,
+      100% 0%,
+      100% 100%,
+      50% 50%,
+      0% 0%;
   }
 
-  to {
-    transform: translate3d(70px, 40px, 0);
+  100% {
+    background-position:
+      5% 8%,
+      94% 12%,
+      85% 92%,
+      52% 48%,
+      0% 0%;
   }
 }
 
 
-@keyframes nodesPulse {
+@keyframes infrastructureDrift {
   0% {
-    opacity: 0.45;
-    filter: blur(0px);
+    transform: translate3d(0, 0, 0);
   }
 
   50% {
-    opacity: 0.9;
-    filter: blur(0.3px);
+    transform: translate3d(-25px, 15px, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+
+@keyframes nodePulse {
+  0% {
+    opacity: 0.45;
+    filter: brightness(0.8);
+  }
+
+  50% {
+    opacity: 0.85;
+    filter: brightness(1.25);
   }
 
   100% {
     opacity: 0.55;
-    filter: blur(0px);
+    filter: brightness(0.9);
   }
 }
 
 
 /* =========================================================
-   VERY SUBTLE DATA SCAN
+   CONTENT ABOVE BACKGROUND
    ========================================================= */
-
-.portfolio-bg {
-  isolation: isolate;
-}
 
 .portfolio-bg > * {
   position: relative;
@@ -247,7 +294,7 @@ body {
 
 
 /* =========================================================
-   SELECTION
+   TEXT SELECTION
    ========================================================= */
 
 ::selection {
@@ -257,10 +304,11 @@ body {
 
 
 /* =========================================================
-   REDUCE MOTION
+   ACCESSIBILITY
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
+  .portfolio-bg,
   .portfolio-bg::before,
   .portfolio-bg::after {
     animation: none;
