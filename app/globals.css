@@ -1,21 +1,29 @@
-/* =========================================
-   GLOBAL BASE
-========================================= */
-
 @import "tailwindcss";
 
+
+/* =====================================================
+   ROOT
+===================================================== */
+
 :root {
-  --background: #02050b;
-  --foreground: #e6edf7;
+  --background: #010309;
+  --foreground: #edf7ff;
+
+  --cyan: #00eaff;
+  --blue: #1677ff;
+  --deep-blue: #061a3a;
 }
+
 
 * {
   box-sizing: border-box;
 }
 
+
 html {
   scroll-behavior: smooth;
 }
+
 
 body {
   margin: 0;
@@ -24,163 +32,601 @@ body {
   color: var(--foreground);
 
   background:
-    /* Strong cyan glow - left */
     radial-gradient(
-      circle at 8% 45%,
-      rgba(0, 210, 255, 0.16) 0%,
-      rgba(0, 140, 255, 0.08) 22%,
-      transparent 45%
+      circle at 10% 35%,
+      rgba(0, 234, 255, 0.13),
+      transparent 28%
     ),
 
-    /* Strong blue glow - right */
     radial-gradient(
-      circle at 92% 35%,
-      rgba(0, 100, 255, 0.15) 0%,
-      rgba(50, 50, 180, 0.08) 25%,
-      transparent 48%
+      circle at 90% 30%,
+      rgba(22, 119, 255, 0.14),
+      transparent 30%
     ),
 
-    /* Indigo center */
     radial-gradient(
-      circle at 55% 50%,
-      rgba(40, 70, 180, 0.08) 0%,
-      transparent 40%
+      circle at 50% 50%,
+      rgba(15, 55, 120, 0.08),
+      transparent 38%
     ),
 
-    /* Bottom cyan atmosphere */
     radial-gradient(
-      circle at 50% 100%,
-      rgba(0, 190, 255, 0.08) 0%,
-      transparent 40%
+      circle at 50% 110%,
+      rgba(0, 210, 255, 0.08),
+      transparent 35%
     ),
 
-    /* Main dark background */
     linear-gradient(
       135deg,
-      #01040a 0%,
+      #000207 0%,
       #020812 35%,
-      #01030a 70%,
-      #020611 100%
+      #01040b 65%,
+      #020713 100%
     );
 
   background-attachment: fixed;
+
+  overflow-x: hidden;
 
   font-family:
     Arial,
     Helvetica,
     sans-serif;
-
-  overflow-x: hidden;
 }
 
 
-/* =========================================
-   STRONG DEVOPS ATMOSPHERE
-========================================= */
+/* =====================================================
+   GLOBAL ATMOSPHERE
+===================================================== */
 
 body::before {
   content: "";
+
   position: fixed;
   inset: 0;
 
   pointer-events: none;
 
+  z-index: 0;
+
   background:
-    /* top-left cyan */
     radial-gradient(
-      circle at 15% 15%,
-      rgba(0, 220, 255, 0.08),
+      circle at 20% 20%,
+      rgba(0, 234, 255, 0.055),
+      transparent 25%
+    ),
+
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(40, 80, 255, 0.055),
       transparent 28%
-    ),
-
-    /* center blue */
-    radial-gradient(
-      circle at 50% 45%,
-      rgba(0, 120, 255, 0.05),
-      transparent 32%
-    ),
-
-    /* bottom-right purple */
-    radial-gradient(
-      circle at 85% 85%,
-      rgba(90, 50, 255, 0.07),
-      transparent 30%
     );
 
-  z-index: -1;
+  mix-blend-mode: screen;
 }
 
 
-/* =========================================
-   SUBTLE GRID
-========================================= */
+/* =====================================================
+   PREMIUM GRID
+===================================================== */
 
 body::after {
   content: "";
+
   position: fixed;
   inset: 0;
 
   pointer-events: none;
 
+  z-index: 0;
+
   background-image:
     linear-gradient(
-      rgba(0, 180, 255, 0.025) 1px,
+      rgba(0, 220, 255, 0.035) 1px,
       transparent 1px
     ),
+
     linear-gradient(
       90deg,
-      rgba(0, 180, 255, 0.025) 1px,
+      rgba(0, 220, 255, 0.035) 1px,
       transparent 1px
     );
 
-  background-size: 70px 70px;
+  background-size:
+    70px 70px;
 
-  mask-image: linear-gradient(
-    to bottom,
-    black 0%,
-    transparent 85%
-  );
-
-  z-index: -1;
+  mask-image:
+    linear-gradient(
+      to bottom,
+      black 0%,
+      black 45%,
+      transparent 100%
+    );
 }
 
 
-/* =========================================
-   TEXT SELECTION
-========================================= */
+/* =====================================================
+   DEVOPS BACKGROUND
+===================================================== */
+
+.devops-background {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 1;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  isolation: isolate;
+}
+
+
+/* =====================================================
+   LARGE ATMOSPHERIC ORBS
+===================================================== */
+
+.devops-orb {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+
+.devops-orb-left {
+  width: 600px;
+  height: 600px;
+
+  left: -280px;
+  top: 18%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(0, 234, 255, 0.14),
+      rgba(0, 150, 255, 0.06) 35%,
+      transparent 70%
+    );
+
+  filter: blur(25px);
+}
+
+
+.devops-orb-right {
+  width: 650px;
+  height: 650px;
+
+  right: -300px;
+  top: 12%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(30, 100, 255, 0.15),
+      rgba(50, 60, 200, 0.06) 38%,
+      transparent 72%
+    );
+
+  filter: blur(28px);
+}
+
+
+.devops-orb-bottom {
+  width: 500px;
+  height: 500px;
+
+  left: 38%;
+  bottom: -300px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(0, 220, 255, 0.09),
+      transparent 70%
+    );
+
+  filter: blur(25px);
+}
+
+
+/* =====================================================
+   TECH GRID
+===================================================== */
+
+.devops-grid {
+  position: absolute;
+
+  inset: -20%;
+
+  background-image:
+    linear-gradient(
+      rgba(0, 220, 255, 0.025) 1px,
+      transparent 1px
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(0, 220, 255, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size:
+    55px 55px;
+
+  transform:
+    perspective(900px)
+    rotateX(58deg)
+    scale(1.5);
+
+  transform-origin: center bottom;
+
+  opacity: 0.65;
+
+  mask-image:
+    radial-gradient(
+      ellipse at center,
+      black 0%,
+      transparent 72%
+    );
+}
+
+
+/* =====================================================
+   NETWORK
+===================================================== */
+
+.devops-network {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  opacity: 1;
+
+  overflow: visible;
+}
+
+
+/* =====================================================
+   TECHNOLOGY NODES
+===================================================== */
+
+.devops-node {
+  position: absolute;
+
+  transform:
+    translate(-50%, -50%);
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 7px;
+
+  min-width: 90px;
+
+  will-change:
+    transform,
+    opacity;
+}
+
+
+.devops-node-icon {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+
+  border:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--node-color) 50%,
+      transparent
+    );
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.07),
+      rgba(0, 0, 0, 0.35)
+    );
+
+  box-shadow:
+    0 0 12px
+      color-mix(
+        in srgb,
+        var(--node-color) 45%,
+        transparent
+      ),
+
+    inset 0 0 14px
+      color-mix(
+        in srgb,
+        var(--node-color) 12%,
+        transparent
+      );
+
+  backdrop-filter: blur(4px);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.devops-node-icon::before {
+  content: "";
+
+  position: absolute;
+
+  inset: -5px;
+
+  border-radius: 17px;
+
+  border:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--node-color) 20%,
+      transparent
+    );
+
+  opacity: 0.6;
+}
+
+
+.devops-node-dot {
+  position: absolute;
+
+  width: 6px;
+  height: 6px;
+
+  right: -3px;
+  top: -3px;
+
+  border-radius: 50%;
+
+  background:
+    var(--node-color);
+
+  box-shadow:
+    0 0 6px var(--node-color),
+    0 0 14px var(--node-color);
+}
+
+
+.devops-node-label {
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.22em;
+
+  white-space: nowrap;
+
+  opacity: 0.85;
+
+  text-shadow:
+    0 0 7px currentColor,
+    0 0 16px currentColor;
+}
+
+
+/* =====================================================
+   CENTRAL CORE
+===================================================== */
+
+.devops-core {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform:
+    translate(-50%, -50%);
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(0, 234, 255, 0.2),
+      rgba(0, 120, 255, 0.06) 45%,
+      transparent 72%
+    );
+
+  box-shadow:
+    0 0 20px rgba(0, 234, 255, 0.45),
+    0 0 50px rgba(0, 180, 255, 0.2);
+}
+
+
+.devops-core-inner {
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid
+    rgba(0, 234, 255, 0.65);
+
+  border-radius: 50%;
+
+  color: #00eaff;
+
+  background:
+    rgba(0, 20, 35, 0.75);
+
+  box-shadow:
+    inset 0 0 10px
+    rgba(0, 234, 255, 0.25),
+
+    0 0 12px
+    rgba(0, 234, 255, 0.5);
+}
+
+
+/* =====================================================
+   DATA PACKETS
+===================================================== */
+
+.devops-data-packet {
+  position: absolute;
+
+  width: 6px;
+  height: 6px;
+
+  margin-left: -3px;
+  margin-top: -3px;
+
+  border-radius: 50%;
+
+  background:
+    #ffffff;
+
+  box-shadow:
+    0 0 5px #00eaff,
+    0 0 12px #00eaff,
+    0 0 25px rgba(0, 234, 255, 0.9);
+
+  z-index: 5;
+}
+
+
+/* =====================================================
+   PARTICLES
+===================================================== */
+
+.devops-particle {
+  position: absolute;
+
+  width: 2px;
+  height: 2px;
+
+  border-radius: 50%;
+
+  background:
+    #5eefff;
+
+  box-shadow:
+    0 0 6px #00eaff,
+    0 0 12px rgba(0, 234, 255, 0.75);
+}
+
+
+/* =====================================================
+   SCANNING LINE
+===================================================== */
+
+.devops-scanline {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  top: -100px;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 234, 255, 0.5),
+      rgba(0, 234, 255, 0.15),
+      transparent
+    );
+
+  box-shadow:
+    0 0 15px
+    rgba(0, 234, 255, 0.5);
+}
+
+
+/* =====================================================
+   CONTENT ABOVE BACKGROUND
+===================================================== */
+
+main,
+header,
+section,
+nav {
+  position: relative;
+  z-index: 10;
+}
+
+
+/* =====================================================
+   SELECTION
+===================================================== */
 
 ::selection {
-  background: rgba(0, 200, 255, 0.3);
-  color: #ffffff;
+  background:
+    rgba(0, 234, 255, 0.3);
+
+  color: white;
 }
 
 
-/* =========================================
+/* =====================================================
    SCROLLBAR
-========================================= */
+===================================================== */
 
 ::-webkit-scrollbar {
   width: 8px;
 }
 
+
 ::-webkit-scrollbar-track {
   background: #01040a;
 }
 
+
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(
-    180deg,
-    #00d9ff,
-    #1769ff
-  );
+  background:
+    linear-gradient(
+      180deg,
+      #00eaff,
+      #1677ff
+    );
 
   border-radius: 10px;
 }
 
+
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(
-    180deg,
-    #19e6ff,
-    #4385ff
-  );
+  background:
+    linear-gradient(
+      180deg,
+      #5ef3ff,
+      #4385ff
+    );
 }
