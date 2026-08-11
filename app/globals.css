@@ -1,632 +1,508 @@
 @import "tailwindcss";
 
-
-/* =====================================================
-   ROOT
-===================================================== */
-
-:root {
-  --background: #010309;
-  --foreground: #edf7ff;
-
-  --cyan: #00eaff;
-  --blue: #1677ff;
-  --deep-blue: #061a3a;
-}
-
-
-* {
-  box-sizing: border-box;
-}
-
+/* =========================================================
+   BASE
+   ========================================================= */
 
 html {
   scroll-behavior: smooth;
 }
 
-
 body {
   margin: 0;
   min-height: 100vh;
+  background: #02040b;
+  color: white;
+  overflow-x: hidden;
+}
 
-  color: var(--foreground);
 
-  background:
-    radial-gradient(
-      circle at 10% 35%,
-      rgba(0, 234, 255, 0.13),
-      transparent 28%
-    ),
+/* =========================================================
+   MAIN PORTFOLIO BACKGROUND
+   ========================================================= */
 
-    radial-gradient(
-      circle at 90% 30%,
-      rgba(22, 119, 255, 0.14),
-      transparent 30%
-    ),
-
-    radial-gradient(
-      circle at 50% 50%,
-      rgba(15, 55, 120, 0.08),
-      transparent 38%
-    ),
-
-    radial-gradient(
-      circle at 50% 110%,
-      rgba(0, 210, 255, 0.08),
-      transparent 35%
-    ),
-
-    linear-gradient(
-      135deg,
-      #000207 0%,
-      #020812 35%,
-      #01040b 65%,
-      #020713 100%
-    );
-
-  background-attachment: fixed;
-
+.portfolio-bg {
+  position: relative;
+  min-height: 100vh;
+  isolation: isolate;
   overflow-x: hidden;
 
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-}
-
-
-/* =====================================================
-   GLOBAL ATMOSPHERE
-===================================================== */
-
-body::before {
-  content: "";
-
-  position: fixed;
-  inset: 0;
-
-  pointer-events: none;
-
-  z-index: 0;
-
   background:
     radial-gradient(
-      circle at 20% 20%,
-      rgba(0, 234, 255, 0.055),
-      transparent 25%
+      ellipse 55% 45% at 10% 15%,
+      rgba(0, 220, 255, 0.10),
+      transparent 65%
     ),
-
     radial-gradient(
-      circle at 80% 70%,
-      rgba(40, 80, 255, 0.055),
-      transparent 28%
-    );
-
-  mix-blend-mode: screen;
-}
-
-
-/* =====================================================
-   PREMIUM GRID
-===================================================== */
-
-body::after {
-  content: "";
-
-  position: fixed;
-  inset: 0;
-
-  pointer-events: none;
-
-  z-index: 0;
-
-  background-image:
-    linear-gradient(
-      rgba(0, 220, 255, 0.035) 1px,
-      transparent 1px
+      ellipse 50% 45% at 90% 20%,
+      rgba(37, 99, 235, 0.09),
+      transparent 65%
     ),
-
-    linear-gradient(
-      90deg,
-      rgba(0, 220, 255, 0.035) 1px,
-      transparent 1px
-    );
-
-  background-size:
-    70px 70px;
-
-  mask-image:
-    linear-gradient(
-      to bottom,
-      black 0%,
-      black 45%,
-      transparent 100%
-    );
+    radial-gradient(
+      ellipse 45% 40% at 75% 90%,
+      rgba(99, 70, 255, 0.07),
+      transparent 70%
+    ),
+    #02040b;
 }
 
 
-/* =====================================================
+/* =========================================================
    DEVOPS BACKGROUND
-===================================================== */
+   ========================================================= */
 
 .devops-background {
   position: fixed;
-
   inset: 0;
 
-  z-index: 1;
+  z-index: -1;
 
+  pointer-events: none;
   overflow: hidden;
 
-  pointer-events: none;
-
-  isolation: isolate;
-}
-
-
-/* =====================================================
-   LARGE ATMOSPHERIC ORBS
-===================================================== */
-
-.devops-orb {
-  position: absolute;
-
-  border-radius: 50%;
-
-  pointer-events: none;
-}
-
-
-.devops-orb-left {
-  width: 600px;
-  height: 600px;
-
-  left: -280px;
-  top: 18%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(0, 234, 255, 0.14),
-      rgba(0, 150, 255, 0.06) 35%,
-      transparent 70%
-    );
-
-  filter: blur(25px);
-}
-
-
-.devops-orb-right {
-  width: 650px;
-  height: 650px;
-
-  right: -300px;
-  top: 12%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(30, 100, 255, 0.15),
-      rgba(50, 60, 200, 0.06) 38%,
-      transparent 72%
-    );
-
-  filter: blur(28px);
-}
-
-
-.devops-orb-bottom {
-  width: 500px;
-  height: 500px;
-
-  left: 38%;
-  bottom: -300px;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(0, 220, 255, 0.09),
-      transparent 70%
-    );
-
-  filter: blur(25px);
-}
-
-
-/* =====================================================
-   TECH GRID
-===================================================== */
-
-.devops-grid {
-  position: absolute;
-
-  inset: -20%;
-
-  background-image:
-    linear-gradient(
-      rgba(0, 220, 255, 0.025) 1px,
-      transparent 1px
-    ),
-
-    linear-gradient(
-      90deg,
-      rgba(0, 220, 255, 0.025) 1px,
-      transparent 1px
-    );
-
-  background-size:
-    55px 55px;
-
-  transform:
-    perspective(900px)
-    rotateX(58deg)
-    scale(1.5);
-
-  transform-origin: center bottom;
-
-  opacity: 0.65;
-
-  mask-image:
-    radial-gradient(
-      ellipse at center,
-      black 0%,
-      transparent 72%
-    );
-}
-
-
-/* =====================================================
-   NETWORK
-===================================================== */
-
-.devops-network {
-  position: absolute;
-
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
-
   opacity: 1;
-
-  overflow: visible;
 }
 
 
-/* =====================================================
-   TECHNOLOGY NODES
-===================================================== */
+/* =========================================================
+   TECHNOLOGY LOGOS
+   ========================================================= */
 
-.devops-node {
+.devops-logo {
   position: absolute;
-
-  transform:
-    translate(-50%, -50%);
 
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
-
   gap: 7px;
 
-  min-width: 90px;
+  font-family: var(--font-geist-mono), monospace;
 
-  will-change:
-    transform,
-    opacity;
-}
+  font-size: 10px;
+  font-weight: 700;
 
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 
-.devops-node-icon {
-  position: relative;
+  opacity: 0.72;
 
-  display: flex;
+  /* Crisp glow — NOT blurry */
+  text-shadow:
+    0 0 5px currentColor;
 
-  align-items: center;
-  justify-content: center;
-
-  width: 48px;
-  height: 48px;
-
-  border:
-    1px solid
-    color-mix(
-      in srgb,
-      var(--node-color) 50%,
-      transparent
-    );
-
-  border-radius: 14px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255, 255, 255, 0.07),
-      rgba(0, 0, 0, 0.35)
-    );
-
-  box-shadow:
-    0 0 12px
-      color-mix(
-        in srgb,
-        var(--node-color) 45%,
-        transparent
-      ),
-
-    inset 0 0 14px
-      color-mix(
-        in srgb,
-        var(--node-color) 12%,
-        transparent
-      );
-
-  backdrop-filter: blur(4px);
+  animation: logoFloat 7s ease-in-out infinite;
 
   transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+.devops-logo svg {
+  width: 36px;
+  height: 36px;
+
+  filter:
+    drop-shadow(0 0 3px currentColor);
+
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
 }
 
+.devops-logo:hover {
+  opacity: 1;
 
-.devops-node-icon::before {
-  content: "";
-
-  position: absolute;
-
-  inset: -5px;
-
-  border-radius: 17px;
-
-  border:
-    1px solid
-    color-mix(
-      in srgb,
-      var(--node-color) 20%,
-      transparent
-    );
-
-  opacity: 0.6;
-}
-
-
-.devops-node-dot {
-  position: absolute;
-
-  width: 6px;
-  height: 6px;
-
-  right: -3px;
-  top: -3px;
-
-  border-radius: 50%;
-
-  background:
-    var(--node-color);
-
-  box-shadow:
-    0 0 6px var(--node-color),
-    0 0 14px var(--node-color);
-}
-
-
-.devops-node-label {
-  font-size: 9px;
-
-  font-weight: 800;
-
-  letter-spacing: 0.22em;
-
-  white-space: nowrap;
-
-  opacity: 0.85;
+  transform: translateY(-4px);
 
   text-shadow:
-    0 0 7px currentColor,
-    0 0 16px currentColor;
+    0 0 6px currentColor;
+}
+
+.devops-logo:hover svg {
+  filter: drop-shadow(0 0 5px currentColor);
+
+  transform: scale(1.08);
 }
 
 
-/* =====================================================
-   CENTRAL CORE
-===================================================== */
+/* =========================================================
+   LOGO POSITIONS
+   ========================================================= */
+.aws-logo {
+  top: 22%;
+  left: 7%;
 
-.devops-core {
+  color: rgba(255, 153, 0, 0.48);
+
+  animation-delay: -1s;
+}
+
+.docker {
+  top: 28%;
+  right: 7%;
+
+  color: rgba(36, 150, 237, 0.48);
+
+  animation-delay: -3s;
+}
+
+.kubernetes {
+  top: 72%;
+  left: 40%;
+
+  color: rgba(50, 108, 229, 0.45);
+
+  animation-delay: -5s;
+}
+
+.terraform {
+  bottom: 15%;
+  right: 7%;
+
+  color: rgba(123, 97, 255, 0.48);
+
+  animation-delay: -2s;
+}
+
+.jenkins {
+  bottom: 12%;
+  left: 34%;
+
+  color: rgba(239, 68, 68, 0.42);
+
+  animation-delay: -4s;
+}
+
+.git {
+  top: 73%;
+  right: 30%;
+
+  color: rgba(245, 80, 49, 0.46);
+
+  animation-delay: -6s;
+}
+
+.linux {
+  top: 58%;
+  left: 4%;
+
+  color: rgba(255, 220, 80, 0.44);
+
+  animation-delay: -2s;
+}
+
+.github {
+  top: 48%;
+  right: 8%;
+
+  color: rgba(255, 255, 255, 0.42);
+
+  animation-delay: -4s;
+}
+/* =========================================================
+   INFRASTRUCTURE CONNECTIONS
+   ========================================================= */
+
+.infra-lines {
+  position: absolute;
+  inset: 0;
+
+  opacity: 0.8;
+}
+
+.line {
+  position: absolute;
+
+  height: 1px;
+
+  transform-origin: left center;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(34, 211, 238, 0.20),
+    rgba(59, 130, 246, 0.10),
+    transparent
+  );
+
+  box-shadow:
+    0 0 8px rgba(34, 211, 238, 0.12);
+}
+
+.line-1 {
+  width: 34%;
+  top: 25%;
+  left: 12%;
+
+  transform: rotate(14deg);
+}
+
+.line-2 {
+  width: 38%;
+  top: 32%;
+  right: 8%;
+
+  transform: rotate(-18deg);
+}
+
+.line-3 {
+  width: 28%;
+  top: 64%;
+  left: 10%;
+
+  transform: rotate(-12deg);
+}
+
+.line-4 {
+  width: 35%;
+  top: 70%;
+  right: 10%;
+
+  transform: rotate(16deg);
+}
+
+.line-5 {
+  width: 45%;
+  top: 48%;
+  left: 28%;
+
+  transform: rotate(2deg);
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(34, 211, 238, 0.10),
+    transparent
+  );
+}
+
+
+/* =========================================================
+   CENTER INFRASTRUCTURE CORE
+   ========================================================= */
+
+.infra-core {
   position: absolute;
 
   left: 50%;
   top: 50%;
 
-  transform:
-    translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
 
-  width: 42px;
-  height: 42px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(0, 234, 255, 0.2),
-      rgba(0, 120, 255, 0.06) 45%,
-      transparent 72%
-    );
-
-  box-shadow:
-    0 0 20px rgba(0, 234, 255, 0.45),
-    0 0 50px rgba(0, 180, 255, 0.2);
+  transform: translate(-50%, -50%);
 }
 
-
-.devops-core-inner {
-  width: 28px;
-  height: 28px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  border:
-    1px solid
-    rgba(0, 234, 255, 0.65);
-
-  border-radius: 50%;
-
-  color: #00eaff;
-
-  background:
-    rgba(0, 20, 35, 0.75);
-
-  box-shadow:
-    inset 0 0 10px
-    rgba(0, 234, 255, 0.25),
-
-    0 0 12px
-    rgba(0, 234, 255, 0.5);
-}
-
-
-/* =====================================================
-   DATA PACKETS
-===================================================== */
-
-.devops-data-packet {
+.infra-core span {
   position: absolute;
 
-  width: 6px;
-  height: 6px;
+  inset: -20px;
 
-  margin-left: -3px;
-  margin-top: -3px;
+  border: 1px solid rgba(34, 211, 238, 0.08);
 
   border-radius: 50%;
 
-  background:
-    #ffffff;
-
-  box-shadow:
-    0 0 5px #00eaff,
-    0 0 12px #00eaff,
-    0 0 25px rgba(0, 234, 255, 0.9);
-
-  z-index: 5;
+  animation: corePulse 4s ease-out infinite;
 }
 
+.infra-core span:nth-child(2) {
+  inset: -50px;
 
-/* =====================================================
-   PARTICLES
-===================================================== */
+  animation-delay: 1.3s;
+}
 
-.devops-particle {
+.infra-core span:nth-child(3) {
+  inset: -90px;
+
+  animation-delay: 2.6s;
+}
+
+.infra-core::after {
+  content: "";
+
   position: absolute;
-
-  width: 2px;
-  height: 2px;
+  inset: 2px;
 
   border-radius: 50%;
 
-  background:
-    #5eefff;
+  background: rgba(34, 211, 238, 0.9);
 
   box-shadow:
-    0 0 6px #00eaff,
-    0 0 12px rgba(0, 234, 255, 0.75);
+    0 0 12px rgba(34, 211, 238, 0.8),
+    0 0 35px rgba(34, 211, 238, 0.35),
+    0 0 80px rgba(37, 99, 235, 0.15);
 }
 
 
-/* =====================================================
-   SCANNING LINE
-===================================================== */
+/* =========================================================
+   MOVING DATA PARTICLES
+   ========================================================= */
 
-.devops-scanline {
+.data-particles i {
   position: absolute;
 
-  left: 0;
-  right: 0;
+  width: 3px;
+  height: 3px;
 
-  top: -100px;
+  border-radius: 50%;
 
-  height: 1px;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(0, 234, 255, 0.5),
-      rgba(0, 234, 255, 0.15),
-      transparent
-    );
+  background: rgba(34, 211, 238, 0.8);
 
   box-shadow:
-    0 0 15px
-    rgba(0, 234, 255, 0.5);
+    0 0 8px rgba(34, 211, 238, 0.8);
+
+  animation: dataMove 8s linear infinite;
+}
+
+.data-particles i:nth-child(1) {
+  top: 25%;
+  left: 12%;
+
+  animation-delay: 0s;
+}
+
+.data-particles i:nth-child(2) {
+  top: 32%;
+  left: 65%;
+
+  animation-delay: 1.5s;
+}
+
+.data-particles i:nth-child(3) {
+  top: 64%;
+  left: 15%;
+
+  animation-delay: 3s;
+}
+
+.data-particles i:nth-child(4) {
+  top: 70%;
+  left: 72%;
+
+  animation-delay: 4.5s;
+}
+
+.data-particles i:nth-child(5) {
+  top: 48%;
+  left: 40%;
+
+  animation-delay: 6s;
+}
+
+.data-particles i:nth-child(6) {
+  top: 20%;
+  left: 80%;
+
+  animation-delay: 2s;
 }
 
 
-/* =====================================================
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes logoFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes corePulse {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.6;
+  }
+
+  70% {
+    transform: scale(1.1);
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes dataMove {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  50% {
+    transform: translate(80px, -20px);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translate(160px, -40px);
+    opacity: 0;
+  }
+}
+
+
+/* =========================================================
    CONTENT ABOVE BACKGROUND
-===================================================== */
+   ========================================================= */
 
-main,
-header,
-section,
-nav {
+.portfolio-bg > :not(.devops-background) {
   position: relative;
-  z-index: 10;
+  z-index: 1;
 }
 
 
-/* =====================================================
+/* =========================================================
    SELECTION
-===================================================== */
+   ========================================================= */
 
 ::selection {
-  background:
-    rgba(0, 234, 255, 0.3);
-
+  background: rgba(0, 220, 255, 0.25);
   color: white;
 }
 
 
-/* =====================================================
-   SCROLLBAR
-===================================================== */
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
-::-webkit-scrollbar {
-  width: 8px;
+@media (max-width: 768px) {
+  .devops-logo {
+    transform: scale(0.75);
+    opacity: 0.55;
+  }
+
+  .jenkins,
+  .git,
+  .linux {
+    display: none;
+  }
+
+  .infra-lines {
+    opacity: 0.5;
+  }
+
+  .infra-core {
+    opacity: 0.5;
+  }
 }
 
 
-::-webkit-scrollbar-track {
-  background: #01040a;
-}
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
 
-
-::-webkit-scrollbar-thumb {
-  background:
-    linear-gradient(
-      180deg,
-      #00eaff,
-      #1677ff
-    );
-
-  border-radius: 10px;
-}
-
-
-::-webkit-scrollbar-thumb:hover {
-  background:
-    linear-gradient(
-      180deg,
-      #5ef3ff,
-      #4385ff
-    );
+@media (prefers-reduced-motion: reduce) {
+  .devops-logo,
+  .infra-core span,
+  .data-particles i {
+    animation: none;
+  }
 }
