@@ -1,255 +1,278 @@
-
 @import "tailwindcss";
 
 /* =========================================================
    BASE
-   ========================================================= */
+========================================================= */
 
 html {
   scroll-behavior: smooth;
-  background: #010611;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-
-  background: #010611;
-  color: white;
-
   overflow-x: hidden;
+
+  background: #020713;
+  color: #ffffff;
+
+  font-family: var(--font-geist-sans), sans-serif;
 }
 
-
 /* =========================================================
-   ENTIRE PORTFOLIO
-   ========================================================= */
+   PORTFOLIO MASTER BACKGROUND
+========================================================= */
 
 .portfolio-bg {
   position: relative;
-
   min-height: 100vh;
-  width: 100%;
-
   isolation: isolate;
-  overflow-x: clip;
-
-  background: #010611;
-}
-
-
-/* =========================================================
-   ONE BACKGROUND FOR THE ENTIRE WEBSITE
-   ========================================================= */
-
-.devops-background {
-  position: fixed;
-
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
-
-  z-index: -10;
-
-  pointer-events: none;
-
-  overflow: hidden;
-
-  background-color: #010611;
-
-  background-image:
-    linear-gradient(
-      180deg,
-      rgba(1, 6, 17, 0.15),
-      rgba(1, 6, 17, 0.15)
-    ),
-    url("/devops-background.png");
-
-  background-repeat: no-repeat;
-
-  background-position: center center;
-
-  background-size: cover;
-
-  opacity: 0.78;
-
-  filter:
-    saturate(1.15)
-    contrast(1.08);
-}
-
-
-/* =========================================================
-   CYAN / BLUE ATMOSPHERE
-   ========================================================= */
-
-.devops-background::before {
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
 
   background:
     radial-gradient(
       circle at 50% 45%,
-      rgba(0, 174, 255, 0.10),
-      transparent 40%
+      rgba(0, 180, 255, 0.08),
+      transparent 42%
     ),
-
-    radial-gradient(
-      circle at 15% 25%,
-      rgba(0, 110, 255, 0.08),
-      transparent 30%
-    ),
-
-    radial-gradient(
-      circle at 85% 70%,
-      rgba(30, 70, 255, 0.08),
-      transparent 30%
+    linear-gradient(
+      180deg,
+      #020713 0%,
+      #030918 45%,
+      #020713 100%
     );
+}
+
+/* =========================================================
+   FIXED DEVOPS IMAGE
+========================================================= */
+
+.portfolio-bg::before {
+  content: "";
+
+  position: fixed;
+  inset: 0;
+
+  z-index: -3;
+
+  background-image:
+    url("/devops-background.png");
+
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  opacity: 0.38;
 
   pointer-events: none;
 }
 
-
 /* =========================================================
-   DARK EDGE VIGNETTE
-   ========================================================= */
+   DARK READABILITY OVERLAY
+========================================================= */
 
-.devops-background::after {
+.portfolio-bg::after {
   content: "";
 
-  position: absolute;
-
+  position: fixed;
   inset: 0;
+
+  z-index: -2;
+
+  pointer-events: none;
 
   background:
     linear-gradient(
       90deg,
-      rgba(1, 5, 15, 0.55),
-      transparent 30%,
-      transparent 70%,
-      rgba(1, 5, 15, 0.55)
+      rgba(2, 7, 19, 0.92) 0%,
+      rgba(2, 7, 19, 0.68) 28%,
+      rgba(2, 7, 19, 0.42) 52%,
+      rgba(2, 7, 19, 0.68) 78%,
+      rgba(2, 7, 19, 0.92) 100%
     ),
-
     linear-gradient(
       180deg,
-      rgba(1, 5, 15, 0.30),
-      transparent 25%,
-      transparent 75%,
-      rgba(1, 5, 15, 0.50)
+      rgba(2, 7, 19, 0.72) 0%,
+      rgba(2, 7, 19, 0.18) 35%,
+      rgba(2, 7, 19, 0.28) 65%,
+      rgba(2, 7, 19, 0.88) 100%
     );
-
-  pointer-events: none;
 }
 
-
 /* =========================================================
-   ALL WEBSITE SECTIONS
-   ========================================================= */
+   SUBTLE CYAN ATMOSPHERE
+========================================================= */
 
-.portfolio-bg section {
-  position: relative;
-
-  background: transparent !important;
-
-  border: none;
-
-  box-shadow: none;
+.portfolio-bg {
+  background-image:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(0, 217, 255, 0.10),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 15% 30%,
+      rgba(0, 110, 255, 0.08),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 65%,
+      rgba(0, 80, 255, 0.07),
+      transparent 32%
+    );
 }
 
-
 /* =========================================================
-   COMMON CONTAINERS
-   ========================================================= */
+   ALL SECTIONS TRANSPARENT
+========================================================= */
 
+.portfolio-bg section,
 .portfolio-bg main,
-.portfolio-bg article,
-.portfolio-bg header,
-.portfolio-bg footer {
-  background: transparent;
+.portfolio-bg article {
+  background: transparent !important;
 }
 
-
 /* =========================================================
-   REMOVE OLD FULL SECTION BACKGROUNDS
-   ========================================================= */
+   CONTENT ABOVE BACKGROUND
+========================================================= */
 
-section[class*="bg-"],
-section[class*="background"],
-.section-bg {
-  background-color: transparent;
-}
-
-
-/* =========================================================
-   CONTENT ALWAYS ABOVE BACKGROUND
-   ========================================================= */
-
-.portfolio-bg > *:not(.devops-background) {
+.portfolio-bg > * {
   position: relative;
-
   z-index: 1;
 }
 
-
 /* =========================================================
-   OPTIONAL GLASS CARDS
-   ========================================================= */
+   NAVBAR
+========================================================= */
 
-.glass-card {
-  background: rgba(2, 12, 30, 0.28);
+.navbar {
+  background: rgba(3, 10, 28, 0.72);
 
-  border: 1px solid rgba(80, 190, 255, 0.12);
+  border: 1px solid rgba(80, 180, 255, 0.14);
 
-  backdrop-filter: blur(8px);
-
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 
   box-shadow:
-    0 0 30px rgba(0, 120, 255, 0.05),
-    inset 0 0 30px rgba(0, 170, 255, 0.02);
+    0 10px 40px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
+/* =========================================================
+   GLASS CARDS
+========================================================= */
+
+.glass-card {
+  background: rgba(4, 12, 30, 0.52);
+
+  border: 1px solid rgba(70, 180, 255, 0.12);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(0, 210, 255, 0.28);
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(0, 190, 255, 0.06);
+}
+
+/* =========================================================
+   CYAN ACCENT
+========================================================= */
+
+.cyan-text {
+  color: #22d3ee;
+
+  text-shadow:
+    0 0 18px rgba(34, 211, 238, 0.18);
+}
+
+/* =========================================================
+   SECTION DIVIDERS
+========================================================= */
+
+.section-divider {
+  height: 1px;
+
+  width: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(34, 211, 238, 0.25),
+    transparent
+  );
+}
 
 /* =========================================================
    SELECTION
-   ========================================================= */
+========================================================= */
 
 ::selection {
-  background: rgba(0, 210, 255, 0.30);
-
+  background: rgba(0, 210, 255, 0.28);
   color: white;
 }
 
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020713;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(34, 211, 238, 0.28);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 211, 238, 0.5);
+}
 
 /* =========================================================
    MOBILE
-   ========================================================= */
+========================================================= */
 
 @media (max-width: 768px) {
-
-  .devops-background {
+  .portfolio-bg::before {
     background-size: auto 100%;
-
-    background-position: center center;
-
-    opacity: 0.60;
+    background-position: center;
+    opacity: 0.25;
   }
 
+  .portfolio-bg::after {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(2, 7, 19, 0.88),
+        rgba(2, 7, 19, 0.55),
+        rgba(2, 7, 19, 0.92)
+      );
+  }
 }
 
-
 /* =========================================================
-   REDUCED MOTION
-   ========================================================= */
+   REDUCE MOTION
+========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-
   html {
     scroll-behavior: auto;
   }
-
 }
