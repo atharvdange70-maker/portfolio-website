@@ -5,17 +5,15 @@
 ========================================================= */
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
   overflow-x: hidden;
-
   background: #020713;
   color: #ffffff;
-
   font-family: var(--font-geist-sans), sans-serif;
 }
 
@@ -48,21 +46,16 @@ body {
 
 .portfolio-bg::before {
   content: "";
-
   position: fixed;
   inset: 0;
-
   z-index: -3;
 
-  background-image:
-    url("/devops-background.png");
-
+  background-image: url("/devops-background.png");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
 
   opacity: 0.38;
-
   pointer-events: none;
 }
 
@@ -72,12 +65,9 @@ body {
 
 .portfolio-bg::after {
   content: "";
-
   position: fixed;
   inset: 0;
-
   z-index: -2;
-
   pointer-events: none;
 
   background:
@@ -135,33 +125,21 @@ body {
    CONTENT ABOVE BACKGROUND
 ========================================================= */
 
-.portfolio-bg > *:not(.navbar) {
+.portfolio-bg > * {
   position: relative;
   z-index: 1;
 }
+
 /* =========================================================
-   FIXED NAVBAR — ALWAYS STAYS ON SCREEN
+   FIXED NAVBAR
 ========================================================= */
 
-.navbar {
-  position: fixed !important;
-  top: 18px;
-  left: 50%;
-  transform: translateX(-50%) !important;
+/*
+   Your Navbar component already uses:
+   fixed top-5 left-0 right-0 z-[99999]
 
-  width: min(1400px, calc(100% - 40px));
-
-  z-index: 99999 !important;
-
-  /* Prevent navbar from moving with page content */
-  margin: 0 !important;
-
-  /* Keep navbar visually above everything */
-  isolation: isolate;
-
-  /* Prevent accidental pointer issues */
-  pointer-events: auto;
-}
+   Therefore we don't need a separate .navbar rule here.
+*/
 
 /* =========================================================
    GLASS CARDS
@@ -169,7 +147,6 @@ body {
 
 .glass-card {
   background: rgba(4, 12, 30, 0.52);
-
   border: 1px solid rgba(70, 180, 255, 0.12);
 
   backdrop-filter: blur(14px);
@@ -210,7 +187,6 @@ body {
 
 .section-divider {
   height: 1px;
-
   width: 100%;
 
   background: linear-gradient(
@@ -282,3 +258,4 @@ body {
     scroll-behavior: auto;
   }
 }
+
