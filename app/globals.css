@@ -1,8 +1,17 @@
+/* =========================================
+   GLOBAL BASE
+========================================= */
+
 @import "tailwindcss";
 
-/* =========================================================
-   BASE
-   ========================================================= */
+:root {
+  --background: #02050b;
+  --foreground: #e6edf7;
+}
+
+* {
+  box-sizing: border-box;
+}
 
 html {
   scroll-behavior: smooth;
@@ -11,498 +20,167 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background: #02040b;
-  color: white;
-  overflow-x: hidden;
-}
 
-
-/* =========================================================
-   MAIN PORTFOLIO BACKGROUND
-   ========================================================= */
-
-.portfolio-bg {
-  position: relative;
-  min-height: 100vh;
-  isolation: isolate;
-  overflow-x: hidden;
+  color: var(--foreground);
 
   background:
+    /* Strong cyan glow - left */
     radial-gradient(
-      ellipse 55% 45% at 10% 15%,
-      rgba(0, 220, 255, 0.10),
-      transparent 65%
+      circle at 8% 45%,
+      rgba(0, 210, 255, 0.16) 0%,
+      rgba(0, 140, 255, 0.08) 22%,
+      transparent 45%
     ),
+
+    /* Strong blue glow - right */
     radial-gradient(
-      ellipse 50% 45% at 90% 20%,
-      rgba(37, 99, 235, 0.09),
-      transparent 65%
+      circle at 92% 35%,
+      rgba(0, 100, 255, 0.15) 0%,
+      rgba(50, 50, 180, 0.08) 25%,
+      transparent 48%
     ),
+
+    /* Indigo center */
     radial-gradient(
-      ellipse 45% 40% at 75% 90%,
-      rgba(99, 70, 255, 0.07),
-      transparent 70%
+      circle at 55% 50%,
+      rgba(40, 70, 180, 0.08) 0%,
+      transparent 40%
     ),
-    #02040b;
+
+    /* Bottom cyan atmosphere */
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(0, 190, 255, 0.08) 0%,
+      transparent 40%
+    ),
+
+    /* Main dark background */
+    linear-gradient(
+      135deg,
+      #01040a 0%,
+      #020812 35%,
+      #01030a 70%,
+      #020611 100%
+    );
+
+  background-attachment: fixed;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  overflow-x: hidden;
 }
 
 
-/* =========================================================
-   DEVOPS BACKGROUND
-   ========================================================= */
+/* =========================================
+   STRONG DEVOPS ATMOSPHERE
+========================================= */
 
-.devops-background {
+body::before {
+  content: "";
   position: fixed;
   inset: 0;
 
-  z-index: -1;
-
   pointer-events: none;
-  overflow: hidden;
 
-  opacity: 1;
+  background:
+    /* top-left cyan */
+    radial-gradient(
+      circle at 15% 15%,
+      rgba(0, 220, 255, 0.08),
+      transparent 28%
+    ),
+
+    /* center blue */
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(0, 120, 255, 0.05),
+      transparent 32%
+    ),
+
+    /* bottom-right purple */
+    radial-gradient(
+      circle at 85% 85%,
+      rgba(90, 50, 255, 0.07),
+      transparent 30%
+    );
+
+  z-index: -1;
 }
 
 
-/* =========================================================
-   TECHNOLOGY LOGOS
-   ========================================================= */
+/* =========================================
+   SUBTLE GRID
+========================================= */
 
-.devops-logo {
-  position: absolute;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 7px;
-
-  font-family: var(--font-geist-mono), monospace;
-
-  font-size: 10px;
-  font-weight: 700;
-
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-
-  opacity: 0.72;
-
-  /* Crisp glow — NOT blurry */
-  text-shadow:
-    0 0 5px currentColor;
-
-  animation: logoFloat 7s ease-in-out infinite;
-
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
-}
-.devops-logo svg {
-  width: 36px;
-  height: 36px;
-
-  filter:
-    drop-shadow(0 0 3px currentColor);
-
-  transition:
-    transform 0.3s ease,
-    filter 0.3s ease;
-}
-
-.devops-logo:hover {
-  opacity: 1;
-
-  transform: translateY(-4px);
-
-  text-shadow:
-    0 0 6px currentColor;
-}
-
-.devops-logo:hover svg {
-  filter: drop-shadow(0 0 5px currentColor);
-
-  transform: scale(1.08);
-}
-
-
-/* =========================================================
-   LOGO POSITIONS
-   ========================================================= */
-.aws-logo {
-  top: 22%;
-  left: 7%;
-
-  color: rgba(255, 153, 0, 0.48);
-
-  animation-delay: -1s;
-}
-
-.docker {
-  top: 28%;
-  right: 7%;
-
-  color: rgba(36, 150, 237, 0.48);
-
-  animation-delay: -3s;
-}
-
-.kubernetes {
-  top: 72%;
-  left: 10%;
-
-  color: rgba(50, 108, 229, 0.45);
-
-  animation-delay: -5s;
-}
-
-.terraform {
-  bottom: 15%;
-  right: 7%;
-
-  color: rgba(123, 97, 255, 0.48);
-
-  animation-delay: -2s;
-}
-
-.jenkins {
-  bottom: 12%;
-  left: 34%;
-
-  color: rgba(239, 68, 68, 0.42);
-
-  animation-delay: -4s;
-}
-
-.git {
-  top: 73%;
-  right: 30%;
-
-  color: rgba(245, 80, 49, 0.46);
-
-  animation-delay: -6s;
-}
-
-.linux {
-  top: 58%;
-  left: 4%;
-
-  color: rgba(255, 220, 80, 0.44);
-
-  animation-delay: -2s;
-}
-
-.github {
-  top: 48%;
-  right: 8%;
-
-  color: rgba(255, 255, 255, 0.42);
-
-  animation-delay: -4s;
-}
-/* =========================================================
-   INFRASTRUCTURE CONNECTIONS
-   ========================================================= */
-
-.infra-lines {
-  position: absolute;
+body::after {
+  content: "";
+  position: fixed;
   inset: 0;
 
-  opacity: 0.8;
-}
+  pointer-events: none;
 
-.line {
-  position: absolute;
+  background-image:
+    linear-gradient(
+      rgba(0, 180, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0, 180, 255, 0.025) 1px,
+      transparent 1px
+    );
 
-  height: 1px;
+  background-size: 70px 70px;
 
-  transform-origin: left center;
-
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(34, 211, 238, 0.20),
-    rgba(59, 130, 246, 0.10),
-    transparent
+  mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    transparent 85%
   );
 
-  box-shadow:
-    0 0 8px rgba(34, 211, 238, 0.12);
-}
-
-.line-1 {
-  width: 34%;
-  top: 25%;
-  left: 12%;
-
-  transform: rotate(14deg);
-}
-
-.line-2 {
-  width: 38%;
-  top: 32%;
-  right: 8%;
-
-  transform: rotate(-18deg);
-}
-
-.line-3 {
-  width: 28%;
-  top: 64%;
-  left: 10%;
-
-  transform: rotate(-12deg);
-}
-
-.line-4 {
-  width: 35%;
-  top: 70%;
-  right: 10%;
-
-  transform: rotate(16deg);
-}
-
-.line-5 {
-  width: 45%;
-  top: 48%;
-  left: 28%;
-
-  transform: rotate(2deg);
-
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(34, 211, 238, 0.10),
-    transparent
-  );
+  z-index: -1;
 }
 
 
-/* =========================================================
-   CENTER INFRASTRUCTURE CORE
-   ========================================================= */
-
-.infra-core {
-  position: absolute;
-
-  left: 50%;
-  top: 50%;
-
-  width: 8px;
-  height: 8px;
-
-  transform: translate(-50%, -50%);
-}
-
-.infra-core span {
-  position: absolute;
-
-  inset: -20px;
-
-  border: 1px solid rgba(34, 211, 238, 0.08);
-
-  border-radius: 50%;
-
-  animation: corePulse 4s ease-out infinite;
-}
-
-.infra-core span:nth-child(2) {
-  inset: -50px;
-
-  animation-delay: 1.3s;
-}
-
-.infra-core span:nth-child(3) {
-  inset: -90px;
-
-  animation-delay: 2.6s;
-}
-
-.infra-core::after {
-  content: "";
-
-  position: absolute;
-  inset: 2px;
-
-  border-radius: 50%;
-
-  background: rgba(34, 211, 238, 0.9);
-
-  box-shadow:
-    0 0 12px rgba(34, 211, 238, 0.8),
-    0 0 35px rgba(34, 211, 238, 0.35),
-    0 0 80px rgba(37, 99, 235, 0.15);
-}
-
-
-/* =========================================================
-   MOVING DATA PARTICLES
-   ========================================================= */
-
-.data-particles i {
-  position: absolute;
-
-  width: 3px;
-  height: 3px;
-
-  border-radius: 50%;
-
-  background: rgba(34, 211, 238, 0.8);
-
-  box-shadow:
-    0 0 8px rgba(34, 211, 238, 0.8);
-
-  animation: dataMove 8s linear infinite;
-}
-
-.data-particles i:nth-child(1) {
-  top: 25%;
-  left: 12%;
-
-  animation-delay: 0s;
-}
-
-.data-particles i:nth-child(2) {
-  top: 32%;
-  left: 65%;
-
-  animation-delay: 1.5s;
-}
-
-.data-particles i:nth-child(3) {
-  top: 64%;
-  left: 15%;
-
-  animation-delay: 3s;
-}
-
-.data-particles i:nth-child(4) {
-  top: 70%;
-  left: 72%;
-
-  animation-delay: 4.5s;
-}
-
-.data-particles i:nth-child(5) {
-  top: 48%;
-  left: 40%;
-
-  animation-delay: 6s;
-}
-
-.data-particles i:nth-child(6) {
-  top: 20%;
-  left: 80%;
-
-  animation-delay: 2s;
-}
-
-
-/* =========================================================
-   ANIMATIONS
-   ========================================================= */
-
-@keyframes logoFloat {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes corePulse {
-  0% {
-    transform: scale(0.7);
-    opacity: 0.6;
-  }
-
-  70% {
-    transform: scale(1.1);
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes dataMove {
-  0% {
-    transform: translate(0, 0);
-    opacity: 0;
-  }
-
-  10% {
-    opacity: 1;
-  }
-
-  50% {
-    transform: translate(80px, -20px);
-    opacity: 0.8;
-  }
-
-  100% {
-    transform: translate(160px, -40px);
-    opacity: 0;
-  }
-}
-
-
-/* =========================================================
-   CONTENT ABOVE BACKGROUND
-   ========================================================= */
-
-.portfolio-bg > :not(.devops-background) {
-  position: relative;
-  z-index: 1;
-}
-
-
-/* =========================================================
-   SELECTION
-   ========================================================= */
+/* =========================================
+   TEXT SELECTION
+========================================= */
 
 ::selection {
-  background: rgba(0, 220, 255, 0.25);
-  color: white;
+  background: rgba(0, 200, 255, 0.3);
+  color: #ffffff;
 }
 
 
-/* =========================================================
-   MOBILE
-   ========================================================= */
+/* =========================================
+   SCROLLBAR
+========================================= */
 
-@media (max-width: 768px) {
-  .devops-logo {
-    transform: scale(0.75);
-    opacity: 0.55;
-  }
-
-  .jenkins,
-  .git,
-  .linux {
-    display: none;
-  }
-
-  .infra-lines {
-    opacity: 0.5;
-  }
-
-  .infra-core {
-    opacity: 0.5;
-  }
+::-webkit-scrollbar {
+  width: 8px;
 }
 
+::-webkit-scrollbar-track {
+  background: #01040a;
+}
 
-/* =========================================================
-   ACCESSIBILITY
-   ========================================================= */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    #00d9ff,
+    #1769ff
+  );
 
-@media (prefers-reduced-motion: reduce) {
-  .devops-logo,
-  .infra-core span,
-  .data-particles i {
-    animation: none;
-  }
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    #19e6ff,
+    #4385ff
+  );
 }
