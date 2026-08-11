@@ -95,17 +95,14 @@ const accentStyles: Record<string, { border: string; glow: string; iconBg: strin
 
 export default function Certificates() {
   return (
-    <section id="certifications" className="py-20 px-6">
+    <section id="certifications" className="py-12 px-6">
       <div className="max-w-7xl mx-auto">
 
         {/* Heading */}
         <div className="text-center mb-12">
-          <h2 className="text-[21px] font-bold">
-            Professional{" "}
-            <span className="text-cyan-400">
-              Certifications
-            </span>
-          </h2>
+         <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+  Professional <span className="text-cyan-400">Certifications</span>
+</h2>
 
           <p className="mt-4 max-w-2xl mx-auto text-gray-400">
             Certifications validating my skills in Cloud Computing,

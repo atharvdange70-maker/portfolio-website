@@ -139,7 +139,22 @@ body {
   position: relative;
   z-index: 1;
 }
+/* =========================================================
+   FIXED NAVBAR
+========================================================= */
 
+.navbar {
+  position: fixed !important;
+
+  top: 18px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: min(1400px, calc(100% - 40px));
+
+  z-index: 1000 !important;
+}
 
 /* =========================================================
    GLASS CARDS

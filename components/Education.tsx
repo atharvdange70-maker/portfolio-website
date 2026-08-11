@@ -4,12 +4,12 @@ export default function Education() {
   return (
    <section
   id="education"
-  className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent py-24 px-6 text-white"
+  className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent py-12 px-6 text-white"
 >
       <div className="max-w-5xl mx-auto">
 
         {/* Heading */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-8">
           <h2 className="text-4xl md:text-5xl font-bold">
             Education
           </h2>
