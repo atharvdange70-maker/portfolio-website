@@ -8,10 +8,13 @@ import Projects from "@/components/Projects";
 import Certificates from "@/components/Certificates";
 import Education from "@/components/Education";
 import Contact from "@/components/Contact";
+import DevOpsBackground from "@/components/background/DevOpsBackground";
 
 export default function Home() {
   return (
-    <>
+    <main className="portfolio-bg">
+      <DevOpsBackground />
+
       <Navbar />
       <Hero />
       <About />
@@ -22,6 +25,6 @@ export default function Home() {
       <Certificates />
       <Education />
       <Contact />
-    </>
+    </main>
   );
 }
