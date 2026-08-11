@@ -140,20 +140,27 @@ body {
   z-index: 1;
 }
 /* =========================================================
-   FIXED NAVBAR
+   FIXED NAVBAR — ALWAYS STAYS ON SCREEN
 ========================================================= */
 
 .navbar {
   position: fixed !important;
-
   top: 18px;
   left: 50%;
-
-  transform: translateX(-50%);
+  transform: translateX(-50%) !important;
 
   width: min(1400px, calc(100% - 40px));
 
-  z-index: 1000 !important;
+  z-index: 99999 !important;
+
+  /* Prevent navbar from moving with page content */
+  margin: 0 !important;
+
+  /* Keep navbar visually above everything */
+  isolation: isolate;
+
+  /* Prevent accidental pointer issues */
+  pointer-events: auto;
 }
 
 /* =========================================================
