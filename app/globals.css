@@ -64,7 +64,7 @@ body {
       rgba(1, 6, 17, 0.15),
       rgba(1, 6, 17, 0.15)
     ),
-    url("/devops-background.png");
+    url("/components/background/devops-background.png");
 
   background-repeat: no-repeat;
 
