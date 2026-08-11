@@ -13,7 +13,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
 
-  background: #030617;
+  background: #020713;
   color: #ffffff;
 
   font-family: var(--font-geist-sans), sans-serif;
@@ -21,7 +21,6 @@ body {
 
 /* =========================================================
    PORTFOLIO MASTER BACKGROUND
-   DEEP NAVY + CYAN + ELECTRIC BLUE + VIOLET
 ========================================================= */
 
 .portfolio-bg {
@@ -31,30 +30,20 @@ body {
 
   background:
     radial-gradient(
-      circle at 50% 42%,
-      rgba(0, 229, 255, 0.13),
-      transparent 40%
-    ),
-    radial-gradient(
-      circle at 12% 25%,
-      rgba(30, 100, 255, 0.12),
-      transparent 32%
-    ),
-    radial-gradient(
-      circle at 88% 65%,
-      rgba(99, 60, 255, 0.10),
-      transparent 34%
+      circle at 50% 45%,
+      rgba(0, 180, 255, 0.08),
+      transparent 42%
     ),
     linear-gradient(
       180deg,
-      #030617 0%,
-      #06102a 48%,
-      #020617 100%
+      #020713 0%,
+      #030918 45%,
+      #020713 100%
     );
 }
 
 /* =========================================================
-   DEVOPS BACKGROUND IMAGE
+   FIXED DEVOPS IMAGE
 ========================================================= */
 
 .portfolio-bg::before {
@@ -65,25 +54,20 @@ body {
 
   z-index: -3;
 
-  background-image: url("/devops-background.png");
+  background-image:
+    url("/devops-background.png");
 
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
 
-  /* CLEAR + STRONG */
-  opacity: 0.55;
+  opacity: 0.38;
 
   pointer-events: none;
-
-  filter:
-    saturate(1.25)
-    contrast(1.08)
-    brightness(1.05);
 }
 
 /* =========================================================
-   COLOR / READABILITY OVERLAY
+   DARK READABILITY OVERLAY
 ========================================================= */
 
 .portfolio-bg::after {
@@ -97,38 +81,43 @@ body {
   pointer-events: none;
 
   background:
-
-    /* Cyan center atmosphere */
-    radial-gradient(
-      circle at 50% 48%,
-      rgba(0, 210, 255, 0.07),
-      transparent 42%
-    ),
-
-    /* Violet atmosphere */
-    radial-gradient(
-      circle at 85% 35%,
-      rgba(100, 70, 255, 0.07),
-      transparent 35%
-    ),
-
-    /* Left/right readability */
     linear-gradient(
       90deg,
-      rgba(3, 6, 23, 0.76) 0%,
-      rgba(3, 6, 23, 0.42) 28%,
-      rgba(3, 6, 23, 0.22) 50%,
-      rgba(3, 6, 23, 0.42) 72%,
-      rgba(3, 6, 23, 0.76) 100%
+      rgba(2, 7, 19, 0.92) 0%,
+      rgba(2, 7, 19, 0.68) 28%,
+      rgba(2, 7, 19, 0.42) 52%,
+      rgba(2, 7, 19, 0.68) 78%,
+      rgba(2, 7, 19, 0.92) 100%
     ),
-
-    /* Top/bottom readability */
     linear-gradient(
       180deg,
-      rgba(3, 6, 23, 0.62) 0%,
-      rgba(3, 6, 23, 0.08) 30%,
-      rgba(3, 6, 23, 0.10) 65%,
-      rgba(3, 6, 23, 0.72) 100%
+      rgba(2, 7, 19, 0.72) 0%,
+      rgba(2, 7, 19, 0.18) 35%,
+      rgba(2, 7, 19, 0.28) 65%,
+      rgba(2, 7, 19, 0.88) 100%
+    );
+}
+
+/* =========================================================
+   SUBTLE CYAN ATMOSPHERE
+========================================================= */
+
+.portfolio-bg {
+  background-image:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(0, 217, 255, 0.10),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 15% 30%,
+      rgba(0, 110, 255, 0.08),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 65%,
+      rgba(0, 80, 255, 0.07),
+      transparent 32%
     );
 }
 
@@ -146,27 +135,25 @@ body {
    CONTENT ABOVE BACKGROUND
 ========================================================= */
 
-.portfolio-bg > * {
+.portfolio-bg > *:not(.navbar) {
   position: relative;
   z-index: 1;
 }
-
 /* =========================================================
    NAVBAR
 ========================================================= */
 
 .navbar {
-  background: rgba(4, 10, 31, 0.70);
+  background: rgba(3, 10, 28, 0.72);
 
-  border: 1px solid rgba(60, 190, 255, 0.18);
+  border: 1px solid rgba(80, 180, 255, 0.14);
 
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 
   box-shadow:
-    0 10px 40px rgba(0, 0, 0, 0.30),
-    0 0 30px rgba(0, 120, 255, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    0 10px 40px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 /* =========================================================
@@ -174,16 +161,16 @@ body {
 ========================================================= */
 
 .glass-card {
-  background: rgba(5, 12, 34, 0.50);
+  background: rgba(4, 12, 30, 0.52);
 
-  border: 1px solid rgba(70, 180, 255, 0.14);
+  border: 1px solid rgba(70, 180, 255, 0.12);
 
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 
   box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.24),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    0 20px 60px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
 
   transition:
     border-color 0.3s ease,
@@ -192,11 +179,11 @@ body {
 }
 
 .glass-card:hover {
-  border-color: rgba(0, 220, 255, 0.32);
+  border-color: rgba(0, 210, 255, 0.28);
 
   box-shadow:
-    0 25px 70px rgba(0, 0, 0, 0.32),
-    0 0 35px rgba(0, 200, 255, 0.08);
+    0 25px 70px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(0, 190, 255, 0.06);
 }
 
 /* =========================================================
@@ -207,8 +194,7 @@ body {
   color: #22d3ee;
 
   text-shadow:
-    0 0 18px rgba(34, 211, 238, 0.22),
-    0 0 40px rgba(0, 170, 255, 0.08);
+    0 0 18px rgba(34, 211, 238, 0.18);
 }
 
 /* =========================================================
@@ -216,14 +202,14 @@ body {
 ========================================================= */
 
 .section-divider {
-  width: 100%;
   height: 1px;
+
+  width: 100%;
 
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(0, 220, 255, 0.30),
-    rgba(90, 80, 255, 0.18),
+    rgba(34, 211, 238, 0.25),
     transparent
   );
 }
@@ -233,7 +219,7 @@ body {
 ========================================================= */
 
 ::selection {
-  background: rgba(0, 220, 255, 0.30);
+  background: rgba(0, 210, 255, 0.28);
   color: white;
 }
 
@@ -246,25 +232,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #030617;
+  background: #020713;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(
-    180deg,
-    rgba(34, 211, 238, 0.55),
-    rgba(90, 70, 255, 0.55)
-  );
-
+  background: rgba(34, 211, 238, 0.28);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(
-    180deg,
-    rgba(34, 211, 238, 0.80),
-    rgba(110, 80, 255, 0.80)
-  );
+  background: rgba(34, 211, 238, 0.5);
 }
 
 /* =========================================================
@@ -275,27 +252,16 @@ body {
   .portfolio-bg::before {
     background-size: auto 100%;
     background-position: center;
-
-    opacity: 0.40;
-
-    filter:
-      saturate(1.15)
-      contrast(1.05)
-      brightness(1.02);
+    opacity: 0.25;
   }
 
   .portfolio-bg::after {
     background:
-      radial-gradient(
-        circle at 50% 45%,
-        rgba(0, 210, 255, 0.06),
-        transparent 45%
-      ),
       linear-gradient(
         180deg,
-        rgba(3, 6, 23, 0.78),
-        rgba(3, 6, 23, 0.30),
-        rgba(3, 6, 23, 0.84)
+        rgba(2, 7, 19, 0.88),
+        rgba(2, 7, 19, 0.55),
+        rgba(2, 7, 19, 0.92)
       );
   }
 }
