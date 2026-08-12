@@ -135,19 +135,20 @@ export default function About() {
   "
 >
   {/* Gradient Border */}
-  <div className="relative -translate-x-4 rounded-full bg-linear-to-r from-cyan-400 via-sky-500 to-blue-500 p-2">
-    <div className="rounded-full bg-slate-950 p-2">
-      <Image
-        src="/images/atharv.jpgs.jpeg"
-        alt="Atharv Dange"
-        width={584}
-        height={584}
-        quality={100}
-        priority
-        className="rounded-full object-cover w-105 h-105"
-      />
-    </div>
+  {/* Gradient Border */}
+<div className="relative -translate-x-5 rounded-full bg-linear-to-r from-cyan-400 via-sky-500 to-blue-500 p-2">
+  <div className="rounded-full bg-slate-950 p-2">
+    <Image
+      src="/images/atharv.jpgs.jpeg"
+      alt="Atharv Dange"
+      width={584}
+      height={584}
+      quality={100}
+      priority
+      className="rounded-full object-cover w-105 h-105"
+    />
   </div>
+</div>
 </div>
 </motion.div>
 
