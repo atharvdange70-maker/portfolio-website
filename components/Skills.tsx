@@ -129,7 +129,7 @@ export default function Skills() {
     
     <section
       id="skills"
-      className="relative overflow-hidden bg-transparent py-16 px-6"
+      className="relative overflow-hidden bg-transparent py-12 px-6"
     >
       <div className="mx-auto max-w-7xl">
         {/* Heading */}

@@ -144,7 +144,7 @@ export default function About() {
       height={684}
       quality={100}
       priority
-      className="rounded-full object-cover w-105 h-105"
+      className="rounded-full object-cover w-95 h-95"
     />
   </div>
 </div>

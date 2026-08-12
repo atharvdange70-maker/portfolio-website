@@ -26,7 +26,7 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent py-20"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent py-12"
     >
       <div className="max-w-6xl mx-auto px-5">
 
