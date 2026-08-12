@@ -128,7 +128,7 @@ export default function About() {
   className="
     relative
     ml-auto
-    lg:translate-x-10
+    lg:translate-x-8
     rounded-full
     p-2
     shadow-[0_0_25px_#22D3EE,0_0_60px_rgba(34,211,238,.45)]
