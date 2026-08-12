@@ -103,6 +103,7 @@ Available through the Contact section.
 
 export default function Terminal() {
   const [input, setInput] = useState("");
+
   const [history, setHistory] = useState<string[]>([
     "Welcome to Atharv Dange's DevOps Terminal.",
     "Type 'help' to see available commands.",
@@ -144,7 +145,9 @@ Type 'help' to see available commands.`;
     setInput("");
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (
+    e: React.KeyboardEvent<HTMLInputElement>
+  ) => {
     if (e.key === "Enter") {
       executeCommand();
     }
@@ -153,20 +156,30 @@ Type 'help' to see available commands.`;
   return (
     <section
       id="terminal"
-      className="relative py-24 px-6"
+      className="relative px-6 py-24"
     >
       <div className="mx-auto max-w-5xl">
 
         {/* Section Heading */}
-        <div className="text-center mb-10">
+        <div className="mb-10 text-center">
 
-          <span className="inline-block rounded-full border border-cyan-400/30 bg-cyan-400/10 px-5 py-2 text-sm font-semibold tracking-widest text-cyan-400">
+          <span
+            className="
+              inline-block rounded-full
+              border border-amber-400/30
+              bg-amber-400/10
+              px-5 py-2
+              text-sm font-semibold
+              tracking-widest
+              text-amber-300
+            "
+          >
             INTERACTIVE TERMINAL
           </span>
 
           <h2 className="mt-5 text-4xl font-bold text-white md:text-5xl">
             Explore My{" "}
-            <span className="text-cyan-400">
+            <span className="text-amber-300">
               DevOps World
             </span>
           </h2>
@@ -179,19 +192,45 @@ Type 'help' to see available commands.`;
 
         {/* Terminal */}
         <div
-          className="overflow-hidden rounded-2xl border border-cyan-400/20 bg-[#050b14] shadow-[0_0_60px_rgba(0,200,255,0.08)]"
+          className="
+            overflow-hidden rounded-2xl
+            border border-amber-400/20
+            bg-[#0a0a0a]
+            shadow-[0_0_60px_rgba(245,158,11,0.06)]
+          "
           onClick={() => inputRef.current?.focus()}
         >
 
           {/* Terminal Header */}
-          <div className="flex items-center gap-2 border-b border-white/10 bg-[#0b111b] px-5 py-4">
+          <div
+            className="
+              flex items-center gap-2
+              border-b border-white/8
+              bg-[#111111]
+              px-5 py-4
+            "
+          >
 
             <span className="h-3 w-3 rounded-full bg-red-500" />
             <span className="h-3 w-3 rounded-full bg-yellow-500" />
             <span className="h-3 w-3 rounded-full bg-green-500" />
 
-            <div className="ml-4 text-sm text-slate-400">
-              atharv@devops-portfolio:~
+            <div className="ml-4 flex items-center gap-2 font-mono text-sm">
+              <span className="text-slate-500">
+                root
+              </span>
+
+              <span className="text-slate-700">
+                /
+              </span>
+
+              <span className="text-amber-300">
+                atharv@devops
+              </span>
+
+              <span className="text-slate-500">
+                ~/portfolio
+              </span>
             </div>
 
           </div>
@@ -199,7 +238,16 @@ Type 'help' to see available commands.`;
           {/* Terminal Body */}
           <div
             ref={terminalRef}
-            className="h-107.5 overflow-y-auto p-6 font-mono text-sm leading-7 text-slate-300 md:text-base"
+            className="
+              h-107.5
+              overflow-y-auto
+              p-6
+              font-mono
+              text-sm
+              leading-7
+              text-[#d6d3c9]
+              md:text-base
+            "
           >
 
             {history.map((line, index) => (
@@ -214,7 +262,14 @@ Type 'help' to see available commands.`;
             {/* Input */}
             <div className="mt-2 flex items-center">
 
-              <span className="mr-2 whitespace-nowrap text-cyan-400">
+              <span
+                className="
+                  mr-2
+                  whitespace-nowrap
+                  font-semibold
+                  text-amber-300
+                "
+              >
                 atharv@devops:~$
               </span>
 
@@ -225,7 +280,14 @@ Type 'help' to see available commands.`;
                 onKeyDown={handleKeyDown}
                 autoComplete="off"
                 spellCheck={false}
-                className="w-full bg-transparent text-white outline-none caret-cyan-400"
+                className="
+                  w-full
+                  bg-transparent
+                  text-amber-100
+                  outline-none
+                  caret-amber-400
+                  placeholder:text-slate-600
+                "
                 aria-label="Terminal command"
               />
 
@@ -250,11 +312,26 @@ Type 'help' to see available commands.`;
               key={command}
               onClick={() => {
                 setInput(command);
+
                 setTimeout(() => {
                   inputRef.current?.focus();
                 }, 0);
               }}
-              className="rounded-lg border border-cyan-400/20 bg-cyan-400/5 px-4 py-2 font-mono text-sm text-cyan-400 transition hover:border-cyan-400/50 hover:bg-cyan-400/10"
+              className="
+                rounded-lg
+                border border-amber-400/20
+                bg-amber-400/4
+                px-4 py-2
+                font-mono
+                text-sm
+                text-amber-300
+                transition-all
+                duration-200
+                hover:-translate-y-0.5
+                hover:border-amber-400/50
+                hover:bg-amber-400/10
+                hover:shadow-[0_0_20px_rgba(245,158,11,0.08)]
+              "
             >
               {command}
             </button>
