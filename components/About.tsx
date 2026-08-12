@@ -140,11 +140,11 @@ export default function About() {
     <Image
       src="/images/atharv.jpgs.jpeg"
       alt="Atharv Dange"
-      width={384}
-      height={384}
+      width={684}
+      height={684}
       quality={100}
       priority
-      className="rounded-full object-cover w-105 h-105"
+      className="rounded-full object-cover w-95 h-95"
     />
   </div>
 </div>
