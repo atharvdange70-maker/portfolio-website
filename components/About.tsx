@@ -128,7 +128,7 @@ export default function About() {
   className="
     relative
     ml-auto
-    lg:translate-x-16
+    lg:translate-x-10
     rounded-full
     p-2
     shadow-[0_0_25px_#22D3EE,0_0_60px_rgba(34,211,238,.45)]
@@ -144,7 +144,7 @@ export default function About() {
       height={684}
       quality={100}
       priority
-      className="rounded-full object-cover w-95 h-95"
+      className="rounded-full object-cover w-100 h-100"
     />
   </div>
 </div>
