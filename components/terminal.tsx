@@ -511,7 +511,7 @@ api-gateway-7db9c8f9f-2kxq9   24m          184Mi
 api-gateway-7db9c8f9f-n7k2m   18m          161Mi
 worker-65b4b78d9b-n8m2p       31m          228Mi
 grafana-6bbf9f5689-xc9m2      19m          342Mi
-prometheus-7bd9b8-5m          27m          418Mi`,
+prometheus-7bd9b8-5m              27m          418Mi`,
 
   "kubectl get deployments": `NAME           READY   UP-TO-DATE   AVAILABLE
 api-gateway    2/2     2            2
@@ -638,7 +638,7 @@ Aug 13 13:58:23 container runtime ready
 Aug 13 13:58:24 node status: Ready
 Aug 13 14:02:05 health checks passed`,
 
-  "ss": `Netid  State   Local Address
+  ss: `Netid  State   Local Address
 tcp    LISTEN  0.0.0.0:22
 tcp    LISTEN  0.0.0.0:80
 tcp    LISTEN  0.0.0.0:443
@@ -825,7 +825,7 @@ Type 'help' to see available commands.`;
   return (
     <section
       id="terminal"
-      className="relative overflow-hidden px-4 py-24 sm:px-6"
+      className="relative overflow-hidden px-4 py-20 sm:px-6"
     >
       {/* Background */}
       <div className="pointer-events-none absolute inset-0 -z-10">
@@ -841,10 +841,10 @@ Type 'help' to see available commands.`;
         <div className="absolute left-1/2 top-1/2 h-125 w-175 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/2.5 blur-[140px]" />
       </div>
 
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-5xl">
 
         {/* Heading */}
-        <div className="mb-10 text-center">
+        <div className="mb-8 text-center">
 
           <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/4 px-4 py-2 font-mono text-xs tracking-[0.2em] text-emerald-400">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400 shadow-[0_0_8px_currentColor]" />
@@ -890,7 +890,7 @@ Type 'help' to see available commands.`;
             </div>
 
             <div className="absolute left-1/2 hidden -translate-x-1/2 font-mono text-xs text-cyan-300/80 sm:block">
-              atharv@cloudforge: ~/devops-command-center
+              atharv@eks-prod: ~/devops-command-center
             </div>
 
             <div className="ml-auto font-mono text-[10px] tracking-[0.18em] text-emerald-400 sm:text-xs">
@@ -902,7 +902,7 @@ Type 'help' to see available commands.`;
           {/* Terminal Body */}
           <div
             ref={terminalRef}
-            className="relative z-10 h-125 overflow-y-auto px-4 py-5 font-mono text-[12px] leading-[1.45] text-slate-200 sm:px-5 sm:text-[13px] md:h-140 md:text-sm"
+            className="relative z-10 h-112.5 overflow-y-auto px-4 py-4 font-mono text-[12px] leading-[1.45] text-slate-200 sm:px-5 sm:text-[13px] md:h-125 md:text-sm"
           >
 
             {history.map((line, index) => {
