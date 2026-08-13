@@ -694,10 +694,6 @@ export default function Terminal() {
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
  
-  useEffect(() => {
-    inputRef.current?.focus();
-  }, []);
-
  
   useEffect(() => {
     terminalRef.current?.scrollTo({
