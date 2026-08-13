@@ -134,11 +134,7 @@ export default function Experience() {
 
             </div>
 
-
           </div>
-
-
-
           {/* Summary */}
 
           <div className="mt-8 border-l-4 border-cyan-400 pl-5">
