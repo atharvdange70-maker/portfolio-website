@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const PROMPT = "atharv@eks-prod:/home/atharv$";
+const PROMPT = "atharv@cloudforge:/home/atharv$";
 
 const commands: Record<string, string> = {
   help: `Available commands:
@@ -25,6 +25,7 @@ const commands: Record<string, string> = {
 
   Linux:
   ls               List files
+  ls -la            List all files
   pwd              Current directory
   cd               Change directory
   cat              Read file
@@ -36,12 +37,21 @@ const commands: Record<string, string> = {
 
   DevOps:
   docker ps        Running containers
+  docker images    Docker images
   kubectl get pods Kubernetes pods
   kubectl get nodes Kubernetes nodes
   kubectl top pods Kubernetes resource usage
   kubectl get deployments Kubernetes deployments
+  kubectl get svc   Kubernetes services
   terraform        Terraform information
+  terraform plan   Infrastructure plan
   terraform state list Terraform resources
+
+  AWS:
+  aws sts get-caller-identity
+  aws ec2 describe-instances
+  aws s3 ls
+  aws cloudfront list-distributions
 
   Git:
   git status       Git working tree
@@ -52,7 +62,8 @@ const commands: Record<string, string> = {
 
 Tip:
   Use ↑ / ↓ for command history
-  Use TAB for autocomplete`,
+  Use TAB for autocomplete
+  Use CTRL + L to clear`,
 
   whoami: `atharv
 
@@ -123,8 +134,7 @@ Orchestration     Kubernetes
 CI/CD             Jenkins
 Operating System  Linux
 Version Control   Git / GitHub
-Monitoring        CloudWatch
-`,
+Monitoring        CloudWatch`,
 
   projects: `DEVOPS PROJECTS
 ────────────────────────────────
@@ -139,8 +149,7 @@ Monitoring        CloudWatch
     EC2 + ALB + Auto Scaling
 
 04  Static Website Deployment
-    S3 + CloudFront
-`,
+    S3 + CloudFront`,
 
   experience: `PROFESSIONAL EXPERIENCE
 ────────────────────────────────
@@ -156,8 +165,7 @@ Working with:
   • Terraform
   • CI/CD Workflows
   • Cloud Monitoring
-  • DevOps Automation
-`,
+  • DevOps Automation`,
 
   certifications: `CERTIFICATIONS & TRAINING
 ────────────────────────────────
@@ -174,8 +182,7 @@ Working with:
   • Cyber Security Audits
 
   • AWS Cloud Practitioner
-    In Progress
-`,
+    In Progress`,
 
   architecture: `AWS CLOUD ARCHITECTURE
 ────────────────────────────────
@@ -213,8 +220,7 @@ Infrastructure:
   CloudFront
   S3
   EC2
-  RDS
-`,
+  RDS`,
 
   aws: `AWS SERVICES
 ────────────────────────────────
@@ -250,8 +256,7 @@ Monitoring:
   CloudWatch
 
 Containers:
-  ECR
-`,
+  ECR`,
 
   status: `SYSTEM STATUS
 ────────────────────────────────
@@ -269,8 +274,7 @@ Region                    ap-south-1
 Deployment                AUTOMATED
 Monitoring                ENABLED
 
-Overall Status            OPERATIONAL
-`,
+Overall Status            OPERATIONAL`,
 
   uptime: `SYSTEM INFORMATION
 ────────────────────────────────
@@ -285,10 +289,9 @@ IaC            : Terraform
 CI/CD          : Jenkins
 Monitoring     : CloudWatch
 
-System Status  : OPERATIONAL
-`,
+System Status  : OPERATIONAL`,
 
-  neofetch: `       ████████        atharv@devops
+  neofetch: `       ████████        atharv@cloudforge
      ████      ████      ─────────────────────
     ███          ███     Role        AWS DevOps Engineer
     ███          ███     Cloud       AWS
@@ -297,8 +300,7 @@ System Status  : OPERATIONAL
                          Kubernetes  Enabled
                          Terraform   Enabled
                          Jenkins     Enabled
-                         Monitoring  CloudWatch
-`,
+                         Monitoring  CloudWatch`,
 
   resume: `ATHARV DANGE
 AWS DEVOPS ENGINEER
@@ -316,8 +318,7 @@ Core Technologies:
   CI/CD
 
 Visit the Resume section of this
-portfolio to view my latest resume.
-`,
+portfolio to view my latest resume.`,
 
   contact: `CONTACT
 ────────────────────────────────
@@ -335,8 +336,7 @@ Open to:
   • DevOps opportunities
   • Cloud projects
   • Collaboration
-  • Technical discussions
-`,
+  • Technical discussions`,
 
   ls: `skills.md       projects
 experience.log  contact.env
@@ -346,16 +346,16 @@ slo.md`,
 
   "ls -la": `total 48
 
-drwxr-xr-x  8 atharv devops 4096 Aug 13 .
-drwxr-xr-x  3 root   root   4096 Aug 10 ..
--rw-r--r--  1 atharv devops 1284 Aug 13 skills.md
--rw-r--r--  1 atharv devops 2048 Aug 13 projects
--rw-r--r--  1 atharv devops 1842 Aug 13 experience.log
--rw-------  1 atharv devops  512 Aug 13 contact.env
-drwxr-xr-x  4 atharv devops 4096 Aug 13 terraform
-drwxr-xr-x  5 atharv devops 4096 Aug 13 kubernetes
-drwxr-xr-x  3 atharv devops 4096 Aug 13 aws
--rw-r--r--  1 atharv devops  842 Aug 13 slo.md`,
+drwxr-xr-x  8 atharv cloudforge 4096 Aug 13 .
+drwxr-xr-x  3 root   root       4096 Aug 10 ..
+-rw-r--r--  1 atharv cloudforge 1284 Aug 13 skills.md
+-rw-r--r--  1 atharv cloudforge 2048 Aug 13 projects
+-rw-r--r--  1 atharv cloudforge 1842 Aug 13 experience.log
+-rw-------  1 atharv cloudforge  512 Aug 13 contact.env
+drwxr-xr-x  4 atharv cloudforge 4096 Aug 13 terraform
+drwxr-xr-x  5 atharv cloudforge 4096 Aug 13 kubernetes
+drwxr-xr-x  3 atharv cloudforge 4096 Aug 13 aws
+-rw-r--r--  1 atharv cloudforge  842 Aug 13 slo.md`,
 
   pwd: `/home/atharv`,
 
@@ -439,9 +439,9 @@ Orchestration     Kubernetes`,
 Mem:           15.6Gi      8.2Gi      7.4Gi
 Swap:           2.0Gi      0.0Gi      2.0Gi`,
 
-  uname: `Linux atharv-devops 6.8.0-aws x86_64 GNU/Linux`,
+  uname: `Linux atharv-cloudforge 6.8.0-aws x86_64 GNU/Linux`,
 
-  "uname -a": `Linux atharv-devops 6.8.0-aws #1 SMP x86_64 GNU/Linux`,
+  "uname -a": `Linux atharv-cloudforge 6.8.0-aws #1 SMP x86_64 GNU/Linux`,
 
   htop: `CPU  [|||||||||||||||||       ]  68%
 MEM  [||||||||||||||          ]  56%
@@ -478,10 +478,10 @@ Processes:
    Last deployment: successful
    Monitoring: healthy`,
 
-  "docker ps": `CONTAINER ID   IMAGE              STATUS
-a82f31c91a2e   api-gateway:latest Up 18 days
-b72e89c1024a   grafana:latest     Up 42 days
-c61a77f8124e   prometheus:latest  Up 42 days`,
+  "docker ps": `CONTAINER ID   IMAGE                 STATUS
+a82f31c91a2e   api-gateway:latest    Up 18 days
+b72e89c1024a   grafana:latest        Up 42 days
+c61a77f8124e   prometheus:latest     Up 42 days`,
 
   "docker images": `REPOSITORY       TAG       STATUS
 api-gateway      latest    ready
@@ -638,7 +638,7 @@ Aug 13 13:58:23 container runtime ready
 Aug 13 13:58:24 node status: Ready
 Aug 13 14:02:05 health checks passed`,
 
-  "ss": `Netid  State   Local Address
+  ss: `Netid  State   Local Address
 tcp    LISTEN  0.0.0.0:22
 tcp    LISTEN  0.0.0.0:80
 tcp    LISTEN  0.0.0.0:443
@@ -675,11 +675,8 @@ const quickCommands = [
 export default function Terminal() {
   const [input, setInput] = useState("");
 
-  /*
-   * IMPORTANT:
-   * Only the boot messages are shown automatically.
-   * ls/help are NOT executed automatically.
-   */
+  // Boot messages only.
+  // ls/help are NOT executed automatically.
   const [history, setHistory] = useState<string[]>([
     "Ubuntu 24.04.2 LTS portfolio-ops tty1",
     "Cloud-init: loaded aws-prod topology, Terraform state, SLO rules, CI/CD events",
@@ -813,7 +810,10 @@ Type 'help' to see available commands.`;
       return;
     }
 
-    if (event.ctrlKey && event.key.toLowerCase() === "l") {
+    if (
+      event.ctrlKey &&
+      event.key.toLowerCase() === "l"
+    ) {
       event.preventDefault();
 
       setHistory([]);
@@ -827,35 +827,51 @@ Type 'help' to see available commands.`;
       id="terminal"
       className="relative overflow-hidden px-4 py-24 sm:px-6"
     >
-      {/* Background */}
+      {/* =====================================================
+          BACKGROUND
+      ====================================================== */}
+
       <div className="pointer-events-none absolute inset-0 -z-10">
+
+        {/* Subtle violet grid */}
         <div
           className="absolute inset-0 opacity-[0.035]"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(34,211,238,0.7) 1px, transparent 1px), linear-gradient(90deg, rgba(34,211,238,0.7) 1px, transparent 1px)",
+              "linear-gradient(rgba(139,92,246,0.7) 1px, transparent 1px), linear-gradient(90deg, rgba(139,92,246,0.7) 1px, transparent 1px)",
             backgroundSize: "42px 42px",
           }}
         />
 
-        <div className="absolute left-1/2 top-1/2 h-125 w-175 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/2.5 blur-[140px]" />
+        {/* Soft violet glow */}
+        <div className="absolute left-1/2 top-1/2 h-125 w-175 -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-600/[0.035] blur-[140px]" />
+
       </div>
 
       <div className="mx-auto max-w-6xl">
 
-        {/* Heading */}
+        {/* =====================================================
+            HEADING
+        ====================================================== */}
+
         <div className="mb-10 text-center">
 
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/4 px-4 py-2 font-mono text-xs tracking-[0.2em] text-emerald-400">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400 shadow-[0_0_8px_currentColor]" />
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-violet-400/20 bg-violet-400/4 px-4 py-2 font-mono text-xs tracking-[0.2em] text-violet-300">
+
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-violet-300 shadow-[0_0_10px_currentColor]" />
+
             DEVOPS COMMAND CENTER
+
           </div>
 
           <h2 className="text-4xl font-bold tracking-tight text-white md:text-5xl">
+
             Explore My{" "}
-            <span className="text-cyan-400">
+
+            <span className="text-violet-300">
               Cloud Environment
             </span>
+
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-500 md:text-base">
@@ -865,10 +881,13 @@ Type 'help' to see available commands.`;
 
         </div>
 
-        {/* Terminal */}
+        {/* =====================================================
+            TERMINAL
+        ====================================================== */}
+
         <div
           onClick={() => inputRef.current?.focus()}
-          className="relative overflow-hidden rounded-xl border border-cyan-400/20 bg-[#030608] shadow-[0_0_70px_rgba(34,211,238,0.05),0_30px_100px_rgba(0,0,0,0.55)]"
+          className="relative overflow-hidden rounded-xl border border-violet-400/20 bg-[#080914] shadow-[0_0_80px_rgba(139,92,246,0.07),0_30px_100px_rgba(0,0,0,0.55)]"
         >
 
           {/* Scanlines */}
@@ -876,36 +895,50 @@ Type 'help' to see available commands.`;
             className="pointer-events-none absolute inset-0 z-20 opacity-[0.025]"
             style={{
               backgroundImage:
-                "repeating-linear-gradient(to bottom, transparent 0px, transparent 2px, rgba(255,255,255,0.8) 3px)",
+                "repeating-linear-gradient(to bottom, transparent 0px, transparent 2px, rgba(139,92,246,0.8) 3px)",
             }}
           />
 
-          {/* Header */}
-          <div className="relative z-30 flex h-12 items-center border-b border-cyan-400/15 bg-[#071014] px-4 sm:px-5">
+          {/* =================================================
+              TERMINAL HEADER
+          ================================================== */}
 
+          <div className="relative z-30 flex h-12 items-center border-b border-violet-400/15 bg-[#10101d] px-4 sm:px-5">
+
+            {/* Traffic lights */}
             <div className="flex items-center gap-2">
+
               <span className="h-3.5 w-3.5 rounded-full bg-[#ff5f73]" />
+
               <span className="h-3.5 w-3.5 rounded-full bg-[#ffd34e]" />
+
               <span className="h-3.5 w-3.5 rounded-full bg-[#12d6a0]" />
+
             </div>
 
-            <div className="absolute left-1/2 hidden -translate-x-1/2 font-mono text-xs text-cyan-300/80 sm:block">
-              umesh@eks-prod: ~/devops-command-center
+            {/* Terminal name */}
+            <div className="absolute left-1/2 hidden -translate-x-1/2 font-mono text-xs text-violet-300/80 sm:block">
+              atharv@cloudforge: ~/devops-command-center
             </div>
 
-            <div className="ml-auto font-mono text-[10px] tracking-[0.18em] text-emerald-400 sm:text-xs">
+            {/* Production context */}
+            <div className="ml-auto font-mono text-[10px] tracking-[0.18em] text-amber-300 sm:text-xs">
               CONTEXT: PROD
             </div>
 
           </div>
 
-          {/* Terminal Body */}
+          {/* =================================================
+              TERMINAL BODY
+          ================================================== */}
+
           <div
             ref={terminalRef}
             className="relative z-10 h-125 overflow-y-auto px-4 py-5 font-mono text-[12px] leading-[1.45] text-slate-200 sm:px-5 sm:text-[13px] md:h-140 md:text-sm"
           >
 
             {history.map((line, index) => {
+
               const isPrompt = line.startsWith(PROMPT);
 
               const isBootMessage =
@@ -919,7 +952,7 @@ Type 'help' to see available commands.`;
                   key={`${index}-${line}`}
                   className={`whitespace-pre-wrap wrap-break-word ${
                     isPrompt
-                      ? "text-emerald-400"
+                      ? "text-violet-300"
                       : isBootMessage
                         ? "text-slate-100"
                         : "text-slate-300"
@@ -930,10 +963,13 @@ Type 'help' to see available commands.`;
               );
             })}
 
-            {/* ONLY LIVE PROMPT */}
+            {/* =================================================
+                LIVE PROMPT
+            ================================================== */}
+
             <div className="mt-1 flex min-w-0 items-center">
 
-              <span className="mr-2 shrink-0 whitespace-nowrap text-emerald-400">
+              <span className="mr-2 shrink-0 whitespace-nowrap text-violet-300">
                 {PROMPT}
               </span>
 
@@ -949,35 +985,43 @@ Type 'help' to see available commands.`;
                 autoCapitalize="off"
                 spellCheck={false}
                 aria-label="DevOps terminal command"
-                className="min-w-0 flex-1 bg-transparent text-cyan-100 caret-cyan-300 outline-none"
+                className="min-w-0 flex-1 bg-transparent text-slate-100 caret-amber-300 outline-none placeholder:text-slate-700"
               />
 
-              <span className="ml-1 h-4.5 w-1.75 animate-pulse bg-cyan-300/80" />
+              {/* Amber cursor */}
+              <span className="ml-1 h-4.5 w-1.75 animate-pulse bg-amber-300/80" />
 
             </div>
 
           </div>
 
-          {/* Footer */}
-          <div className="relative z-30 flex min-h-10 flex-wrap items-center justify-between gap-3 border-t border-cyan-400/10 bg-[#071014] px-4 py-2.5 font-mono text-[9px] uppercase tracking-[0.15em] text-slate-600 sm:px-5 sm:text-[10px]">
+          {/* =================================================
+              TERMINAL FOOTER
+          ================================================== */}
+
+          <div className="relative z-30 flex min-h-10 flex-wrap items-center justify-between gap-3 border-t border-violet-400/10 bg-[#10101d] px-4 py-2.5 font-mono text-[9px] uppercase tracking-[0.15em] text-slate-600 sm:px-5 sm:text-[10px]">
 
             <div className="flex flex-wrap items-center gap-3 sm:gap-5">
 
+              {/* AWS */}
               <span className="flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                <span className="h-1.5 w-1.5 rounded-full bg-amber-300" />
                 AWS
               </span>
 
+              {/* Kubernetes */}
               <span className="flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
+                <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
                 K8S
               </span>
 
+              {/* Docker */}
               <span className="flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
+                <span className="h-1.5 w-1.5 rounded-full bg-sky-300" />
                 DOCKER
               </span>
 
+              {/* Terraform */}
               <span className="flex items-center gap-1.5">
                 <span className="h-1.5 w-1.5 rounded-full bg-violet-400" />
                 TERRAFORM
@@ -985,7 +1029,7 @@ Type 'help' to see available commands.`;
 
             </div>
 
-            <span>
+            <span className="text-slate-600">
               PROD / ONLINE
             </span>
 
@@ -993,7 +1037,10 @@ Type 'help' to see available commands.`;
 
         </div>
 
-        {/* Quick Commands */}
+        {/* =====================================================
+            QUICK COMMANDS
+        ====================================================== */}
+
         <div className="mt-6">
 
           <div className="mb-3 text-center font-mono text-[9px] uppercase tracking-[0.25em] text-slate-600">
@@ -1003,18 +1050,22 @@ Type 'help' to see available commands.`;
           <div className="flex flex-wrap justify-center gap-2">
 
             {quickCommands.map((command) => (
+
               <button
                 key={command}
                 type="button"
                 onClick={() => executeCommand(command)}
-                className="rounded-md border border-cyan-400/10 bg-cyan-400/2.5 px-3 py-1.5 font-mono text-[11px] text-slate-500 transition-all duration-200 hover:border-cyan-400/30 hover:bg-cyan-400/[0.07] hover:text-cyan-300 active:scale-95"
+                className="rounded-md border border-violet-400/10 bg-violet-400/2.5 px-3 py-1.5 font-mono text-[11px] text-slate-500 transition-all duration-200 hover:border-violet-400/30 hover:bg-violet-400/[0.07] hover:text-violet-300 active:scale-95"
               >
-                <span className="mr-1 text-emerald-400/70">
+
+                <span className="mr-1 text-amber-300/70">
                   $
                 </span>
 
                 {command}
+
               </button>
+
             ))}
 
           </div>
