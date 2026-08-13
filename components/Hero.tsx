@@ -38,28 +38,80 @@ export default function Hero() {
               </p>
 
               <div className="flex gap-4">
+            <div className="flex flex-wrap items-center gap-4">
 
-                <a
-                  href="#projects"
-                  className="px-6 py-3 bg-cyan-400 text-black rounded-lg font-semibold hover:scale-105 transition"
-                >
-                  View Projects
-                </a>
+  {/* View Projects */}
+  <a
+    href="#projects"
+    className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl
+    border border-cyan-400/40 bg-cyan-400 px-6 py-3
+    font-semibold text-black
+    shadow-[0_0_20px_rgba(34,211,238,0.15)]
+    transition-all duration-300
+    hover:-translate-y-1
+    hover:border-cyan-300
+    hover:bg-cyan-300
+    hover:shadow-[0_0_30px_rgba(34,211,238,0.3)]"
+  >
+    <span>View Projects</span>
 
-                <a
-                  href="#contact"
-                  className="px-6 py-3 border border-sky-400 text-cyan-400 rounded-lg hover:bg-cyan-400 hover:text-black transition"
-                >
-                  Contact Me
-                </a>
+    <span className="transition-transform duration-300 group-hover:translate-x-1">
+      →
+    </span>
+  </a>
 
-                 <a
-                  href="#terminal"
-                  className="px-6 py-3 border border-sky-400 text-cyan-400 rounded-lg hover:bg-cyan-400 hover:text-black transition"
-                >
-                  Open Terminal
-                </a>
 
+  {/* Contact Me */}
+  <a
+    href="#contact"
+    className="group inline-flex items-center gap-2 rounded-xl
+    border border-white/15
+    bg-white/4
+    px-6 py-3
+    font-semibold text-white/90
+    backdrop-blur-md
+    transition-all duration-300
+    hover:-translate-y-1
+    hover:border-cyan-400/50
+    hover:bg-cyan-400/8
+    hover:text-cyan-300
+    hover:shadow-[0_0_25px_rgba(34,211,238,0.12)]"
+  >
+    <span>Contact Me</span>
+
+    <span className="text-cyan-400 transition-transform duration-300 group-hover:translate-x-1">
+      ↗
+    </span>
+  </a>
+
+
+  {/* Open Terminal */}
+  <a
+    href="#terminal"
+    className="group inline-flex items-center gap-3 rounded-xl
+    border border-emerald-400/25
+    bg-black/30
+    px-6 py-3
+    font-mono text-sm font-medium
+    text-emerald-300
+    backdrop-blur-md
+    transition-all duration-300
+    hover:-translate-y-1
+    hover:border-emerald-400/60
+    hover:bg-emerald-400/[0.07]
+    hover:text-emerald-200
+    hover:shadow-[0_0_25px_rgba(52,211,153,0.12)]"
+  >
+    <span className="text-emerald-400">
+      &gt;_
+    </span>
+
+    <span>Open Terminal</span>
+
+    <span className="h-2 w-2 rounded-full bg-emerald-400 opacity-60 transition-all duration-300 group-hover:opacity-100 group-hover:shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
+  </a>
+
+</div>
               </div>
 
             </div>
