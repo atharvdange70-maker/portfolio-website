@@ -42,44 +42,74 @@ export default function Hero() {
 
   {/* PROJECTS CONTROL */}
   <a
-    href="#projects"
-    className="group relative flex items-center gap-3 overflow-hidden rounded-lg
-    border border-cyan-400/25
-    bg-[#07131b]/80
-    px-4 py-2.5
-    font-mono text-sm
+  href="#projects"
+  className="group relative inline-flex items-center gap-3 overflow-hidden rounded-lg
+  border border-cyan-400/40
+  bg-linear-to-r from-cyan-400/12 to-sky-400/4
+  px-5 py-3
+  font-mono
+  backdrop-blur-md
+  transition-all duration-300
+  hover:-translate-y-1
+  hover:border-cyan-300
+  hover:shadow-[0_0_30px_rgba(34,211,238,0.18)]"
+>
+  {/* Animated scan line */}
+  <span
+    className="absolute inset-y-0 -left-full w-1/2
+    bg-linear-to-r from-transparent via-cyan-300/10 to-transparent
+    transition-all duration-700
+    group-hover:left-[120%]"
+  />
+
+  {/* Deployment icon */}
+  <span
+    className="relative flex h-8 w-8 items-center justify-center
+    rounded-md border border-cyan-400/30
+    bg-cyan-400/8
     text-cyan-300
-    backdrop-blur-md
     transition-all duration-300
-    hover:-translate-y-0.5
-    hover:border-cyan-400/60
-    hover:bg-cyan-400/[0.07]
-    hover:shadow-[0_0_24px_rgba(34,211,238,0.12)]"
+    group-hover:border-cyan-300/60
+    group-hover:bg-cyan-400/15"
   >
-    {/* Status indicator */}
-    <span className="relative flex h-2 w-2">
-      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-40" />
-      <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-400" />
+    <span className="text-sm">⌁</span>
+  </span>
+
+  {/* Text */}
+  <span className="relative flex flex-col text-left leading-none">
+    <span className="text-[8px] font-medium uppercase tracking-[0.25em] text-cyan-400/55">
+      Explore
     </span>
 
-    <span className="flex flex-col leading-none">
-      <span className="text-[9px] uppercase tracking-[0.2em] text-cyan-500/60">
-        Deployments
-      </span>
+    <span className="mt-1 text-sm font-semibold tracking-wide text-white">
+      View Projects
+    </span>
+  </span>
 
-      <span className="mt-1 font-semibold text-cyan-200">
-        View Projects
-      </span>
+  {/* Live status */}
+  <span className="relative ml-2 flex items-center gap-1.5 border-l border-white/10 pl-3">
+    <span className="relative flex h-1.5 w-1.5">
+      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-50" />
+      <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan-400" />
     </span>
 
-    <span className="ml-1 text-cyan-500/70 transition-transform duration-300 group-hover:translate-x-1">
-      →
+    <span className="text-[8px] font-medium uppercase tracking-wider text-cyan-400/60">
+      Live
     </span>
+  </span>
 
-    {/* Corner detail */}
-    <span className="absolute right-0 top-0 h-2 w-2 border-r border-t border-cyan-400/40" />
-  </a>
+  {/* Arrow */}
+  <span
+    className="relative ml-1 text-cyan-300 transition-transform duration-300
+    group-hover:translate-x-1"
+  >
+    →
+  </span>
 
+  {/* Technical corner markers */}
+  <span className="absolute left-0 top-0 h-2 w-2 border-l border-t border-cyan-300/60" />
+  <span className="absolute bottom-0 right-0 h-2 w-2 border-b border-r border-cyan-300/40" />
+</a>
 
   {/* CONTACT CONTROL */}
   <a
