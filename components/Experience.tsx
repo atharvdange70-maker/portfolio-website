@@ -129,7 +129,7 @@ export default function Experience() {
               shadow-lg shadow-cyan-500/20
               "
               >
-                🚀 Jan 2026 – Present
+                🚀 9 Month
               </span>
 
             </div>
