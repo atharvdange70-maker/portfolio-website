@@ -38,81 +38,135 @@ export default function Hero() {
               </p>
 
               <div className="flex gap-4">
-            <div className="flex flex-wrap items-center gap-4">
+            <div className="flex flex-wrap items-center gap-3">
 
-  {/* View Projects */}
+  {/* PROJECTS CONTROL */}
   <a
     href="#projects"
-    className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl
-    border border-cyan-400/40 bg-cyan-400 px-6 py-3
-    font-semibold text-black
-    shadow-[0_0_20px_rgba(34,211,238,0.15)]
-    transition-all duration-300
-    hover:-translate-y-1
-    hover:border-cyan-300
-    hover:bg-cyan-300
-    hover:shadow-[0_0_30px_rgba(34,211,238,0.3)]"
-  >
-    <span>View Projects</span>
-
-    <span className="transition-transform duration-300 group-hover:translate-x-1">
-      →
-    </span>
-  </a>
-
-
-  {/* Contact Me */}
-  <a
-    href="#contact"
-    className="group inline-flex items-center gap-2 rounded-xl
-    border border-white/15
-    bg-white/4
-    px-6 py-3
-    font-semibold text-white/90
+    className="group relative flex items-center gap-3 overflow-hidden rounded-lg
+    border border-cyan-400/25
+    bg-[#07131b]/80
+    px-4 py-2.5
+    font-mono text-sm
+    text-cyan-300
     backdrop-blur-md
     transition-all duration-300
-    hover:-translate-y-1
-    hover:border-cyan-400/50
-    hover:bg-cyan-400/8
-    hover:text-cyan-300
-    hover:shadow-[0_0_25px_rgba(34,211,238,0.12)]"
+    hover:-translate-y-0.5
+    hover:border-cyan-400/60
+    hover:bg-cyan-400/[0.07]
+    hover:shadow-[0_0_24px_rgba(34,211,238,0.12)]"
   >
-    <span>Contact Me</span>
-
-    <span className="text-cyan-400 transition-transform duration-300 group-hover:translate-x-1">
-      ↗
+    {/* Status indicator */}
+    <span className="relative flex h-2 w-2">
+      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-40" />
+      <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-400" />
     </span>
+
+    <span className="flex flex-col leading-none">
+      <span className="text-[9px] uppercase tracking-[0.2em] text-cyan-500/60">
+        Deployments
+      </span>
+
+      <span className="mt-1 font-semibold text-cyan-200">
+        View Projects
+      </span>
+    </span>
+
+    <span className="ml-1 text-cyan-500/70 transition-transform duration-300 group-hover:translate-x-1">
+      →
+    </span>
+
+    {/* Corner detail */}
+    <span className="absolute right-0 top-0 h-2 w-2 border-r border-t border-cyan-400/40" />
   </a>
 
 
-  {/* Open Terminal */}
+  {/* CONTACT CONTROL */}
+  <a
+    href="#contact"
+    className="group relative flex items-center gap-3 overflow-hidden rounded-lg
+    border border-violet-400/20
+    bg-[#0b0a16]/80
+    px-4 py-2.5
+    font-mono text-sm
+    text-violet-300
+    backdrop-blur-md
+    transition-all duration-300
+    hover:-translate-y-0.5
+    hover:border-violet-400/50
+    hover:bg-violet-400/6
+    hover:shadow-[0_0_24px_rgba(167,139,250,0.10)]"
+  >
+    {/* Status indicator */}
+    <span className="relative flex h-2 w-2">
+      <span className="absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-20" />
+      <span className="relative inline-flex h-2 w-2 rounded-full bg-violet-400" />
+    </span>
+
+    <span className="flex flex-col leading-none">
+      <span className="text-[9px] uppercase tracking-[0.2em] text-violet-400/50">
+        Network
+      </span>
+
+      <span className="mt-1 font-semibold text-violet-200">
+        Contact Me
+      </span>
+    </span>
+
+    <span className="ml-1 text-violet-400/70 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5">
+      ↗
+    </span>
+
+    {/* Corner detail */}
+    <span className="absolute right-0 top-0 h-2 w-2 border-r border-t border-violet-400/30" />
+  </a>
+
+
+  {/* TERMINAL CONTROL */}
   <a
     href="#terminal"
-    className="group inline-flex items-center gap-3 rounded-xl
+    className="group relative flex items-center gap-3 overflow-hidden rounded-lg
     border border-emerald-400/25
-    bg-black/30
-    px-6 py-3
-    font-mono text-sm font-medium
+    bg-[#07140f]/80
+    px-4 py-2.5
+    font-mono text-sm
     text-emerald-300
     backdrop-blur-md
     transition-all duration-300
-    hover:-translate-y-1
+    hover:-translate-y-0.5
     hover:border-emerald-400/60
-    hover:bg-emerald-400/[0.07]
-    hover:text-emerald-200
-    hover:shadow-[0_0_25px_rgba(52,211,153,0.12)]"
+    hover:bg-emerald-400/6
+    hover:shadow-[0_0_24px_rgba(52,211,153,0.12)]"
   >
-    <span className="text-emerald-400">
+    {/* Terminal icon */}
+    <span className="flex h-7 w-7 items-center justify-center rounded-md border border-emerald-400/20 bg-emerald-400/5 text-xs text-emerald-400">
       &gt;_
     </span>
 
-    <span>Open Terminal</span>
+    <span className="flex flex-col leading-none">
+      <span className="text-[9px] uppercase tracking-[0.2em] text-emerald-400/50">
+        Shell Access
+      </span>
 
-    <span className="h-2 w-2 rounded-full bg-emerald-400 opacity-60 transition-all duration-300 group-hover:opacity-100 group-hover:shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
+      <span className="mt-1 font-semibold text-emerald-200">
+        Open Terminal
+      </span>
+    </span>
+
+    {/* Online indicator */}
+    <span className="ml-1 flex items-center gap-1.5">
+      <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.7)]" />
+      <span className="text-[8px] uppercase tracking-wider text-emerald-400/50">
+        Ready
+      </span>
+    </span>
+
+    {/* Corner detail */}
+    <span className="absolute right-0 top-0 h-2 w-2 border-r border-t border-emerald-400/40" />
   </a>
 
 </div>
-              </div>
+                  </div>
 
             </div>
 
