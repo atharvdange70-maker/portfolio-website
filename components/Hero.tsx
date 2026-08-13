@@ -53,6 +53,13 @@ export default function Hero() {
                   Contact Me
                 </a>
 
+                 <a
+                  href="#terminal"
+                  className="px-6 py-3 border border-sky-400 text-cyan-400 rounded-lg hover:bg-cyan-400 hover:text-black transition"
+                >
+                  Open Terminal
+                </a>
+
               </div>
 
             </div>

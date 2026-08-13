@@ -825,7 +825,7 @@ Type 'help' to see available commands.`;
   return (
     <section
       id="terminal"
-      className="relative overflow-hidden px-4 py-20 sm:px-6"
+      className="relative overflow-hidden px-4 py-10 sm:px-6"
     >
       {/* Background */}
       <div className="pointer-events-none absolute inset-0 -z-10">
