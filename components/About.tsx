@@ -137,15 +137,16 @@ export default function About() {
   {/* Gradient Border */}
 <div className="rounded-full bg-linear-to-r from-cyan-400 via-sky-500 to-blue-500 p-2">
   <div className="rounded-full bg-slate-950 p-2">
-    <Image
-      src="/images/atharv.jpg.jpeg"
-      alt="Atharv Dange"
-      width={684}
-      height={684}
-      quality={100}
-      priority
-      className="rounded-full object-cover w-95 h-95"
-    />
+  <Image
+  src="/images/atharv.jpg.jpeg"
+  alt="Atharv Dange"
+  width={684}
+  height={684}
+  quality={100}
+  priority
+  unoptimized
+  className="h-95 w-95 rounded-full object-cover"
+/>
   </div>
 </div>
 </div>
