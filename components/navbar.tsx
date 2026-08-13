@@ -17,20 +17,21 @@ const links = [
 
 export default function Navbar() {
   return (
-    <header
+   <header
   className="
     fixed
     top-5
     left-0
     right-0
-    z-99999
     flex
     justify-center
     px-5
     pointer-events-none
     isolate
   "
+  style={{ zIndex: 99999 }}
 >
+
       <motion.nav
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
