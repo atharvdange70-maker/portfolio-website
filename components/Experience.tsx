@@ -12,16 +12,13 @@ export default function Experience() {
   ];
 
   const responsibilities = [
-    "Designed and deployed scalable AWS infrastructure using EC2, VPC, IAM, S3, Route 53, CloudFront, and Load Balancers.",
-    "Built and maintained CI/CD pipelines using Jenkins, GitHub Actions, and Docker for automated deployments.",
-    "Containerized web applications with Docker and deployed them in cloud environments.",
-    "Provisioned cloud infrastructure using Terraform following Infrastructure as Code (IaC) best practices.",
-    "Implemented Auto Scaling, Load Balancers, and monitoring to improve application availability and performance.",
-    "Configured IAM roles, policies, and security controls to protect AWS resources.",
-    "Troubleshot cloud infrastructure, networking, DNS, and deployment-related issues.",
-    "Monitored AWS resources using CloudWatch and optimized performance, reliability, and cost.",
-    "Deployed React applications using Amazon S3, CloudFront, Route 53, and AWS Certificate Manager.",
-  ];
+  "Built scalable AWS infrastructure using EC2, VPC, S3, IAM, and CloudFront.",
+  "Automated CI/CD deployments with Jenkins, GitHub Actions, and Docker.",
+  "Provisioned cloud infrastructure with Terraform and IaC.",
+  "Implemented Auto Scaling, Load Balancing, and CloudWatch monitoring.",
+  "Deployed containerized applications across AWS environments.",
+  "Resolved cloud, networking, and deployment issues.",
+];
 
   return (
     <section
