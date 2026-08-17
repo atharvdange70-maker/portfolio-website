@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from "framer-motion";
@@ -25,481 +26,264 @@ import { MdSecurity } from "react-icons/md";
 
 import {
   FiActivity,
-  FiArrowUpRight,
+  FiCloud,
   FiCpu,
+  FiDatabase,
   FiGitBranch,
   FiRadio,
   FiServer,
-  FiShield,
   FiZap,
 } from "react-icons/fi";
 
-/* =========================================================
-   SKILL DATA
-========================================================= */
-
-const skills = [
-  {
-    name: "AWS",
-    category: "CLOUD",
-    icon: <FaAws />,
-    accent: "#22d3ee",
-    x: 0,
-    y: -285,
-  },
-
-  {
-    name: "Kubernetes",
-    category: "ORCHESTRATION",
-    icon: <SiKubernetes />,
-    accent: "#22d3ee",
-    x: 205,
-    y: -215,
-  },
-
+const infrastructure = [
   {
     name: "Docker",
-    category: "CONTAINERS",
     icon: <FaDocker />,
-    accent: "#22d3ee",
-    x: 335,
-    y: -55,
+    color: "#38bdf8",
+    type: "CONTAINER",
+    x: "17%",
+    y: "18%",
   },
-
+  {
+    name: "Kubernetes",
+    icon: <SiKubernetes />,
+    color: "#22d3ee",
+    type: "ORCHESTRATOR",
+    x: "83%",
+    y: "18%",
+  },
   {
     name: "Terraform",
-    category: "INFRASTRUCTURE",
     icon: <SiTerraform />,
-    accent: "#a78bfa",
-    x: 310,
-    y: 125,
+    color: "#a855f7",
+    type: "INFRASTRUCTURE",
+    x: "12%",
+    y: "48%",
   },
-
   {
     name: "Jenkins",
-    category: "CI / CD",
     icon: <FaJenkins />,
-    accent: "#fb7185",
-    x: 200,
-    y: 255,
+    color: "#f87171",
+    type: "CI / CD",
+    x: "88%",
+    y: "48%",
   },
-
   {
     name: "GitHub Actions",
-    category: "AUTOMATION",
     icon: <SiGithubactions />,
-    accent: "#22d3ee",
-    x: 45,
-    y: 295,
+    color: "#60a5fa",
+    type: "AUTOMATION",
+    x: "22%",
+    y: "77%",
   },
-
   {
     name: "Linux",
-    category: "SYSTEM",
     icon: <FaLinux />,
-    accent: "#facc15",
-    x: -135,
-    y: 275,
+    color: "#facc15",
+    type: "SYSTEM",
+    x: "78%",
+    y: "77%",
   },
-
-  {
-    name: "Nginx",
-    category: "WEB SERVER",
-    icon: <SiNginx />,
-    accent: "#34d399",
-    x: -285,
-    y: 185,
-  },
-
-  {
-    name: "Networking",
-    category: "NETWORK",
-    icon: <FaNetworkWired />,
-    accent: "#22d3ee",
-    x: -335,
-    y: 20,
-  },
-
   {
     name: "Python",
-    category: "AUTOMATION",
     icon: <FaPython />,
-    accent: "#facc15",
-    x: -300,
-    y: -135,
+    color: "#fde047",
+    type: "AUTOMATION",
+    x: "35%",
+    y: "9%",
   },
-
-  {
-    name: "Git",
-    category: "VERSION CONTROL",
-    icon: <FaGitAlt />,
-    accent: "#fb923c",
-    x: -195,
-    y: -245,
-  },
-
-  {
-    name: "Shell",
-    category: "SCRIPTING",
-    icon: <SiShell />,
-    accent: "#34d399",
-    x: -70,
-    y: -290,
-  },
-
   {
     name: "Security",
-    category: "SECURITY",
     icon: <MdSecurity />,
-    accent: "#34d399",
-    x: -420,
-    y: -70,
+    color: "#34d399",
+    type: "SECURITY",
+    x: "65%",
+    y: "9%",
   },
-
+  {
+    name: "Nginx",
+    icon: <SiNginx />,
+    color: "#4ade80",
+    type: "WEB",
+    x: "6%",
+    y: "72%",
+  },
   {
     name: "Prometheus",
-    category: "OBSERVABILITY",
     icon: <SiPrometheus />,
-    accent: "#22d3ee",
-    x: 420,
-    y: 25,
+    color: "#fb923c",
+    type: "OBSERVABILITY",
+    x: "94%",
+    y: "72%",
   },
 ];
 
-/* =========================================================
-   CONNECTION PATH
-========================================================= */
+const bottomTools = [
+  { name: "Git", icon: <FaGitAlt /> },
+  { name: "Shell", icon: <SiShell /> },
+  { name: "Networking", icon: <FaNetworkWired /> },
+];
 
-function Connection({
-  x,
-  y,
-  accent,
-  delay,
-}: {
-  x: number;
-  y: number;
-  accent: string;
-  delay: number;
-}) {
-  const length = Math.sqrt(x * x + y * y);
-
-  const angle = Math.atan2(y, x) * (180 / Math.PI);
-
-  return (
-    <>
-      {/* Base line */}
-
-      <div
-        className="pointer-events-none absolute left-1/2 top-1/2 h-px origin-left"
-        style={{
-          width: `${length}px`,
-          transform: `rotate(${angle}deg)`,
-          background: `linear-gradient(
-            90deg,
-            rgba(34,211,238,0.10),
-            ${accent}35,
-            transparent
-          )`,
-        }}
-      />
-
-      {/* Dashed line */}
-
-      <div
-        className="pointer-events-none absolute left-1/2 top-1/2 h-px origin-left"
-        style={{
-          width: `${length}px`,
-          transform: `rotate(${angle}deg)`,
-          background: `repeating-linear-gradient(
-            90deg,
-            ${accent}55 0px,
-            ${accent}55 3px,
-            transparent 3px,
-            transparent 10px
-          )`,
-          opacity: 0.25,
-        }}
-      />
-
-      {/* Moving packet */}
-
-      <motion.span
-        className="pointer-events-none absolute left-1/2 top-1/2 h-1 w-1 rounded-full"
-        style={{
-          backgroundColor: accent,
-          boxShadow: `0 0 12px ${accent}`,
-        }}
-        animate={{
-          x: [0, x],
-          y: [0, y],
-          opacity: [0, 1, 0],
-        }}
-        transition={{
-          duration: 2.8,
-          delay,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-      />
-    </>
-  );
-}
-
-/* =========================================================
-   SKILL NODE
-========================================================= */
-
-function SkillNode({
-  skill,
+function InfraNode({
+  item,
   index,
 }: {
-  skill: (typeof skills)[number];
+  item: (typeof infrastructure)[number];
   index: number;
 }) {
   return (
-    <div
-      className="absolute left-1/2 top-1/2 z-30"
+    <motion.div
+      initial={{
+        opacity: 0,
+        scale: 0.4,
+      }}
+      whileInView={{
+        opacity: 1,
+        scale: 1,
+      }}
+      viewport={{ once: true }}
+      transition={{
+        duration: 0.6,
+        delay: index * 0.06,
+      }}
+      whileHover={{
+        scale: 1.12,
+        zIndex: 50,
+      }}
+      className="group absolute -translate-x-1/2 -translate-y-1/2"
       style={{
-        transform: `translate(
-          calc(-50% + ${skill.x}px),
-          calc(-50% + ${skill.y}px)
-        )`,
+        left: item.x,
+        top: item.y,
       }}
     >
-      {/* Connection */}
-
-      <Connection
-        x={skill.x}
-        y={skill.y}
-        accent={skill.accent}
-        delay={index * 0.18}
-      />
-
-      {/* Node */}
-
+      {/* orbital glow */}
       <motion.div
-        initial={{
-          opacity: 0,
-          scale: 0.6,
-        }}
-        whileInView={{
-          opacity: 1,
-          scale: 1,
-        }}
-        viewport={{
-          once: true,
-          amount: 0.15,
+        animate={{
+          scale: [1, 1.35, 1],
+          opacity: [0.08, 0.2, 0.08],
         }}
         transition={{
-          delay: index * 0.06,
-          duration: 0.55,
-          type: "spring",
-          stiffness: 130,
-          damping: 14,
+          duration: 3 + index * 0.2,
+          repeat: Infinity,
+          ease: "easeInOut",
         }}
-        whileHover={{
-          scale: 1.12,
+        className="absolute -inset-5 rounded-full blur-xl"
+        style={{
+          background: item.color,
         }}
-        className="group relative"
+      />
+
+      {/* node */}
+      <div
+        className="relative flex h-14.5 w-14.5 items-center justify-center rounded-full border bg-[#020817]/90 backdrop-blur-xl transition-all duration-300 group-hover:h-16.5 group-hover:w-16.5"
+        style={{
+          borderColor: `${item.color}45`,
+          boxShadow: `0 0 25px ${item.color}12`,
+        }}
       >
-        {/* Ambient glow */}
-
-        <motion.div
-          animate={{
-            scale: [0.85, 1.15, 0.85],
-            opacity: [0.05, 0.13, 0.05],
-          }}
-          transition={{
-            duration: 3.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute -inset-8 rounded-full blur-2xl"
-          style={{
-            backgroundColor: skill.accent,
-          }}
-        />
-
-        {/* Outer rotating ring */}
-
+        {/* rotating ring */}
         <motion.div
           animate={{
             rotate: 360,
           }}
           transition={{
-            duration: 10,
+            duration: 8 + index,
             repeat: Infinity,
             ease: "linear",
           }}
-          className="absolute -inset-3 rounded-full border border-dashed"
+          className="absolute -inset-2 rounded-full border border-dashed opacity-40"
           style={{
-            borderColor: `${skill.accent}30`,
+            borderColor: item.color,
           }}
         />
 
-        {/* Small orbital dot */}
-
-        <motion.span
-          animate={{
-            rotate: 360,
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="absolute -right-1 top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full"
+        <span
+          className="text-xl transition-transform duration-300 group-hover:scale-110"
           style={{
-            backgroundColor: skill.accent,
-            boxShadow: `0 0 10px ${skill.accent}`,
-          }}
-        />
-
-        {/* Main icon */}
-
-        <div
-          className="relative flex h-18 w-18 items-center justify-center rounded-full border bg-[#020812]/95 backdrop-blur-xl"
-          style={{
-            borderColor: `${skill.accent}38`,
-            boxShadow: `
-              0 0 35px ${skill.accent}10,
-              inset 0 0 25px rgba(34,211,238,0.025)
-            `,
+            color: item.color,
           }}
         >
-          {/* inner ring */}
+          {item.icon}
+        </span>
 
-          <div
-            className="absolute inset-1.25 rounded-full border"
-            style={{
-              borderColor: "rgba(255,255,255,0.035)",
-            }}
-          />
+        {/* status dot */}
+        <span
+          className="absolute right-0 top-0 h-2 w-2 rounded-full border-2 border-[#020817]"
+          style={{
+            background: item.color,
+          }}
+        />
 
-          {/* ICON
-              Mostly monochrome cyan/ice.
-          */}
-
-          <span
-            className="relative z-10 text-[28px] text-cyan-100/90"
-            style={{
-              filter: `drop-shadow(0 0 8px ${skill.accent}30)`,
-            }}
-          >
-            {skill.icon}
-          </span>
-
-          {/* status */}
-
-          <span
-            className="absolute right-1.5 top-1.75 h-1.5 w-1.5 rounded-full"
-            style={{
-              backgroundColor: skill.accent,
-              boxShadow: `0 0 9px ${skill.accent}`,
-            }}
-          />
-        </div>
-
-        {/* =================================================
-            LABEL
-        ================================================= */}
-
-        <div className="absolute left-1/2 top-21 -translate-x-1/2 text-center">
-          <div className="whitespace-nowrap text-[11px] font-semibold tracking-wide text-slate-200">
-            {skill.name}
-          </div>
-
-          <div
-            className="mt-1 whitespace-nowrap font-mono text-[6px] tracking-[0.28em]"
-            style={{
-              color: `${skill.accent}aa`,
-            }}
-          >
-            {skill.category}
-          </div>
-        </div>
-
-        {/* =================================================
-            HOVER INFORMATION
-        ================================================= */}
-
-        <div className="pointer-events-none absolute left-1/2 top-28 z-200 w-45 -translate-x-1/2 translate-y-2 rounded-xl border border-white/8 bg-[#020711]/95 p-3 opacity-0 shadow-2xl backdrop-blur-2xl transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100">
+        {/* hover information */}
+        <div className="pointer-events-none absolute left-1/2 top-[calc(100%+12px)] z-50 w-36.25 -translate-x-1/2 translate-y-1 rounded-xl border border-white/10 bg-[#020817]/95 p-2.5 text-left opacity-0 shadow-2xl backdrop-blur-xl transition-all duration-200 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-[10px] font-semibold text-white">
-                {skill.name}
-              </p>
+            <span className="text-[10px] font-bold text-white">
+              {item.name}
+            </span>
 
-              <p
-                className="mt-1 font-mono text-[6px] tracking-[0.2em]"
-                style={{
-                  color: skill.accent,
-                }}
-              >
-                {skill.category}
-              </p>
-            </div>
-
-            <FiArrowUpRight className="text-xs text-slate-600" />
+            <span
+              className="h-1.5 w-1.5 rounded-full"
+              style={{
+                background: item.color,
+              }}
+            />
           </div>
 
-          <div className="my-2 h-px bg-white/6" />
+          <p
+            className="mt-1 font-mono text-[7px] tracking-[0.12em]"
+            style={{
+              color: item.color,
+            }}
+          >
+            {item.type}
+          </p>
 
-          <div className="flex flex-wrap gap-1">
-            {["ACTIVE", "READY", "CONNECTED"].map((item) => (
-              <span
-                key={item}
-                className="rounded border border-white/[0.07] bg-white/2.5 px-1.5 py-1 font-mono text-[5px] text-slate-500"
-              >
-                {item}
-              </span>
-            ))}
-          </div>
+          <div className="mt-2 h-px bg-white/6" />
 
-          <div className="mt-2 flex items-center gap-1.5 font-mono text-[6px] text-emerald-400">
-            <span className="h-1 w-1 animate-pulse rounded-full bg-emerald-400" />
-            MODULE ONLINE
-          </div>
+          <p className="mt-2 font-mono text-[7px] text-slate-500">
+            STATUS: OPERATIONAL
+          </p>
         </div>
-      </motion.div>
-    </div>
+      </div>
+
+      {/* label */}
+      <div className="mt-3 text-center">
+        <p className="whitespace-nowrap text-[9px] font-semibold text-slate-400 transition-colors group-hover:text-white">
+          {item.name}
+        </p>
+      </div>
+    </motion.div>
   );
 }
-
-/* =========================================================
-   MAIN COMPONENT
-========================================================= */
 
 export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative overflow-hidden bg-transparent px-5 py-20 md:px-8"
+      className="relative overflow-hidden bg-transparent px-5 py-20"
     >
-      {/* =====================================================
-          BACKGROUND
-      ===================================================== */}
-
+      {/* background grid */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.025]"
         style={{
           backgroundImage:
             "linear-gradient(rgba(34,211,238,.8) 1px, transparent 1px), linear-gradient(90deg, rgba(34,211,238,.8) 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
+          backgroundSize: "40px 40px",
         }}
       />
 
-      <div className="pointer-events-none absolute left-1/2 top-[55%] h-162.5 w-162.5 -translate-x-1/2 rounded-full bg-cyan-400/2.5 blur-[140px]" />
+      {/* ambient center */}
+      <div className="pointer-events-none absolute left-1/2 top-[45%] h-125 w-125 -translate-x-1/2 rounded-full bg-cyan-400/4 blur-[130px]" />
 
       <div className="relative mx-auto max-w-7xl">
         {/* =====================================================
-            HEADING
+            HEADER
         ===================================================== */}
 
         <motion.div
           initial={{
             opacity: 0,
-            y: 25,
+            y: 20,
           }}
           whileInView={{
             opacity: 1,
@@ -513,87 +297,37 @@ export default function Skills() {
           }}
           className="mb-10 text-center"
         >
-          <div className="mx-auto mb-4 flex w-fit items-center gap-2 rounded-full border border-cyan-400/15 bg-cyan-400/3 px-4 py-1.5 font-mono text-[8px] tracking-[0.3em] text-cyan-300/80">
+          <div className="mx-auto mb-4 flex w-fit items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/5 px-4 py-1.5 font-mono text-[9px] tracking-[0.25em] text-cyan-300">
             <FiRadio className="animate-pulse" />
-            ENGINEERING TOOLCHAIN
+            LIVE INFRASTRUCTURE
           </div>
 
-          <h2 className="text-4xl font-black tracking-tight text-white md:text-5xl">
-            Technical{" "}
-            <span className="bg-linear-to-r from-cyan-200 via-cyan-400 to-sky-500 bg-clip-text text-transparent">
-              Skills
+          <h2 className="text-4xl font-black text-white md:text-5xl">
+            DevOps{" "}
+            <span className="bg-linear-to-r from-cyan-300 via-sky-400 to-purple-400 bg-clip-text text-transparent">
+              Ecosystem
             </span>
           </h2>
 
-          <p className="mx-auto mt-3 max-w-2xl text-xs leading-6 text-slate-500 md:text-sm">
-            The infrastructure, automation and cloud technologies I use
-            to design, deploy and operate production systems.
+          <p className="mx-auto mt-3 max-w-xl text-xs leading-6 text-slate-500 md:text-sm">
+            The technologies I use to design, automate, deploy and operate
+            cloud infrastructure.
           </p>
         </motion.div>
 
         {/* =====================================================
-            TOPOLOGY CONTAINER
+            INFRASTRUCTURE CANVAS
         ===================================================== */}
 
-        <div className="relative mx-auto h-190 max-w-312.5 overflow-hidden rounded-4xl border border-white/[0.07] bg-[#01060d]/80 shadow-[0_40px_120px_rgba(0,0,0,.5)]">
-          {/* grid */}
+        <div className="relative mx-auto h-147.5 max-w-280 overflow-hidden rounded-[30px] border border-white/6 bg-[#010611]/60 shadow-[0_30px_100px_rgba(0,0,0,.35)]">
+          {/* tiny corner decorations */}
+          <div className="absolute left-4 top-4 h-3 w-3 border-l border-t border-cyan-400/30" />
 
-          <div
-            className="absolute inset-0 opacity-[0.025]"
-            style={{
-              backgroundImage:
-                "linear-gradient(rgba(34,211,238,.8) 1px, transparent 1px), linear-gradient(90deg, rgba(34,211,238,.8) 1px, transparent 1px)",
-              backgroundSize: "28px 28px",
-            }}
-          />
+          <div className="absolute right-4 top-4 h-3 w-3 border-r border-t border-cyan-400/30" />
 
-          {/* =================================================
-              HEADER STATUS
-          ================================================= */}
+          <div className="absolute bottom-4 left-4 h-3 w-3 border-b border-l border-cyan-400/30" />
 
-          <div className="absolute left-6 top-5 z-50 flex items-center gap-2">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400 shadow-[0_0_10px_#34d399]" />
-
-            <span className="font-mono text-[7px] tracking-[0.25em] text-slate-600">
-              INFRASTRUCTURE / TOPOLOGY
-            </span>
-          </div>
-
-          <div className="absolute right-6 top-5 z-50 flex items-center gap-2 font-mono text-[7px] text-slate-700">
-            <FiZap className="text-cyan-400/50" />
-
-            SYSTEMS ONLINE
-          </div>
-
-          {/* =================================================
-              ORBIT RINGS
-          ================================================= */}
-
-          <motion.div
-            animate={{
-              rotate: 360,
-            }}
-            transition={{
-              duration: 45,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            className="absolute left-1/2 top-1/2 h-152.5 w-225 -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-400/4.5"
-          />
-
-          <motion.div
-            animate={{
-              rotate: -360,
-            }}
-            transition={{
-              duration: 32,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            className="absolute left-1/2 top-1/2 h-115 w-175 -translate-x-1/2 -translate-y-1/2 rounded-full border border-purple-400/4.5"
-          />
-
-          <div className="absolute left-1/2 top-1/2 h-85 w-130 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-cyan-400/6" />
+          <div className="absolute bottom-4 right-4 h-3 w-3 border-b border-r border-cyan-400/30" />
 
           {/* =================================================
               NETWORK SVG
@@ -601,82 +335,58 @@ export default function Skills() {
 
           <svg
             className="pointer-events-none absolute inset-0 h-full w-full"
-            viewBox="0 0 1250 760"
+            viewBox="0 0 1120 590"
+            fill="none"
             preserveAspectRatio="none"
           >
-            <defs>
-              <linearGradient
-                id="topologyGradient"
-                x1="0"
-                y1="0"
-                x2="1"
-                y2="1"
-              >
-                <stop
-                  offset="0%"
-                  stopColor="#22d3ee"
-                  stopOpacity="0"
-                />
-
-                <stop
-                  offset="50%"
-                  stopColor="#22d3ee"
-                  stopOpacity=".25"
-                />
-
-                <stop
-                  offset="100%"
-                  stopColor="#a78bfa"
-                  stopOpacity="0"
-                />
-              </linearGradient>
-            </defs>
-
-            {/* central cross */}
-
+            {/* central network */}
             <path
-              d="M0 380 H1250"
-              stroke="rgba(34,211,238,.025)"
+              d="M560 295
+                 L190 105
+                 M560 295
+                 L930 105
+                 M560 295
+                 L135 285
+                 M560 295
+                 L985 285
+                 M560 295
+                 L245 455
+                 M560 295
+                 L875 455
+                 M560 295
+                 L390 55
+                 M560 295
+                 L730 55
+                 M560 295
+                 L70 425
+                 M560 295
+                 L1050 425"
+              stroke="rgba(34,211,238,.12)"
+              strokeWidth="1"
+              strokeDasharray="3 8"
+            />
+
+            {/* secondary horizontal network */}
+            <path
+              d="M40 295 H1080"
+              stroke="rgba(34,211,238,.035)"
             />
 
             <path
-              d="M625 0 V760"
-              stroke="rgba(34,211,238,.025)"
+              d="M560 35 V555"
+              stroke="rgba(34,211,238,.035)"
             />
 
-            {/* diagonal infrastructure routes */}
-
-            <path
-              d="M100 110 L625 380 L1150 110"
-              stroke="url(#topologyGradient)"
-              strokeDasharray="4 10"
-              fill="none"
-            />
-
-            <path
-              d="M90 650 L625 380 L1160 650"
-              stroke="url(#topologyGradient)"
-              strokeDasharray="4 10"
-              fill="none"
-            />
-
-            <path
-              d="M625 70 L625 690"
-              stroke="rgba(34,211,238,.05)"
-              strokeDasharray="2 12"
-            />
-
-            {/* moving packets */}
-
+            {/* animated packets */}
             <motion.circle
               r="3"
-              fill="#67e8f9"
+              fill="#22d3ee"
               animate={{
-                cx: [100, 625, 1150],
-                cy: [110, 380, 110],
+                cx: [560, 190],
+                cy: [295, 105],
               }}
               transition={{
-                duration: 6,
+                duration: 2.5,
                 repeat: Infinity,
                 ease: "linear",
               }}
@@ -684,13 +394,55 @@ export default function Skills() {
 
             <motion.circle
               r="3"
-              fill="#a78bfa"
+              fill="#a855f7"
               animate={{
-                cx: [1160, 625, 90],
-                cy: [650, 380, 650],
+                cx: [560, 135],
+                cy: [295, 285],
               }}
               transition={{
-                duration: 7,
+                duration: 2,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            />
+
+            <motion.circle
+              r="3"
+              fill="#60a5fa"
+              animate={{
+                cx: [560, 245],
+                cy: [295, 455],
+              }}
+              transition={{
+                duration: 2.7,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            />
+
+            <motion.circle
+              r="3"
+              fill="#f87171"
+              animate={{
+                cx: [560, 930],
+                cy: [295, 105],
+              }}
+              transition={{
+                duration: 2.8,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            />
+
+            <motion.circle
+              r="3"
+              fill="#facc15"
+              animate={{
+                cx: [560, 875],
+                cy: [295, 455],
+              }}
+              transition={{
+                duration: 2.6,
                 repeat: Infinity,
                 ease: "linear",
               }}
@@ -698,235 +450,255 @@ export default function Skills() {
           </svg>
 
           {/* =================================================
-              CENTER CORE
+              TOP TELEMETRY
           ================================================= */}
 
-          <div className="absolute left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2">
-            {/* glow */}
+          <div className="absolute left-5 top-5 z-20 flex items-center gap-2 font-mono text-[8px] tracking-[0.18em] text-slate-600">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
+            CLOUD NETWORK
+          </div>
 
-            <motion.div
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.08, 0.02, 0.08],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="absolute -inset-32 rounded-full bg-cyan-400 blur-[90px]"
-            />
+          <div className="absolute right-5 top-5 z-20 flex items-center gap-2 font-mono text-[8px] text-slate-600">
+            <span>10 NODES</span>
+            <span className="text-emerald-400">●</span>
+          </div>
 
-            {/* rotating core ring */}
+          {/* =================================================
+              AWS CORE
+          ================================================= */}
 
+          <div className="absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
+            {/* orbit */}
             <motion.div
               animate={{
                 rotate: 360,
               }}
               transition={{
-                duration: 14,
+                duration: 24,
                 repeat: Infinity,
                 ease: "linear",
               }}
-              className="absolute -inset-9 rounded-full border border-dashed border-cyan-300/20"
+              className="absolute -inset-26.25 rounded-full border border-dashed border-cyan-400/6"
+            />
+
+            <motion.div
+              animate={{
+                rotate: -360,
+              }}
+              transition={{
+                duration: 16,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+              className="absolute -inset-18 rounded-full border border-cyan-400/[0.07]"
+            />
+
+            {/* glow */}
+            <motion.div
+              animate={{
+                scale: [1, 1.12, 1],
+                opacity: [0.08, 0.16, 0.08],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+              }}
+              className="absolute -inset-16 rounded-full bg-cyan-400 blur-3xl"
             />
 
             {/* core */}
-
             <motion.div
               whileHover={{
-                scale: 1.04,
+                scale: 1.05,
               }}
-              className="relative flex h-42.5 w-42.5 flex-col items-center justify-center rounded-full border border-cyan-300/20 bg-[#020913] shadow-[0_0_100px_rgba(34,211,238,.12)]"
+              className="relative flex h-38.75 w-38.75 flex-col items-center justify-center rounded-full border border-cyan-400/25 bg-[#020817] shadow-[0_0_70px_rgba(34,211,238,.12)]"
             >
-              {/* chip */}
+              <FaAws className="text-[43px] text-orange-400" />
 
-              <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/[0.035]">
-                <FiCpu className="text-xl text-cyan-200" />
+              <div className="mt-1 text-lg font-black text-white">
+                AWS
               </div>
 
-              <h3 className="text-[18px] font-bold tracking-tight text-white">
-                Platform Core
-              </h3>
+              <div className="mt-0.5 font-mono text-[7px] tracking-[0.35em] text-cyan-400">
+                CLOUD CORE
+              </div>
 
-              <p className="mt-1 font-mono text-[6px] tracking-[0.4em] text-cyan-300/80">
-                DEVOPS ENGINE
-              </p>
+              <div className="mt-3 flex items-center gap-1.5 rounded-full border border-emerald-400/20 px-2.5 py-1">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
 
-              {/* operational */}
-
-              <div className="mt-4 flex items-center gap-1.5 rounded-full border border-emerald-400/20 bg-emerald-400/3 px-3 py-1">
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400 shadow-[0_0_7px_#34d399]" />
-
-                <span className="font-mono text-[6px] tracking-wider text-emerald-400">
-                  OPERATIONAL
+                <span className="font-mono text-[7px] text-emerald-400">
+                  ONLINE
                 </span>
               </div>
             </motion.div>
           </div>
 
           {/* =================================================
-              DESKTOP SKILLS
+              NODES
           ================================================= */}
 
-          <div className="absolute inset-0 hidden md:block">
-            {skills.map((skill, index) => (
-              <SkillNode
-                key={skill.name}
-                skill={skill}
+          <div className="hidden md:block">
+            {infrastructure.map((item, index) => (
+              <InfraNode
+                key={item.name}
+                item={item}
                 index={index}
               />
             ))}
           </div>
 
           {/* =================================================
-              MOBILE
+              MOBILE NODES
           ================================================= */}
 
-          <div className="relative z-50 grid grid-cols-3 gap-y-8 px-8 pt-20 md:hidden">
-            {skills.map((skill) => (
+          <div className="relative z-40 grid grid-cols-2 gap-3 p-5 pt-14 md:hidden">
+            {infrastructure.map((item, index) => (
               <div
-                key={skill.name}
-                className="flex flex-col items-center"
+                key={item.name}
+                className="relative flex flex-col items-center"
               >
-                <div
-                  className="flex h-14 w-14 items-center justify-center rounded-full border border-cyan-300/15 bg-[#020711]"
-                >
-                  <span className="text-xl text-cyan-100/90">
-                    {skill.icon}
-                  </span>
-                </div>
-
-                <span className="mt-2 text-center font-mono text-[7px] text-slate-500">
-                  {skill.name}
-                </span>
+                <InfraNode
+                  item={{
+                    ...item,
+                    x: "50%",
+                    y: "50%",
+                  }}
+                  index={index}
+                />
               </div>
             ))}
           </div>
 
           {/* =================================================
-              TELEMETRY BAR
+              CENTER TELEMETRY
           ================================================= */}
 
-          <div className="absolute bottom-6 left-1/2 z-100 hidden -translate-x-1/2 items-center gap-8 rounded-xl border border-white/[0.07] bg-[#020711]/90 px-7 py-3 backdrop-blur-2xl md:flex">
-            {/* latency */}
+          <div className="absolute bottom-5 left-1/2 z-30 hidden -translate-x-1/2 items-center gap-5 rounded-full border border-white/5 bg-black/20 px-4 py-2 font-mono text-[7px] text-slate-600 backdrop-blur-md sm:flex">
+            <span className="flex items-center gap-1.5">
+              <FiServer />
+              INFRA
+            </span>
 
-            <div className="flex items-center gap-2">
-              <FiActivity className="text-cyan-300" />
+            <span className="h-2.5 w-px bg-white/6" />
 
-              <div>
-                <p className="font-mono text-[6px] tracking-wider text-slate-700">
-                  LATENCY
-                </p>
+            <span className="flex items-center gap-1.5">
+              <FiGitBranch />
+              CI/CD
+            </span>
 
-                <p className="font-mono text-[8px] text-slate-400">
-                  24ms
-                </p>
-              </div>
-            </div>
+            <span className="h-2.5 w-px bg-white/6" />
 
-            {/* services */}
+            <span className="flex items-center gap-1.5">
+              <FiDatabase />
+              CLOUD
+            </span>
 
-            <div className="flex items-center gap-2">
-              <FiServer className="text-cyan-300" />
+            <span className="h-2.5 w-px bg-white/6" />
 
-              <div>
-                <p className="font-mono text-[6px] tracking-wider text-slate-700">
-                  SERVICES
-                </p>
-
-                <p className="font-mono text-[8px] text-slate-400">
-                  14 / 14
-                </p>
-              </div>
-            </div>
-
-            {/* security */}
-
-            <div className="flex items-center gap-2">
-              <FiShield className="text-emerald-400" />
-
-              <div>
-                <p className="font-mono text-[6px] tracking-wider text-slate-700">
-                  SECURITY
-                </p>
-
-                <p className="font-mono text-[8px] text-slate-400">
-                  ACTIVE
-                </p>
-              </div>
-            </div>
-
-            {/* pipeline */}
-
-            <div className="flex items-center gap-2">
-              <FiGitBranch className="text-purple-300" />
-
-              <div>
-                <p className="font-mono text-[6px] tracking-wider text-slate-700">
-                  PIPELINE
-                </p>
-
-                <p className="font-mono text-[8px] text-slate-400">
-                  READY
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* =================================================
-              CORNER DECORATIONS
-          ================================================= */}
-
-          <div className="absolute bottom-5 left-6 hidden items-center gap-2 font-mono text-[6px] text-slate-700 md:flex">
-            <span className="text-cyan-400/50">01</span>
-            NODE_DISCOVERY
-          </div>
-
-          <div className="absolute bottom-5 right-6 hidden font-mono text-[6px] text-slate-700 md:block">
-            MESH::STABLE
+            <span className="flex items-center gap-1.5 text-emerald-400">
+              <FiActivity />
+              ACTIVE
+            </span>
           </div>
         </div>
 
         {/* =====================================================
-            TERMINAL STATUS
+            PIPELINE
         ===================================================== */}
 
-        <motion.div
-          initial={{
-            opacity: 0,
-          }}
-          whileInView={{
-            opacity: 1,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            delay: 0.4,
-          }}
-          className="mx-auto mt-5 flex max-w-312.5 flex-wrap items-center justify-center gap-x-4 gap-y-2 font-mono text-[7px] text-slate-700"
-        >
-          <span className="text-cyan-400/70">
-            atharv@devops
+        <div className="mx-auto mt-5 max-w-280">
+          <div className="grid grid-cols-3 overflow-hidden rounded-xl border border-white/6 bg-[#020817]/50">
+            <div className="flex items-center justify-center gap-2 border-r border-white/6 py-3">
+              <FiCloud className="text-cyan-400" />
+
+              <div>
+                <p className="font-mono text-[7px] text-slate-600">
+                  CLOUD
+                </p>
+
+                <p className="text-[9px] font-semibold text-slate-300">
+                  BUILD
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-center gap-2 border-r border-white/6 py-3">
+              <FiGitBranch className="text-purple-400" />
+
+              <div>
+                <p className="font-mono text-[7px] text-slate-600">
+                  AUTOMATION
+                </p>
+
+                <p className="text-[9px] font-semibold text-slate-300">
+                  SHIP
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-center gap-2 py-3">
+              <FiActivity className="text-emerald-400" />
+
+              <div>
+                <p className="font-mono text-[7px] text-slate-600">
+                  OBSERVABILITY
+                </p>
+
+                <p className="text-[9px] font-semibold text-slate-300">
+                  RUN
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* =====================================================
+            SUPPORTING TOOLS
+        ===================================================== */}
+
+        <div className="mx-auto mt-4 flex max-w-175 items-center justify-center gap-2">
+          {bottomTools.map((tool) => (
+            <motion.div
+              key={tool.name}
+              whileHover={{
+                y: -3,
+                borderColor: "rgba(34,211,238,.2)",
+              }}
+              className="flex items-center gap-2 rounded-lg border border-white/5 bg-white/1.5 px-3 py-2"
+            >
+              <span className="text-xs text-slate-500">
+                {tool.icon}
+              </span>
+
+              <span className="font-mono text-[8px] text-slate-600">
+                {tool.name}
+              </span>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* terminal */}
+        <div className="mt-6 flex items-center justify-center gap-2 font-mono text-[8px] text-slate-700">
+          <span className="text-cyan-500">
+            atharv@cloud
           </span>
 
           <span>:</span>
 
-          <span className="text-purple-400/70">
-            ~/infrastructure
+          <span className="text-purple-400">
+            ~/devops
           </span>
 
           <span>$</span>
 
           <span>
-            systemctl status platform-core
+            infrastructure --status
           </span>
 
-          <span className="text-emerald-400">
-            ● active (running)
+          <span className="text-emerald-500">
+            ✓ healthy
           </span>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
