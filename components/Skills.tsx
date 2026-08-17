@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion } from "framer-motion";
@@ -17,250 +16,427 @@ import {
   SiKubernetes,
   SiTerraform,
   SiGithubactions,
-  SiGnubash,
+  SiShell,
   SiNginx,
   SiPrometheus,
 } from "react-icons/si";
 
 import { MdSecurity } from "react-icons/md";
-import { FiActivity, FiArrowUpRight, FiCloud, FiCpu } from "react-icons/fi";
+import { FiArrowUpRight, FiActivity, FiCloud, FiCpu } from "react-icons/fi";
 
-const skills = [
+const coreSkills = [
   {
     name: "Docker",
     icon: <FaDocker />,
     color: "text-blue-400",
-    glow: "group-hover:shadow-blue-500/30",
-    category: "Containers",
+    category: "CONTAINERS",
     tags: ["Images", "Compose", "Registry"],
+    position: "docker",
   },
   {
     name: "Kubernetes",
     icon: <SiKubernetes />,
     color: "text-cyan-400",
-    glow: "group-hover:shadow-cyan-500/30",
-    category: "Orchestration",
+    category: "ORCHESTRATION",
     tags: ["Pods", "Services", "Ingress"],
+    position: "kubernetes",
   },
   {
     name: "Terraform",
     icon: <SiTerraform />,
     color: "text-purple-400",
-    glow: "group-hover:shadow-purple-500/30",
-    category: "Infrastructure",
+    category: "INFRASTRUCTURE",
     tags: ["IaC", "Modules", "State"],
+    position: "terraform",
   },
   {
     name: "Jenkins",
     icon: <FaJenkins />,
     color: "text-red-400",
-    glow: "group-hover:shadow-red-500/30",
     category: "CI/CD",
     tags: ["Pipeline", "Build", "Deploy"],
+    position: "jenkins",
   },
   {
     name: "GitHub Actions",
     icon: <SiGithubactions />,
     color: "text-blue-300",
-    glow: "group-hover:shadow-indigo-500/30",
-    category: "Automation",
+    category: "AUTOMATION",
     tags: ["Workflow", "CI/CD", "Deploy"],
+    position: "github",
   },
   {
     name: "Linux",
     icon: <FaLinux />,
     color: "text-yellow-400",
-    glow: "group-hover:shadow-yellow-500/30",
-    category: "Operating System",
-    tags: ["Ubuntu", "Permissions", "System"],
+    category: "OPERATING SYSTEM",
+    tags: ["Ubuntu", "System", "Permissions"],
+    position: "linux",
+  },
+];
+
+const toolchain = [
+  {
+    name: "Git & GitHub",
+    icon: <FaGitAlt />,
+    color: "text-orange-400",
+    tags: ["Git", "Branching", "Merge"],
   },
   {
     name: "Python",
     icon: <FaPython />,
     color: "text-yellow-300",
-    glow: "group-hover:shadow-yellow-500/30",
-    category: "Automation",
     tags: ["Boto3", "Scripts", "APIs"],
   },
   {
     name: "Shell",
-    icon: <SiGnubash />,
+    icon: <SiShell />,
     color: "text-green-400",
-    glow: "group-hover:shadow-green-500/30",
-    category: "Automation",
-    tags: ["Bash", "Cron", "Linux"],
+    tags: ["Bash", "Cron", "Automation"],
   },
   {
     name: "Networking",
     icon: <FaNetworkWired />,
     color: "text-sky-400",
-    glow: "group-hover:shadow-sky-500/30",
-    category: "Infrastructure",
     tags: ["TCP/IP", "DNS", "HTTP"],
   },
   {
     name: "Security",
     icon: <MdSecurity />,
     color: "text-emerald-400",
-    glow: "group-hover:shadow-emerald-500/30",
-    category: "Security",
     tags: ["IAM", "Roles", "MFA"],
   },
   {
     name: "Nginx",
     icon: <SiNginx />,
     color: "text-green-500",
-    glow: "group-hover:shadow-green-500/30",
-    category: "Web",
     tags: ["Proxy", "SSL", "Server"],
   },
   {
-    name: "Prometheus",
+    name: "Monitoring",
     icon: <SiPrometheus />,
     color: "text-orange-400",
-    glow: "group-hover:shadow-orange-500/30",
-    category: "Monitoring",
-    tags: ["Metrics", "Alerts", "Monitoring"],
+    tags: ["Metrics", "Alerts", "Grafana"],
   },
 ];
 
-const orbitPositions = [
-  "top-[4%] left-[8%]",
-  "top-[2%] right-[8%]",
-  "top-[35%] left-[0%]",
-  "top-[35%] right-[0%]",
-  "bottom-[5%] left-[8%]",
-  "bottom-[3%] right-[8%]",
-];
+function SkillCard({
+  skill,
+}: {
+  skill: (typeof coreSkills)[number];
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9, y: 15 }}
+      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      whileHover={{
+        y: -6,
+        scale: 1.025,
+      }}
+      className="group relative w-52.5"
+    >
+      <div className="relative overflow-hidden rounded-2xl border border-white/9 bg-[#020817]/90 p-3.5 shadow-[0_15px_40px_rgba(0,0,0,0.25)] backdrop-blur-xl transition-all duration-300 group-hover:border-cyan-400/35 group-hover:shadow-[0_0_35px_rgba(34,211,238,0.10)]">
+        {/* Hover glow */}
+        <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-cyan-400/8 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+        {/* Top indicator */}
+        <div className="absolute left-0 top-0 h-0.5 w-full bg-linear-to-r from-cyan-400/0 via-cyan-400/60 to-cyan-400/0 opacity-60" />
+
+        <div className="relative flex items-center gap-3">
+          <div
+            className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/8 bg-white/[0.035] text-xl ${skill.color}`}
+          >
+            {skill.icon}
+          </div>
+
+          <div className="min-w-0">
+            <h3 className="truncate text-[13px] font-bold text-white">
+              {skill.name}
+            </h3>
+
+            <p className="mt-0.5 font-mono text-[8px] tracking-[0.12em] text-slate-500">
+              {skill.category}
+            </p>
+          </div>
+
+          <FiArrowUpRight className="ml-auto shrink-0 text-sm text-slate-600 transition-colors group-hover:text-cyan-400" />
+        </div>
+
+        <div className="relative mt-3 flex flex-wrap gap-1.5">
+          {skill.tags.map((tag) => (
+            <span
+              key={tag}
+              className="rounded-md border border-white/[0.07] bg-white/2.5 px-1.5 py-1 font-mono text-[8px] text-slate-400"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+function ToolCard({
+  tool,
+}: {
+  tool: (typeof toolchain)[number];
+}) {
+  return (
+    <motion.div
+      whileHover={{ y: -4 }}
+      className="group rounded-xl border border-white/[0.07] bg-slate-950/60 p-3 backdrop-blur-md transition-all duration-300 hover:border-cyan-400/25"
+    >
+      <div className="flex items-center gap-2.5">
+        <div className={`text-lg ${tool.color}`}>{tool.icon}</div>
+
+        <div className="min-w-0">
+          <p className="truncate text-[11px] font-semibold text-white">
+            {tool.name}
+          </p>
+
+          <p className="mt-0.5 font-mono text-[8px] text-slate-500">
+            {tool.tags.join(" • ")}
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative overflow-hidden bg-transparent px-6 py-24"
+      className="relative overflow-hidden bg-transparent px-5 py-24 md:px-8"
     >
-      {/* Background Grid */}
+      {/* =========================================================
+          BACKGROUND
+      ========================================================= */}
+
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.035]"
+        className="pointer-events-none absolute inset-0 opacity-[0.025]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(34,211,238,.8) 1px, transparent 1px), linear-gradient(90deg, rgba(34,211,238,.8) 1px, transparent 1px)",
-          backgroundSize: "45px 45px",
+            "linear-gradient(rgba(34,211,238,1) 1px, transparent 1px), linear-gradient(90deg, rgba(34,211,238,1) 1px, transparent 1px)",
+          backgroundSize: "42px 42px",
         }}
       />
 
-      {/* Ambient Glow */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-125 w-125 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/6 blur-[120px]" />
+      <div className="pointer-events-none absolute left-1/2 top-[40%] h-137.5 w-137.5 -translate-x-1/2 rounded-full bg-cyan-500/[0.035] blur-[130px]" />
 
       <div className="relative mx-auto max-w-7xl">
-        {/* HEADER */}
+        {/* =========================================================
+            HEADER
+        ========================================================= */}
+
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
+          className="mb-12 text-center"
         >
-          <div className="mx-auto mb-5 flex w-fit items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/[0.07] px-4 py-2 font-mono text-[11px] tracking-[0.25em] text-cyan-300 uppercase">
+          <div className="mx-auto mb-5 flex w-fit items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/6 px-4 py-2 font-mono text-[10px] tracking-[0.25em] text-cyan-300">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-400" />
-            DevOps Control Center
+            ENGINEERING STACK
           </div>
 
-          <h2 className="text-4xl font-black tracking-tight text-white md:text-6xl">
-            Engineering{" "}
-            <span className="bg-linear-to-r from-cyan-300 via-sky-400 to-blue-500 bg-clip-text text-transparent">
-              Stack
+          <h2 className="text-4xl font-black tracking-tight text-white md:text-5xl">
+            Cloud &{" "}
+            <span className="bg-linear-to-r from-cyan-300 to-blue-500 bg-clip-text text-transparent">
+              DevOps
             </span>
           </h2>
 
-          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-slate-400 md:text-base">
-            A production-focused toolkit for building, deploying, automating,
-            securing and monitoring modern cloud infrastructure.
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-slate-400">
+            A production-focused technology stack for cloud infrastructure,
+            containerization, automation, CI/CD and observability.
           </p>
         </motion.div>
 
-        {/* MAIN CONTROL CENTER */}
-        <div className="relative mx-auto min-h-180 max-w-6xl">
-          {/* Connection Lines */}
+        {/* =========================================================
+            TOPOLOGY
+        ========================================================= */}
+
+        <div className="relative mx-auto h-162.5 max-w-275 overflow-hidden rounded-[28px] border border-white/[0.07] bg-[#010611]/60 shadow-[0_30px_100px_rgba(0,0,0,0.35)] backdrop-blur-[2px]">
+          {/* Inner grid */}
+          <div
+            className="pointer-events-none absolute inset-0 opacity-[0.045]"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(34,211,238,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(34,211,238,.5) 1px, transparent 1px)",
+              backgroundSize: "30px 30px",
+            }}
+          />
+
+          {/* Top-left label */}
+          <div className="absolute left-5 top-5 z-40 flex items-center gap-2 font-mono text-[9px] text-slate-500">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,.8)]" />
+            INFRASTRUCTURE MAP
+          </div>
+
+          {/* Top-right status */}
+          <div className="absolute right-5 top-5 z-40 hidden items-center gap-2 rounded-full border border-emerald-400/10 bg-emerald-400/3 px-3 py-1.5 font-mono text-[8px] text-emerald-400 sm:flex">
+            <FiActivity />
+            SYSTEMS OPERATIONAL
+          </div>
+
+          {/* =====================================================
+              CONNECTION NETWORK
+          ===================================================== */}
+
           <div className="pointer-events-none absolute inset-0 hidden md:block">
             <svg
-              viewBox="0 0 1000 720"
+              viewBox="0 0 1100 650"
               className="h-full w-full"
+              preserveAspectRatio="none"
               fill="none"
             >
-              <motion.path
-                d="M100 80 C300 120 350 300 500 360"
+              {/* Docker → AWS */}
+              <path
+                d="M165 115 C280 115 350 220 470 285"
                 stroke="rgba(34,211,238,.16)"
                 strokeWidth="1"
-                strokeDasharray="6 8"
-                animate={{ strokeDashoffset: [0, -100] }}
-                transition={{
-                  duration: 8,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
+                strokeDasharray="5 8"
               />
 
-              <motion.path
-                d="M900 80 C700 120 650 300 500 360"
+              {/* Kubernetes → AWS */}
+              <path
+                d="M935 115 C820 115 750 220 630 285"
                 stroke="rgba(34,211,238,.16)"
                 strokeWidth="1"
-                strokeDasharray="6 8"
-                animate={{ strokeDashoffset: [0, -100] }}
+                strokeDasharray="5 8"
+              />
+
+              {/* Terraform → AWS */}
+              <path
+                d="M155 325 C270 325 350 325 455 325"
+                stroke="rgba(168,85,247,.18)"
+                strokeWidth="1"
+                strokeDasharray="5 8"
+              />
+
+              {/* Jenkins → AWS */}
+              <path
+                d="M945 325 C830 325 750 325 645 325"
+                stroke="rgba(248,113,113,.15)"
+                strokeWidth="1"
+                strokeDasharray="5 8"
+              />
+
+              {/* GitHub → AWS */}
+              <path
+                d="M180 545 C300 545 355 420 470 370"
+                stroke="rgba(96,165,250,.15)"
+                strokeWidth="1"
+                strokeDasharray="5 8"
+              />
+
+              {/* Linux → AWS */}
+              <path
+                d="M920 545 C800 545 745 420 630 370"
+                stroke="rgba(250,204,21,.15)"
+                strokeWidth="1"
+                strokeDasharray="5 8"
+              />
+
+              {/* Horizontal infrastructure line */}
+              <path
+                d="M40 390 H1060"
+                stroke="rgba(34,211,238,.05)"
+                strokeWidth="1"
+              />
+
+              {/* Vertical infrastructure line */}
+              <path
+                d="M550 80 V570"
+                stroke="rgba(34,211,238,.05)"
+                strokeWidth="1"
+              />
+
+              {/* Animated data packets */}
+              <motion.circle
+                r="3"
+                fill="#22d3ee"
+                animate={{
+                  cx: [165, 280, 350, 470],
+                  cy: [115, 115, 220, 285],
+                }}
                 transition={{
-                  duration: 7,
+                  duration: 3,
                   repeat: Infinity,
                   ease: "linear",
                 }}
               />
 
-              <motion.path
-                d="M70 360 C250 350 350 360 500 360"
-                stroke="rgba(34,211,238,.14)"
-                strokeWidth="1"
-                strokeDasharray="5 9"
-                animate={{ strokeDashoffset: [0, -100] }}
+              <motion.circle
+                r="3"
+                fill="#a855f7"
+                animate={{
+                  cx: [155, 270, 350, 455],
+                  cy: [325, 325, 325, 325],
+                }}
                 transition={{
-                  duration: 6,
+                  duration: 2.5,
                   repeat: Infinity,
                   ease: "linear",
                 }}
               />
 
-              <motion.path
-                d="M930 360 C750 350 650 360 500 360"
-                stroke="rgba(34,211,238,.14)"
-                strokeWidth="1"
-                strokeDasharray="5 9"
-                animate={{ strokeDashoffset: [0, -100] }}
+              <motion.circle
+                r="3"
+                fill="#60a5fa"
+                animate={{
+                  cx: [180, 300, 355, 470],
+                  cy: [545, 545, 420, 370],
+                }}
                 transition={{
-                  duration: 6,
+                  duration: 3.2,
                   repeat: Infinity,
                   ease: "linear",
                 }}
               />
 
-              <motion.path
-                d="M100 640 C300 600 350 430 500 360"
-                stroke="rgba(34,211,238,.16)"
-                strokeWidth="1"
-                strokeDasharray="6 8"
-                animate={{ strokeDashoffset: [0, -100] }}
+              <motion.circle
+                r="3"
+                fill="#22d3ee"
+                animate={{
+                  cx: [935, 820, 750, 630],
+                  cy: [115, 115, 220, 285],
+                }}
                 transition={{
-                  duration: 8,
+                  duration: 3,
                   repeat: Infinity,
                   ease: "linear",
                 }}
               />
 
-              <motion.path
-                d="M900 640 C700 600 650 430 500 360"
-                stroke="rgba(34,211,238,.16)"
-                strokeWidth="1"
-                strokeDasharray="6 8"
-                animate={{ strokeDashoffset: [0, -100] }}
+              <motion.circle
+                r="3"
+                fill="#f87171"
+                animate={{
+                  cx: [945, 830, 750, 645],
+                  cy: [325, 325, 325, 325],
+                }}
                 transition={{
-                  duration: 7,
+                  duration: 2.5,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+              />
+
+              <motion.circle
+                r="3"
+                fill="#facc15"
+                animate={{
+                  cx: [920, 800, 745, 630],
+                  cy: [545, 545, 420, 370],
+                }}
+                transition={{
+                  duration: 3.2,
                   repeat: Infinity,
                   ease: "linear",
                 }}
@@ -268,74 +444,12 @@ export default function Skills() {
             </svg>
           </div>
 
-          {/* Orbit Skill Cards */}
-          <div className="hidden md:block">
-            {skills.slice(0, 6).map((skill, index) => (
-              <motion.div
-                key={skill.name}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.1,
-                }}
-                whileHover={{
-                  scale: 1.08,
-                  y: -6,
-                }}
-                className={`group absolute ${orbitPositions[index]} z-20 w-52`}
-              >
-                <div
-                  className={`relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/70 p-4 backdrop-blur-xl transition-all duration-300 ${skill.glow} hover:border-cyan-400/40 hover:shadow-2xl`}
-                >
-                  {/* Hover Glow */}
-                  <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-cyan-400/8 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          {/* =====================================================
+              CENTRAL AWS CORE
+          ===================================================== */}
 
-                  <div className="relative flex items-center gap-3">
-                    <div
-                      className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/4 text-2xl ${skill.color}`}
-                    >
-                      {skill.icon}
-                    </div>
-
-                    <div>
-                      <h3 className="text-sm font-bold text-white">
-                        {skill.name}
-                      </h3>
-
-                      <p className="mt-0.5 font-mono text-[9px] text-slate-500">
-                        {skill.category}
-                      </p>
-                    </div>
-
-                    <FiArrowUpRight className="ml-auto text-slate-600 transition-all group-hover:text-cyan-400" />
-                  </div>
-
-                  <div className="relative mt-3 flex flex-wrap gap-1.5">
-                    {skill.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-md border border-white/[0.07] bg-white/3 px-2 py-1 font-mono text-[9px] text-slate-400"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* CENTRAL AWS CORE */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.7 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="absolute left-1/2 top-1/2 z-30 hidden -translate-x-1/2 -translate-y-1/2 md:block"
-          >
-            {/* Outer Rings */}
+          <div className="absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
+            {/* Outer rings */}
             <motion.div
               animate={{ rotate: 360 }}
               transition={{
@@ -343,7 +457,7 @@ export default function Skills() {
                 repeat: Infinity,
                 ease: "linear",
               }}
-              className="absolute -inset-16 rounded-full border border-dashed border-cyan-400/10"
+              className="absolute -inset-20 rounded-full border border-dashed border-cyan-400/8"
             />
 
             <motion.div
@@ -353,148 +467,148 @@ export default function Skills() {
                 repeat: Infinity,
                 ease: "linear",
               }}
-              className="absolute -inset-10 rounded-full border border-cyan-400/10"
+              className="absolute -inset-12 rounded-full border border-cyan-400/8"
             />
 
-            {/* Core Glow */}
-            <div className="absolute -inset-12 rounded-full bg-cyan-400/10 blur-3xl" />
+            <div className="absolute -inset-14 rounded-full bg-cyan-400/[0.07] blur-3xl" />
 
             {/* Core */}
-            <div className="relative flex h-64 w-64 flex-col items-center justify-center rounded-full border border-cyan-400/30 bg-slate-950/90 shadow-[0_0_80px_rgba(34,211,238,0.12)] backdrop-blur-xl">
-              <motion.div
-                animate={{
-                  scale: [1, 1.08, 1],
-                  opacity: [0.7, 1, 0.7],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                }}
-                className="absolute h-28 w-28 rounded-full bg-orange-400/10 blur-2xl"
-              />
+            <motion.div
+              whileHover={{ scale: 1.04 }}
+              className="relative flex h-51.25 w-51.25 flex-col items-center justify-center rounded-full border border-cyan-400/25 bg-[#020817] shadow-[0_0_70px_rgba(34,211,238,.12)]"
+            >
+              {/* AWS glow */}
+              <div className="absolute inset-0 rounded-full bg-linear-to-b from-orange-400/4 to-transparent" />
 
-              <div className="relative text-6xl text-orange-400">
-                <FaAws />
-              </div>
+              <FaAws className="relative text-[58px] text-orange-400 drop-shadow-[0_0_15px_rgba(251,146,60,.25)]" />
 
-              <h3 className="relative mt-3 text-xl font-black text-white">
+              <h3 className="relative mt-2 text-xl font-black text-white">
                 AWS
               </h3>
 
-              <p className="relative mt-1 font-mono text-[10px] tracking-[0.25em] text-cyan-400 uppercase">
-                Cloud Core
+              <p className="mt-1 font-mono text-[9px] tracking-[0.3em] text-cyan-400">
+                CLOUD CORE
               </p>
 
-              <div className="mt-4 flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/5 px-3 py-1">
+              <div className="mt-4 flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/4 px-3 py-1.5">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
-                <span className="font-mono text-[9px] text-emerald-300">
+
+                <span className="font-mono text-[8px] text-emerald-300">
                   INFRASTRUCTURE ONLINE
                 </span>
               </div>
-            </div>
-          </motion.div>
-
-          {/* MOBILE GRID */}
-          <div className="grid grid-cols-2 gap-3 md:hidden">
-            {skills.map((skill, index) => (
-              <motion.div
-                key={skill.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.4,
-                  delay: index * 0.04,
-                }}
-                whileTap={{ scale: 0.97 }}
-                className="group rounded-2xl border border-white/10 bg-slate-950/60 p-3 backdrop-blur-xl"
-              >
-                <div
-                  className={`flex h-10 w-10 items-center justify-center rounded-xl bg-white/4 text-xl ${skill.color}`}
-                >
-                  {skill.icon}
-                </div>
-
-                <h3 className="mt-3 text-xs font-bold text-white">
-                  {skill.name}
-                </h3>
-
-                <p className="mt-1 font-mono text-[8px] text-slate-500">
-                  {skill.category}
-                </p>
-
-                <div className="mt-3 flex flex-wrap gap-1">
-                  {skill.tags.slice(0, 2).map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded border border-white/10 px-1.5 py-0.5 text-[8px] text-slate-400"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+            </motion.div>
           </div>
 
-          {/* BOTTOM STATUS PANEL */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.7 }}
-            className="absolute bottom-0 left-1/2 hidden w-[80%] -translate-x-1/2 md:block"
-          >
-            <div className="grid grid-cols-3 divide-x divide-white/10 overflow-hidden rounded-2xl border border-white/10 bg-slate-950/70 backdrop-blur-xl">
-              <div className="flex items-center justify-center gap-3 p-4">
-                <FiCloud className="text-cyan-400" />
-                <div>
-                  <p className="font-mono text-[9px] text-slate-500 uppercase">
-                    Cloud
-                  </p>
-                  <p className="text-xs font-bold text-white">AWS</p>
-                </div>
-              </div>
+          {/* =====================================================
+              DESKTOP SKILL CARDS
+          ===================================================== */}
 
-              <div className="flex items-center justify-center gap-3 p-4">
-                <FiCpu className="text-purple-400" />
-                <div>
-                  <p className="font-mono text-[9px] text-slate-500 uppercase">
-                    Automation
-                  </p>
-                  <p className="text-xs font-bold text-white">IaC + CI/CD</p>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-center gap-3 p-4">
-                <FiActivity className="text-emerald-400" />
-                <div>
-                  <p className="font-mono text-[9px] text-slate-500 uppercase">
-                    Operations
-                  </p>
-                  <p className="text-xs font-bold text-white">
-                    Monitor + Secure
-                  </p>
-                </div>
-              </div>
+          <div className="absolute inset-0 hidden md:block">
+            {/* Docker */}
+            <div className="absolute left-[5%] top-[8%]">
+              <SkillCard skill={coreSkills[0]} />
             </div>
-          </motion.div>
+
+            {/* Kubernetes */}
+            <div className="absolute right-[5%] top-[8%]">
+              <SkillCard skill={coreSkills[1]} />
+            </div>
+
+            {/* Terraform */}
+            <div className="absolute left-[4%] top-[42%]">
+              <SkillCard skill={coreSkills[2]} />
+            </div>
+
+            {/* Jenkins */}
+            <div className="absolute right-[4%] top-[42%]">
+              <SkillCard skill={coreSkills[3]} />
+            </div>
+
+            {/* GitHub */}
+            <div className="absolute bottom-[7%] left-[7%]">
+              <SkillCard skill={coreSkills[4]} />
+            </div>
+
+            {/* Linux */}
+            <div className="absolute bottom-[7%] right-[7%]">
+              <SkillCard skill={coreSkills[5]} />
+            </div>
+          </div>
+
+          {/* =====================================================
+              MOBILE
+          ===================================================== */}
+
+          <div className="relative z-30 grid grid-cols-2 gap-3 p-5 pt-16 md:hidden">
+            {coreSkills.map((skill) => (
+              <SkillCard key={skill.name} skill={skill} />
+            ))}
+          </div>
         </div>
 
-        {/* FOOTER TERMINAL LINE */}
+        {/* =========================================================
+            TOOLCHAIN
+        ========================================================= */}
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="mx-auto mt-5 max-w-275"
+        >
+          <div className="mb-3 flex items-center justify-between px-1">
+            <div className="flex items-center gap-2">
+              <FiCpu className="text-cyan-400" />
+
+              <span className="font-mono text-[9px] tracking-[0.2em] text-slate-500">
+                SUPPORTING TOOLCHAIN
+              </span>
+            </div>
+
+            <span className="font-mono text-[8px] text-slate-600">
+              07 MODULES
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-7">
+            {toolchain.map((tool) => (
+              <ToolCard key={tool.name} tool={tool} />
+            ))}
+          </div>
+        </motion.div>
+
+        {/* =========================================================
+            BOTTOM TERMINAL
+        ========================================================= */}
+
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 1 }}
-          className="mx-auto mt-8 flex w-fit items-center gap-2 font-mono text-[10px] text-slate-600"
+          transition={{ delay: 0.6 }}
+          className="mx-auto mt-8 flex w-fit max-w-full items-center gap-2 overflow-hidden font-mono text-[9px] text-slate-600"
         >
-          <span className="text-cyan-500">atharv@devops</span>
+          <span className="shrink-0 text-cyan-500">
+            atharv@devops
+          </span>
+
           <span>:</span>
-          <span className="text-purple-400">~/skills</span>
+
+          <span className="shrink-0 text-purple-400">
+            ~/infrastructure
+          </span>
+
           <span>$</span>
-          <span className="text-slate-500">systemctl status engineering-stack</span>
-          <span className="text-emerald-500">● active</span>
+
+          <span className="truncate text-slate-500">
+            terraform plan
+          </span>
+
+          <span className="shrink-0 text-emerald-500">
+            ✓ ready
+          </span>
         </motion.div>
       </div>
     </section>
