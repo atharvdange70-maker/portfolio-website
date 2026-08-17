@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+
 import {
   FaAws,
   FaDocker,
@@ -30,7 +31,6 @@ import {
   FiRadio,
   FiServer,
   FiShield,
-  FiZap,
 } from "react-icons/fi";
 
 /* =========================================================
@@ -44,7 +44,7 @@ const skills = [
     icon: <FaAws />,
     color: "#ff9900",
     angle: -90,
-    radius: 290,
+    radius: 250,
     tags: ["EC2", "S3", "IAM", "VPC"],
   },
   {
@@ -52,8 +52,8 @@ const skills = [
     category: "ORCHESTRATION",
     icon: <SiKubernetes />,
     color: "#38bdf8",
-    angle: -60,
-    radius: 290,
+    angle: -64,
+    radius: 250,
     tags: ["Pods", "Services", "Ingress"],
   },
   {
@@ -61,8 +61,8 @@ const skills = [
     category: "CONTAINERS",
     icon: <FaDocker />,
     color: "#2496ed",
-    angle: -30,
-    radius: 290,
+    angle: -38,
+    radius: 250,
     tags: ["Images", "Compose", "Registry"],
   },
   {
@@ -70,8 +70,8 @@ const skills = [
     category: "INFRASTRUCTURE",
     icon: <SiTerraform />,
     color: "#a855f7",
-    angle: 0,
-    radius: 290,
+    angle: -12,
+    radius: 250,
     tags: ["IaC", "Modules", "State"],
   },
   {
@@ -79,8 +79,8 @@ const skills = [
     category: "CI / CD",
     icon: <FaJenkins />,
     color: "#ef4444",
-    angle: 30,
-    radius: 290,
+    angle: 14,
+    radius: 250,
     tags: ["Pipeline", "Build", "Deploy"],
   },
   {
@@ -88,8 +88,8 @@ const skills = [
     category: "AUTOMATION",
     icon: <SiGithubactions />,
     color: "#60a5fa",
-    angle: 60,
-    radius: 290,
+    angle: 40,
+    radius: 250,
     tags: ["Workflow", "CI/CD", "Deploy"],
   },
   {
@@ -97,8 +97,8 @@ const skills = [
     category: "SYSTEM",
     icon: <FaLinux />,
     color: "#facc15",
-    angle: 90,
-    radius: 290,
+    angle: 66,
+    radius: 250,
     tags: ["Ubuntu", "Shell", "System"],
   },
   {
@@ -106,8 +106,8 @@ const skills = [
     category: "OBSERVABILITY",
     icon: <SiPrometheus />,
     color: "#fb923c",
-    angle: 120,
-    radius: 290,
+    angle: 92,
+    radius: 250,
     tags: ["Metrics", "Alerts", "Monitoring"],
   },
   {
@@ -115,8 +115,8 @@ const skills = [
     category: "WEB SERVER",
     icon: <SiNginx />,
     color: "#22c55e",
-    angle: 150,
-    radius: 290,
+    angle: 118,
+    radius: 250,
     tags: ["Proxy", "SSL", "Routing"],
   },
   {
@@ -124,8 +124,8 @@ const skills = [
     category: "NETWORK",
     icon: <FaNetworkWired />,
     color: "#22d3ee",
-    angle: 180,
-    radius: 290,
+    angle: 144,
+    radius: 250,
     tags: ["TCP/IP", "DNS", "HTTP"],
   },
   {
@@ -133,8 +133,8 @@ const skills = [
     category: "AUTOMATION",
     icon: <FaPython />,
     color: "#facc15",
-    angle: 210,
-    radius: 290,
+    angle: 170,
+    radius: 250,
     tags: ["Boto3", "Scripts", "APIs"],
   },
   {
@@ -142,8 +142,8 @@ const skills = [
     category: "SECURITY",
     icon: <MdSecurity />,
     color: "#34d399",
-    angle: 240,
-    radius: 290,
+    angle: 196,
+    radius: 250,
     tags: ["IAM", "Policies", "MFA"],
   },
   {
@@ -151,8 +151,8 @@ const skills = [
     category: "VERSION CONTROL",
     icon: <FaGitAlt />,
     color: "#f97316",
-    angle: 270,
-    radius: 290,
+    angle: 222,
+    radius: 250,
     tags: ["Branch", "Merge", "Version"],
   },
   {
@@ -160,8 +160,8 @@ const skills = [
     category: "SCRIPTING",
     icon: <SiShell />,
     color: "#4ade80",
-    angle: 300,
-    radius: 290,
+    angle: 248,
+    radius: 250,
     tags: ["Bash", "Cron", "Linux"],
   },
 ];
@@ -183,55 +183,93 @@ function OrbitNode({
   const y = Math.sin(rad) * skill.radius;
 
   return (
-    <motion.div
-      initial={{
-        opacity: 0,
-        scale: 0,
-      }}
-      whileInView={{
-        opacity: 1,
-        scale: 1,
-      }}
-      viewport={{
-        once: true,
-      }}
-      transition={{
-        delay: index * 0.06,
-        duration: 0.5,
-        type: "spring",
-      }}
+    /*
+      IMPORTANT:
+      This outer div controls POSITION.
+      Framer Motion is NOT controlling transform here.
+    */
+    <div
       className="absolute left-1/2 top-1/2 z-30"
       style={{
-        transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
+        marginLeft: `${x}px`,
+        marginTop: `${y}px`,
       }}
     >
-      {/* connection point */}
+      {/* =================================================
+          CONNECTION LINE
+      ================================================= */}
 
       <div
-        className="absolute left-1/2 top-1/2 h-px w-72.5 origin-left opacity-20"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-px w-62.5 origin-left opacity-30"
         style={{
           background: `linear-gradient(90deg, ${skill.color}, transparent)`,
           transform: `rotate(${skill.angle + 180}deg)`,
         }}
       />
 
-      {/* satellite */}
+      {/* =================================================
+          ANIMATED DATA PACKET
+      ================================================= */}
 
       <motion.div
+        className="pointer-events-none absolute left-1/2 top-1/2 h-1.5 w-1.5 rounded-full"
+        style={{
+          backgroundColor: skill.color,
+          boxShadow: `0 0 12px ${skill.color}`,
+        }}
+        animate={{
+          x: [-10, -80, -150, -220],
+          opacity: [0, 1, 1, 0],
+        }}
+        transition={{
+          duration: 3,
+          delay: index * 0.2,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+      />
+
+      {/* =================================================
+          SKILL NODE
+      ================================================= */}
+
+      <motion.div
+        initial={{
+          opacity: 0,
+          scale: 0,
+        }}
+        whileInView={{
+          opacity: 1,
+          scale: 1,
+        }}
+        viewport={{
+          once: true,
+          amount: 0.15,
+        }}
+        transition={{
+          delay: index * 0.06,
+          duration: 0.55,
+          type: "spring",
+          stiffness: 140,
+          damping: 14,
+        }}
         whileHover={{
           scale: 1.15,
+          zIndex: 100,
         }}
-        className="group relative"
+        className="group relative -translate-x-1/2 -translate-y-1/2"
       >
-        {/* glow */}
+        {/* =================================================
+            GLOW
+        ================================================= */}
 
         <motion.div
           animate={{
-            opacity: [0.08, 0.22, 0.08],
+            opacity: [0.06, 0.18, 0.06],
             scale: [0.9, 1.15, 0.9],
           }}
           transition={{
-            duration: 3 + index * 0.15,
+            duration: 3 + index * 0.1,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -241,42 +279,70 @@ function OrbitNode({
           }}
         />
 
-        {/* rotating ring */}
+        {/* =================================================
+            ROTATING RING
+        ================================================= */}
 
         <motion.div
           animate={{
             rotate: 360,
           }}
           transition={{
-            duration: 7 + index,
+            duration: 7 + index * 0.25,
             repeat: Infinity,
             ease: "linear",
           }}
-          className="absolute -inset-2 rounded-full border border-dashed opacity-30"
+          className="absolute -inset-2 rounded-full border border-dashed opacity-35"
           style={{
-            borderColor: skill.color,
+            borderColor: `${skill.color}70`,
           }}
         />
 
-        {/* node */}
+        {/* =================================================
+            ORBIT DOT
+        ================================================= */}
+
+        <motion.span
+          animate={{
+            rotate: 360,
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="absolute -right-1 top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full"
+          style={{
+            backgroundColor: skill.color,
+            boxShadow: `0 0 10px ${skill.color}`,
+          }}
+        />
+
+        {/* =================================================
+            MAIN CIRCLE
+        ================================================= */}
 
         <div
-          className="relative flex h-16 w-16 items-center justify-center rounded-full border bg-[#020711]/95 backdrop-blur-xl"
+          className="relative flex h-15.5 w-15.5 items-center justify-center rounded-full border bg-[#020711]/95 backdrop-blur-xl"
           style={{
-            borderColor: `${skill.color}45`,
-            boxShadow: `0 0 35px ${skill.color}12`,
+            borderColor: `${skill.color}55`,
+            boxShadow: `
+              0 0 25px ${skill.color}12,
+              inset 0 0 20px ${skill.color}05
+            `,
           }}
         >
           <span
             className="text-[23px]"
             style={{
               color: skill.color,
+              filter: `drop-shadow(0 0 7px ${skill.color}45)`,
             }}
           >
             {skill.icon}
           </span>
 
-          {/* live indicator */}
+          {/* online indicator */}
 
           <span
             className="absolute right-1 top-1 h-2 w-2 rounded-full border-2 border-[#020711]"
@@ -287,15 +353,17 @@ function OrbitNode({
           />
         </div>
 
-        {/* label */}
+        {/* =================================================
+            LABEL
+        ================================================= */}
 
-        <div className="pointer-events-none absolute left-1/2 top-18 -translate-x-1/2 text-center">
-          <p className="whitespace-nowrap text-[9px] font-semibold text-slate-300">
+        <div className="absolute left-1/2 top-18 -translate-x-1/2 text-center">
+          <p className="whitespace-nowrap text-[10px] font-semibold text-slate-200">
             {skill.name}
           </p>
 
           <p
-            className="mt-0.5 whitespace-nowrap font-mono text-[6px] tracking-[0.18em]"
+            className="mt-1 whitespace-nowrap font-mono text-[6px] tracking-[0.22em]"
             style={{
               color: skill.color,
             }}
@@ -304,9 +372,11 @@ function OrbitNode({
           </p>
         </div>
 
-        {/* hover panel */}
+        {/* =================================================
+            HOVER PANEL
+        ================================================= */}
 
-        <div className="pointer-events-none absolute left-1/2 top-26.25 z-100 w-42.5 -translate-x-1/2 translate-y-2 rounded-xl border border-white/10 bg-[#020711]/95 p-3 opacity-0 shadow-2xl backdrop-blur-2xl transition-all duration-200 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
+        <div className="pointer-events-none absolute left-1/2 top-26.25 z-200 w-43.75 -translate-x-1/2 translate-y-2 rounded-xl border border-white/10 bg-[#020711]/95 p-3 opacity-0 shadow-2xl backdrop-blur-2xl transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-[10px] font-bold text-white">
@@ -332,7 +402,7 @@ function OrbitNode({
             {skill.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded border border-white/[0.07] bg-white/2.5 px-1.5 py-1 font-mono text-[6px] text-slate-500"
+                className="rounded border border-white/[0.07] bg-white/2.5 px-1.5 py-1 font-mono text-[6px] text-slate-400"
               >
                 {tag}
               </span>
@@ -345,12 +415,12 @@ function OrbitNode({
           </div>
         </div>
       </motion.div>
-    </motion.div>
+    </div>
   );
 }
 
 /* =========================================================
-   MAIN
+   MAIN SKILLS SECTION
 ========================================================= */
 
 export default function Skills() {
@@ -360,7 +430,7 @@ export default function Skills() {
       className="relative overflow-hidden bg-transparent px-5 py-20 md:px-8"
     >
       {/* =====================================================
-          BACKGROUND
+          BACKGROUND GRID
       ===================================================== */}
 
       <div
@@ -372,7 +442,7 @@ export default function Skills() {
         }}
       />
 
-      {/* atmosphere */}
+      {/* atmospheric glow */}
 
       <div className="pointer-events-none absolute left-1/2 top-[55%] h-150 w-150 -translate-x-1/2 rounded-full bg-cyan-500/[0.035] blur-[130px]" />
 
@@ -400,6 +470,7 @@ export default function Skills() {
         >
           <div className="mx-auto mb-4 flex w-fit items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/4 px-4 py-1.5 font-mono text-[8px] tracking-[0.3em] text-cyan-300">
             <FiRadio className="animate-pulse" />
+
             DEVOPS NEURAL MESH
           </div>
 
@@ -411,13 +482,13 @@ export default function Skills() {
           </h2>
 
           <p className="mx-auto mt-3 max-w-2xl text-xs leading-6 text-slate-500 md:text-sm">
-            A living map of the technologies I use to build, automate,
+            A live map of the technologies I use to build, automate,
             deploy and operate cloud infrastructure.
           </p>
         </motion.div>
 
         {/* =====================================================
-            NETWORK CONTAINER
+            TOPOLOGY
         ===================================================== */}
 
         <div className="relative mx-auto h-175 max-w-287.5 overflow-hidden rounded-4xl border border-white/[0.07] bg-[#01050b]/75 shadow-[0_40px_120px_rgba(0,0,0,.45)]">
@@ -432,7 +503,7 @@ export default function Skills() {
             }}
           />
 
-          {/* top status */}
+          {/* top left status */}
 
           <div className="absolute left-6 top-5 z-50 flex items-center gap-2">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400 shadow-[0_0_10px_#34d399]" />
@@ -442,12 +513,14 @@ export default function Skills() {
             </span>
           </div>
 
+          {/* top right */}
+
           <div className="absolute right-6 top-5 z-50 font-mono text-[7px] text-slate-700">
             14 SERVICES
           </div>
 
           {/* =================================================
-              ORBITS
+              ORBIT RINGS
           ================================================= */}
 
           <motion.div
@@ -459,7 +532,7 @@ export default function Skills() {
               repeat: Infinity,
               ease: "linear",
             }}
-            className="absolute left-1/2 top-1/2 h-147.5 w-147.5 -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-400/5"
+            className="absolute left-1/2 top-1/2 h-130 w-130 -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-400/5"
           />
 
           <motion.div
@@ -471,13 +544,13 @@ export default function Skills() {
               repeat: Infinity,
               ease: "linear",
             }}
-            className="absolute left-1/2 top-1/2 h-115 w-115 -translate-x-1/2 -translate-y-1/2 rounded-full border border-purple-400/5"
+            className="absolute left-1/2 top-1/2 h-100 w-100 -translate-x-1/2 -translate-y-1/2 rounded-full border border-purple-400/5"
           />
 
-          <div className="absolute left-1/2 top-1/2 h-82.5 w-82.5 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-cyan-400/6" />
+          <div className="absolute left-1/2 top-1/2 h-75 w-75 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-cyan-400/6" />
 
           {/* =================================================
-              CONNECTION SVG
+              SVG NETWORK
           ================================================= */}
 
           <svg
@@ -513,8 +586,6 @@ export default function Skills() {
               </linearGradient>
             </defs>
 
-            {/* horizontal network */}
-
             <path
               d="M0 350 H1150"
               stroke="rgba(34,211,238,.025)"
@@ -524,8 +595,6 @@ export default function Skills() {
               d="M575 0 V700"
               stroke="rgba(34,211,238,.025)"
             />
-
-            {/* diagonal mesh */}
 
             <path
               d="M120 100 L575 350 L1030 100"
@@ -541,13 +610,13 @@ export default function Skills() {
               fill="none"
             />
 
-            {/* packets */}
+            {/* animated packets */}
 
             <motion.circle
               r="3"
               fill="#22d3ee"
               animate={{
-                cx: [100, 575, 1030],
+                cx: [120, 575, 1030],
                 cy: [100, 350, 100],
               }}
               transition={{
@@ -561,7 +630,7 @@ export default function Skills() {
               r="3"
               fill="#a855f7"
               animate={{
-                cx: [1000, 575, 120],
+                cx: [1030, 575, 100],
                 cy: [600, 350, 600],
               }}
               transition={{
@@ -573,16 +642,16 @@ export default function Skills() {
           </svg>
 
           {/* =================================================
-              CENTER CORE
+              CENTRAL CORE
           ================================================= */}
 
           <div className="absolute left-1/2 top-1/2 z-40 -translate-x-1/2 -translate-y-1/2">
-            {/* pulse */}
+            {/* core glow */}
 
             <motion.div
               animate={{
                 scale: [1, 1.25, 1],
-                opacity: [0.1, 0.02, 0.1],
+                opacity: [0.1, 0.025, 0.1],
               }}
               transition={{
                 duration: 4,
@@ -605,16 +674,14 @@ export default function Skills() {
               className="absolute -inset-7 rounded-full border border-dashed border-cyan-400/20"
             />
 
-            {/* core */}
+            {/* center */}
 
             <motion.div
               whileHover={{
-                scale: 1.05,
+                scale: 1.04,
               }}
               className="relative flex h-37.5 w-37.5 flex-col items-center justify-center rounded-full border border-cyan-300/20 bg-[#020914] shadow-[0_0_80px_rgba(34,211,238,.14)]"
             >
-              {/* small core icon */}
-
               <div className="mb-2 flex h-9 w-9 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/5">
                 <FiCpu className="text-lg text-cyan-300" />
               </div>
@@ -627,8 +694,6 @@ export default function Skills() {
                 DEVOPS ENGINE
               </p>
 
-              {/* status */}
-
               <div className="mt-3 flex items-center gap-1.5 rounded-full border border-emerald-400/20 bg-emerald-400/3 px-2.5 py-1">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
 
@@ -640,10 +705,10 @@ export default function Skills() {
           </div>
 
           {/* =================================================
-              SKILLS
+              DESKTOP SKILLS
           ================================================= */}
 
-          <div className="hidden md:block">
+          <div className="absolute inset-0 hidden md:block">
             {skills.map((skill, index) => (
               <OrbitNode
                 key={skill.name}
@@ -654,13 +719,16 @@ export default function Skills() {
           </div>
 
           {/* =================================================
-              MOBILE GRID
+              MOBILE SKILLS
           ================================================= */}
 
-          <div className="relative z-50 grid grid-cols-3 gap-5 px-6 pt-20 md:hidden">
+          <div className="relative z-50 grid grid-cols-3 gap-6 px-6 pt-20 md:hidden">
             {skills.map((skill) => (
-              <div
+              <motion.div
                 key={skill.name}
+                whileTap={{
+                  scale: 0.95,
+                }}
                 className="flex flex-col items-center"
               >
                 <div
@@ -668,6 +736,7 @@ export default function Skills() {
                   style={{
                     color: skill.color,
                     borderColor: `${skill.color}45`,
+                    boxShadow: `0 0 20px ${skill.color}10`,
                   }}
                 >
                   {skill.icon}
@@ -676,15 +745,15 @@ export default function Skills() {
                 <span className="mt-2 text-center font-mono text-[7px] text-slate-500">
                   {skill.name}
                 </span>
-              </div>
+              </motion.div>
             ))}
           </div>
 
           {/* =================================================
-              TELEMETRY BAR
+              TELEMETRY
           ================================================= */}
 
-          <div className="absolute bottom-5 left-1/2 z-50 hidden -translate-x-1/2 items-center gap-8 rounded-xl border border-white/6 bg-black/30 px-6 py-3 backdrop-blur-xl md:flex">
+          <div className="absolute bottom-5 left-1/2 z-50 hidden -translate-x-1/2 items-center gap-8 rounded-xl border border-white/6 bg-black/40 px-6 py-3 backdrop-blur-xl md:flex">
             <div className="flex items-center gap-2">
               <FiActivity className="text-cyan-400" />
 
@@ -744,7 +813,7 @@ export default function Skills() {
         </div>
 
         {/* =====================================================
-            BOTTOM SYSTEM LINE
+            TERMINAL STATUS
         ===================================================== */}
 
         <motion.div
