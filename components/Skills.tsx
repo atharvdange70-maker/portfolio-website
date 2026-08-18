@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import type { ReactNode } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, type ReactNode } from "react";
 
 import {
   FaAws,
@@ -22,7 +22,9 @@ import {
   SiTerraform,
 } from "react-icons/si";
 
-type TooltipPosition = "top" | "bottom" | "left" | "right";
+/* ============================================================
+   TYPES
+============================================================ */
 
 type Skill = {
   name: string;
@@ -32,8 +34,11 @@ type Skill = {
   description: string;
   x: string;
   y: string;
-  tooltip: TooltipPosition;
 };
+
+/* ============================================================
+   SKILLS
+============================================================ */
 
 const skills: Skill[] = [
   {
@@ -41,243 +46,144 @@ const skills: Skill[] = [
     icon: <SiGrafana />,
     percentage: 72,
     category: "OBSERVABILITY",
-    description: "Metrics visualization and infrastructure dashboards",
+    description:
+      "Building infrastructure dashboards and visualizing system metrics.",
     x: "16%",
     y: "16%",
-    tooltip: "right",
   },
+
   {
     name: "Helm",
     icon: <SiHelm />,
     percentage: 76,
     category: "KUBERNETES",
-    description: "Parameterized Kubernetes releases",
+    description:
+      "Managing parameterized Kubernetes releases using reusable charts.",
     x: "38%",
     y: "12%",
-    tooltip: "bottom",
   },
+
   {
     name: "Python",
     icon: <FaPython />,
     percentage: 72,
     category: "AUTOMATION",
-    description: "Cloud automation and DevOps scripting",
+    description:
+      "Writing automation scripts and cloud-focused DevOps utilities.",
     x: "58%",
     y: "7%",
-    tooltip: "bottom",
   },
+
   {
     name: "Shell",
     icon: <SiShell />,
     percentage: 82,
     category: "AUTOMATION",
-    description: "Linux administration and automation",
+    description:
+      "Automating Linux administration, deployments and repetitive tasks.",
     x: "72%",
     y: "20%",
-    tooltip: "bottom",
   },
+
   {
     name: "Ansible",
     icon: <SiAnsible />,
     percentage: 70,
     category: "CONFIGURATION",
-    description: "Configuration management and deployment",
+    description:
+      "Automating server configuration and application deployments.",
     x: "88%",
     y: "31%",
-    tooltip: "left",
   },
+
   {
     name: "Kubernetes",
     icon: <SiKubernetes />,
     percentage: 78,
     category: "ORCHESTRATION",
-    description: "Container orchestration and workloads",
+    description:
+      "Deploying and managing containerized workloads across clusters.",
     x: "86%",
     y: "50%",
-    tooltip: "left",
   },
+
   {
     name: "Docker",
     icon: <FaDocker />,
     percentage: 84,
     category: "CONTAINERIZATION",
-    description: "Containerized application deployment",
+    description:
+      "Building, packaging and running applications with containers.",
     x: "88%",
     y: "69%",
-    tooltip: "left",
   },
+
   {
     name: "AWS",
     icon: <FaAws />,
     percentage: 82,
     category: "CLOUD",
-    description: "Cloud infrastructure and AWS services",
+    description:
+      "Designing and managing scalable cloud infrastructure on AWS.",
     x: "72%",
     y: "83%",
-    tooltip: "top",
   },
+
   {
     name: "Terraform",
     icon: <SiTerraform />,
     percentage: 76,
     category: "INFRASTRUCTURE",
-    description: "Infrastructure as Code and provisioning",
+    description:
+      "Provisioning repeatable cloud infrastructure using Infrastructure as Code.",
     x: "57%",
     y: "94%",
-    tooltip: "top",
   },
+
   {
     name: "Jenkins",
     icon: <FaJenkins />,
     percentage: 74,
-    category: "CI/CD",
-    description: "Continuous integration and delivery",
+    category: "CI / CD",
+    description:
+      "Building automated pipelines for continuous integration and delivery.",
     x: "40%",
     y: "92%",
-    tooltip: "top",
   },
+
   {
     name: "Linux",
     icon: <FaLinux />,
     percentage: 86,
     category: "SYSTEM",
-    description: "Linux servers and cloud administration",
+    description:
+      "Managing Linux servers, processes, permissions and cloud environments.",
     x: "20%",
     y: "81%",
-    tooltip: "top",
   },
+
   {
     name: "GitHub Actions",
     icon: <SiGithubactions />,
     percentage: 78,
-    category: "CI/CD",
-    description: "Automated CI/CD workflows and deployments",
+    category: "CI / CD",
+    description:
+      "Creating automated CI/CD workflows directly from GitHub repositories.",
     x: "12%",
     y: "62%",
-    tooltip: "right",
   },
+
   {
     name: "Prometheus",
     icon: <SiPrometheus />,
     percentage: 68,
-    category: "OBSERVABILITY",
-    description: "Infrastructure metrics and monitoring",
+    category: "MONITORING",
+    description:
+      "Collecting infrastructure metrics and monitoring system health.",
     x: "8%",
     y: "44%",
-    tooltip: "right",
   },
 ];
-
-/* ============================================================
-   TOOLTIP
-============================================================ */
-
-function SkillTooltip({ skill }: { skill: Skill }) {
-  const positions: Record<TooltipPosition, string> = {
-    top: `
-      bottom-[calc(100%+16px)]
-      left-1/2
-      -translate-x-1/2
-      translate-y-2
-      group-hover:translate-y-0
-    `,
-    bottom: `
-      top-[calc(100%+16px)]
-      left-1/2
-      -translate-x-1/2
-      -translate-y-2
-      group-hover:translate-y-0
-    `,
-    left: `
-      right-[calc(100%+16px)]
-      top-1/2
-      -translate-y-1/2
-      translate-x-2
-      group-hover:translate-x-0
-    `,
-    right: `
-      left-[calc(100%+16px)]
-      top-1/2
-      -translate-y-1/2
-      -translate-x-2
-      group-hover:translate-x-0
-    `,
-  };
-
-  return (
-    <div
-      className={`
-        pointer-events-none
-        absolute
-        z-999
-        w-58.75
-        rounded-xl
-        border
-        border-cyan-300/20
-        bg-[#020607]/95
-        p-3.5
-        text-left
-        opacity-0
-        shadow-[0_20px_60px_rgba(0,0,0,0.75)]
-        backdrop-blur-xl
-        transition-all
-        duration-250
-        ${positions[skill.tooltip]}
-        group-hover:opacity-100
-      `}
-    >
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <span className="h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_8px_rgba(103,232,249,.8)]" />
-
-          <span className="text-[13px] font-bold text-white">
-            {skill.name}
-          </span>
-        </div>
-
-        <span className="font-mono text-[11px] font-bold text-cyan-300">
-          {skill.percentage}%
-        </span>
-      </div>
-
-      {/* Progress */}
-      <div className="mt-2.5 h-0.75 overflow-hidden rounded-full bg-white/8">
-        <motion.div
-          initial={{ width: 0 }}
-          whileInView={{
-            width: `${skill.percentage}%`,
-          }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 0.9,
-            ease: "easeOut",
-          }}
-          className="h-full rounded-full bg-cyan-300"
-          style={{
-            boxShadow: "0 0 10px rgba(103,232,249,.7)",
-          }}
-        />
-      </div>
-
-      {/* Description */}
-      <p className="mt-3 text-[10px] leading-[1.55] text-slate-400">
-        {skill.description}
-      </p>
-
-      {/* Category */}
-      <div className="mt-3 flex items-center justify-between border-t border-white/6 pt-2.5">
-        <span className="font-mono text-[7px] tracking-[0.18em] text-slate-600">
-          DOMAIN
-        </span>
-
-        <span className="font-mono text-[7px] font-semibold tracking-[0.12em] text-cyan-300/60">
-          {skill.category}
-        </span>
-      </div>
-    </div>
-  );
-}
 
 /* ============================================================
    SKILL NODE
@@ -286,9 +192,13 @@ function SkillTooltip({ skill }: { skill: Skill }) {
 function SkillNode({
   skill,
   index,
+  active,
+  onHover,
 }: {
   skill: Skill;
   index: number;
+  active: boolean;
+  onHover: () => void;
 }) {
   return (
     <motion.div
@@ -302,15 +212,12 @@ function SkillNode({
       }}
       viewport={{
         once: true,
-        amount: 0.2,
       }}
       transition={{
         duration: 0.55,
-        delay: index * 0.055,
-        ease: "easeOut",
+        delay: index * 0.05,
       }}
       className="
-        group
         absolute
         z-20
         -translate-x-1/2
@@ -321,36 +228,88 @@ function SkillNode({
         top: skill.y,
       }}
     >
-      {/* Ambient glow */}
+      {/* ==================================================
+          SIGNAL LINE TO CORE
+      ================================================== */}
+
+      <AnimatePresence>
+        {active && (
+          <motion.div
+            initial={{
+              opacity: 0,
+              scaleX: 0,
+            }}
+            animate={{
+              opacity: 1,
+              scaleX: 1,
+            }}
+            exit={{
+              opacity: 0,
+              scaleX: 0,
+            }}
+            className="
+              pointer-events-none
+              absolute
+              left-1/2
+              top-1/2
+              h-px
+              w-37.5
+              origin-left
+              bg-linear-to-r
+              from-cyan-300/50
+              to-transparent
+              blur-[0.5px]
+            "
+          />
+        )}
+      </AnimatePresence>
+
+      {/* ==================================================
+          NODE GLOW
+      ================================================== */}
+
       <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.02, 0.08, 0.02],
-        }}
+        animate={
+          active
+            ? {
+                scale: [1, 1.35, 1],
+                opacity: [0.08, 0.22, 0.08],
+              }
+            : {
+                scale: [1, 1.08, 1],
+                opacity: [0.02, 0.05, 0.02],
+              }
+        }
         transition={{
-          duration: 3 + index * 0.15,
+          duration: active ? 1.8 : 3,
           repeat: Infinity,
           ease: "easeInOut",
         }}
         className="
           pointer-events-none
           absolute
-          -inset-7
+          -inset-8
           rounded-full
           bg-cyan-300
           blur-2xl
         "
       />
 
-      {/* Main node */}
-      <motion.div
+      {/* ==================================================
+          NODE
+      ================================================== */}
+
+      <motion.button
+        type="button"
+        onMouseEnter={onHover}
+        onFocus={onHover}
         whileHover={{
           scale: 1.12,
         }}
-        transition={{
-          duration: 0.2,
+        whileTap={{
+          scale: 0.96,
         }}
-        className="
+        className={`
           relative
           flex
           h-16.5
@@ -360,82 +319,148 @@ function SkillNode({
           justify-center
           rounded-full
           border
-          border-white/10
           bg-[#020607]/95
-          shadow-[0_0_20px_rgba(0,0,0,.35)]
           backdrop-blur-xl
           transition-all
           duration-300
-          group-hover:border-cyan-300/60
-          group-hover:bg-[#031014]
-          group-hover:shadow-[0_0_35px_rgba(34,211,238,.20)]
           md:h-18.5
           md:w-18.5
-        "
+
+          ${
+            active
+              ? `
+                border-cyan-200/80
+                shadow-[0_0_35px_rgba(34,211,238,.28)]
+              `
+              : `
+                border-white/10
+                shadow-[0_0_20px_rgba(0,0,0,.4)]
+                hover:border-cyan-300/50
+              `
+          }
+        `}
       >
-        {/* Inner circle */}
-        <div
-          className="
+        {/* Inner ring */}
+        <span
+          className={`
             pointer-events-none
             absolute
             inset-0.75
             rounded-full
             border
-            border-white/2.5
-          "
-        />
-
-        {/* Rotating dashed ring */}
-        <motion.div
-          animate={{
-            rotate: 360,
-          }}
-          transition={{
-            duration: 14 + index,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="
-            pointer-events-none
-            absolute
-            -inset-2
-            rounded-full
-            border
-            border-dashed
-            border-cyan-300/12
             transition-all
             duration-300
-            group-hover:border-cyan-300/40
-          "
+            ${
+              active
+                ? "border-cyan-200/20"
+                : "border-white/2.5"
+            }
+          `}
         />
 
-        {/* Icon */}
+        {/* ==================================================
+            ACTIVE ROTATING RING
+        ================================================== */}
+
+        {active && (
+          <motion.span
+            initial={{
+              rotate: 0,
+              opacity: 0,
+            }}
+            animate={{
+              rotate: 360,
+              opacity: 1,
+            }}
+            transition={{
+              rotate: {
+                duration: 3,
+                repeat: Infinity,
+                ease: "linear",
+              },
+            }}
+            className="
+              pointer-events-none
+              absolute
+              -inset-2
+              rounded-full
+              border
+              border-dashed
+              border-cyan-200/60
+            "
+          />
+        )}
+
+        {/* Normal rotating ring */}
+        {!active && (
+          <motion.span
+            animate={{
+              rotate: 360,
+            }}
+            transition={{
+              duration: 18 + index,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            className="
+              pointer-events-none
+              absolute
+              -inset-2
+              rounded-full
+              border
+              border-dashed
+              border-cyan-300/8
+            "
+          />
+        )}
+
+        {/* ==================================================
+            ICON
+        ================================================== */}
+
         <span
-          className="
+          className={`
             relative
             z-10
             text-[25px]
-            text-cyan-100
             transition-all
             duration-300
-            group-hover:scale-110
-            group-hover:text-cyan-200
-            group-hover:drop-shadow-[0_0_12px_rgba(165,243,252,.8)]
             md:text-[29px]
-          "
+
+            ${
+              active
+                ? `
+                  text-cyan-100
+                  drop-shadow-[0_0_14px_rgba(165,243,252,.9)]
+                `
+                : `
+                  text-cyan-100
+                  hover:text-cyan-200
+                `
+            }
+          `}
         >
           {skill.icon}
         </span>
 
-        {/* Status light */}
+        {/* ==================================================
+            STATUS DOT
+        ================================================== */}
+
         <motion.span
-          animate={{
-            opacity: [0.35, 1, 0.35],
-          }}
+          animate={
+            active
+              ? {
+                  scale: [1, 1.5, 1],
+                  opacity: [0.5, 1, 0.5],
+                }
+              : {
+                  opacity: [0.3, 0.8, 0.3],
+                }
+          }
           transition={{
-            duration: 2.5,
+            duration: active ? 1.2 : 2.5,
             repeat: Infinity,
-            delay: index * 0.15,
           }}
           className="
             absolute
@@ -449,18 +474,230 @@ function SkillNode({
           "
         />
 
-        {/* Tooltip */}
-        <SkillTooltip skill={skill} />
-      </motion.div>
+        {/* Skill number */}
+        <span
+          className={`
+            absolute
+            bottom-2.25
+            font-mono
+            text-[5px]
+            tracking-wider
+            transition-colors
+            ${
+              active
+                ? "text-cyan-300/80"
+                : "text-slate-700"
+            }
+          `}
+        >
+          {String(index + 1).padStart(2, "0")}
+        </span>
+      </motion.button>
     </motion.div>
   );
 }
 
 /* ============================================================
-   MAIN SKILLS SECTION
+   INTELLIGENCE HUD
+============================================================ */
+
+function IntelligencePanel({
+  skill,
+}: {
+  skill: Skill;
+}) {
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={skill.name}
+        initial={{
+          opacity: 0,
+          y: 12,
+          scale: 0.98,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          scale: 1,
+        }}
+        exit={{
+          opacity: 0,
+          y: -8,
+          scale: 0.98,
+        }}
+        transition={{
+          duration: 0.25,
+        }}
+        className="
+          absolute
+          bottom-5
+          left-1/2
+          z-80
+          w-[calc(100%-32px)]
+          max-w-117.5
+          -translate-x-1/2
+        "
+      >
+        <div
+          className="
+            relative
+            overflow-hidden
+            rounded-xl
+            border
+            border-cyan-300/15
+            bg-[#020607]/90
+            px-4
+            py-3
+            shadow-[0_20px_70px_rgba(0,0,0,.65)]
+            backdrop-blur-xl
+          "
+        >
+          {/* top scanning line */}
+          <motion.div
+            animate={{
+              x: ["-100%", "100%"],
+            }}
+            transition={{
+              duration: 2.5,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            className="
+              pointer-events-none
+              absolute
+              left-0
+              top-0
+              h-px
+              w-1/3
+              bg-linear-to-r
+              from-transparent
+              via-cyan-300
+              to-transparent
+            "
+          />
+
+          <div className="flex items-start gap-3">
+            {/* Icon */}
+            <div
+              className="
+                flex
+                h-10
+                w-10
+                shrink-0
+                items-center
+                justify-center
+                rounded-lg
+                border
+                border-cyan-300/15
+                bg-cyan-300/4
+                text-lg
+                text-cyan-100
+                shadow-[0_0_20px_rgba(34,211,238,.08)]
+              "
+            >
+              {skill.icon}
+            </div>
+
+            <div className="min-w-0 flex-1">
+              {/* Header */}
+              <div className="flex items-center justify-between gap-3">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-[12px] font-bold text-white">
+                      {skill.name}
+                    </h3>
+
+                    <span className="h-1 w-1 rounded-full bg-cyan-300" />
+
+                    <span className="font-mono text-[7px] tracking-[0.15em] text-cyan-300/50">
+                      {skill.category}
+                    </span>
+                  </div>
+
+                  <p className="mt-1 text-[9px] leading-4 text-slate-500">
+                    {skill.description}
+                  </p>
+                </div>
+
+                {/* Percentage */}
+                <div className="shrink-0 text-right">
+                  <div className="font-mono text-[13px] font-bold text-cyan-200">
+                    {skill.percentage}%
+                  </div>
+
+                  <div className="font-mono text-[6px] tracking-widest text-slate-700">
+                    PROFICIENCY
+                  </div>
+                </div>
+              </div>
+
+              {/* Progress */}
+              <div className="mt-2.5 h-0.5 overflow-hidden rounded-full bg-white/6">
+                <motion.div
+                  initial={{
+                    width: 0,
+                  }}
+                  animate={{
+                    width: `${skill.percentage}%`,
+                  }}
+                  transition={{
+                    duration: 0.7,
+                    ease: "easeOut",
+                  }}
+                  className="
+                    h-full
+                    rounded-full
+                    bg-linear-to-r
+                    from-cyan-400
+                    to-cyan-200
+                  "
+                  style={{
+                    boxShadow:
+                      "0 0 10px rgba(34,211,238,.7)",
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* bottom status */}
+          <div
+            className="
+              mt-2.5
+              flex
+              items-center
+              justify-between
+              border-t
+              border-white/5
+              pt-2
+              font-mono
+              text-[6px]
+              uppercase
+              tracking-[0.18em]
+            "
+          >
+            <span className="flex items-center gap-1.5 text-slate-700">
+              <span className="h-1 w-1 animate-pulse rounded-full bg-emerald-400" />
+              SYSTEM ACTIVE
+            </span>
+
+            <span className="text-cyan-300/30">
+              PLATFORM SIGNAL DETECTED
+            </span>
+          </div>
+        </div>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
+/* ============================================================
+   MAIN
 ============================================================ */
 
 export default function Skills() {
+  const [activeSkill, setActiveSkill] = useState<Skill | null>(null);
+
   return (
     <section
       id="skills"
@@ -473,12 +710,13 @@ export default function Skills() {
         md:px-6
         md:py-24
       "
+      onMouseLeave={() => setActiveSkill(null)}
     >
       {/* ======================================================
           BACKGROUND
       ====================================================== */}
 
-      {/* Scanline effect */}
+      {/* Scanlines */}
       <div
         className="
           pointer-events-none
@@ -488,11 +726,11 @@ export default function Skills() {
         "
         style={{
           backgroundImage:
-            "repeating-linear-gradient(to bottom, rgba(255,255,255,.25) 0px, rgba(255,255,255,.25) 1px, transparent 1px, transparent 5px)",
+            "repeating-linear-gradient(to bottom, rgba(255,255,255,.22) 0px, rgba(255,255,255,.22) 1px, transparent 1px, transparent 5px)",
         }}
       />
 
-      {/* Very subtle grid */}
+      {/* Grid */}
       <div
         className="
           pointer-events-none
@@ -516,20 +754,29 @@ export default function Skills() {
         }}
       />
 
-      {/* Top atmosphere */}
-      <div
+      {/* Ambient center */}
+      <motion.div
+        animate={{
+          scale: [1, 1.08, 1],
+          opacity: [0.03, 0.07, 0.03],
+        }}
+        transition={{
+          duration: 7,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
         className="
           pointer-events-none
           absolute
           left-1/2
-          top-[42%]
-          h-130
-          w-130
+          top-[45%]
+          h-125
+          w-125
           -translate-x-1/2
           -translate-y-1/2
           rounded-full
-          bg-cyan-400/[0.035]
-          blur-[130px]
+          bg-cyan-400
+          blur-[140px]
         "
       />
 
@@ -539,6 +786,7 @@ export default function Skills() {
 
       <div className="relative mx-auto max-w-6xl">
         {/* Heading */}
+
         <motion.div
           initial={{
             opacity: 0,
@@ -554,20 +802,33 @@ export default function Skills() {
           transition={{
             duration: 0.6,
           }}
-          className="mb-6 text-center"
+          className="mb-8 text-center"
         >
-          <p
+          <div
             className="
-              mb-2
+              mx-auto
+              mb-3
+              flex
+              w-fit
+              items-center
+              gap-2
+              rounded-full
+              border
+              border-cyan-300/10
+              bg-cyan-300/2.5
+              px-3
+              py-1.5
               font-mono
-              text-[8px]
+              text-[7px]
               uppercase
-              tracking-[0.35em]
+              tracking-[0.3em]
               text-cyan-300/50
             "
           >
-            Technical Ecosystem
-          </p>
+            <span className="h-1 w-1 animate-pulse rounded-full bg-cyan-300" />
+
+            DEVOPS ECOSYSTEM
+          </div>
 
           <h2
             className="
@@ -578,7 +839,7 @@ export default function Skills() {
               md:text-5xl
             "
           >
-            DevOps{" "}
+            Technical{" "}
             <span
               className="
                 bg-linear-to-r
@@ -589,7 +850,7 @@ export default function Skills() {
                 text-transparent
               "
             >
-              Skills
+              Arsenal
             </span>
           </h2>
 
@@ -604,33 +865,100 @@ export default function Skills() {
               md:text-sm
             "
           >
-            The tools and technologies I use to build,
-            automate and operate cloud infrastructure.
+            Hover over any technology to inspect its role
+            in my DevOps ecosystem.
           </p>
         </motion.div>
 
         {/* ======================================================
-            ECOSYSTEM CANVAS
+            ECOSYSTEM
         ====================================================== */}
 
         <div
           className="
             relative
             mx-auto
-            h-155
+            h-162.5
             w-full
-            max-w-212.5
-            md:h-177.5
+            max-w-225
+            overflow-visible
+            md:h-180
           "
         >
-          {/* Center atmospheric glow */}
+          {/* ==================================================
+              OUTER ORBIT
+          ================================================== */}
+
+          <motion.div
+            animate={{
+              rotate: 360,
+            }}
+            transition={{
+              duration: 40,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            className="
+              pointer-events-none
+              absolute
+              left-1/2
+              top-1/2
+              z-10
+              h-97.5
+              w-97.5
+              -translate-x-1/2
+              -translate-y-1/2
+              rounded-full
+              border
+              border-dashed
+              border-cyan-300/[0.035]
+              md:h-112.5
+              md:w-112.5
+            "
+          />
+
+          {/* ==================================================
+              INNER ORBIT
+          ================================================== */}
+
+          <motion.div
+            animate={{
+              rotate: -360,
+            }}
+            transition={{
+              duration: 28,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            className="
+              pointer-events-none
+              absolute
+              left-1/2
+              top-1/2
+              z-10
+              h-65
+              w-65
+              -translate-x-1/2
+              -translate-y-1/2
+              rounded-full
+              border
+              border-cyan-300/2.5
+              md:h-77.5
+              md:w-77.5
+            "
+          />
+
+          {/* ==================================================
+              CORE GLOW
+          ================================================== */}
+
           <motion.div
             animate={{
               scale: [1, 1.12, 1],
-              opacity: [0.05, 0.12, 0.05],
+              opacity: [0.04, 0.12, 0.04],
             }}
             transition={{
-              duration: 5,
+              duration: 4,
               repeat: Infinity,
               ease: "easeInOut",
             }}
@@ -640,8 +968,8 @@ export default function Skills() {
               left-1/2
               top-1/2
               z-10
-              h-75
-              w-75
+              h-67.5
+              w-67.5
               -translate-x-1/2
               -translate-y-1/2
               rounded-full
@@ -650,85 +978,29 @@ export default function Skills() {
             "
           />
 
-          {/* Outer orbit */}
-          <motion.div
-            animate={{
-              rotate: 360,
-            }}
-            transition={{
-              duration: 35,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            className="
-              pointer-events-none
-              absolute
-              left-1/2
-              top-1/2
-              z-10
-              h-75
-              w-75
-              -translate-x-1/2
-              -translate-y-1/2
-              rounded-full
-              border
-              border-dashed
-              border-cyan-300/[0.035]
-              md:h-92.5
-              md:w-92.5
-            "
-          />
-
-          {/* Inner orbit */}
-          <motion.div
-            animate={{
-              rotate: -360,
-            }}
-            transition={{
-              duration: 25,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            className="
-              pointer-events-none
-              absolute
-              left-1/2
-              top-1/2
-              z-10
-              h-55
-              w-55
-              -translate-x-1/2
-              -translate-y-1/2
-              rounded-full
-              border
-              border-cyan-300/2.5
-              md:h-70
-              md:w-70
-            "
-          />
-
           {/* ==================================================
               PLATFORM CORE
           ================================================== */}
 
           <motion.div
-            initial={{
-              opacity: 0,
-              scale: 0.75,
-            }}
-            whileInView={{
-              opacity: 1,
-              scale: 1,
-            }}
-            viewport={{
-              once: true,
-            }}
+            animate={
+              activeSkill
+                ? {
+                    scale: [1, 1.04, 1],
+                    boxShadow: [
+                      "0 0 45px rgba(34,211,238,.10)",
+                      "0 0 75px rgba(34,211,238,.25)",
+                      "0 0 45px rgba(34,211,238,.10)",
+                    ],
+                  }
+                : {
+                    scale: [1, 1.015, 1],
+                  }
+            }
             transition={{
-              duration: 0.8,
-              ease: "easeOut",
-            }}
-            whileHover={{
-              scale: 1.04,
+              duration: activeSkill ? 1.5 : 4,
+              repeat: Infinity,
+              ease: "easeInOut",
             }}
             className="
               absolute
@@ -736,8 +1008,8 @@ export default function Skills() {
               top-1/2
               z-30
               flex
-              h-33.75
-              w-33.75
+              h-35
+              w-35
               -translate-x-1/2
               -translate-y-1/2
               items-center
@@ -746,44 +1018,30 @@ export default function Skills() {
               border
               border-cyan-300/20
               bg-[#020607]
-              shadow-[0_0_65px_rgba(34,211,238,.13)]
-              md:h-36.25
-              md:w-36.25
+              md:h-37.5
+              md:w-37.5
             "
           >
-            {/* Core inner glow */}
-            <div
-              className="
-                pointer-events-none
-                absolute
-                inset-2
-                rounded-full
-                border
-                border-cyan-300/[0.035]
-              "
-            />
-
-            <div className="relative text-center">
+            <div className="text-center">
               <p
                 className="
-                  text-[15px]
+                  text-[16px]
                   font-bold
                   tracking-tight
                   text-cyan-100
-                  md:text-[16px]
                 "
               >
                 Platform Core
               </p>
 
-              <div className="mt-3 flex items-center justify-center gap-1.5">
+              <div className="mt-3 flex items-center justify-center gap-2">
                 <motion.span
                   animate={{
-                    opacity: [0.3, 1, 0.3],
-                    scale: [0.8, 1, 0.8],
+                    scale: [1, 1.5, 1],
+                    opacity: [0.4, 1, 0.4],
                   }}
                   transition={{
-                    duration: 2,
+                    duration: 1.5,
                     repeat: Infinity,
                   }}
                   className="
@@ -804,14 +1062,16 @@ export default function Skills() {
                     text-cyan-300/50
                   "
                 >
-                  Operational
+                  {activeSkill
+                    ? activeSkill.category
+                    : "SYSTEM ONLINE"}
                 </span>
               </div>
             </div>
           </motion.div>
 
           {/* ==================================================
-              DESKTOP SKILLS
+              DESKTOP NODES
           ================================================== */}
 
           <div className="hidden h-full md:block">
@@ -820,6 +1080,8 @@ export default function Skills() {
                 key={skill.name}
                 skill={skill}
                 index={index}
+                active={activeSkill?.name === skill.name}
+                onHover={() => setActiveSkill(skill)}
               />
             ))}
           </div>
@@ -832,34 +1094,24 @@ export default function Skills() {
             className="
               grid
               grid-cols-3
-              gap-x-5
-              gap-y-8
-              px-4
-              pt-2
+              gap-x-6
+              gap-y-9
+              px-3
               md:hidden
             "
           >
             {skills.map((skill, index) => (
-              <motion.div
+              <button
                 key={skill.name}
-                initial={{
-                  opacity: 0,
-                  scale: 0.7,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  scale: 1,
-                }}
-                viewport={{
-                  once: true,
-                }}
-                transition={{
-                  delay: index * 0.04,
-                }}
+                type="button"
+                onClick={() => setActiveSkill(skill)}
                 className="flex flex-col items-center"
               >
-                <div
-                  className="
+                <motion.div
+                  whileTap={{
+                    scale: 0.92,
+                  }}
+                  className={`
                     flex
                     h-14
                     w-14
@@ -867,50 +1119,62 @@ export default function Skills() {
                     justify-center
                     rounded-full
                     border
-                    border-white/10
                     bg-[#020607]
                     text-xl
-                    text-cyan-100
-                    shadow-[0_0_20px_rgba(34,211,238,.05)]
-                  "
+                    transition-all
+
+                    ${
+                      activeSkill?.name === skill.name
+                        ? `
+                          border-cyan-300/70
+                          text-cyan-100
+                          shadow-[0_0_25px_rgba(34,211,238,.2)]
+                        `
+                        : `
+                          border-white/10
+                          text-cyan-100
+                        `
+                    }
+                  `}
                 >
                   {skill.icon}
-                </div>
+                </motion.div>
 
                 <span
-                  className="
+                  className={`
                     mt-2
                     text-center
                     font-mono
                     text-[7px]
-                    text-slate-600
-                  "
+                    ${
+                      activeSkill?.name === skill.name
+                        ? "text-cyan-300"
+                        : "text-slate-600"
+                    }
+                  `}
                 >
                   {skill.name}
                 </span>
-              </motion.div>
+              </button>
             ))}
           </div>
+
+          {/* ==================================================
+              INTELLIGENCE PANEL
+          ================================================== */}
+
+          {activeSkill && (
+            <IntelligencePanel skill={activeSkill} />
+          )}
         </div>
 
         {/* ======================================================
             BOTTOM STATUS
         ====================================================== */}
 
-        <motion.div
-          initial={{
-            opacity: 0,
-          }}
-          whileInView={{
-            opacity: 1,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            delay: 0.4,
-          }}
+        <div
           className="
+            mt-2
             flex
             items-center
             justify-center
@@ -918,26 +1182,25 @@ export default function Skills() {
             font-mono
             text-[7px]
             uppercase
-            tracking-[0.22em]
+            tracking-[0.2em]
             text-slate-700
           "
         >
           <span className="flex items-center gap-1.5">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
-
             SYSTEM ONLINE
           </span>
 
           <span className="h-3 w-px bg-white/8" />
 
-          <span>13 Technologies</span>
+          <span>13 TECHNOLOGIES</span>
 
           <span className="h-3 w-px bg-white/8" />
 
           <span className="text-cyan-300/40">
-            CLOUD • CI/CD • AUTOMATION
+            CLOUD • AUTOMATION • CI/CD
           </span>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
