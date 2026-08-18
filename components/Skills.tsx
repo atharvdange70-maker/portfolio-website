@@ -171,7 +171,7 @@ export default function Skills() {
     y: -8,
     scale: 1.02,
   }}
-  className="group relative overflow-hidden rounded-xl border border-slate-700/40 bg-[#071218]/80 p-3.5 backdrop-blur-xl transition-all duration-300 hover:border-cyan-300/40 hover:bg-[#0a1820]/90"
+  className="group relative overflow-hidden rounded-xl border border-white/70 bg-white/90 p-3.5 shadow-[0_8px_30px_rgba(255,255,255,0.06)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300 hover:bg-white hover:shadow-[0_12px_40px_rgba(34,211,238,0.12)]"
 >
   {/* Top Gradient Border */}
   <div
@@ -191,7 +191,7 @@ export default function Skills() {
   </div>
 
   {/* Title */}
-  <h3 className="relative mt-3 text-base font-semibold text-white">
+  <h3 className="relative mt-3 text-base font-semibold text-slate-900">
     {skill.name}
   </h3>
 
@@ -200,7 +200,7 @@ export default function Skills() {
     {skill.tags.map((tag) => (
       <span
         key={tag}
-        className="rounded-full border border-slate-700/40 bg-slate-900/50 px-2 py-0.5 text-[10px] text-slate-300"
+        className="rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-[10px] text-slate-600"
       >
         {tag}
       </span>
