@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from "framer-motion";
@@ -26,308 +27,137 @@ import {
 import { MdSecurity } from "react-icons/md";
 
 /* =========================================================
-   SKILLS DATA
+   SKILLS
 ========================================================= */
 
 const skills = [
   {
     name: "AWS",
     icon: <FaAws />,
-    color: "text-orange-400",
-    glow: "rgba(251,146,60,.22)",
     category: "CLOUD",
     level: 82,
-    core: true,
-    description:
-      "Designing and managing scalable AWS cloud infrastructure.",
-    tags: [
-      "EC2",
-      "S3",
-      "VPC",
-      "IAM",
-      "ALB",
-      "RDS",
-      "Lambda",
-      "CloudFront",
-    ],
+    description: "Cloud infrastructure & AWS services.",
+    color: "#38bdf8",
   },
-
   {
     name: "Docker",
     icon: <FaDocker />,
-    color: "text-sky-400",
-    glow: "rgba(56,189,248,.22)",
     category: "CONTAINERS",
     level: 84,
-    core: true,
-    description:
-      "Building, packaging and running applications using containers.",
-    tags: [
-      "Images",
-      "Containers",
-      "Compose",
-      "Docker Hub",
-    ],
+    description: "Containerized application deployment.",
+    color: "#22d3ee",
   },
-
   {
     name: "Kubernetes",
     icon: <SiKubernetes />,
-    color: "text-cyan-400",
-    glow: "rgba(34,211,238,.22)",
     category: "ORCHESTRATION",
     level: 78,
-    core: true,
-    description:
-      "Deploying and managing containerized workloads with Kubernetes.",
-    tags: [
-      "Pods",
-      "Deployments",
-      "Services",
-      "Ingress",
-      "ConfigMaps",
-    ],
+    description: "Container orchestration & workloads.",
+    color: "#67e8f9",
   },
-
   {
     name: "Terraform",
     icon: <SiTerraform />,
-    color: "text-purple-400",
-    glow: "rgba(168,85,247,.22)",
-    category: "INFRASTRUCTURE",
+    category: "IaC",
     level: 76,
-    core: true,
-    description:
-      "Provisioning repeatable cloud infrastructure using Infrastructure as Code.",
-    tags: [
-      "IaC",
-      "Providers",
-      "Modules",
-      "State",
-      "Variables",
-    ],
+    description: "Infrastructure as Code provisioning.",
+    color: "#a78bfa",
   },
-
   {
-    name: "Jenkins",
-    icon: <FaJenkins />,
-    color: "text-red-400",
-    glow: "rgba(248,113,113,.22)",
-    category: "CI / CD",
-    level: 74,
-    core: false,
-    description:
-      "Creating automated pipelines for continuous integration and deployment.",
-    tags: [
-      "Pipelines",
-      "Build",
-      "Deploy",
-      "Automation",
-    ],
-  },
-
-  {
-    name: "Git & GitHub",
+    name: "Git",
     icon: <FaGitAlt />,
-    color: "text-orange-500",
-    glow: "rgba(249,115,22,.22)",
     category: "VERSION CONTROL",
     level: 86,
-    core: true,
-    description:
-      "Managing source code, branches and collaborative development workflows.",
-    tags: [
-      "Git",
-      "Branching",
-      "Merge",
-      "Pull Requests",
-      "Versioning",
-    ],
+    description: "Source control & collaboration.",
+    color: "#60a5fa",
   },
-
-  {
-    name: "GitHub Actions",
-    icon: <SiGithubactions />,
-    color: "text-blue-400",
-    glow: "rgba(96,165,250,.22)",
-    category: "AUTOMATION",
-    level: 78,
-    core: false,
-    description:
-      "Building automated CI/CD workflows directly within GitHub.",
-    tags: [
-      "Workflows",
-      "Actions",
-      "CI/CD",
-      "Secrets",
-      "Deployments",
-    ],
-  },
-
   {
     name: "Linux",
     icon: <FaLinux />,
-    color: "text-yellow-400",
-    glow: "rgba(250,204,21,.20)",
     category: "SYSTEM",
     level: 86,
-    core: true,
-    description:
-      "Managing Linux servers, processes, permissions and cloud environments.",
-    tags: [
-      "Ubuntu",
-      "Processes",
-      "Permissions",
-      "SSH",
-      "System Admin",
-    ],
+    description: "Linux server administration.",
+    color: "#93c5fd",
   },
-
   {
-    name: "Python",
-    icon: <FaPython />,
-    color: "text-yellow-300",
-    glow: "rgba(253,224,71,.20)",
-    category: "AUTOMATION",
-    level: 72,
-    core: false,
-    description:
-      "Writing automation scripts and cloud-focused development utilities.",
-    tags: [
-      "Automation",
-      "Boto3",
-      "Scripts",
-      "APIs",
-    ],
+    name: "GitHub Actions",
+    icon: <SiGithubactions />,
+    category: "CI / CD",
+    level: 78,
+    description: "Automated CI/CD workflows.",
+    color: "#818cf8",
   },
-
   {
-    name: "Shell Scripting",
-    icon: <SiShell />,
-    color: "text-emerald-400",
-    glow: "rgba(52,211,153,.22)",
-    category: "AUTOMATION",
-    level: 82,
-    core: true,
-    description:
-      "Automating Linux administration and repetitive DevOps tasks.",
-    tags: [
-      "Bash",
-      "Cron",
-      "Automation",
-      "Linux",
-      "CLI",
-    ],
-  },
-
-  {
-    name: "Networking",
-    icon: <FaNetworkWired />,
-    color: "text-sky-400",
-    glow: "rgba(56,189,248,.20)",
-    category: "NETWORKING",
+    name: "Jenkins",
+    icon: <FaJenkins />,
+    category: "CI / CD",
     level: 74,
-    core: false,
-    description:
-      "Understanding networking fundamentals used in cloud infrastructure.",
-    tags: [
-      "TCP/IP",
-      "DNS",
-      "HTTP",
-      "VPC",
-      "Load Balancer",
-    ],
+    description: "Pipeline automation & deployments.",
+    color: "#a5b4fc",
   },
-
-  {
-    name: "IAM & Security",
-    icon: <MdSecurity />,
-    color: "text-emerald-400",
-    glow: "rgba(52,211,153,.22)",
-    category: "SECURITY",
-    level: 76,
-    core: false,
-    description:
-      "Implementing identity, access control and basic cloud security practices.",
-    tags: [
-      "IAM",
-      "Roles",
-      "Policies",
-      "MFA",
-      "Least Privilege",
-    ],
-  },
-
-  {
-    name: "Nginx",
-    icon: <SiNginx />,
-    color: "text-green-400",
-    glow: "rgba(74,222,128,.20)",
-    category: "WEB / PROXY",
-    level: 70,
-    core: false,
-    description:
-      "Configuring web servers, reverse proxies and application routing.",
-    tags: [
-      "Reverse Proxy",
-      "SSL",
-      "Web Server",
-      "Routing",
-    ],
-  },
-
-  {
-    name: "Monitoring",
-    icon: <SiPrometheus />,
-    color: "text-orange-400",
-    glow: "rgba(251,146,60,.20)",
-    category: "OBSERVABILITY",
-    level: 68,
-    core: false,
-    description:
-      "Monitoring infrastructure metrics and application health.",
-    tags: [
-      "Prometheus",
-      "Grafana",
-      "Metrics",
-      "Alerts",
-    ],
-  },
-
   {
     name: "Helm",
     icon: <SiHelm />,
-    color: "text-cyan-300",
-    glow: "rgba(103,232,249,.20)",
     category: "KUBERNETES",
     level: 76,
-    core: false,
-    description:
-      "Managing reusable and parameterized Kubernetes application releases.",
-    tags: [
-      "Charts",
-      "Templates",
-      "Values",
-      "Releases",
-    ],
+    description: "Parameterized Kubernetes releases.",
+    color: "#22d3ee",
   },
-
   {
     name: "Ansible",
     icon: <SiAnsible />,
-    color: "text-red-300",
-    glow: "rgba(252,165,165,.18)",
-    category: "CONFIGURATION",
+    category: "AUTOMATION",
     level: 70,
-    core: false,
-    description:
-      "Automating server configuration and application deployment tasks.",
-    tags: [
-      "Playbooks",
-      "Roles",
-      "Automation",
-      "Configuration",
-    ],
+    description: "Server configuration automation.",
+    color: "#67e8f9",
+  },
+  {
+    name: "Python",
+    icon: <FaPython />,
+    category: "AUTOMATION",
+    level: 72,
+    description: "Automation scripts & utilities.",
+    color: "#818cf8",
+  },
+  {
+    name: "Shell",
+    icon: <SiShell />,
+    category: "AUTOMATION",
+    level: 82,
+    description: "Bash scripting & Linux automation.",
+    color: "#2dd4bf",
+  },
+  {
+    name: "Networking",
+    icon: <FaNetworkWired />,
+    category: "NETWORKING",
+    level: 74,
+    description: "TCP/IP, DNS & cloud networking.",
+    color: "#38bdf8",
+  },
+  {
+    name: "Security",
+    icon: <MdSecurity />,
+    category: "SECURITY",
+    level: 76,
+    description: "IAM, policies & access control.",
+    color: "#34d399",
+  },
+  {
+    name: "Nginx",
+    icon: <SiNginx />,
+    category: "WEB / PROXY",
+    level: 70,
+    description: "Reverse proxy & web serving.",
+    color: "#2dd4bf",
+  },
+  {
+    name: "Monitoring",
+    icon: <SiPrometheus />,
+    category: "OBSERVABILITY",
+    level: 68,
+    description: "Metrics, monitoring & alerting.",
+    color: "#67e8f9",
   },
 ];
 
@@ -346,7 +176,7 @@ function SkillCard({
     <motion.div
       initial={{
         opacity: 0,
-        y: 25,
+        y: 18,
       }}
       whileInView={{
         opacity: 1,
@@ -354,230 +184,207 @@ function SkillCard({
       }}
       viewport={{
         once: true,
-        amount: 0.15,
+        amount: 0.1,
       }}
       transition={{
-        duration: 0.45,
-        delay: index * 0.035,
+        duration: 0.4,
+        delay: index * 0.025,
       }}
       whileHover={{
-        y: -8,
+        y: -5,
       }}
       className="
         group
         relative
+        h-44.5
         overflow-hidden
-        rounded-2xl
+        rounded-xl
         border
-        border-white/8
-        bg-[#020817]/65
-        p-4
+        border-cyan-300/[0.07]
+        bg-[#020a14]/75
+        p-3
         backdrop-blur-xl
         transition-all
         duration-300
-        hover:border-cyan-300/30
-        hover:bg-[#03101c]/80
+        hover:border-cyan-300/25
+        hover:bg-[#04111d]/90
       "
     >
-      {/* =====================================================
-          TOP ACCENT
-      ===================================================== */}
-
-      <div
-        className="
-          absolute
-          left-0
-          top-0
-          h-px
-          w-full
-          bg-linear-to-r
-          from-transparent
-          via-cyan-300/60
-          to-transparent
-          opacity-30
-          transition-opacity
-          duration-300
-          group-hover:opacity-100
-        "
-      />
-
-      {/* =====================================================
-          BACKGROUND GLOW
-      ===================================================== */}
+      {/* ===================================================
+          OUTER GLOW
+      =================================================== */}
 
       <div
         className="
           pointer-events-none
           absolute
-          -right-12
-          -top-12
-          h-32
-          w-32
+          -right-10
+          -top-10
+          h-24
+          w-24
           rounded-full
           opacity-0
           blur-3xl
-          transition-opacity
+          transition-all
           duration-500
-          group-hover:opacity-100
+          group-hover:opacity-40
         "
         style={{
-          background: skill.glow,
+          background: skill.color,
         }}
       />
 
-      {/* =====================================================
-          HEADER
-      ===================================================== */}
+      {/* ===================================================
+          TOP LINE
+      =================================================== */}
 
-      <div className="relative flex items-start justify-between">
+      <div
+        className="
+          absolute
+          left-3
+          right-3
+          top-0
+          h-px
+          opacity-30
+          transition-opacity
+          duration-300
+          group-hover:opacity-100
+        "
+        style={{
+          background: `linear-gradient(
+            90deg,
+            transparent,
+            ${skill.color},
+            transparent
+          )`,
+        }}
+      />
+
+      {/* ===================================================
+          HEADER
+      =================================================== */}
+
+      <div className="relative flex items-center justify-between">
         {/* Icon */}
 
         <motion.div
           whileHover={{
-            rotate: 8,
-            scale: 1.1,
-          }}
-          transition={{
-            type: "spring",
-            stiffness: 300,
-            damping: 15,
+            rotate: 6,
+            scale: 1.08,
           }}
           className="
-            relative
             flex
-            h-12
-            w-12
+            h-9
+            w-9
             items-center
             justify-center
-            rounded-xl
+            rounded-lg
             border
-            border-white/8
+            border-white/[0.07]
             bg-white/[0.035]
-            text-2xl
-            shadow-lg
+            text-lg
+            transition-all
+            duration-300
+          "
+          style={{
+            color: skill.color,
+          }}
+        >
+          {skill.icon}
+        </motion.div>
+
+        {/* Number */}
+
+        <span
+          className="
+            font-mono
+            text-[6px]
+            tracking-[0.2em]
+            text-slate-700
           "
         >
-          {/* icon glow */}
+          {String(index + 1).padStart(2, "0")}
+        </span>
+      </div>
 
-          <div
-            className="
-              absolute
-              inset-0
-              rounded-xl
-              opacity-0
-              blur-lg
-              transition-opacity
-              duration-300
-              group-hover:opacity-60
-            "
+      {/* ===================================================
+          TITLE
+      =================================================== */}
+
+      <div className="relative mt-3">
+        <h3
+          className="
+            text-[13px]
+            font-bold
+            tracking-tight
+            text-slate-100
+            transition-colors
+            duration-300
+            group-hover:text-white
+          "
+        >
+          {skill.name}
+        </h3>
+
+        <div className="mt-1 flex items-center gap-1.5">
+          <span
+            className="h-1 w-1 rounded-full"
             style={{
-              background: skill.glow,
+              background: skill.color,
             }}
           />
 
           <span
-            className={`relative z-10 ${skill.color}`}
-          >
-            {skill.icon}
-          </span>
-        </motion.div>
-
-        {/* Core badge */}
-
-        {skill.core && (
-          <span
             className="
-              rounded-full
-              border
-              border-cyan-300/15
-              bg-cyan-300/5
-              px-2
-              py-1
               font-mono
-              text-[7px]
-              font-bold
-              tracking-[0.15em]
-              text-cyan-300/70
+              text-[6px]
+              tracking-[0.16em]
+              text-slate-600
             "
           >
-            CORE
+            {skill.category}
           </span>
-        )}
+        </div>
       </div>
 
-      {/* =====================================================
-          NAME + CATEGORY
-      ===================================================== */}
+      {/* ===================================================
+          DESCRIPTION
+      =================================================== */}
 
-      <div className="relative mt-4">
-        <div className="flex items-center gap-2">
-          <h3
-            className="
-              text-[15px]
-              font-bold
-              tracking-tight
-              text-white
-            "
-          >
-            {skill.name}
-          </h3>
-
-          <span
-            className="
-              h-1
-              w-1
-              rounded-full
-              bg-cyan-300/60
-            "
-          />
-        </div>
-
+      <div
+        className="
+          relative
+          mt-2
+          min-h-7
+          overflow-hidden
+        "
+      >
         <p
           className="
-            mt-1
-            font-mono
-            text-[7px]
-            uppercase
-            tracking-[0.16em]
+            text-[8px]
+            leading-4
             text-slate-600
+            transition-colors
+            duration-300
+            group-hover:text-slate-400
           "
         >
-          {skill.category}
+          {skill.description}
         </p>
       </div>
 
-      {/* =====================================================
-          DESCRIPTION
-      ===================================================== */}
-
-      <p
-        className="
-          relative
-          mt-3
-          min-h-9.5
-          text-[10px]
-          leading-5
-          text-slate-500
-          transition-colors
-          duration-300
-          group-hover:text-slate-400
-        "
-      >
-        {skill.description}
-      </p>
-
-      {/* =====================================================
+      {/* ===================================================
           PROFICIENCY
-      ===================================================== */}
+      =================================================== */}
 
-      <div className="relative mt-4">
-        <div className="mb-1.5 flex items-center justify-between">
+      <div className="relative mt-2.5">
+        <div className="mb-1 flex items-center justify-between">
           <span
             className="
               font-mono
-              text-[7px]
+              text-[6px]
               uppercase
-              tracking-[0.15em]
+              tracking-[0.14em]
               text-slate-700
             "
           >
@@ -587,20 +394,17 @@ function SkillCard({
           <span
             className="
               font-mono
-              text-[9px]
-              font-bold
-              text-cyan-300/70
+              text-[7px]
+              text-cyan-300/60
             "
           >
             {skill.level}%
           </span>
         </div>
 
-        {/* Progress background */}
-
         <div
           className="
-            h-0.75
+            h-0.5
             overflow-hidden
             rounded-full
             bg-white/6
@@ -617,114 +421,91 @@ function SkillCard({
               once: true,
             }}
             transition={{
-              duration: 0.8,
-              delay: 0.2 + index * 0.03,
+              duration: 0.7,
+              delay: 0.2 + index * 0.025,
               ease: "easeOut",
             }}
-            className="
-              h-full
-              rounded-full
-              bg-linear-to-r
-              from-cyan-400
-              to-cyan-200
-            "
+            className="h-full rounded-full"
             style={{
-              boxShadow:
-                "0 0 10px rgba(34,211,238,.55)",
+              background: skill.color,
+              boxShadow: `0 0 8px ${skill.color}`,
             }}
           />
         </div>
       </div>
 
-      {/* =====================================================
-          TAGS
-      ===================================================== */}
-
-      <div className="relative mt-4 flex flex-wrap gap-1.5">
-        {skill.tags.map((tag) => (
-          <span
-            key={tag}
-            className="
-              rounded-md
-              border
-              border-white/6
-              bg-white/2.5
-              px-2
-              py-1
-              font-mono
-              text-[7px]
-              text-slate-500
-              transition-all
-              duration-200
-              group-hover:border-cyan-300/10
-              group-hover:text-slate-400
-            "
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-
-      {/* =====================================================
-          BOTTOM STATUS
-      ===================================================== */}
+      {/* ===================================================
+          HOVER DETAILS
+      =================================================== */}
 
       <div
         className="
-          relative
-          mt-4
+          pointer-events-none
+          absolute
+          inset-x-3
+          bottom-3
           flex
+          translate-y-1
           items-center
           justify-between
-          border-t
-          border-white/5
-          pt-3
+          opacity-0
+          transition-all
+          duration-300
+          group-hover:translate-y-0
+          group-hover:opacity-100
         "
       >
         <span
           className="
-            flex
-            items-center
-            gap-1.5
             font-mono
             text-[6px]
             uppercase
             tracking-[0.15em]
-            text-slate-700
+            text-slate-600
           "
         >
-          <span
-            className="
-              h-1
-              w-1
-              animate-pulse
-              rounded-full
-              bg-emerald-400
-            "
-          />
-
-          Operational
+          SYSTEM ACTIVE
         </span>
 
         <span
-          className="
-            font-mono
-            text-[6px]
-            tracking-widest
-            text-cyan-300/20
-            transition-colors
-            group-hover:text-cyan-300/50
-          "
+          className="flex items-center gap-1 font-mono text-[6px]"
+          style={{
+            color: skill.color,
+          }}
         >
-          0{index + 1}
+          <span className="h-1 w-1 animate-pulse rounded-full bg-emerald-400" />
+
+          READY
         </span>
       </div>
+
+      {/* ===================================================
+          HOVER BORDER
+      =================================================== */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          rounded-xl
+          border
+          border-transparent
+          opacity-0
+          transition-opacity
+          duration-300
+          group-hover:opacity-100
+        "
+        style={{
+          boxShadow: `inset 0 0 25px ${skill.color}08`,
+        }}
+      />
     </motion.div>
   );
 }
 
 /* =========================================================
-   MAIN SKILLS SECTION
+   SKILLS SECTION
 ========================================================= */
 
 export default function Skills() {
@@ -736,49 +517,49 @@ export default function Skills() {
         overflow-hidden
         bg-transparent
         px-5
-        py-20
+        py-16
         md:px-8
-        md:py-24
+        md:py-20
       "
     >
-      {/* =====================================================
-          BACKGROUND GRID
-      ===================================================== */}
+      {/* ===================================================
+          GRID BACKGROUND
+      =================================================== */}
 
       <div
         className="
           pointer-events-none
           absolute
           inset-0
-          opacity-[0.025]
+          opacity-[0.022]
         "
         style={{
           backgroundImage: `
             linear-gradient(
-              rgba(34,211,238,.7) 1px,
+              rgba(34,211,238,.8) 1px,
               transparent 1px
             ),
             linear-gradient(
               90deg,
-              rgba(34,211,238,.7) 1px,
+              rgba(34,211,238,.8) 1px,
               transparent 1px
             )
           `,
-          backgroundSize: "42px 42px",
+          backgroundSize: "38px 38px",
         }}
       />
 
-      {/* =====================================================
-          CENTER GLOW
-      ===================================================== */}
+      {/* ===================================================
+          AMBIENT GLOW
+      =================================================== */}
 
       <motion.div
         animate={{
           scale: [1, 1.08, 1],
-          opacity: [0.03, 0.06, 0.03],
+          opacity: [0.025, 0.05, 0.025],
         }}
         transition={{
-          duration: 7,
+          duration: 8,
           repeat: Infinity,
           ease: "easeInOut",
         }}
@@ -786,30 +567,27 @@ export default function Skills() {
           pointer-events-none
           absolute
           left-1/2
-          top-[45%]
-          h-125
-          w-125
+          top-1/2
+          h-105
+          w-105
           -translate-x-1/2
+          -translate-y-1/2
           rounded-full
           bg-cyan-400
-          blur-[140px]
+          blur-[130px]
         "
       />
 
-      {/* =====================================================
-          CONTENT
-      ===================================================== */}
+      <div className="relative mx-auto max-w-6xl">
 
-      <div className="relative mx-auto max-w-7xl">
-
-        {/* ===================================================
+        {/* =================================================
             HEADER
-        =================================================== */}
+        ================================================= */}
 
         <motion.div
           initial={{
             opacity: 0,
-            y: 25,
+            y: 20,
           }}
           whileInView={{
             opacity: 1,
@@ -819,9 +597,9 @@ export default function Skills() {
             once: true,
           }}
           transition={{
-            duration: 0.6,
+            duration: 0.5,
           }}
-          className="mb-12 text-center"
+          className="mb-9 text-center"
         >
           {/* Badge */}
 
@@ -834,55 +612,47 @@ export default function Skills() {
               gap-2
               rounded-full
               border
-              border-cyan-300/15
-              bg-cyan-300/4
-              px-4
-              py-1.5
+              border-cyan-300/10
+              bg-cyan-300/2.5
+              px-3
+              py-1
               font-mono
-              text-[8px]
+              text-[7px]
               uppercase
               tracking-[0.25em]
-              text-cyan-300/70
+              text-cyan-300/60
             "
           >
-            <span
-              className="
-                h-1.5
-                w-1.5
-                animate-pulse
-                rounded-full
-                bg-emerald-400
-              "
-            />
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
 
-            Technical Expertise
+            DEVOPS STACK
 
             <span className="text-slate-700">
               //
             </span>
 
-            16 Technologies
+            16 TOOLS
           </div>
 
           {/* Heading */}
 
           <h2
             className="
-              mt-5
-              text-4xl
+              mt-4
+              text-3xl
               font-black
               tracking-tight
               text-white
-              md:text-5xl
+              md:text-4xl
             "
           >
-            DevOps{" "}
+            Technical{" "}
             <span
               className="
                 bg-linear-to-r
                 from-cyan-300
                 via-sky-400
-                to-purple-400
+                to-violet-400
                 bg-clip-text
                 text-transparent
               "
@@ -891,95 +661,34 @@ export default function Skills() {
             </span>
           </h2>
 
-          {/* Description */}
-
           <p
             className="
               mx-auto
-              mt-4
-              max-w-2xl
-              text-xs
-              leading-6
-              text-slate-500
-              md:text-sm
+              mt-3
+              max-w-xl
+              text-[10px]
+              leading-5
+              text-slate-600
+              md:text-xs
             "
           >
-            Hands-on technologies used to build, automate,
-            deploy, monitor and operate cloud infrastructure.
+            Technologies I use to build, automate, deploy
+            and operate cloud infrastructure.
           </p>
         </motion.div>
 
-        {/* ===================================================
-            CATEGORY SIGNALS
-        =================================================== */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 15,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            duration: 0.5,
-            delay: 0.1,
-          }}
-          className="
-            mb-8
-            flex
-            flex-wrap
-            items-center
-            justify-center
-            gap-2
-          "
-        >
-          {[
-            "CLOUD",
-            "CONTAINERS",
-            "INFRASTRUCTURE",
-            "CI / CD",
-            "AUTOMATION",
-            "SECURITY",
-            "OBSERVABILITY",
-          ].map((item) => (
-            <span
-              key={item}
-              className="
-                rounded-full
-                border
-                border-white/6
-                bg-white/2.5
-                px-3
-                py-1.5
-                font-mono
-                text-[7px]
-                tracking-[0.12em]
-                text-slate-600
-              "
-            >
-              {item}
-            </span>
-          ))}
-        </motion.div>
-
-        {/* ===================================================
-            SKILLS GRID
-        =================================================== */}
+        {/* =================================================
+            SKILL GRID
+        ================================================= */}
 
         <div
           className="
             grid
-            grid-cols-1
-            gap-4
-            sm:grid-cols-2
-            md:grid-cols-3
-            lg:grid-cols-4
-            xl:grid-cols-5
+            grid-cols-2
+            gap-3
+            sm:grid-cols-3
+            md:grid-cols-4
+            lg:grid-cols-5
           "
         >
           {skills.map((skill, index) => (
@@ -991,9 +700,9 @@ export default function Skills() {
           ))}
         </div>
 
-        {/* ===================================================
-            BOTTOM STATUS BAR
-        =================================================== */}
+        {/* =================================================
+            BOTTOM STATUS
+        ================================================= */}
 
         <motion.div
           initial={{
@@ -1011,59 +720,45 @@ export default function Skills() {
           }}
           className="
             mx-auto
-            mt-8
+            mt-6
             flex
-            max-w-4xl
-            flex-wrap
+            w-fit
             items-center
-            justify-center
-            gap-x-5
-            gap-y-2
-            rounded-xl
+            gap-3
+            rounded-full
             border
             border-white/5
-            bg-[#020817]/40
-            px-5
-            py-3
+            bg-black/20
+            px-4
+            py-2
             font-mono
-            text-[7px]
-            uppercase
-            tracking-[0.18em]
+            text-[6px]
+            tracking-[0.15em]
             text-slate-700
-            backdrop-blur-xl
+            backdrop-blur-md
           "
         >
           <span className="flex items-center gap-1.5">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
+            <span className="h-1 w-1 animate-pulse rounded-full bg-emerald-400" />
             SYSTEM ONLINE
           </span>
 
-          <span className="hidden h-3 w-px bg-white/8 sm:block" />
+          <span className="h-2.5 w-px bg-white/8" />
 
-          <span>
+          <span className="text-cyan-300/30">
             CLOUD
           </span>
 
-          <span>
+          <span className="text-cyan-300/30">
             AUTOMATION
           </span>
 
-          <span>
-            CONTAINERS
-          </span>
-
-          <span>
+          <span className="text-cyan-300/30">
             CI/CD
           </span>
 
-          <span>
-            OBSERVABILITY
-          </span>
-
-          <span className="hidden h-3 w-px bg-white/8 sm:block" />
-
-          <span className="text-cyan-300/40">
-            BUILD → DEPLOY → MONITOR
+          <span className="text-cyan-300/30">
+            INFRASTRUCTURE
           </span>
         </motion.div>
       </div>
