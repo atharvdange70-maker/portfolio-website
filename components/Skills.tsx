@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion } from "framer-motion";
@@ -20,270 +19,479 @@ import {
   SiShell,
   SiNginx,
   SiPrometheus,
+  SiHelm,
+  SiAnsible,
+  SiGrafana,
 } from "react-icons/si";
 
-import { MdSecurity } from "react-icons/md";
+type Skill = {
+  name: string;
+  icon: React.ReactNode;
+  percentage: number;
+  description: string;
+  x: string;
+  y: string;
+  tooltip?: "top" | "bottom" | "left" | "right";
+};
 
-import {
-  FiActivity,
-  FiCloud,
-  FiCpu,
-  FiDatabase,
-  FiGitBranch,
-  FiRadio,
-  FiServer,
-  FiZap,
-} from "react-icons/fi";
+const skills: Skill[] = [
+  {
+    name: "Grafana",
+    icon: <SiGrafana />,
+    percentage: 72,
+    description: "Metrics visualization and dashboards",
+    x: "16%",
+    y: "17%",
+    tooltip: "right",
+  },
 
-const infrastructure = [
   {
-    name: "Docker",
-    icon: <FaDocker />,
-    color: "#38bdf8",
-    type: "CONTAINER",
-    x: "17%",
-    y: "18%",
+    name: "Helm",
+    icon: <SiHelm />,
+    percentage: 76,
+    description: "Parameterized Kubernetes releases",
+    x: "38%",
+    y: "13%",
+    tooltip: "bottom",
   },
-  {
-    name: "Kubernetes",
-    icon: <SiKubernetes />,
-    color: "#22d3ee",
-    type: "ORCHESTRATOR",
-    x: "83%",
-    y: "18%",
-  },
-  {
-    name: "Terraform",
-    icon: <SiTerraform />,
-    color: "#a855f7",
-    type: "INFRASTRUCTURE",
-    x: "12%",
-    y: "48%",
-  },
-  {
-    name: "Jenkins",
-    icon: <FaJenkins />,
-    color: "#f87171",
-    type: "CI / CD",
-    x: "88%",
-    y: "48%",
-  },
-  {
-    name: "GitHub Actions",
-    icon: <SiGithubactions />,
-    color: "#60a5fa",
-    type: "AUTOMATION",
-    x: "22%",
-    y: "77%",
-  },
-  {
-    name: "Linux",
-    icon: <FaLinux />,
-    color: "#facc15",
-    type: "SYSTEM",
-    x: "78%",
-    y: "77%",
-  },
+
   {
     name: "Python",
     icon: <FaPython />,
-    color: "#fde047",
-    type: "AUTOMATION",
-    x: "35%",
-    y: "9%",
+    percentage: 72,
+    description: "Cloud automation and scripting",
+    x: "58%",
+    y: "8%",
+    tooltip: "bottom",
   },
+
   {
-    name: "Security",
-    icon: <MdSecurity />,
-    color: "#34d399",
-    type: "SECURITY",
-    x: "65%",
-    y: "9%",
+    name: "Shell",
+    icon: <SiShell />,
+    percentage: 82,
+    description: "Linux automation and scripting",
+    x: "72%",
+    y: "20%",
+    tooltip: "bottom",
   },
+
   {
-    name: "Nginx",
-    icon: <SiNginx />,
-    color: "#4ade80",
-    type: "WEB",
-    x: "6%",
-    y: "72%",
+    name: "Ansible",
+    icon: <SiAnsible />,
+    percentage: 70,
+    description: "Configuration management automation",
+    x: "88%",
+    y: "30%",
+    tooltip: "left",
   },
+
+  {
+    name: "Kubernetes",
+    icon: <SiKubernetes />,
+    percentage: 78,
+    description: "Container orchestration at scale",
+    x: "86%",
+    y: "50%",
+    tooltip: "left",
+  },
+
+  {
+    name: "Docker",
+    icon: <FaDocker />,
+    percentage: 84,
+    description: "Containerized application deployment",
+    x: "88%",
+    y: "69%",
+    tooltip: "left",
+  },
+
+  {
+    name: "AWS",
+    icon: <FaAws />,
+    percentage: 82,
+    description: "Cloud infrastructure and services",
+    x: "72%",
+    y: "82%",
+    tooltip: "top",
+  },
+
+  {
+    name: "Terraform",
+    icon: <SiTerraform />,
+    percentage: 76,
+    description: "Infrastructure as Code",
+    x: "57%",
+    y: "93%",
+    tooltip: "top",
+  },
+
+  {
+    name: "Jenkins",
+    icon: <FaJenkins />,
+    percentage: 74,
+    description: "CI/CD pipeline automation",
+    x: "40%",
+    y: "91%",
+    tooltip: "top",
+  },
+
+  {
+    name: "Linux",
+    icon: <FaLinux />,
+    percentage: 86,
+    description: "Cloud server administration",
+    x: "20%",
+    y: "81%",
+    tooltip: "top",
+  },
+
+  {
+    name: "GitHub Actions",
+    icon: <SiGithubactions />,
+    percentage: 78,
+    description: "Automated CI/CD workflows",
+    x: "13%",
+    y: "62%",
+    tooltip: "right",
+  },
+
   {
     name: "Prometheus",
     icon: <SiPrometheus />,
-    color: "#fb923c",
-    type: "OBSERVABILITY",
-    x: "94%",
-    y: "72%",
+    percentage: 68,
+    description: "Infrastructure monitoring",
+    x: "8%",
+    y: "45%",
+    tooltip: "right",
   },
 ];
 
-const bottomTools = [
-  { name: "Git", icon: <FaGitAlt /> },
-  { name: "Shell", icon: <SiShell /> },
-  { name: "Networking", icon: <FaNetworkWired /> },
-];
+/* ============================================================
+   TOOLTIP
+============================================================ */
 
-function InfraNode({
-  item,
+function Tooltip({
+  skill,
+}: {
+  skill: Skill;
+}) {
+  const positionClasses = {
+    top: `
+      bottom-[calc(100%+14px)]
+      left-1/2
+      -translate-x-1/2
+      translate-y-2
+      group-hover:translate-y-0
+    `,
+
+    bottom: `
+      top-[calc(100%+14px)]
+      left-1/2
+      -translate-x-1/2
+      -translate-y-2
+      group-hover:translate-y-0
+    `,
+
+    left: `
+      right-[calc(100%+14px)]
+      top-1/2
+      -translate-y-1/2
+      translate-x-2
+      group-hover:translate-x-0
+    `,
+
+    right: `
+      left-[calc(100%+14px)]
+      top-1/2
+      -translate-y-1/2
+      -translate-x-2
+      group-hover:translate-x-0
+    `,
+  };
+
+  return (
+    <div
+      className={`
+        pointer-events-none
+        absolute
+        z-100
+        w-57.5
+        rounded-lg
+        border
+        border-cyan-300/20
+        bg-[#020607]/95
+        p-3
+        text-left
+        opacity-0
+        shadow-[0_15px_45px_rgba(0,0,0,0.7)]
+        backdrop-blur-xl
+        transition-all
+        duration-200
+        ${positionClasses[skill.tooltip ?? "bottom"]}
+        group-hover:opacity-100
+      `}
+    >
+      {/* Title */}
+      <div className="flex items-center justify-between">
+        <span className="text-[13px] font-semibold text-white">
+          {skill.name}
+        </span>
+
+        <span className="font-mono text-[10px] text-cyan-300">
+          {skill.percentage}%
+        </span>
+      </div>
+
+      {/* Progress */}
+      <div className="mt-2 h-0.5 overflow-hidden rounded-full bg-white/10">
+        <div
+          className="h-full rounded-full bg-cyan-300"
+          style={{
+            width: `${skill.percentage}%`,
+            boxShadow:
+              "0 0 8px rgba(103,232,249,.7)",
+          }}
+        />
+      </div>
+
+      {/* Description */}
+      <p className="mt-2 text-[10px] leading-4 text-slate-400">
+        {skill.description}
+      </p>
+    </div>
+  );
+}
+
+/* ============================================================
+   SKILL NODE
+============================================================ */
+
+function SkillNode({
+  skill,
   index,
 }: {
-  item: (typeof infrastructure)[number];
+  skill: Skill;
   index: number;
 }) {
   return (
     <motion.div
       initial={{
         opacity: 0,
-        scale: 0.4,
+        scale: 0.65,
       }}
       whileInView={{
         opacity: 1,
         scale: 1,
       }}
-      viewport={{ once: true }}
+      viewport={{
+        once: true,
+      }}
       transition={{
-        duration: 0.6,
-        delay: index * 0.06,
+        duration: 0.55,
+        delay: index * 0.055,
+        ease: "easeOut",
       }}
-      whileHover={{
-        scale: 1.12,
-        zIndex: 50,
-      }}
-      className="group absolute -translate-x-1/2 -translate-y-1/2"
+      className="
+        group
+        absolute
+        z-20
+        -translate-x-1/2
+        -translate-y-1/2
+      "
       style={{
-        left: item.x,
-        top: item.y,
+        left: skill.x,
+        top: skill.y,
       }}
     >
-      {/* orbital glow */}
-      <motion.div
-        animate={{
-          scale: [1, 1.35, 1],
-          opacity: [0.08, 0.2, 0.08],
-        }}
-        transition={{
-          duration: 3 + index * 0.2,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute -inset-5 rounded-full blur-xl"
-        style={{
-          background: item.color,
-        }}
+      {/* Subtle glow */}
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -inset-8
+          rounded-full
+          bg-cyan-400/[0.035]
+          opacity-0
+          blur-2xl
+          transition-opacity
+          duration-300
+          group-hover:opacity-100
+        "
       />
 
-      {/* node */}
-      <div
-        className="relative flex h-14.5 w-14.5 items-center justify-center rounded-full border bg-[#020817]/90 backdrop-blur-xl transition-all duration-300 group-hover:h-16.5 group-hover:w-16.5"
-        style={{
-          borderColor: `${item.color}45`,
-          boxShadow: `0 0 25px ${item.color}12`,
+      {/* Node */}
+      <motion.div
+        whileHover={{
+          scale: 1.08,
         }}
+        transition={{
+          duration: 0.2,
+        }}
+        className="
+          relative
+          flex
+          h-16
+          w-16
+          cursor-pointer
+          items-center
+          justify-center
+          rounded-full
+          border
+          border-white/10
+          bg-[#020607]
+          transition-all
+          duration-300
+          group-hover:border-cyan-300/50
+          group-hover:bg-[#030d10]
+          group-hover:shadow-[0_0_28px_rgba(34,211,238,0.13)]
+          md:h-18
+          md:w-18
+        "
       >
-        {/* rotating ring */}
-        <motion.div
-          animate={{
-            rotate: 360,
-          }}
-          transition={{
-            duration: 8 + index,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="absolute -inset-2 rounded-full border border-dashed opacity-40"
-          style={{
-            borderColor: item.color,
-          }}
+        {/* Very subtle inner border */}
+        <div
+          className="
+            pointer-events-none
+            absolute
+            inset-0.75
+            rounded-full
+            border
+            border-white/2.5
+          "
         />
 
+        {/* Icon */}
         <span
-          className="text-xl transition-transform duration-300 group-hover:scale-110"
-          style={{
-            color: item.color,
-          }}
+          className="
+            relative
+            z-10
+            text-[25px]
+            text-cyan-100
+            transition-all
+            duration-300
+            group-hover:scale-110
+            group-hover:text-cyan-200
+            group-hover:drop-shadow-[0_0_8px_rgba(165,243,252,.65)]
+            md:text-[28px]
+          "
         >
-          {item.icon}
+          {skill.icon}
         </span>
 
-        {/* status dot */}
+        {/* Tiny status dot */}
         <span
-          className="absolute right-0 top-0 h-2 w-2 rounded-full border-2 border-[#020817]"
-          style={{
-            background: item.color,
-          }}
+          className="
+            absolute
+            right-0.75
+            top-0.75
+            h-1.75
+            w-1.75
+            rounded-full
+            bg-cyan-200
+            opacity-60
+            shadow-[0_0_7px_rgba(103,232,249,.8)]
+            transition-all
+            duration-300
+            group-hover:opacity-100
+          "
         />
 
-        {/* hover information */}
-        <div className="pointer-events-none absolute left-1/2 top-[calc(100%+12px)] z-50 w-36.25 -translate-x-1/2 translate-y-1 rounded-xl border border-white/10 bg-[#020817]/95 p-2.5 text-left opacity-0 shadow-2xl backdrop-blur-xl transition-all duration-200 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
-          <div className="flex items-center justify-between">
-            <span className="text-[10px] font-bold text-white">
-              {item.name}
-            </span>
-
-            <span
-              className="h-1.5 w-1.5 rounded-full"
-              style={{
-                background: item.color,
-              }}
-            />
-          </div>
-
-          <p
-            className="mt-1 font-mono text-[7px] tracking-[0.12em]"
-            style={{
-              color: item.color,
-            }}
-          >
-            {item.type}
-          </p>
-
-          <div className="mt-2 h-px bg-white/6" />
-
-          <p className="mt-2 font-mono text-[7px] text-slate-500">
-            STATUS: OPERATIONAL
-          </p>
-        </div>
-      </div>
-
-      {/* label */}
-      <div className="mt-3 text-center">
-        <p className="whitespace-nowrap text-[9px] font-semibold text-slate-400 transition-colors group-hover:text-white">
-          {item.name}
-        </p>
-      </div>
+        {/* Tooltip */}
+        <Tooltip skill={skill} />
+      </motion.div>
     </motion.div>
   );
 }
+
+/* ============================================================
+   MAIN SKILLS
+============================================================ */
 
 export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative overflow-hidden bg-transparent px-5 py-20"
+      className="
+        relative
+        overflow-hidden
+        bg-transparent
+        px-4
+        py-20
+        md:px-6
+        md:py-24
+      "
     >
-      {/* background grid */}
+      {/* ======================================================
+          BACKGROUND
+      ====================================================== */}
+
+      {/* Horizontal scanlines */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.025]"
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          opacity-[0.035]
+        "
         style={{
           backgroundImage:
-            "linear-gradient(rgba(34,211,238,.8) 1px, transparent 1px), linear-gradient(90deg, rgba(34,211,238,.8) 1px, transparent 1px)",
-          backgroundSize: "40px 40px",
+            "repeating-linear-gradient(to bottom, rgba(255,255,255,.25) 0px, rgba(255,255,255,.25) 1px, transparent 1px, transparent 5px)",
         }}
       />
 
-      {/* ambient center */}
-      <div className="pointer-events-none absolute left-1/2 top-[45%] h-125 w-125 -translate-x-1/2 rounded-full bg-cyan-400/4 blur-[130px]" />
+      {/* Very subtle grid */}
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          opacity-[0.018]
+        "
+        style={{
+          backgroundImage: `
+            linear-gradient(
+              rgba(34,211,238,.7) 1px,
+              transparent 1px
+            ),
+            linear-gradient(
+              90deg,
+              rgba(34,211,238,.7) 1px,
+              transparent 1px
+            )
+          `,
+          backgroundSize: "45px 45px",
+        }}
+      />
 
-      <div className="relative mx-auto max-w-7xl">
-        {/* =====================================================
-            HEADER
-        ===================================================== */}
+      {/* Center cyan atmosphere */}
+      <div
+        className="
+          pointer-events-none
+          absolute
+          left-1/2
+          top-1/2
+          h-107.5
+          w-107.5
+          -translate-x-1/2
+          -translate-y-1/2
+          rounded-full
+          bg-cyan-400/4.5
+          blur-[110px]
+        "
+      />
+
+      {/* ======================================================
+          CONTENT
+      ====================================================== */}
+
+      <div className="relative mx-auto max-w-6xl">
+
+        {/* Heading */}
 
         <motion.div
           initial={{
             opacity: 0,
-            y: 20,
+            y: 15,
           }}
           whileInView={{
             opacity: 1,
@@ -295,408 +503,250 @@ export default function Skills() {
           transition={{
             duration: 0.6,
           }}
-          className="mb-10 text-center"
+          className="mb-8 text-center"
         >
-          <div className="mx-auto mb-4 flex w-fit items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/5 px-4 py-1.5 font-mono text-[9px] tracking-[0.25em] text-cyan-300">
-            <FiRadio className="animate-pulse" />
-            LIVE INFRASTRUCTURE
-          </div>
+          <p
+            className="
+              mb-2
+              font-mono
+              text-[8px]
+              uppercase
+              tracking-[0.35em]
+              text-cyan-300/50
+            "
+          >
+            Technical Ecosystem
+          </p>
 
-          <h2 className="text-4xl font-black text-white md:text-5xl">
+          <h2
+            className="
+              text-3xl
+              font-black
+              tracking-tight
+              text-white
+              md:text-4xl
+            "
+          >
             DevOps{" "}
-            <span className="bg-linear-to-r from-cyan-300 via-sky-400 to-purple-400 bg-clip-text text-transparent">
-              Ecosystem
+            <span className="text-cyan-200">
+              Skills
             </span>
           </h2>
-
-          <p className="mx-auto mt-3 max-w-xl text-xs leading-6 text-slate-500 md:text-sm">
-            The technologies I use to design, automate, deploy and operate
-            cloud infrastructure.
-          </p>
         </motion.div>
 
-        {/* =====================================================
-            INFRASTRUCTURE CANVAS
-        ===================================================== */}
+        {/* ======================================================
+            ECOSYSTEM
+        ====================================================== */}
 
-        <div className="relative mx-auto h-147.5 max-w-280 overflow-hidden rounded-[30px] border border-white/6 bg-[#010611]/60 shadow-[0_30px_100px_rgba(0,0,0,.35)]">
-          {/* tiny corner decorations */}
-          <div className="absolute left-4 top-4 h-3 w-3 border-l border-t border-cyan-400/30" />
+        <div
+          className="
+            relative
+            mx-auto
+            h-155
+            w-full
+            max-w-212.5
+            md:h-175
+          "
+        >
+          {/* Center glow */}
+          <motion.div
+            animate={{
+              scale: [1, 1.08, 1],
+              opacity: [0.07, 0.12, 0.07],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="
+              pointer-events-none
+              absolute
+              left-1/2
+              top-1/2
+              z-10
+              h-70
+              w-70
+              -translate-x-1/2
+              -translate-y-1/2
+              rounded-full
+              bg-cyan-400
+              blur-[100px]
+            "
+          />
 
-          <div className="absolute right-4 top-4 h-3 w-3 border-r border-t border-cyan-400/30" />
+          {/* ==================================================
+              CENTER CORE
+          ================================================== */}
 
-          <div className="absolute bottom-4 left-4 h-3 w-3 border-b border-l border-cyan-400/30" />
-
-          <div className="absolute bottom-4 right-4 h-3 w-3 border-b border-r border-cyan-400/30" />
-
-          {/* =================================================
-              NETWORK SVG
-          ================================================= */}
-
-          <svg
-            className="pointer-events-none absolute inset-0 h-full w-full"
-            viewBox="0 0 1120 590"
-            fill="none"
-            preserveAspectRatio="none"
+          <motion.div
+            initial={{
+              opacity: 0,
+              scale: 0.8,
+            }}
+            whileInView={{
+              opacity: 1,
+              scale: 1,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.7,
+            }}
+            className="
+              absolute
+              left-1/2
+              top-1/2
+              z-30
+              flex
+              h-33.75
+              w-33.75
+              -translate-x-1/2
+              -translate-y-1/2
+              items-center
+              justify-center
+              rounded-full
+              border
+              border-cyan-300/20
+              bg-[#020607]
+              shadow-[0_0_50px_rgba(34,211,238,.10)]
+              md:h-35
+              md:w-35
+            "
           >
-            {/* central network */}
-            <path
-              d="M560 295
-                 L190 105
-                 M560 295
-                 L930 105
-                 M560 295
-                 L135 285
-                 M560 295
-                 L985 285
-                 M560 295
-                 L245 455
-                 M560 295
-                 L875 455
-                 M560 295
-                 L390 55
-                 M560 295
-                 L730 55
-                 M560 295
-                 L70 425
-                 M560 295
-                 L1050 425"
-              stroke="rgba(34,211,238,.12)"
-              strokeWidth="1"
-              strokeDasharray="3 8"
-            />
+            <div className="text-center">
+              <p
+                className="
+                  text-[16px]
+                  font-bold
+                  tracking-tight
+                  text-cyan-100
+                "
+              >
+                Platform Core
+              </p>
 
-            {/* secondary horizontal network */}
-            <path
-              d="M40 295 H1080"
-              stroke="rgba(34,211,238,.035)"
-            />
+              <div className="mt-3 flex items-center justify-center gap-1.5">
+                <span
+                  className="
+                    h-1.5
+                    w-1.5
+                    animate-pulse
+                    rounded-full
+                    bg-cyan-300
+                    shadow-[0_0_8px_rgba(103,232,249,.8)]
+                  "
+                />
 
-            <path
-              d="M560 35 V555"
-              stroke="rgba(34,211,238,.035)"
-            />
-
-            {/* animated packets */}
-            <motion.circle
-              r="3"
-              fill="#22d3ee"
-              animate={{
-                cx: [560, 190],
-                cy: [295, 105],
-              }}
-              transition={{
-                duration: 2.5,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-            />
-
-            <motion.circle
-              r="3"
-              fill="#a855f7"
-              animate={{
-                cx: [560, 135],
-                cy: [295, 285],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-            />
-
-            <motion.circle
-              r="3"
-              fill="#60a5fa"
-              animate={{
-                cx: [560, 245],
-                cy: [295, 455],
-              }}
-              transition={{
-                duration: 2.7,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-            />
-
-            <motion.circle
-              r="3"
-              fill="#f87171"
-              animate={{
-                cx: [560, 930],
-                cy: [295, 105],
-              }}
-              transition={{
-                duration: 2.8,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-            />
-
-            <motion.circle
-              r="3"
-              fill="#facc15"
-              animate={{
-                cx: [560, 875],
-                cy: [295, 455],
-              }}
-              transition={{
-                duration: 2.6,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-            />
-          </svg>
-
-          {/* =================================================
-              TOP TELEMETRY
-          ================================================= */}
-
-          <div className="absolute left-5 top-5 z-20 flex items-center gap-2 font-mono text-[8px] tracking-[0.18em] text-slate-600">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
-            CLOUD NETWORK
-          </div>
-
-          <div className="absolute right-5 top-5 z-20 flex items-center gap-2 font-mono text-[8px] text-slate-600">
-            <span>10 NODES</span>
-            <span className="text-emerald-400">●</span>
-          </div>
-
-          {/* =================================================
-              AWS CORE
-          ================================================= */}
-
-          <div className="absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
-            {/* orbit */}
-            <motion.div
-              animate={{
-                rotate: 360,
-              }}
-              transition={{
-                duration: 24,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-              className="absolute -inset-26.25 rounded-full border border-dashed border-cyan-400/6"
-            />
-
-            <motion.div
-              animate={{
-                rotate: -360,
-              }}
-              transition={{
-                duration: 16,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-              className="absolute -inset-18 rounded-full border border-cyan-400/[0.07]"
-            />
-
-            {/* glow */}
-            <motion.div
-              animate={{
-                scale: [1, 1.12, 1],
-                opacity: [0.08, 0.16, 0.08],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-              }}
-              className="absolute -inset-16 rounded-full bg-cyan-400 blur-3xl"
-            />
-
-            {/* core */}
-            <motion.div
-              whileHover={{
-                scale: 1.05,
-              }}
-              className="relative flex h-38.75 w-38.75 flex-col items-center justify-center rounded-full border border-cyan-400/25 bg-[#020817] shadow-[0_0_70px_rgba(34,211,238,.12)]"
-            >
-              <FaAws className="text-[43px] text-orange-400" />
-
-              <div className="mt-1 text-lg font-black text-white">
-                AWS
-              </div>
-
-              <div className="mt-0.5 font-mono text-[7px] tracking-[0.35em] text-cyan-400">
-                CLOUD CORE
-              </div>
-
-              <div className="mt-3 flex items-center gap-1.5 rounded-full border border-emerald-400/20 px-2.5 py-1">
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
-
-                <span className="font-mono text-[7px] text-emerald-400">
-                  ONLINE
+                <span
+                  className="
+                    font-mono
+                    text-[7px]
+                    uppercase
+                    tracking-[0.2em]
+                    text-cyan-300/50
+                  "
+                >
+                  Active
                 </span>
               </div>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
 
-          {/* =================================================
-              NODES
-          ================================================= */}
+          {/* ==================================================
+              SKILLS
+          ================================================== */}
 
-          <div className="hidden md:block">
-            {infrastructure.map((item, index) => (
-              <InfraNode
-                key={item.name}
-                item={item}
+          <div className="hidden h-full md:block">
+            {skills.map((skill, index) => (
+              <SkillNode
+                key={skill.name}
+                skill={skill}
                 index={index}
               />
             ))}
           </div>
 
-          {/* =================================================
-              MOBILE NODES
-          ================================================= */}
+          {/* ==================================================
+              MOBILE
+          ================================================== */}
 
-          <div className="relative z-40 grid grid-cols-2 gap-3 p-5 pt-14 md:hidden">
-            {infrastructure.map((item, index) => (
-              <div
-                key={item.name}
-                className="relative flex flex-col items-center"
+          <div
+            className="
+              grid
+              grid-cols-3
+              gap-7
+              px-4
+              pt-2
+              md:hidden
+            "
+          >
+            {skills.map((skill, index) => (
+              <motion.div
+                key={skill.name}
+                initial={{
+                  opacity: 0,
+                  scale: 0.7,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  scale: 1,
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  delay: index * 0.04,
+                }}
+                className="flex justify-center"
               >
-                <InfraNode
-                  item={{
-                    ...item,
-                    x: "50%",
-                    y: "50%",
-                  }}
-                  index={index}
-                />
-              </div>
+                <div
+                  className="
+                    flex
+                    h-14
+                    w-14
+                    items-center
+                    justify-center
+                    rounded-full
+                    border
+                    border-white/10
+                    bg-[#020607]
+                    text-xl
+                    text-cyan-100
+                  "
+                >
+                  {skill.icon}
+                </div>
+              </motion.div>
             ))}
           </div>
-
-          {/* =================================================
-              CENTER TELEMETRY
-          ================================================= */}
-
-          <div className="absolute bottom-5 left-1/2 z-30 hidden -translate-x-1/2 items-center gap-5 rounded-full border border-white/5 bg-black/20 px-4 py-2 font-mono text-[7px] text-slate-600 backdrop-blur-md sm:flex">
-            <span className="flex items-center gap-1.5">
-              <FiServer />
-              INFRA
-            </span>
-
-            <span className="h-2.5 w-px bg-white/6" />
-
-            <span className="flex items-center gap-1.5">
-              <FiGitBranch />
-              CI/CD
-            </span>
-
-            <span className="h-2.5 w-px bg-white/6" />
-
-            <span className="flex items-center gap-1.5">
-              <FiDatabase />
-              CLOUD
-            </span>
-
-            <span className="h-2.5 w-px bg-white/6" />
-
-            <span className="flex items-center gap-1.5 text-emerald-400">
-              <FiActivity />
-              ACTIVE
-            </span>
-          </div>
         </div>
 
-        {/* =====================================================
-            PIPELINE
-        ===================================================== */}
+        {/* ======================================================
+            FOOTER TEXT
+        ====================================================== */}
 
-        <div className="mx-auto mt-5 max-w-280">
-          <div className="grid grid-cols-3 overflow-hidden rounded-xl border border-white/6 bg-[#020817]/50">
-            <div className="flex items-center justify-center gap-2 border-r border-white/6 py-3">
-              <FiCloud className="text-cyan-400" />
+        <div
+          className="
+            mt-2
+            flex
+            items-center
+            justify-center
+            gap-3
+            font-mono
+            text-[7px]
+            uppercase
+            tracking-[0.25em]
+            text-slate-700
+          "
+        >
+          <span>13 Technologies</span>
 
-              <div>
-                <p className="font-mono text-[7px] text-slate-600">
-                  CLOUD
-                </p>
+          <span className="h-2.5 w-px bg-white/10" />
 
-                <p className="text-[9px] font-semibold text-slate-300">
-                  BUILD
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-center gap-2 border-r border-white/6 py-3">
-              <FiGitBranch className="text-purple-400" />
-
-              <div>
-                <p className="font-mono text-[7px] text-slate-600">
-                  AUTOMATION
-                </p>
-
-                <p className="text-[9px] font-semibold text-slate-300">
-                  SHIP
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-center gap-2 py-3">
-              <FiActivity className="text-emerald-400" />
-
-              <div>
-                <p className="font-mono text-[7px] text-slate-600">
-                  OBSERVABILITY
-                </p>
-
-                <p className="text-[9px] font-semibold text-slate-300">
-                  RUN
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* =====================================================
-            SUPPORTING TOOLS
-        ===================================================== */}
-
-        <div className="mx-auto mt-4 flex max-w-175 items-center justify-center gap-2">
-          {bottomTools.map((tool) => (
-            <motion.div
-              key={tool.name}
-              whileHover={{
-                y: -3,
-                borderColor: "rgba(34,211,238,.2)",
-              }}
-              className="flex items-center gap-2 rounded-lg border border-white/5 bg-white/1.5 px-3 py-2"
-            >
-              <span className="text-xs text-slate-500">
-                {tool.icon}
-              </span>
-
-              <span className="font-mono text-[8px] text-slate-600">
-                {tool.name}
-              </span>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* terminal */}
-        <div className="mt-6 flex items-center justify-center gap-2 font-mono text-[8px] text-slate-700">
-          <span className="text-cyan-500">
-            atharv@cloud
-          </span>
-
-          <span>:</span>
-
-          <span className="text-purple-400">
-            ~/devops
-          </span>
-
-          <span>$</span>
-
-          <span>
-            infrastructure --status
-          </span>
-
-          <span className="text-emerald-500">
-            ✓ healthy
+          <span className="text-cyan-300/40">
+            Cloud • Automation • DevOps
           </span>
         </div>
       </div>
