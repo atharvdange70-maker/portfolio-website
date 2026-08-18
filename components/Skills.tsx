@@ -1,37 +1,38 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { ReactNode } from "react";
 
 import {
   FaAws,
   FaDocker,
-  FaGitAlt,
-  FaLinux,
   FaJenkins,
+  FaLinux,
   FaPython,
-  FaNetworkWired,
 } from "react-icons/fa";
 
 import {
-  SiKubernetes,
-  SiTerraform,
-  SiGithubactions,
-  SiShell,
-  SiNginx,
-  SiPrometheus,
-  SiHelm,
   SiAnsible,
+  SiGithubactions,
   SiGrafana,
+  SiHelm,
+  SiKubernetes,
+  SiPrometheus,
+  SiShell,
+  SiTerraform,
 } from "react-icons/si";
+
+type TooltipPosition = "top" | "bottom" | "left" | "right";
 
 type Skill = {
   name: string;
-  icon: React.ReactNode;
+  icon: ReactNode;
   percentage: number;
+  category: string;
   description: string;
   x: string;
   y: string;
-  tooltip?: "top" | "bottom" | "left" | "right";
+  tooltip: TooltipPosition;
 };
 
 const skills: Skill[] = [
@@ -39,129 +40,130 @@ const skills: Skill[] = [
     name: "Grafana",
     icon: <SiGrafana />,
     percentage: 72,
-    description: "Metrics visualization and dashboards",
+    category: "OBSERVABILITY",
+    description: "Metrics visualization and infrastructure dashboards",
     x: "16%",
-    y: "17%",
+    y: "16%",
     tooltip: "right",
   },
-
   {
     name: "Helm",
     icon: <SiHelm />,
     percentage: 76,
+    category: "KUBERNETES",
     description: "Parameterized Kubernetes releases",
     x: "38%",
-    y: "13%",
+    y: "12%",
     tooltip: "bottom",
   },
-
   {
     name: "Python",
     icon: <FaPython />,
     percentage: 72,
-    description: "Cloud automation and scripting",
+    category: "AUTOMATION",
+    description: "Cloud automation and DevOps scripting",
     x: "58%",
-    y: "8%",
+    y: "7%",
     tooltip: "bottom",
   },
-
   {
     name: "Shell",
     icon: <SiShell />,
     percentage: 82,
-    description: "Linux automation and scripting",
+    category: "AUTOMATION",
+    description: "Linux administration and automation",
     x: "72%",
     y: "20%",
     tooltip: "bottom",
   },
-
   {
     name: "Ansible",
     icon: <SiAnsible />,
     percentage: 70,
-    description: "Configuration management automation",
+    category: "CONFIGURATION",
+    description: "Configuration management and deployment",
     x: "88%",
-    y: "30%",
+    y: "31%",
     tooltip: "left",
   },
-
   {
     name: "Kubernetes",
     icon: <SiKubernetes />,
     percentage: 78,
-    description: "Container orchestration at scale",
+    category: "ORCHESTRATION",
+    description: "Container orchestration and workloads",
     x: "86%",
     y: "50%",
     tooltip: "left",
   },
-
   {
     name: "Docker",
     icon: <FaDocker />,
     percentage: 84,
+    category: "CONTAINERIZATION",
     description: "Containerized application deployment",
     x: "88%",
     y: "69%",
     tooltip: "left",
   },
-
   {
     name: "AWS",
     icon: <FaAws />,
     percentage: 82,
-    description: "Cloud infrastructure and services",
+    category: "CLOUD",
+    description: "Cloud infrastructure and AWS services",
     x: "72%",
-    y: "82%",
+    y: "83%",
     tooltip: "top",
   },
-
   {
     name: "Terraform",
     icon: <SiTerraform />,
     percentage: 76,
-    description: "Infrastructure as Code",
+    category: "INFRASTRUCTURE",
+    description: "Infrastructure as Code and provisioning",
     x: "57%",
-    y: "93%",
+    y: "94%",
     tooltip: "top",
   },
-
   {
     name: "Jenkins",
     icon: <FaJenkins />,
     percentage: 74,
-    description: "CI/CD pipeline automation",
+    category: "CI/CD",
+    description: "Continuous integration and delivery",
     x: "40%",
-    y: "91%",
+    y: "92%",
     tooltip: "top",
   },
-
   {
     name: "Linux",
     icon: <FaLinux />,
     percentage: 86,
-    description: "Cloud server administration",
+    category: "SYSTEM",
+    description: "Linux servers and cloud administration",
     x: "20%",
     y: "81%",
     tooltip: "top",
   },
-
   {
     name: "GitHub Actions",
     icon: <SiGithubactions />,
     percentage: 78,
-    description: "Automated CI/CD workflows",
-    x: "13%",
+    category: "CI/CD",
+    description: "Automated CI/CD workflows and deployments",
+    x: "12%",
     y: "62%",
     tooltip: "right",
   },
-
   {
     name: "Prometheus",
     icon: <SiPrometheus />,
     percentage: 68,
-    description: "Infrastructure monitoring",
+    category: "OBSERVABILITY",
+    description: "Infrastructure metrics and monitoring",
     x: "8%",
-    y: "45%",
+    y: "44%",
     tooltip: "right",
   },
 ];
@@ -170,38 +172,31 @@ const skills: Skill[] = [
    TOOLTIP
 ============================================================ */
 
-function Tooltip({
-  skill,
-}: {
-  skill: Skill;
-}) {
-  const positionClasses = {
+function SkillTooltip({ skill }: { skill: Skill }) {
+  const positions: Record<TooltipPosition, string> = {
     top: `
-      bottom-[calc(100%+14px)]
+      bottom-[calc(100%+16px)]
       left-1/2
       -translate-x-1/2
       translate-y-2
       group-hover:translate-y-0
     `,
-
     bottom: `
-      top-[calc(100%+14px)]
+      top-[calc(100%+16px)]
       left-1/2
       -translate-x-1/2
       -translate-y-2
       group-hover:translate-y-0
     `,
-
     left: `
-      right-[calc(100%+14px)]
+      right-[calc(100%+16px)]
       top-1/2
       -translate-y-1/2
       translate-x-2
       group-hover:translate-x-0
     `,
-
     right: `
-      left-[calc(100%+14px)]
+      left-[calc(100%+16px)]
       top-1/2
       -translate-y-1/2
       -translate-x-2
@@ -214,50 +209,72 @@ function Tooltip({
       className={`
         pointer-events-none
         absolute
-        z-100
-        w-57.5
-        rounded-lg
+        z-999
+        w-58.75
+        rounded-xl
         border
         border-cyan-300/20
         bg-[#020607]/95
-        p-3
+        p-3.5
         text-left
         opacity-0
-        shadow-[0_15px_45px_rgba(0,0,0,0.7)]
+        shadow-[0_20px_60px_rgba(0,0,0,0.75)]
         backdrop-blur-xl
         transition-all
-        duration-200
-        ${positionClasses[skill.tooltip ?? "bottom"]}
+        duration-250
+        ${positions[skill.tooltip]}
         group-hover:opacity-100
       `}
     >
-      {/* Title */}
+      {/* Header */}
       <div className="flex items-center justify-between">
-        <span className="text-[13px] font-semibold text-white">
-          {skill.name}
-        </span>
+        <div className="flex items-center gap-2">
+          <span className="h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_8px_rgba(103,232,249,.8)]" />
 
-        <span className="font-mono text-[10px] text-cyan-300">
+          <span className="text-[13px] font-bold text-white">
+            {skill.name}
+          </span>
+        </div>
+
+        <span className="font-mono text-[11px] font-bold text-cyan-300">
           {skill.percentage}%
         </span>
       </div>
 
       {/* Progress */}
-      <div className="mt-2 h-0.5 overflow-hidden rounded-full bg-white/10">
-        <div
+      <div className="mt-2.5 h-0.75 overflow-hidden rounded-full bg-white/8">
+        <motion.div
+          initial={{ width: 0 }}
+          whileInView={{
+            width: `${skill.percentage}%`,
+          }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.9,
+            ease: "easeOut",
+          }}
           className="h-full rounded-full bg-cyan-300"
           style={{
-            width: `${skill.percentage}%`,
-            boxShadow:
-              "0 0 8px rgba(103,232,249,.7)",
+            boxShadow: "0 0 10px rgba(103,232,249,.7)",
           }}
         />
       </div>
 
       {/* Description */}
-      <p className="mt-2 text-[10px] leading-4 text-slate-400">
+      <p className="mt-3 text-[10px] leading-[1.55] text-slate-400">
         {skill.description}
       </p>
+
+      {/* Category */}
+      <div className="mt-3 flex items-center justify-between border-t border-white/6 pt-2.5">
+        <span className="font-mono text-[7px] tracking-[0.18em] text-slate-600">
+          DOMAIN
+        </span>
+
+        <span className="font-mono text-[7px] font-semibold tracking-[0.12em] text-cyan-300/60">
+          {skill.category}
+        </span>
+      </div>
     </div>
   );
 }
@@ -277,7 +294,7 @@ function SkillNode({
     <motion.div
       initial={{
         opacity: 0,
-        scale: 0.65,
+        scale: 0.5,
       }}
       whileInView={{
         opacity: 1,
@@ -285,6 +302,7 @@ function SkillNode({
       }}
       viewport={{
         once: true,
+        amount: 0.2,
       }}
       transition={{
         duration: 0.55,
@@ -303,26 +321,31 @@ function SkillNode({
         top: skill.y,
       }}
     >
-      {/* Subtle glow */}
-      <div
+      {/* Ambient glow */}
+      <motion.div
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.02, 0.08, 0.02],
+        }}
+        transition={{
+          duration: 3 + index * 0.15,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
         className="
           pointer-events-none
           absolute
-          -inset-8
+          -inset-7
           rounded-full
-          bg-cyan-400/[0.035]
-          opacity-0
+          bg-cyan-300
           blur-2xl
-          transition-opacity
-          duration-300
-          group-hover:opacity-100
         "
       />
 
-      {/* Node */}
+      {/* Main node */}
       <motion.div
         whileHover={{
-          scale: 1.08,
+          scale: 1.12,
         }}
         transition={{
           duration: 0.2,
@@ -330,25 +353,27 @@ function SkillNode({
         className="
           relative
           flex
-          h-16
-          w-16
+          h-16.5
+          w-16.5
           cursor-pointer
           items-center
           justify-center
           rounded-full
           border
           border-white/10
-          bg-[#020607]
+          bg-[#020607]/95
+          shadow-[0_0_20px_rgba(0,0,0,.35)]
+          backdrop-blur-xl
           transition-all
           duration-300
-          group-hover:border-cyan-300/50
-          group-hover:bg-[#030d10]
-          group-hover:shadow-[0_0_28px_rgba(34,211,238,0.13)]
-          md:h-18
-          md:w-18
+          group-hover:border-cyan-300/60
+          group-hover:bg-[#031014]
+          group-hover:shadow-[0_0_35px_rgba(34,211,238,.20)]
+          md:h-18.5
+          md:w-18.5
         "
       >
-        {/* Very subtle inner border */}
+        {/* Inner circle */}
         <div
           className="
             pointer-events-none
@@ -357,6 +382,30 @@ function SkillNode({
             rounded-full
             border
             border-white/2.5
+          "
+        />
+
+        {/* Rotating dashed ring */}
+        <motion.div
+          animate={{
+            rotate: 360,
+          }}
+          transition={{
+            duration: 14 + index,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="
+            pointer-events-none
+            absolute
+            -inset-2
+            rounded-full
+            border
+            border-dashed
+            border-cyan-300/12
+            transition-all
+            duration-300
+            group-hover:border-cyan-300/40
           "
         />
 
@@ -371,15 +420,23 @@ function SkillNode({
             duration-300
             group-hover:scale-110
             group-hover:text-cyan-200
-            group-hover:drop-shadow-[0_0_8px_rgba(165,243,252,.65)]
-            md:text-[28px]
+            group-hover:drop-shadow-[0_0_12px_rgba(165,243,252,.8)]
+            md:text-[29px]
           "
         >
           {skill.icon}
         </span>
 
-        {/* Tiny status dot */}
-        <span
+        {/* Status light */}
+        <motion.span
+          animate={{
+            opacity: [0.35, 1, 0.35],
+          }}
+          transition={{
+            duration: 2.5,
+            repeat: Infinity,
+            delay: index * 0.15,
+          }}
           className="
             absolute
             right-0.75
@@ -388,23 +445,19 @@ function SkillNode({
             w-1.75
             rounded-full
             bg-cyan-200
-            opacity-60
-            shadow-[0_0_7px_rgba(103,232,249,.8)]
-            transition-all
-            duration-300
-            group-hover:opacity-100
+            shadow-[0_0_9px_rgba(103,232,249,.9)]
           "
         />
 
         {/* Tooltip */}
-        <Tooltip skill={skill} />
+        <SkillTooltip skill={skill} />
       </motion.div>
     </motion.div>
   );
 }
 
 /* ============================================================
-   MAIN SKILLS
+   MAIN SKILLS SECTION
 ============================================================ */
 
 export default function Skills() {
@@ -425,7 +478,7 @@ export default function Skills() {
           BACKGROUND
       ====================================================== */}
 
-      {/* Horizontal scanlines */}
+      {/* Scanline effect */}
       <div
         className="
           pointer-events-none
@@ -450,33 +503,33 @@ export default function Skills() {
         style={{
           backgroundImage: `
             linear-gradient(
-              rgba(34,211,238,.7) 1px,
+              rgba(34,211,238,.8) 1px,
               transparent 1px
             ),
             linear-gradient(
               90deg,
-              rgba(34,211,238,.7) 1px,
+              rgba(34,211,238,.8) 1px,
               transparent 1px
             )
           `,
-          backgroundSize: "45px 45px",
+          backgroundSize: "42px 42px",
         }}
       />
 
-      {/* Center cyan atmosphere */}
+      {/* Top atmosphere */}
       <div
         className="
           pointer-events-none
           absolute
           left-1/2
-          top-1/2
-          h-107.5
-          w-107.5
+          top-[42%]
+          h-130
+          w-130
           -translate-x-1/2
           -translate-y-1/2
           rounded-full
-          bg-cyan-400/4.5
-          blur-[110px]
+          bg-cyan-400/[0.035]
+          blur-[130px]
         "
       />
 
@@ -485,13 +538,11 @@ export default function Skills() {
       ====================================================== */}
 
       <div className="relative mx-auto max-w-6xl">
-
         {/* Heading */}
-
         <motion.div
           initial={{
             opacity: 0,
-            y: 15,
+            y: 20,
           }}
           whileInView={{
             opacity: 1,
@@ -503,7 +554,7 @@ export default function Skills() {
           transition={{
             duration: 0.6,
           }}
-          className="mb-8 text-center"
+          className="mb-6 text-center"
         >
           <p
             className="
@@ -524,18 +575,42 @@ export default function Skills() {
               font-black
               tracking-tight
               text-white
-              md:text-4xl
+              md:text-5xl
             "
           >
             DevOps{" "}
-            <span className="text-cyan-200">
+            <span
+              className="
+                bg-linear-to-r
+                from-cyan-100
+                via-cyan-300
+                to-slate-300
+                bg-clip-text
+                text-transparent
+              "
+            >
               Skills
             </span>
           </h2>
+
+          <p
+            className="
+              mx-auto
+              mt-3
+              max-w-xl
+              text-xs
+              leading-6
+              text-slate-600
+              md:text-sm
+            "
+          >
+            The tools and technologies I use to build,
+            automate and operate cloud infrastructure.
+          </p>
         </motion.div>
 
         {/* ======================================================
-            ECOSYSTEM
+            ECOSYSTEM CANVAS
         ====================================================== */}
 
         <div
@@ -545,14 +620,14 @@ export default function Skills() {
             h-155
             w-full
             max-w-212.5
-            md:h-175
+            md:h-177.5
           "
         >
-          {/* Center glow */}
+          {/* Center atmospheric glow */}
           <motion.div
             animate={{
-              scale: [1, 1.08, 1],
-              opacity: [0.07, 0.12, 0.07],
+              scale: [1, 1.12, 1],
+              opacity: [0.05, 0.12, 0.05],
             }}
             transition={{
               duration: 5,
@@ -565,8 +640,8 @@ export default function Skills() {
               left-1/2
               top-1/2
               z-10
-              h-70
-              w-70
+              h-75
+              w-75
               -translate-x-1/2
               -translate-y-1/2
               rounded-full
@@ -575,14 +650,71 @@ export default function Skills() {
             "
           />
 
+          {/* Outer orbit */}
+          <motion.div
+            animate={{
+              rotate: 360,
+            }}
+            transition={{
+              duration: 35,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            className="
+              pointer-events-none
+              absolute
+              left-1/2
+              top-1/2
+              z-10
+              h-75
+              w-75
+              -translate-x-1/2
+              -translate-y-1/2
+              rounded-full
+              border
+              border-dashed
+              border-cyan-300/[0.035]
+              md:h-92.5
+              md:w-92.5
+            "
+          />
+
+          {/* Inner orbit */}
+          <motion.div
+            animate={{
+              rotate: -360,
+            }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            className="
+              pointer-events-none
+              absolute
+              left-1/2
+              top-1/2
+              z-10
+              h-55
+              w-55
+              -translate-x-1/2
+              -translate-y-1/2
+              rounded-full
+              border
+              border-cyan-300/2.5
+              md:h-70
+              md:w-70
+            "
+          />
+
           {/* ==================================================
-              CENTER CORE
+              PLATFORM CORE
           ================================================== */}
 
           <motion.div
             initial={{
               opacity: 0,
-              scale: 0.8,
+              scale: 0.75,
             }}
             whileInView={{
               opacity: 1,
@@ -592,7 +724,11 @@ export default function Skills() {
               once: true,
             }}
             transition={{
-              duration: 0.7,
+              duration: 0.8,
+              ease: "easeOut",
+            }}
+            whileHover={{
+              scale: 1.04,
             }}
             className="
               absolute
@@ -610,32 +746,52 @@ export default function Skills() {
               border
               border-cyan-300/20
               bg-[#020607]
-              shadow-[0_0_50px_rgba(34,211,238,.10)]
-              md:h-35
-              md:w-35
+              shadow-[0_0_65px_rgba(34,211,238,.13)]
+              md:h-36.25
+              md:w-36.25
             "
           >
-            <div className="text-center">
+            {/* Core inner glow */}
+            <div
+              className="
+                pointer-events-none
+                absolute
+                inset-2
+                rounded-full
+                border
+                border-cyan-300/[0.035]
+              "
+            />
+
+            <div className="relative text-center">
               <p
                 className="
-                  text-[16px]
+                  text-[15px]
                   font-bold
                   tracking-tight
                   text-cyan-100
+                  md:text-[16px]
                 "
               >
                 Platform Core
               </p>
 
               <div className="mt-3 flex items-center justify-center gap-1.5">
-                <span
+                <motion.span
+                  animate={{
+                    opacity: [0.3, 1, 0.3],
+                    scale: [0.8, 1, 0.8],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                  }}
                   className="
                     h-1.5
                     w-1.5
-                    animate-pulse
                     rounded-full
                     bg-cyan-300
-                    shadow-[0_0_8px_rgba(103,232,249,.8)]
+                    shadow-[0_0_10px_rgba(103,232,249,.9)]
                   "
                 />
 
@@ -644,18 +800,18 @@ export default function Skills() {
                     font-mono
                     text-[7px]
                     uppercase
-                    tracking-[0.2em]
+                    tracking-[0.25em]
                     text-cyan-300/50
                   "
                 >
-                  Active
+                  Operational
                 </span>
               </div>
             </div>
           </motion.div>
 
           {/* ==================================================
-              SKILLS
+              DESKTOP SKILLS
           ================================================== */}
 
           <div className="hidden h-full md:block">
@@ -676,7 +832,8 @@ export default function Skills() {
             className="
               grid
               grid-cols-3
-              gap-7
+              gap-x-5
+              gap-y-8
               px-4
               pt-2
               md:hidden
@@ -699,7 +856,7 @@ export default function Skills() {
                 transition={{
                   delay: index * 0.04,
                 }}
-                className="flex justify-center"
+                className="flex flex-col items-center"
               >
                 <div
                   className="
@@ -714,22 +871,46 @@ export default function Skills() {
                     bg-[#020607]
                     text-xl
                     text-cyan-100
+                    shadow-[0_0_20px_rgba(34,211,238,.05)]
                   "
                 >
                   {skill.icon}
                 </div>
+
+                <span
+                  className="
+                    mt-2
+                    text-center
+                    font-mono
+                    text-[7px]
+                    text-slate-600
+                  "
+                >
+                  {skill.name}
+                </span>
               </motion.div>
             ))}
           </div>
         </div>
 
         {/* ======================================================
-            FOOTER TEXT
+            BOTTOM STATUS
         ====================================================== */}
 
-        <div
+        <motion.div
+          initial={{
+            opacity: 0,
+          }}
+          whileInView={{
+            opacity: 1,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            delay: 0.4,
+          }}
           className="
-            mt-2
             flex
             items-center
             justify-center
@@ -737,18 +918,26 @@ export default function Skills() {
             font-mono
             text-[7px]
             uppercase
-            tracking-[0.25em]
+            tracking-[0.22em]
             text-slate-700
           "
         >
+          <span className="flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
+
+            SYSTEM ONLINE
+          </span>
+
+          <span className="h-3 w-px bg-white/8" />
+
           <span>13 Technologies</span>
 
-          <span className="h-2.5 w-px bg-white/10" />
+          <span className="h-3 w-px bg-white/8" />
 
           <span className="text-cyan-300/40">
-            Cloud • Automation • DevOps
+            CLOUD • CI/CD • AUTOMATION
           </span>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
