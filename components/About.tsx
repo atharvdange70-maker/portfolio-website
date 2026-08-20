@@ -96,7 +96,7 @@ export default function About() {
               AWS DevOps Engineer
             </span>{" "}
             passionate about designing secure, scalable, and highly available
-            cloud infrastructure. I enjoy building production-ready solutions,
+            Cloud infrastructure. I enjoy building production-ready solutions,
             automating deployments, and simplifying complex workflows using
             modern DevOps practices.
           </p>

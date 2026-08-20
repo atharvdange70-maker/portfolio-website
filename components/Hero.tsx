@@ -1,4 +1,3 @@
-
 // Guarded require for Scene — some setups may report the file as "not a module".
 // Fall back to a noop component if the module can't be imported.
 
