@@ -1,28 +1,35 @@
-// Guarded require for Scene — some setups may report the file as "not a module".
-// Fall back to a noop component if the module can't be imported.
 
-declare const require: any;
-
-import { Download } from "lucide-react";
+import {
+  Download,
+  GitBranch,
+  Container,
+  Cloud,
+  Boxes,
+  Terminal,
+  Zap,
+  ShieldCheck,
+  Activity,
+} from "lucide-react";
 
 export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen"
+      className="relative min-h-screen overflow-hidden"
     >
+      {/* ========================================================= */}
+      {/* HERO CONTENT                                               */}
+      {/* ========================================================= */}
 
-      {/* Hero Content */}
       <div className="absolute inset-0 flex items-center">
 
         <div className="max-w-7xl mx-auto w-full px-8">
 
-          {/* Two Column Hero Layout */}
           <div className="grid lg:grid-cols-2 gap-12 items-center">
 
-            {/* ================================================= */}
-            {/* LEFT SIDE - HERO CONTENT                         */}
-            {/* ================================================= */}
+            {/* ===================================================== */}
+            {/* LEFT SIDE                                               */}
+            {/* ===================================================== */}
 
             <div className="max-w-2xl">
 
@@ -39,335 +46,470 @@ export default function Hero() {
                 workflows.
               </p>
 
-              <div className="flex gap-4">
-                <div className="flex flex-wrap items-center gap-3">
+              {/* ================================================= */}
+              {/* HERO CONTROLS                                     */}
+              {/* ================================================= */}
 
-                  {/* ================================================= */}
-                  {/* PROJECTS CONTROL                                  */}
-                  {/* ================================================= */}
+              <div className="flex flex-wrap items-center gap-3">
 
-                  <a
-                    href="#projects"
-                    className="group relative flex items-center gap-3 overflow-hidden rounded-lg
-                    border border-cyan-400/25
-                    bg-[#07131b]/80
-                    px-4 py-2.5
-                    font-mono text-sm
-                    text-cyan-300
-                    backdrop-blur-md
-                    transition-all duration-300
-                    hover:-translate-y-0.5
-                    hover:border-cyan-400/60
-                    hover:bg-cyan-400/[0.07]
-                    hover:shadow-[0_0_24px_rgba(34,211,238,0.12)]"
-                  >
-                    {/* Status indicator */}
-                    <span className="relative flex h-2 w-2">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-40" />
-                      <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-400" />
+                {/* PROJECTS */}
+
+                <a
+                  href="#projects"
+                  className="group relative flex items-center gap-3 overflow-hidden rounded-lg
+                  border border-cyan-400/25
+                  bg-[#07131b]/80
+                  px-4 py-2.5
+                  font-mono text-sm
+                  text-cyan-300
+                  backdrop-blur-md
+                  transition-all duration-300
+                  hover:-translate-y-0.5
+                  hover:border-cyan-400/60
+                  hover:bg-cyan-400/[0.07]
+                  hover:shadow-[0_0_24px_rgba(34,211,238,0.12)]"
+                >
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-40" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-400" />
+                  </span>
+
+                  <span className="flex flex-col leading-none">
+                    <span className="text-[9px] uppercase tracking-[0.2em] text-cyan-500/60">
+                      Deployments
                     </span>
 
-                    <span className="flex flex-col leading-none">
-                      <span className="text-[9px] uppercase tracking-[0.2em] text-cyan-500/60">
-                        Deployments
-                      </span>
+                    <span className="mt-1 font-semibold text-cyan-200">
+                      View Projects
+                    </span>
+                  </span>
 
-                      <span className="mt-1 font-semibold text-cyan-200">
-                        View Projects
-                      </span>
+                  <span className="ml-1 text-cyan-500/70 transition-transform duration-300 group-hover:translate-x-1">
+                    →
+                  </span>
+
+                  <span className="absolute right-0 top-0 h-2 w-2 border-r border-t border-cyan-400/40" />
+                </a>
+
+
+                {/* RESUME */}
+
+                <a
+                  href="/My-DevOps-Resume.pdf"
+                  download="My-DevOps-Resume.pdf"
+                  className="group relative flex items-center gap-3 overflow-hidden rounded-lg
+                  border border-blue-400/25
+                  bg-[#07111c]/80
+                  px-4 py-2.5
+                  font-mono text-sm
+                  text-blue-300
+                  backdrop-blur-md
+                  transition-all duration-300
+                  hover:-translate-y-0.5
+                  hover:border-blue-400/60
+                  hover:bg-blue-400/[0.07]
+                  hover:shadow-[0_0_24px_rgba(59,130,246,0.14)]"
+                >
+                  <span className="flex h-7 w-7 items-center justify-center rounded-md border border-blue-400/20 bg-blue-400/5">
+                    <Download
+                      size={15}
+                      className="transition-transform duration-300 group-hover:translate-y-0.5"
+                    />
+                  </span>
+
+                  <span className="flex flex-col leading-none">
+                    <span className="text-[9px] uppercase tracking-[0.2em] text-blue-400/60">
+                      Document
                     </span>
 
-                    <span className="ml-1 text-cyan-500/70 transition-transform duration-300 group-hover:translate-x-1">
-                      →
+                    <span className="mt-1 font-semibold text-blue-200">
+                      Download Resume
+                    </span>
+                  </span>
+
+                  <span className="ml-1 text-blue-400/70 transition-transform duration-300 group-hover:translate-y-0.5">
+                    ↓
+                  </span>
+
+                  <span className="absolute right-0 top-0 h-2 w-2 border-r border-t border-blue-400/40" />
+                </a>
+
+
+                {/* CONTACT */}
+
+                <a
+                  href="#contact"
+                  className="group relative flex items-center gap-3 overflow-hidden rounded-lg
+                  border border-violet-400/20
+                  bg-[#0b0a16]/80
+                  px-4 py-2.5
+                  font-mono text-sm
+                  text-violet-300
+                  backdrop-blur-md
+                  transition-all duration-300
+                  hover:-translate-y-0.5
+                  hover:border-violet-400/50
+                  hover:bg-violet-400/6
+                  hover:shadow-[0_0_24px_rgba(167,139,250,0.10)]"
+                >
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-20" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-violet-400" />
+                  </span>
+
+                  <span className="flex flex-col leading-none">
+                    <span className="text-[9px] uppercase tracking-[0.2em] text-violet-400/50">
+                      Network
                     </span>
 
-                    {/* Corner detail */}
-                    <span className="absolute right-0 top-0 h-2 w-2 border-r border-t border-cyan-400/40" />
-                  </a>
+                    <span className="mt-1 font-semibold text-violet-200">
+                      Contact Me
+                    </span>
+                  </span>
+
+                  <span className="ml-1 text-violet-400/70 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5">
+                    ↗
+                  </span>
+
+                  <span className="absolute right-0 top-0 h-2 w-2 border-r border-t border-violet-400/30" />
+                </a>
 
 
-                  {/* ================================================= */}
-                  {/* RESUME DOWNLOAD CONTROL                           */}
-                  {/* ================================================= */}
+                {/* TERMINAL */}
 
-                  <a
-                    href="/My-DevOps-Resume.pdf"
-                    download="My-DevOps-Resume.pdf"
-                    className="group relative flex items-center gap-3 overflow-hidden rounded-lg
-                    border border-blue-400/25
-                    bg-[#07111c]/80
-                    px-4 py-2.5
-                    font-mono text-sm
-                    text-blue-300
-                    backdrop-blur-md
-                    transition-all duration-300
-                    hover:-translate-y-0.5
-                    hover:border-blue-400/60
-                    hover:bg-blue-400/[0.07]
-                    hover:shadow-[0_0_24px_rgba(59,130,246,0.14)]"
-                  >
-                    {/* Download icon */}
-                    <span className="flex h-7 w-7 items-center justify-center rounded-md border border-blue-400/20 bg-blue-400/5">
-                      <Download
-                        size={15}
-                        className="transition-transform duration-300 group-hover:translate-y-0.5"
-                      />
+                <a
+                  href="#terminal"
+                  className="group relative flex items-center gap-3 overflow-hidden rounded-lg
+                  border border-emerald-400/25
+                  bg-[#07140f]/80
+                  px-4 py-2.5
+                  font-mono text-sm
+                  text-emerald-300
+                  backdrop-blur-md
+                  transition-all duration-300
+                  hover:-translate-y-0.5
+                  hover:border-emerald-400/60
+                  hover:bg-emerald-400/6
+                  hover:shadow-[0_0_24px_rgba(52,211,153,0.12)]"
+                >
+                  <span className="flex h-7 w-7 items-center justify-center rounded-md border border-emerald-400/20 bg-emerald-400/5 text-xs text-emerald-400">
+                    &gt;_
+                  </span>
+
+                  <span className="flex flex-col leading-none">
+                    <span className="text-[9px] uppercase tracking-[0.2em] text-emerald-400/50">
+                      Shell Access
                     </span>
 
-                    <span className="flex flex-col leading-none">
-                      <span className="text-[9px] uppercase tracking-[0.2em] text-blue-400/60">
-                        Document
-                      </span>
-
-                      <span className="mt-1 font-semibold text-blue-200">
-                        Download Resume
-                      </span>
+                    <span className="mt-1 font-semibold text-emerald-200">
+                      Open Terminal
                     </span>
+                  </span>
 
-                    <span className="ml-1 text-blue-400/70 transition-transform duration-300 group-hover:translate-y-0.5">
-                      ↓
+                  <span className="ml-1 flex items-center gap-1.5">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.7)]" />
+
+                    <span className="text-[8px] uppercase tracking-wider text-emerald-400/50">
+                      Ready
                     </span>
+                  </span>
 
-                    {/* Corner detail */}
-                    <span className="absolute right-0 top-0 h-2 w-2 border-r border-t border-blue-400/40" />
-                  </a>
+                  <span className="absolute right-0 top-0 h-2 w-2 border-r border-t border-emerald-400/40" />
+                </a>
 
-
-                  {/* ================================================= */}
-                  {/* CONTACT CONTROL                                   */}
-                  {/* ================================================= */}
-
-                  <a
-                    href="#contact"
-                    className="group relative flex items-center gap-3 overflow-hidden rounded-lg
-                    border border-violet-400/20
-                    bg-[#0b0a16]/80
-                    px-4 py-2.5
-                    font-mono text-sm
-                    text-violet-300
-                    backdrop-blur-md
-                    transition-all duration-300
-                    hover:-translate-y-0.5
-                    hover:border-violet-400/50
-                    hover:bg-violet-400/6
-                    hover:shadow-[0_0_24px_rgba(167,139,250,0.10)]"
-                  >
-                    {/* Status indicator */}
-                    <span className="relative flex h-2 w-2">
-                      <span className="absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-20" />
-                      <span className="relative inline-flex h-2 w-2 rounded-full bg-violet-400" />
-                    </span>
-
-                    <span className="flex flex-col leading-none">
-                      <span className="text-[9px] uppercase tracking-[0.2em] text-violet-400/50">
-                        Network
-                      </span>
-
-                      <span className="mt-1 font-semibold text-violet-200">
-                        Contact Me
-                      </span>
-                    </span>
-
-                    <span className="ml-1 text-violet-400/70 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5">
-                      ↗
-                    </span>
-
-                    {/* Corner detail */}
-                    <span className="absolute right-0 top-0 h-2 w-2 border-r border-t border-violet-400/30" />
-                  </a>
-
-
-                  {/* ================================================= */}
-                  {/* TERMINAL CONTROL                                  */}
-                  {/* ================================================= */}
-
-                  <a
-                    href="#terminal"
-                    className="group relative flex items-center gap-3 overflow-hidden rounded-lg
-                    border border-emerald-400/25
-                    bg-[#07140f]/80
-                    px-4 py-2.5
-                    font-mono text-sm
-                    text-emerald-300
-                    backdrop-blur-md
-                    transition-all duration-300
-                    hover:-translate-y-0.5
-                    hover:border-emerald-400/60
-                    hover:bg-emerald-400/6
-                    hover:shadow-[0_0_24px_rgba(52,211,153,0.12)]"
-                  >
-                    {/* Terminal icon */}
-                    <span className="flex h-7 w-7 items-center justify-center rounded-md border border-emerald-400/20 bg-emerald-400/5 text-xs text-emerald-400">
-                      &gt;_
-                    </span>
-
-                    <span className="flex flex-col leading-none">
-                      <span className="text-[9px] uppercase tracking-[0.2em] text-emerald-400/50">
-                        Shell Access
-                      </span>
-
-                      <span className="mt-1 font-semibold text-emerald-200">
-                        Open Terminal
-                      </span>
-                    </span>
-
-                    {/* Online indicator */}
-                    <span className="ml-1 flex items-center gap-1.5">
-                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.7)]" />
-
-                      <span className="text-[8px] uppercase tracking-wider text-emerald-400/50">
-                        Ready
-                      </span>
-                    </span>
-
-                    {/* Corner detail */}
-                    <span className="absolute right-0 top-0 h-2 w-2 border-r border-t border-emerald-400/40" />
-                  </a>
-
-                </div>
               </div>
 
             </div>
 
 
-            {/* ================================================= */}
-            {/* RIGHT SIDE - CLOUD & DEVOPS CARD                  */}
-            {/* ================================================= */}
+            {/* ===================================================== */}
+            {/* RIGHT SIDE - 3D DEVOPS DEPLOYMENT ENGINE              */}
+            {/* ===================================================== */}
 
-            <div className="flex justify-center lg:justify-end">
+            <div className="relative flex justify-center lg:justify-end">
 
-              <div className="relative w-full max-w-md">
+              {/* Main 3D Perspective */}
 
-                {/* Background Glow */}
-                <div className="absolute -inset-1 bg-cyan-400/20 rounded-3xl blur-2xl" />
+              <div className="relative w-full max-w-lg h-125 perspective-distant">
 
-                {/* Main Card */}
-                <div className="relative rounded-3xl border border-cyan-400/20 bg-slate-950/70 backdrop-blur-xl p-8 shadow-2xl">
+                {/* Outer Glow */}
 
-                  {/* Card Header */}
-                  <div className="flex items-center justify-between mb-8">
+                <div className="absolute inset-10 rounded-full bg-cyan-400/10 blur-[100px]" />
 
-                    <div>
-                      <p className="text-cyan-400 text-sm font-semibold tracking-widest">
-                        CLOUD & DEVOPS
-                      </p>
+                {/* ================================================= */}
+                {/* ORBIT RINGS                                       */}
+                {/* ================================================= */}
 
-                      <h3 className="text-2xl font-bold text-white mt-2">
-                        Infrastructure
-                      </h3>
-                    </div>
+                <div
+                  className="absolute left-1/2 top-1/2
+                  h-90 w-90
+                  -translate-x-1/2 -translate-y-1/2
+                  rounded-full
+                  border border-cyan-400/10
+                  rotate-12
+                  transform-3d
+                  animate-[spin_18s_linear_infinite]"
+                />
 
-                    {/* Cloud Icon */}
-                    <div className="w-14 h-14 rounded-full bg-cyan-400/10 border border-cyan-400/30 flex items-center justify-center text-2xl">
-                      ☁️
+                <div
+                  className="absolute left-1/2 top-1/2
+                  h-72.5 w-72.5
+                  -translate-x-1/2 -translate-y-1/2
+                  rounded-full
+                  border border-blue-400/10
+                  -rotate-12
+                  transform-3d
+                  animate-[spin_12s_linear_infinite_reverse]"
+                />
+
+                <div
+                  className="absolute left-1/2 top-1/2
+                  h-55 w-55
+                  -translate-x-1/2 -translate-y-1/2
+                  rounded-full
+                  border border-violet-400/10
+                  animate-[spin_8s_linear_infinite]"
+                />
+
+
+                {/* ================================================= */}
+                {/* CENTRAL DEPLOYMENT CORE                            */}
+                {/* ================================================= */}
+
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+
+                  {/* Glow */}
+
+                  <div className="absolute -inset-12 rounded-full bg-cyan-400/10 blur-3xl" />
+
+                  {/* Core */}
+
+                  <div
+                    className="relative h-36 w-36 rounded-full
+                    border border-cyan-400/30
+                    bg-[#06131f]/90
+                    backdrop-blur-xl
+                    shadow-[0_0_60px_rgba(34,211,238,0.18)]
+                    flex items-center justify-center
+                    transform-[rotateX(15deg)]"
+                  >
+
+                    <div className="absolute inset-4 rounded-full border border-cyan-400/20" />
+
+                    <div className="absolute inset-8 rounded-full border border-cyan-400/20" />
+
+                    <div className="relative flex flex-col items-center">
+
+                      <Zap
+                        size={30}
+                        className="text-cyan-400 mb-2"
+                      />
+
+                      <span className="text-[10px] font-mono tracking-[0.2em] text-cyan-300">
+                        DEPLOY
+                      </span>
+
+                      <span className="mt-1 text-[8px] font-mono text-gray-500">
+                        ENGINE
+                      </span>
+
                     </div>
 
                   </div>
 
+                </div>
 
-                  {/* Skills Grid */}
-                  <div className="grid grid-cols-2 gap-4">
 
-                    {/* AWS */}
-                    <div className="rounded-xl border border-white/10 bg-white/5 p-4 hover:border-cyan-400/40 hover:bg-cyan-400/5 transition">
+                {/* ================================================= */}
+                {/* NODE 1 - GIT                                     */}
+                {/* ================================================= */}
 
-                      <div className="text-2xl mb-2">
-                        ☁️
-                      </div>
+                <div className="absolute left-2 top-20">
 
-                      <p className="text-white font-semibold">
-                        AWS
-                      </p>
+                  <div className="group flex items-center gap-3 rounded-xl border border-orange-400/20 bg-[#07131b]/80 px-4 py-3 backdrop-blur-md shadow-[0_0_30px_rgba(251,146,60,0.06)]">
 
-                      <p className="text-gray-400 text-sm">
-                        Cloud
-                      </p>
-
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-orange-400/10 border border-orange-400/20">
+                      <GitBranch size={20} className="text-orange-400" />
                     </div>
 
+                    <div>
+                      <p className="text-xs font-semibold text-white">
+                        Git
+                      </p>
 
-                    {/* Docker */}
-                    <div className="rounded-xl border border-white/10 bg-white/5 p-4 hover:border-cyan-400/40 hover:bg-cyan-400/5 transition">
+                      <p className="text-[9px] font-mono text-orange-400/60">
+                        SOURCE CODE
+                      </p>
+                    </div>
 
-                      <div className="text-2xl mb-2">
-                        🐳
-                      </div>
+                  </div>
 
-                      <p className="text-white font-semibold">
+                </div>
+
+
+                {/* ================================================= */}
+                {/* NODE 2 - CI/CD                                    */}
+                {/* ================================================= */}
+
+                <div className="absolute right-2 top-20">
+
+                  <div className="flex items-center gap-3 rounded-xl border border-yellow-400/20 bg-[#07131b]/80 px-4 py-3 backdrop-blur-md shadow-[0_0_30px_rgba(250,204,21,0.06)]">
+
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-yellow-400/10 border border-yellow-400/20">
+                      <Activity size={20} className="text-yellow-400" />
+                    </div>
+
+                    <div>
+                      <p className="text-xs font-semibold text-white">
+                        CI / CD
+                      </p>
+
+                      <p className="text-[9px] font-mono text-yellow-400/60">
+                        AUTOMATION
+                      </p>
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+                {/* ================================================= */}
+                {/* NODE 3 - DOCKER                                   */}
+                {/* ================================================= */}
+
+                <div className="absolute left-0 bottom-28">
+
+                  <div className="flex items-center gap-3 rounded-xl border border-blue-400/20 bg-[#07131b]/80 px-4 py-3 backdrop-blur-md shadow-[0_0_30px_rgba(96,165,250,0.06)]">
+
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-400/10 border border-blue-400/20">
+                      <Container size={20} className="text-blue-400" />
+                    </div>
+
+                    <div>
+                      <p className="text-xs font-semibold text-white">
                         Docker
                       </p>
 
-                      <p className="text-gray-400 text-sm">
-                        Containers
+                      <p className="text-[9px] font-mono text-blue-400/60">
+                        CONTAINER
                       </p>
-
                     </div>
 
+                  </div>
 
-                    {/* Kubernetes */}
-                    <div className="rounded-xl border border-white/10 bg-white/5 p-4 hover:border-cyan-400/40 hover:bg-cyan-400/5 transition">
+                </div>
 
-                      <div className="text-2xl mb-2">
-                        ☸️
-                      </div>
 
-                      <p className="text-white font-semibold">
+                {/* ================================================= */}
+                {/* NODE 4 - KUBERNETES                               */}
+                {/* ================================================= */}
+
+                <div className="absolute right-0 bottom-28">
+
+                  <div className="flex items-center gap-3 rounded-xl border border-violet-400/20 bg-[#07131b]/80 px-4 py-3 backdrop-blur-md shadow-[0_0_30px_rgba(167,139,250,0.06)]">
+
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-violet-400/10 border border-violet-400/20">
+                      <Boxes size={20} className="text-violet-400" />
+                    </div>
+
+                    <div>
+                      <p className="text-xs font-semibold text-white">
                         Kubernetes
                       </p>
 
-                      <p className="text-gray-400 text-sm">
-                        Orchestration
+                      <p className="text-[9px] font-mono text-violet-400/60">
+                        ORCHESTRATION
                       </p>
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+                {/* ================================================= */}
+                {/* AWS NODE                                           */}
+                {/* ================================================= */}
+
+                <div className="absolute left-1/2 bottom-2 -translate-x-1/2">
+
+                  <div className="flex items-center gap-3 rounded-xl border border-cyan-400/25 bg-[#07131b]/90 px-5 py-3 backdrop-blur-md shadow-[0_0_35px_rgba(34,211,238,0.08)]">
+
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-cyan-400/10 border border-cyan-400/20">
+
+                      <Cloud
+                        size={20}
+                        className="text-cyan-400"
+                      />
 
                     </div>
 
-
-                    {/* Terraform */}
-                    <div className="rounded-xl border border-white/10 bg-white/5 p-4 hover:border-cyan-400/40 hover:bg-cyan-400/5 transition">
-
-                      <div className="text-2xl mb-2">
-                        🏗️
-                      </div>
-
-                      <p className="text-white font-semibold">
-                        Terraform
+                    <div>
+                      <p className="text-xs font-semibold text-white">
+                        AWS Cloud
                       </p>
 
-                      <p className="text-gray-400 text-sm">
-                        Infrastructure
+                      <p className="text-[9px] font-mono text-cyan-400/60">
+                        PRODUCTION
                       </p>
+                    </div>
+
+                    <span className="ml-2 h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
+
+                  </div>
+
+                </div>
+
+
+                {/* ================================================= */}
+                {/* DEPLOYMENT STATUS                                   */}
+                {/* ================================================= */}
+
+                <div className="absolute top-1/2 -right-2.5 translate-y-[-50%]">
+
+                  <div className="rounded-lg border border-emerald-400/20 bg-[#06140f]/80 px-3 py-2 backdrop-blur-md">
+
+                    <div className="flex items-center gap-2">
+
+                      <ShieldCheck
+                        size={14}
+                        className="text-emerald-400"
+                      />
+
+                      <span className="font-mono text-[9px] uppercase tracking-wider text-emerald-300">
+                        Production Ready
+                      </span>
 
                     </div>
 
                   </div>
 
+                </div>
 
-                  {/* Bottom Section */}
-                  <div className="mt-6 pt-6 border-t border-white/10">
 
-                    <p className="text-gray-400 text-sm mb-3">
-                      Focus Areas
-                    </p>
+                {/* ================================================= */}
+                {/* TERMINAL STATUS                                    */}
+                {/* ================================================= */}
 
-                    <div className="flex flex-wrap gap-2">
+                <div className="absolute left-1/2 top-2 -translate-x-1/2">
 
-                      <span className="px-3 py-1 rounded-full bg-cyan-400/10 text-cyan-300 text-xs">
-                        CI/CD
-                      </span>
+                  <div className="flex items-center gap-2 rounded-full border border-white/10 bg-black/30 px-4 py-2 backdrop-blur-md">
 
-                      <span className="px-3 py-1 rounded-full bg-cyan-400/10 text-cyan-300 text-xs">
-                        Automation
-                      </span>
+                    <Terminal
+                      size={13}
+                      className="text-gray-500"
+                    />
 
-                      <span className="px-3 py-1 rounded-full bg-cyan-400/10 text-cyan-300 text-xs">
-                        Linux
-                      </span>
+                    <span className="font-mono text-[9px] text-gray-400">
+                      pipeline.status
+                    </span>
 
-                      <span className="px-3 py-1 rounded-full bg-cyan-400/10 text-cyan-300 text-xs">
-                        Cloud Infrastructure
-                      </span>
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
 
-                    </div>
+                    <span className="font-mono text-[9px] text-emerald-400">
+                      ACTIVE
+                    </span>
 
                   </div>
 
@@ -386,4 +528,3 @@ export default function Hero() {
     </section>
   );
 }
-
