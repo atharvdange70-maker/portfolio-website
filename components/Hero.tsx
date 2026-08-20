@@ -1,15 +1,145 @@
+"use client";
 
-import {
-  Download,
-  GitBranch,
-  Container,
-  Cloud,
-  Boxes,
-  Terminal,
-  Zap,
-  ShieldCheck,
-  Activity,
-} from "lucide-react";
+import { Download, ArrowUpRight, Terminal as TerminalIcon } from "lucide-react";
+
+function polarToCartesian(
+  cx: number,
+  cy: number,
+  radius: number,
+  angle: number
+) {
+  const radians = ((angle - 90) * Math.PI) / 180;
+
+  return {
+    x: cx + radius * Math.cos(radians),
+    y: cy + radius * Math.sin(radians),
+  };
+}
+
+function donutSegment(
+  cx: number,
+  cy: number,
+  outerRadius: number,
+  innerRadius: number,
+  startAngle: number,
+  endAngle: number
+) {
+  const outerStart = polarToCartesian(
+    cx,
+    cy,
+    outerRadius,
+    startAngle
+  );
+
+  const outerEnd = polarToCartesian(
+    cx,
+    cy,
+    outerRadius,
+    endAngle
+  );
+
+  const innerEnd = polarToCartesian(
+    cx,
+    cy,
+    innerRadius,
+    endAngle
+  );
+
+  const innerStart = polarToCartesian(
+    cx,
+    cy,
+    innerRadius,
+    startAngle
+  );
+
+  const largeArcFlag = endAngle - startAngle <= 180 ? 0 : 1;
+
+  return `
+    M ${outerStart.x} ${outerStart.y}
+    A ${outerRadius} ${outerRadius} 0 ${largeArcFlag} 1 ${outerEnd.x} ${outerEnd.y}
+    L ${innerEnd.x} ${innerEnd.y}
+    A ${innerRadius} ${innerRadius} 0 ${largeArcFlag} 0 ${innerStart.x} ${innerStart.y}
+    Z
+  `;
+}
+
+const devSegments = [
+  {
+    label: "CREATE",
+    color: "#9aaa20",
+    start: -46,
+    end: 40,
+    labelX: 145,
+    labelY: 100,
+    rotate: -45,
+  },
+  {
+    label: "PLAN",
+    color: "#168c9b",
+    start: 44,
+    end: 130,
+    labelX: 275,
+    labelY: 100,
+    rotate: 38,
+  },
+  {
+    label: "PACKAGE",
+    color: "#3fa8e8",
+    start: 134,
+    end: 220,
+    labelX: 280,
+    labelY: 320,
+    rotate: -40,
+  },
+  {
+    label: "VERIFY",
+    color: "#3d3bb5",
+    start: 224,
+    end: 310,
+    labelX: 125,
+    labelY: 320,
+    rotate: 40,
+  },
+];
+
+const opsSegments = [
+  {
+    label: "RELEASE",
+    color: "#fa551d",
+    start: -46,
+    end: 40,
+    labelX: 445,
+    labelY: 100,
+    rotate: -45,
+  },
+  {
+    label: "CONFIGURE",
+    color: "#9165a8",
+    start: 44,
+    end: 130,
+    labelX: 585,
+    labelY: 105,
+    rotate: 43,
+  },
+  {
+    label: "MONITOR",
+    color: "#c3292e",
+    start: 134,
+    end: 220,
+    labelX: 585,
+    labelY: 320,
+    rotate: -38,
+  },
+  {
+    label: "OPERATE",
+    color: "#178b96",
+    start: 224,
+    end: 310,
+    labelX: 445,
+    labelY: 320,
+    rotate: 38,
+  },
+];
 
 export default function Hero() {
   return (
@@ -17,499 +147,701 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen overflow-hidden"
     >
-      {/* ========================================================= */}
-      {/* HERO CONTENT                                               */}
-      {/* ========================================================= */}
+      {/* ===================================================== */}
+      {/* BACKGROUND */}
+      {/* ===================================================== */}
 
-      <div className="absolute inset-0 flex items-center">
+      <div className="pointer-events-none absolute inset-0">
 
-        <div className="max-w-7xl mx-auto w-full px-8">
+        {/* Main glow */}
+        <div className="absolute left-[45%] top-[30%] h-105 w-105 -translate-x-1/2 rounded-full bg-cyan-500/[0.035] blur-[120px]" />
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="absolute right-[5%] top-[15%] h-75 w-75 rounded-full bg-violet-500/2.5 blur-[100px]" />
 
-            {/* ===================================================== */}
-            {/* LEFT SIDE                                               */}
-            {/* ===================================================== */}
+        {/* Grid */}
+        <div
+          className="
+            absolute
+            inset-0
+            opacity-[0.045]
+            bg-[linear-gradient(rgba(34,211,238,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.5)_1px,transparent_1px)]
+            bg-size-[70px_70px]
+          "
+        />
+
+        {/* Horizontal scan line */}
+        <div className="absolute left-0 right-0 top-[20%] h-px bg-linear-to-r from-transparent via-cyan-400/10 to-transparent" />
+
+        <div className="absolute left-0 right-0 top-[72%] h-px bg-linear-to-r from-transparent via-cyan-400/6 to-transparent" />
+
+      </div>
+
+
+      {/* ===================================================== */}
+      {/* HERO CONTENT */}
+      {/* ===================================================== */}
+
+      <div className="relative z-10 flex min-h-screen items-center">
+
+        <div className="mx-auto w-full max-w-7xl px-6 py-24 sm:px-8 lg:px-10">
+
+          <div className="grid items-center gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-8">
+
+
+            {/* ================================================= */}
+            {/* LEFT SIDE */}
+            {/* ================================================= */}
 
             <div className="max-w-2xl">
 
-              <h1 className="text-5xl md:text-7xl font-bold text-cyan-400 mb-4">
-                Atharv Dange
+              {/* Availability */}
+              <div className="mb-7 inline-flex items-center gap-3 rounded-full border border-cyan-400/15 bg-[#07131b]/70 px-4 py-2 font-mono text-[10px] tracking-[0.16em] text-gray-400 backdrop-blur-md">
+
+                <span className="relative flex h-2 w-2">
+
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-40" />
+
+                  <span className="relative h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
+
+                </span>
+
+                AVAILABLE FOR DEVOPS / CLOUD ROLES
+
+              </div>
+
+
+              {/* Small terminal label */}
+              <div className="mb-4 flex items-center gap-2 font-mono text-xs text-cyan-400/60">
+
+                <span className="text-cyan-500">
+                  &gt;_
+                </span>
+
+                <span>
+                  whoami
+                </span>
+
+                <span className="text-gray-600">
+                  //
+                </span>
+
+                <span className="text-gray-500">
+                  cloud.engineer
+                </span>
+
+              </div>
+
+
+              {/* Name */}
+              <h1 className="text-5xl font-bold tracking-tight text-white sm:text-6xl md:text-7xl">
+
+                Atharv
+
+                <span className="block text-cyan-400">
+                  Dange<span className="text-cyan-500/50">.</span>
+                </span>
+
               </h1>
 
-              <h2 className="text-2xl md:text-3xl text-white mb-6">
-                DevOps Engineer | AWS Cloud Engineer
-              </h2>
 
-              <p className="text-gray-300 text-lg max-w-xl mb-8">
-                Building scalable cloud infrastructure with automated DevOps
-                workflows.
+              {/* Role */}
+              <div className="mt-5">
+
+                <h2 className="text-xl font-medium text-gray-200 sm:text-2xl">
+
+                  DevOps Engineer
+
+                  <span className="mx-2 text-cyan-400/40">
+                    |
+                  </span>
+
+                  AWS Cloud Engineer
+
+                </h2>
+
+              </div>
+
+
+              {/* Description */}
+              <p className="mt-6 max-w-xl text-base leading-7 text-gray-400 sm:text-lg">
+
+                Building reliable cloud infrastructure, automating deployments,
+                and turning complex infrastructure into simple,
+                scalable systems.
+
               </p>
 
+
               {/* ================================================= */}
-              {/* HERO CONTROLS                                     */}
+              {/* COMMAND STATUS */}
               {/* ================================================= */}
 
-              <div className="flex flex-wrap items-center gap-3">
+              <div className="mt-7 max-w-xl rounded-xl border border-white/[0.07] bg-[#050d14]/70 p-4 font-mono backdrop-blur-md">
+
+                <div className="flex items-center gap-2 text-[11px] text-gray-500">
+
+                  <span className="text-cyan-400">
+                    $
+                  </span>
+
+                  <span>
+                    system.status
+                  </span>
+
+                </div>
+
+                <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-[11px]">
+
+                  <span className="text-gray-500">
+                    AWS
+                    <span className="ml-2 text-emerald-400">
+                      ● ONLINE
+                    </span>
+                  </span>
+
+                  <span className="text-gray-500">
+                    LINUX
+                    <span className="ml-2 text-emerald-400">
+                      ● READY
+                    </span>
+                  </span>
+
+                  <span className="text-gray-500">
+                    DOCKER
+                    <span className="ml-2 text-emerald-400">
+                      ● READY
+                    </span>
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              {/* ================================================= */}
+              {/* ACTIONS */}
+              {/* ================================================= */}
+
+              <div className="mt-8 flex flex-wrap gap-3">
+
 
                 {/* PROJECTS */}
-
                 <a
                   href="#projects"
-                  className="group relative flex items-center gap-3 overflow-hidden rounded-lg
-                  border border-cyan-400/25
-                  bg-[#07131b]/80
-                  px-4 py-2.5
-                  font-mono text-sm
-                  text-cyan-300
-                  backdrop-blur-md
-                  transition-all duration-300
-                  hover:-translate-y-0.5
-                  hover:border-cyan-400/60
-                  hover:bg-cyan-400/[0.07]
-                  hover:shadow-[0_0_24px_rgba(34,211,238,0.12)]"
+                  className="
+                    group
+                    relative
+                    flex
+                    items-center
+                    gap-3
+                    overflow-hidden
+                    rounded-lg
+                    border
+                    border-cyan-400/30
+                    bg-cyan-400/6
+                    px-4
+                    py-3
+                    font-mono
+                    text-sm
+                    text-cyan-300
+                    backdrop-blur-md
+                    transition-all
+                    duration-300
+                    hover:-translate-y-1
+                    hover:border-cyan-400/60
+                    hover:bg-cyan-400/10
+                    hover:shadow-[0_0_30px_rgba(34,211,238,0.12)]
+                  "
                 >
+
                   <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-40" />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-400" />
+
+                    <span className="absolute h-full w-full animate-ping rounded-full bg-cyan-400 opacity-40" />
+
+                    <span className="relative h-2 w-2 rounded-full bg-cyan-400" />
+
                   </span>
 
-                  <span className="flex flex-col leading-none">
-                    <span className="text-[9px] uppercase tracking-[0.2em] text-cyan-500/60">
-                      Deployments
-                    </span>
-
-                    <span className="mt-1 font-semibold text-cyan-200">
-                      View Projects
-                    </span>
+                  <span>
+                    View Projects
                   </span>
 
-                  <span className="ml-1 text-cyan-500/70 transition-transform duration-300 group-hover:translate-x-1">
-                    →
-                  </span>
+                  <ArrowUpRight
+                    size={15}
+                    className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  />
 
-                  <span className="absolute right-0 top-0 h-2 w-2 border-r border-t border-cyan-400/40" />
                 </a>
 
 
                 {/* RESUME */}
-
                 <a
                   href="/My-DevOps-Resume.pdf"
                   download="My-DevOps-Resume.pdf"
-                  className="group relative flex items-center gap-3 overflow-hidden rounded-lg
-                  border border-blue-400/25
-                  bg-[#07111c]/80
-                  px-4 py-2.5
-                  font-mono text-sm
-                  text-blue-300
-                  backdrop-blur-md
-                  transition-all duration-300
-                  hover:-translate-y-0.5
-                  hover:border-blue-400/60
-                  hover:bg-blue-400/[0.07]
-                  hover:shadow-[0_0_24px_rgba(59,130,246,0.14)]"
+                  className="
+                    group
+                    flex
+                    items-center
+                    gap-3
+                    rounded-lg
+                    border
+                    border-blue-400/20
+                    bg-blue-400/4
+                    px-4
+                    py-3
+                    font-mono
+                    text-sm
+                    text-blue-300
+                    transition-all
+                    duration-300
+                    hover:-translate-y-1
+                    hover:border-blue-400/50
+                    hover:bg-blue-400/8
+                  "
                 >
-                  <span className="flex h-7 w-7 items-center justify-center rounded-md border border-blue-400/20 bg-blue-400/5">
-                    <Download
-                      size={15}
-                      className="transition-transform duration-300 group-hover:translate-y-0.5"
-                    />
+
+                  <Download
+                    size={16}
+                    className="transition-transform duration-300 group-hover:translate-y-0.5"
+                  />
+
+                  <span>
+                    Resume
                   </span>
 
-                  <span className="flex flex-col leading-none">
-                    <span className="text-[9px] uppercase tracking-[0.2em] text-blue-400/60">
-                      Document
-                    </span>
-
-                    <span className="mt-1 font-semibold text-blue-200">
-                      Download Resume
-                    </span>
-                  </span>
-
-                  <span className="ml-1 text-blue-400/70 transition-transform duration-300 group-hover:translate-y-0.5">
-                    ↓
-                  </span>
-
-                  <span className="absolute right-0 top-0 h-2 w-2 border-r border-t border-blue-400/40" />
                 </a>
 
 
                 {/* CONTACT */}
-
                 <a
                   href="#contact"
-                  className="group relative flex items-center gap-3 overflow-hidden rounded-lg
-                  border border-violet-400/20
-                  bg-[#0b0a16]/80
-                  px-4 py-2.5
-                  font-mono text-sm
-                  text-violet-300
-                  backdrop-blur-md
-                  transition-all duration-300
-                  hover:-translate-y-0.5
-                  hover:border-violet-400/50
-                  hover:bg-violet-400/6
-                  hover:shadow-[0_0_24px_rgba(167,139,250,0.10)]"
+                  className="
+                    group
+                    flex
+                    items-center
+                    gap-3
+                    rounded-lg
+                    border
+                    border-violet-400/20
+                    bg-violet-400/4
+                    px-4
+                    py-3
+                    font-mono
+                    text-sm
+                    text-violet-300
+                    transition-all
+                    duration-300
+                    hover:-translate-y-1
+                    hover:border-violet-400/50
+                    hover:bg-violet-400/8
+                  "
                 >
-                  <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-20" />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-violet-400" />
+
+                  <span className="h-2 w-2 rounded-full bg-violet-400" />
+
+                  <span>
+                    Contact
                   </span>
 
-                  <span className="flex flex-col leading-none">
-                    <span className="text-[9px] uppercase tracking-[0.2em] text-violet-400/50">
-                      Network
-                    </span>
-
-                    <span className="mt-1 font-semibold text-violet-200">
-                      Contact Me
-                    </span>
-                  </span>
-
-                  <span className="ml-1 text-violet-400/70 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5">
-                    ↗
-                  </span>
-
-                  <span className="absolute right-0 top-0 h-2 w-2 border-r border-t border-violet-400/30" />
                 </a>
 
 
                 {/* TERMINAL */}
-
                 <a
                   href="#terminal"
-                  className="group relative flex items-center gap-3 overflow-hidden rounded-lg
-                  border border-emerald-400/25
-                  bg-[#07140f]/80
-                  px-4 py-2.5
-                  font-mono text-sm
-                  text-emerald-300
-                  backdrop-blur-md
-                  transition-all duration-300
-                  hover:-translate-y-0.5
-                  hover:border-emerald-400/60
-                  hover:bg-emerald-400/6
-                  hover:shadow-[0_0_24px_rgba(52,211,153,0.12)]"
+                  className="
+                    group
+                    flex
+                    items-center
+                    gap-3
+                    rounded-lg
+                    border
+                    border-emerald-400/20
+                    bg-emerald-400/[0.035]
+                    px-4
+                    py-3
+                    font-mono
+                    text-sm
+                    text-emerald-300
+                    transition-all
+                    duration-300
+                    hover:-translate-y-1
+                    hover:border-emerald-400/50
+                    hover:bg-emerald-400/[0.07]
+                  "
                 >
-                  <span className="flex h-7 w-7 items-center justify-center rounded-md border border-emerald-400/20 bg-emerald-400/5 text-xs text-emerald-400">
-                    &gt;_
+
+                  <TerminalIcon
+                    size={16}
+                    className="transition-transform duration-300 group-hover:scale-110"
+                  />
+
+                  <span>
+                    Terminal
                   </span>
 
-                  <span className="flex flex-col leading-none">
-                    <span className="text-[9px] uppercase tracking-[0.2em] text-emerald-400/50">
-                      Shell Access
-                    </span>
-
-                    <span className="mt-1 font-semibold text-emerald-200">
-                      Open Terminal
-                    </span>
+                  <span className="text-[9px] text-emerald-400/50">
+                    READY
                   </span>
 
-                  <span className="ml-1 flex items-center gap-1.5">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.7)]" />
-
-                    <span className="text-[8px] uppercase tracking-wider text-emerald-400/50">
-                      Ready
-                    </span>
-                  </span>
-
-                  <span className="absolute right-0 top-0 h-2 w-2 border-r border-t border-emerald-400/40" />
                 </a>
+
+              </div>
+
+
+              {/* Bottom tech line */}
+              <div className="mt-9 flex flex-wrap items-center gap-3 font-mono text-[10px] uppercase tracking-[0.16em] text-gray-600">
+
+                <span>
+                  AWS
+                </span>
+
+                <span className="text-cyan-500/30">
+                  /
+                </span>
+
+                <span>
+                  DOCKER
+                </span>
+
+                <span className="text-cyan-500/30">
+                  /
+                </span>
+
+                <span>
+                  KUBERNETES
+                </span>
+
+                <span className="text-cyan-500/30">
+                  /
+                </span>
+
+                <span>
+                  TERRAFORM
+                </span>
+
+                <span className="text-cyan-500/30">
+                  /
+                </span>
+
+                <span>
+                  LINUX
+                </span>
 
               </div>
 
             </div>
 
 
-            {/* ===================================================== */}
-            {/* RIGHT SIDE - 3D DEVOPS DEPLOYMENT ENGINE              */}
-            {/* ===================================================== */}
+            {/* ================================================= */}
+            {/* RIGHT SIDE - DEVOPS LIFECYCLE                   */}
+            {/* ================================================= */}
 
-            <div className="relative flex justify-center lg:justify-end">
+            <div className="relative flex items-center justify-center lg:justify-end">
 
-              {/* Main 3D Perspective */}
+              {/* Outer glow */}
+              <div className="pointer-events-none absolute h-107.5 w-107.5 rounded-full bg-cyan-400/2.5 blur-[90px]" />
 
-              <div className="relative w-full max-w-lg h-125 perspective-distant">
 
-                {/* Outer Glow */}
+              <div className="relative w-full max-w-170">
 
-                <div className="absolute inset-10 rounded-full bg-cyan-400/10 blur-[100px]" />
+                {/* Top terminal status */}
+                <div className="absolute left-1/2 -top-1.25 z-30 -translate-x-1/2">
 
-                {/* ================================================= */}
-                {/* ORBIT RINGS                                       */}
-                {/* ================================================= */}
+                  <div className="flex items-center gap-2 whitespace-nowrap rounded-full border border-cyan-400/15 bg-[#06111b]/90 px-4 py-2 font-mono text-[9px] tracking-wider text-gray-500 shadow-xl backdrop-blur-md">
 
-                <div
-                  className="absolute left-1/2 top-1/2
-                  h-90 w-90
-                  -translate-x-1/2 -translate-y-1/2
-                  rounded-full
-                  border border-cyan-400/10
-                  rotate-12
-                  transform-3d
-                  animate-[spin_18s_linear_infinite]"
-                />
-
-                <div
-                  className="absolute left-1/2 top-1/2
-                  h-72.5 w-72.5
-                  -translate-x-1/2 -translate-y-1/2
-                  rounded-full
-                  border border-blue-400/10
-                  -rotate-12
-                  transform-3d
-                  animate-[spin_12s_linear_infinite_reverse]"
-                />
-
-                <div
-                  className="absolute left-1/2 top-1/2
-                  h-55 w-55
-                  -translate-x-1/2 -translate-y-1/2
-                  rounded-full
-                  border border-violet-400/10
-                  animate-[spin_8s_linear_infinite]"
-                />
-
-
-                {/* ================================================= */}
-                {/* CENTRAL DEPLOYMENT CORE                            */}
-                {/* ================================================= */}
-
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-
-                  {/* Glow */}
-
-                  <div className="absolute -inset-12 rounded-full bg-cyan-400/10 blur-3xl" />
-
-                  {/* Core */}
-
-                  <div
-                    className="relative h-36 w-36 rounded-full
-                    border border-cyan-400/30
-                    bg-[#06131f]/90
-                    backdrop-blur-xl
-                    shadow-[0_0_60px_rgba(34,211,238,0.18)]
-                    flex items-center justify-center
-                    transform-[rotateX(15deg)]"
-                  >
-
-                    <div className="absolute inset-4 rounded-full border border-cyan-400/20" />
-
-                    <div className="absolute inset-8 rounded-full border border-cyan-400/20" />
-
-                    <div className="relative flex flex-col items-center">
-
-                      <Zap
-                        size={30}
-                        className="text-cyan-400 mb-2"
-                      />
-
-                      <span className="text-[10px] font-mono tracking-[0.2em] text-cyan-300">
-                        DEPLOY
-                      </span>
-
-                      <span className="mt-1 text-[8px] font-mono text-gray-500">
-                        ENGINE
-                      </span>
-
-                    </div>
-
-                  </div>
-
-                </div>
-
-
-                {/* ================================================= */}
-                {/* NODE 1 - GIT                                     */}
-                {/* ================================================= */}
-
-                <div className="absolute left-2 top-20">
-
-                  <div className="group flex items-center gap-3 rounded-xl border border-orange-400/20 bg-[#07131b]/80 px-4 py-3 backdrop-blur-md shadow-[0_0_30px_rgba(251,146,60,0.06)]">
-
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-orange-400/10 border border-orange-400/20">
-                      <GitBranch size={20} className="text-orange-400" />
-                    </div>
-
-                    <div>
-                      <p className="text-xs font-semibold text-white">
-                        Git
-                      </p>
-
-                      <p className="text-[9px] font-mono text-orange-400/60">
-                        SOURCE CODE
-                      </p>
-                    </div>
-
-                  </div>
-
-                </div>
-
-
-                {/* ================================================= */}
-                {/* NODE 2 - CI/CD                                    */}
-                {/* ================================================= */}
-
-                <div className="absolute right-2 top-20">
-
-                  <div className="flex items-center gap-3 rounded-xl border border-yellow-400/20 bg-[#07131b]/80 px-4 py-3 backdrop-blur-md shadow-[0_0_30px_rgba(250,204,21,0.06)]">
-
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-yellow-400/10 border border-yellow-400/20">
-                      <Activity size={20} className="text-yellow-400" />
-                    </div>
-
-                    <div>
-                      <p className="text-xs font-semibold text-white">
-                        CI / CD
-                      </p>
-
-                      <p className="text-[9px] font-mono text-yellow-400/60">
-                        AUTOMATION
-                      </p>
-                    </div>
-
-                  </div>
-
-                </div>
-
-
-                {/* ================================================= */}
-                {/* NODE 3 - DOCKER                                   */}
-                {/* ================================================= */}
-
-                <div className="absolute left-0 bottom-28">
-
-                  <div className="flex items-center gap-3 rounded-xl border border-blue-400/20 bg-[#07131b]/80 px-4 py-3 backdrop-blur-md shadow-[0_0_30px_rgba(96,165,250,0.06)]">
-
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-400/10 border border-blue-400/20">
-                      <Container size={20} className="text-blue-400" />
-                    </div>
-
-                    <div>
-                      <p className="text-xs font-semibold text-white">
-                        Docker
-                      </p>
-
-                      <p className="text-[9px] font-mono text-blue-400/60">
-                        CONTAINER
-                      </p>
-                    </div>
-
-                  </div>
-
-                </div>
-
-
-                {/* ================================================= */}
-                {/* NODE 4 - KUBERNETES                               */}
-                {/* ================================================= */}
-
-                <div className="absolute right-0 bottom-28">
-
-                  <div className="flex items-center gap-3 rounded-xl border border-violet-400/20 bg-[#07131b]/80 px-4 py-3 backdrop-blur-md shadow-[0_0_30px_rgba(167,139,250,0.06)]">
-
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-violet-400/10 border border-violet-400/20">
-                      <Boxes size={20} className="text-violet-400" />
-                    </div>
-
-                    <div>
-                      <p className="text-xs font-semibold text-white">
-                        Kubernetes
-                      </p>
-
-                      <p className="text-[9px] font-mono text-violet-400/60">
-                        ORCHESTRATION
-                      </p>
-                    </div>
-
-                  </div>
-
-                </div>
-
-
-                {/* ================================================= */}
-                {/* AWS NODE                                           */}
-                {/* ================================================= */}
-
-                <div className="absolute left-1/2 bottom-2 -translate-x-1/2">
-
-                  <div className="flex items-center gap-3 rounded-xl border border-cyan-400/25 bg-[#07131b]/90 px-5 py-3 backdrop-blur-md shadow-[0_0_35px_rgba(34,211,238,0.08)]">
-
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-cyan-400/10 border border-cyan-400/20">
-
-                      <Cloud
-                        size={20}
-                        className="text-cyan-400"
-                      />
-
-                    </div>
-
-                    <div>
-                      <p className="text-xs font-semibold text-white">
-                        AWS Cloud
-                      </p>
-
-                      <p className="text-[9px] font-mono text-cyan-400/60">
-                        PRODUCTION
-                      </p>
-                    </div>
-
-                    <span className="ml-2 h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
-
-                  </div>
-
-                </div>
-
-
-                {/* ================================================= */}
-                {/* DEPLOYMENT STATUS                                   */}
-                {/* ================================================= */}
-
-                <div className="absolute top-1/2 -right-2.5 translate-y-[-50%]">
-
-                  <div className="rounded-lg border border-emerald-400/20 bg-[#06140f]/80 px-3 py-2 backdrop-blur-md">
-
-                    <div className="flex items-center gap-2">
-
-                      <ShieldCheck
-                        size={14}
-                        className="text-emerald-400"
-                      />
-
-                      <span className="font-mono text-[9px] uppercase tracking-wider text-emerald-300">
-                        Production Ready
-                      </span>
-
-                    </div>
-
-                  </div>
-
-                </div>
-
-
-                {/* ================================================= */}
-                {/* TERMINAL STATUS                                    */}
-                {/* ================================================= */}
-
-                <div className="absolute left-1/2 top-2 -translate-x-1/2">
-
-                  <div className="flex items-center gap-2 rounded-full border border-white/10 bg-black/30 px-4 py-2 backdrop-blur-md">
-
-                    <Terminal
-                      size={13}
-                      className="text-gray-500"
-                    />
-
-                    <span className="font-mono text-[9px] text-gray-400">
-                      pipeline.status
+                    <span className="text-cyan-400">
+                      &gt;_
                     </span>
 
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>
+                      devops.lifecycle
+                    </span>
 
-                    <span className="font-mono text-[9px] text-emerald-400">
+                    <span className="text-gray-700">
+                      |
+                    </span>
+
+                    <span className="text-emerald-400">
                       ACTIVE
                     </span>
+
+                  </div>
+
+                </div>
+
+
+                {/* ================================================= */}
+                {/* SVG GRAPHIC */}
+                {/* ================================================= */}
+
+                <svg
+                  viewBox="0 0 760 430"
+                  className="relative z-10 w-full overflow-visible"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+
+                  <defs>
+
+                    <filter
+                      id="softGlow"
+                      x="-50%"
+                      y="-50%"
+                      width="200%"
+                      height="200%"
+                    >
+                      <feGaussianBlur
+                        stdDeviation="7"
+                        result="blur"
+                      />
+
+                      <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                      </feMerge>
+                    </filter>
+
+                    <radialGradient
+                      id="centerGlow"
+                      cx="50%"
+                      cy="50%"
+                      r="50%"
+                    >
+                      <stop
+                        offset="0%"
+                        stopColor="#22d3ee"
+                        stopOpacity="0.12"
+                      />
+
+                      <stop
+                        offset="100%"
+                        stopColor="#22d3ee"
+                        stopOpacity="0"
+                      />
+                    </radialGradient>
+
+                  </defs>
+
+
+                  {/* ================================================= */}
+                  {/* DEV RING */}
+                  {/* ================================================= */}
+
+                  {devSegments.map((segment, index) => (
+                    <path
+                      key={`dev-${index}`}
+                      d={donutSegment(
+                        230,
+                        220,
+                        170,
+                        105,
+                        segment.start,
+                        segment.end
+                      )}
+                      fill={segment.color}
+                      className="transition-all duration-300"
+                    />
+                  ))}
+
+
+                  {/* DEV center glow */}
+                  <circle
+                    cx="230"
+                    cy="220"
+                    r="105"
+                    fill="url(#centerGlow)"
+                  />
+
+                  {/* DEV center */}
+                  <circle
+                    cx="230"
+                    cy="220"
+                    r="104"
+                    fill="#0b1020"
+                    stroke="#1b2135"
+                    strokeWidth="1"
+                  />
+
+                  <circle
+                    cx="230"
+                    cy="220"
+                    r="82"
+                    fill="none"
+                    stroke="#22d3ee"
+                    strokeOpacity="0.05"
+                    strokeWidth="1"
+                  />
+
+                  <text
+                    x="230"
+                    y="229"
+                    textAnchor="middle"
+                    fill="#2c3040"
+                    fontSize="29"
+                    fontWeight="700"
+                    letterSpacing="4"
+                  >
+                    DEV
+                  </text>
+
+
+                  {/* DEV labels */}
+
+                  {devSegments.map((segment, index) => (
+                    <text
+                      key={`dev-label-${index}`}
+                      x={segment.labelX}
+                      y={segment.labelY}
+                      fill="white"
+                      fontSize="14"
+                      fontWeight="700"
+                      letterSpacing="2"
+                      transform={`rotate(${segment.rotate} ${segment.labelX} ${segment.labelY})`}
+                    >
+                      {segment.label}
+                    </text>
+                  ))}
+
+
+                  {/* ================================================= */}
+                  {/* OPS RING */}
+                  {/* ================================================= */}
+
+                  {opsSegments.map((segment, index) => (
+                    <path
+                      key={`ops-${index}`}
+                      d={donutSegment(
+                        530,
+                        220,
+                        170,
+                        105,
+                        segment.start,
+                        segment.end
+                      )}
+                      fill={segment.color}
+                    />
+                  ))}
+
+
+                  {/* OPS center glow */}
+                  <circle
+                    cx="530"
+                    cy="220"
+                    r="105"
+                    fill="url(#centerGlow)"
+                  />
+
+                  {/* OPS center */}
+                  <circle
+                    cx="530"
+                    cy="220"
+                    r="104"
+                    fill="#0b1020"
+                    stroke="#1b2135"
+                    strokeWidth="1"
+                  />
+
+                  <circle
+                    cx="530"
+                    cy="220"
+                    r="82"
+                    fill="none"
+                    stroke="#22d3ee"
+                    strokeOpacity="0.05"
+                    strokeWidth="1"
+                  />
+
+                  <text
+                    x="530"
+                    y="229"
+                    textAnchor="middle"
+                    fill="#2c3040"
+                    fontSize="29"
+                    fontWeight="700"
+                    letterSpacing="4"
+                  >
+                    OPS
+                  </text>
+
+
+                  {/* OPS labels */}
+
+                  {opsSegments.map((segment, index) => (
+                    <text
+                      key={`ops-label-${index}`}
+                      x={segment.labelX}
+                      y={segment.labelY}
+                      fill="white"
+                      fontSize="14"
+                      fontWeight="700"
+                      letterSpacing="1.8"
+                      transform={`rotate(${segment.rotate} ${segment.labelX} ${segment.labelY})`}
+                    >
+                      {segment.label}
+                    </text>
+                  ))}
+
+
+                  {/* ================================================= */}
+                  {/* CENTER CONNECTION */}
+                  {/* ================================================= */}
+
+                  <line
+                    x1="400"
+                    y1="204"
+                    x2="360"
+                    y2="204"
+                    stroke="#07111b"
+                    strokeWidth="8"
+                  />
+
+                  <line
+                    x1="400"
+                    y1="236"
+                    x2="360"
+                    y2="236"
+                    stroke="#07111b"
+                    strokeWidth="8"
+                  />
+
+                  <circle
+                    cx="380"
+                    cy="220"
+                    r="5"
+                    fill="#22d3ee"
+                    opacity="0.8"
+                    filter="url(#softGlow)"
+                  />
+
+
+                  {/* ================================================= */}
+                  {/* SMALL CENTER DATA LINE */}
+                  {/* ================================================= */}
+
+                  <text
+                    x="380"
+                    y="408"
+                    textAnchor="middle"
+                    fill="#22d3ee"
+                    fillOpacity="0.45"
+                    fontSize="8"
+                    fontFamily="monospace"
+                    letterSpacing="3"
+                  >
+                    CONTINUOUS • AUTOMATED • SCALABLE
+                  </text>
+
+                </svg>
+
+
+                {/* Bottom status */}
+                <div className="absolute bottom-0 left-1/2 z-20 -translate-x-1/2 translate-y-1/2">
+
+                  <div className="flex items-center gap-2 whitespace-nowrap rounded-full border border-emerald-400/15 bg-[#06130f]/90 px-4 py-2 font-mono text-[9px] tracking-wider text-emerald-400/70 backdrop-blur-md">
+
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+
+                    INFRASTRUCTURE READY
 
                   </div>
 
@@ -522,6 +854,21 @@ export default function Hero() {
           </div>
 
         </div>
+
+      </div>
+
+
+      {/* ===================================================== */}
+      {/* BOTTOM SCROLL INDICATOR */}
+      {/* ===================================================== */}
+
+      <div className="absolute bottom-7 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 md:flex">
+
+        <span className="font-mono text-[8px] uppercase tracking-[0.3em] text-gray-600">
+          Scroll
+        </span>
+
+        <div className="h-8 w-px bg-linear-to-b from-cyan-400/40 to-transparent" />
 
       </div>
 
