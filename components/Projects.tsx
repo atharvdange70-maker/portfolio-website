@@ -92,6 +92,38 @@ const projects = [
 
   
 },
+{
+  title: "CDEC Alpha — CloudBlitz Learning Platform",
+
+  short: "Built a cloud-based course enrollment platform using React and Spring Boot microservices on AWS.",
+
+  github: "https://github.com/atharvdange70-maker/cdec-alpha-app",
+
+  description: "Built a course enrollment platform with a React frontend and three Spring Boot microservices for authentication, course management, and enrollments. Deployed the application on AWS using EKS, ALB Ingress, ECR, S3, CloudFront, Route 53, and MongoDB Atlas.",
+
+  tools: [
+    "React",
+    "TypeScript",
+    "Spring Boot",
+    "AWS EKS",
+    "ALB",
+    "ECR",
+    "S3",
+    "CloudFront",
+    "MongoDB",
+    "Terraform",
+    "Jenkins"
+  ],
+
+  features: [
+    "Microservices Architecture",
+    "JWT Authentication",
+    "AWS EKS Deployment",
+    "ALB Ingress Routing",
+    "CI/CD with Jenkins",
+    "Infrastructure as Code",
+  ],
+},
  
 ];
 
