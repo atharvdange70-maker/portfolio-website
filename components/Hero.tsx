@@ -283,142 +283,41 @@ export default function Hero() {
 
             </div>
 
-
-            {/* ================================================= */}
-            {/* RIGHT SIDE - CLOUD & DEVOPS CARD                  */}
-            {/* ================================================= */}
-
-            <div className="flex justify-center lg:justify-end">
-
-              <div className="relative w-full max-w-md">
-
-                {/* Background Glow */}
-                <div className="absolute -inset-1 rounded-3xl bg-cyan-400/20 blur-2xl" />
-
-
-                {/* Main Card */}
-                <div className="relative rounded-3xl border border-cyan-400/20 bg-slate-950/70 p-8 shadow-2xl backdrop-blur-xl">
-
-
-                  {/* ================================================= */}
-                  {/* CARD HEADER                                      */}
-                  {/* ================================================= */}
-
-                  <div className="mb-8 flex items-center justify-between">
-
-                    <div>
-
-                      <p className="text-sm font-semibold tracking-widest text-cyan-400">
-                        CLOUD & DEVOPS
-                      </p>
-
-                      <h3 className="mt-2 text-2xl font-bold text-white">
-                        Infrastructure
-                      </h3>
-
+            {/* RIGHT SIDE - HERO VISUAL */}
+            <div className="relative flex items-center justify-center">
+              <div className="relative w-full max-w-xl">
+                <div className="rounded-2xl border border-cyan-500/20 bg-slate-900/60 p-6 shadow-[0_0_50px_rgba(34,211,238,0.12)] backdrop-blur-sm">
+                  <div className="flex items-center justify-between border-b border-slate-700 pb-3">
+                    <div className="flex items-center gap-2">
+                      <span className="h-3 w-3 rounded-full bg-red-400" />
+                      <span className="h-3 w-3 rounded-full bg-yellow-400" />
+                      <span className="h-3 w-3 rounded-full bg-green-400" />
                     </div>
-
-
-                    {/* Cloud Icon */}
-                    <div className="flex h-14 w-14 items-center justify-center rounded-full border border-cyan-400/30 bg-cyan-400/10 text-2xl">
-                      ☁️
-                    </div>
-
+                    <span className="text-[10px] uppercase tracking-[0.3em] text-slate-400">
+                      portfolio.sh
+                    </span>
                   </div>
 
-
-                  {/* ================================================= */}
-                  {/* SKILLS GRID                                     */}
-                  {/* ================================================= */}
-
-                  <div className="grid grid-cols-2 gap-4">
-
-
-                    {/* AWS */}
-                    <div className="rounded-xl border border-white/10 bg-white/5 p-4 transition hover:border-cyan-400/40 hover:bg-cyan-400/5">
-
-                      <div className="mb-2 text-2xl">
-                        ☁️
-                      </div>
-
-                      <p className="font-semibold text-white">
-                        AWS
-                      </p>
-
-                      <p className="text-sm text-gray-400">
-                        Cloud
-                      </p>
-
+                  <div className="mt-6 space-y-4 font-mono text-sm text-slate-200">
+                    <div className="flex items-center gap-2 text-cyan-300">
+                      <span className="text-cyan-400">$</span>
+                      <span>aws eks update --cluster production</span>
                     </div>
-
-
-                    {/* Docker */}
-                    <div className="rounded-xl border border-white/10 bg-white/5 p-4 transition hover:border-cyan-400/40 hover:bg-cyan-400/5">
-
-                      <div className="mb-2 text-2xl">
-                        🐳
-                      </div>
-
-                      <p className="font-semibold text-white">
-                        Docker
-                      </p>
-
-                      <p className="text-sm text-gray-400">
-                        Containers
-                      </p>
-
+                    <div className="flex items-center gap-2 text-slate-300">
+                      <span className="text-emerald-400">✓</span>
+                      <span>deployments healthy</span>
                     </div>
-
-
-                    {/* Kubernetes */}
-                    <div className="rounded-xl border border-white/10 bg-white/5 p-4 transition hover:border-cyan-400/40 hover:bg-cyan-400/5">
-
-                      <div className="mb-2 text-2xl">
-                        ☸️
-                      </div>
-
-                      <p className="font-semibold text-white">
-                        Kubernetes
-                      </p>
-
-                      <p className="text-sm text-gray-400">
-                        Orchestration
-                      </p>
-
+                    <div className="flex items-center gap-2 text-slate-300">
+                      <span className="text-blue-400">→</span>
+                      <span>infrastructure as code enabled</span>
                     </div>
-
-
-                    {/* Terraform */}
-                    <div className="rounded-xl border border-white/10 bg-white/5 p-4 transition hover:border-cyan-400/40 hover:bg-cyan-400/5">
-
-                      <div className="mb-2 text-2xl">
-                        🏗️
-                      </div>
-
-                      <p className="font-semibold text-white">
-                        Terraform
-                      </p>
-
-                      <p className="text-sm text-gray-400">
-                        Infrastructure
-                      </p>
-
-                    </div>
-
                   </div>
-
                 </div>
-
               </div>
-
             </div>
 
           </div>
-
         </div>
-
       </div>
-
-    </section>
-  );
-}
+    </section>  );
+}           
