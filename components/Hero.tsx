@@ -282,40 +282,6 @@ export default function Hero() {
               </div>
 
             </div>
-
-            {/* RIGHT SIDE - HERO VISUAL */}
-            <div className="relative flex items-center justify-center">
-              <div className="relative w-full max-w-xl">
-                <div className="rounded-2xl border border-cyan-500/20 bg-slate-900/60 p-6 shadow-[0_0_50px_rgba(34,211,238,0.12)] backdrop-blur-sm">
-                  <div className="flex items-center justify-between border-b border-slate-700 pb-3">
-                    <div className="flex items-center gap-2">
-                      <span className="h-3 w-3 rounded-full bg-red-400" />
-                      <span className="h-3 w-3 rounded-full bg-yellow-400" />
-                      <span className="h-3 w-3 rounded-full bg-green-400" />
-                    </div>
-                    <span className="text-[10px] uppercase tracking-[0.3em] text-slate-400">
-                      portfolio.sh
-                    </span>
-                  </div>
-
-                  <div className="mt-6 space-y-4 font-mono text-sm text-slate-200">
-                    <div className="flex items-center gap-2 text-cyan-300">
-                      <span className="text-cyan-400">$</span>
-                      <span>aws eks update --cluster production</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-slate-300">
-                      <span className="text-emerald-400">✓</span>
-                      <span>deployments healthy</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-slate-300">
-                      <span className="text-blue-400">→</span>
-                      <span>infrastructure as code enabled</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
       </div>
