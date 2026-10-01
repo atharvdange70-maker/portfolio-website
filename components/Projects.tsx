@@ -97,7 +97,6 @@ const projects = [
 
   short: "Built a cloud-based course enrollment platform using React and Spring Boot microservices on AWS.",
 
-  github: "https://github.com/atharvdange70-maker/cdec-alpha-app",
 
   description: "Built a course enrollment platform with a React frontend and three Spring Boot microservices for authentication, course management, and enrollments. Deployed the application on AWS using EKS, ALB Ingress, ECR, S3, CloudFront, Route 53, and MongoDB Atlas.",
 
